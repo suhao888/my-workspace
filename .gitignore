@@ -1,0 +1,11 @@
+# AI 工具配置（不提交到仓库）
+.claude/
+.opencode/
+.gemini/
+.cursor/
+.copilot/
+
+# 系统文件
+Thumbs.db
+.DS_Store
+desktop.ini
