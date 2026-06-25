@@ -1,0 +1,97 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - heading [level=1] [ref=e5]:
+      - link "北京注册会计师协会培训网" [ref=e6] [cursor=pointer]:
+        - /url: /
+        - img [ref=e7]
+    - generic [ref=e8]:
+      - img [ref=e10]
+      - generic [ref=e11]:
+        - paragraph [ref=e13] [cursor=pointer]: 继续教育登录
+        - list [ref=e14]:
+          - listitem [ref=e15]:
+            - generic [ref=e16]:
+              - paragraph [ref=e17]:
+                - textbox "请输入会员证书编号" [ref=e18]
+              - paragraph [ref=e19]:
+                - textbox "请输入密码" [ref=e20]
+              - generic [ref=e21]:
+                - paragraph [ref=e22]
+                - paragraph:
+                  - link "找回密码？" [ref=e23] [cursor=pointer]:
+                    - /url: /bicpa/mem/mem_toResetPwd.jspr
+              - generic [ref=e24] [cursor=pointer]: 立即登录
+            - generic [ref=e25]:
+              - paragraph:
+                - link "微信" [ref=e26] [cursor=pointer]:
+                  - /url: javascript:;
+              - link "CPA/PV继续教育会员登录提示" [ref=e28] [cursor=pointer]:
+                - /url: "#"
+            - generic [ref=e29]:
+              - text: 还没有账号？
+              - link "立即注册>>" [ref=e30] [cursor=pointer]:
+                - /url: /bicpa/mem/reg_index.jspr?zjdl=ys
+    - generic [ref=e33]:
+      - generic [ref=e34]:
+        - link [ref=e35] [cursor=pointer]:
+          - /url: http://www.bicpa.org.cn/
+          - img [ref=e36]
+        - paragraph [ref=e37]:
+          - link "北京注册会计师协会" [ref=e38] [cursor=pointer]:
+            - /url: http://www.bicpa.org.cn/
+      - list [ref=e39]:
+        - listitem [ref=e40]:
+          - link "关于我们" [ref=e41] [cursor=pointer]:
+            - /url: /contact.html
+          - link "网站简介" [ref=e42] [cursor=pointer]:
+            - /url: /contact.html#aboutUs
+          - link "联系我们" [ref=e43] [cursor=pointer]:
+            - /url: /contact.html#contactUs
+          - link "欢迎合作" [ref=e44] [cursor=pointer]:
+            - /url: /contact.html#hezuo
+          - link "人才招聘" [ref=e45] [cursor=pointer]:
+            - /url: /job.html
+          - link "建议反馈" [ref=e46] [cursor=pointer]:
+            - /url: /bicpa/errCorrect/errCr_toCorrectCenter.jspr
+        - listitem [ref=e47]:
+          - paragraph [ref=e48]: 培训网项目
+          - generic [ref=e49]:
+            - link "CPA考试专业阶段" [ref=e50] [cursor=pointer]:
+              - /url: /cpa
+            - link "CPA继续教育" [ref=e51] [cursor=pointer]:
+              - /url: /cpajxjy
+          - generic [ref=e52]:
+            - link "CPA考试综合阶段" [ref=e53] [cursor=pointer]:
+              - /url: /cpazonghe
+            - link "PV继续教育" [ref=e54] [cursor=pointer]:
+              - /url: /cpvjxjy
+        - listitem [ref=e55]:
+          - generic [ref=e56]: 快速通道
+          - link "快速购课" [ref=e57] [cursor=pointer]:
+            - /url: /bicpa/h/courselist/index.html
+          - link "快速注卡" [ref=e58] [cursor=pointer]:
+            - /url: /bicpa/edu/learnUserCourse_centerFrame.jspr?framesrc=/bicpa/edu/account_reCharge.jspr
+          - link "软件下载" [ref=e59] [cursor=pointer]:
+            - /url: /download.html
+          - link "报考指南" [ref=e60] [cursor=pointer]:
+            - /url: /cpabaokao.html
+        - listitem [ref=e61]:
+          - link "帮助中心" [ref=e62] [cursor=pointer]:
+            - /url: /help.html
+          - link "登录问题" [ref=e63] [cursor=pointer]:
+            - /url: /help.html#b2
+          - link "技术问题" [ref=e64] [cursor=pointer]:
+            - /url: /help.html#a48
+          - link "学习问题" [ref=e65] [cursor=pointer]:
+            - /url: /help.html#a24
+        - listitem [ref=e66]:
+          - generic [ref=e67]: 官方微信
+          - img [ref=e68]
+      - paragraph [ref=e69]:
+        - text: 报名咨询电话：4000-356-365 传真：010-62969077
+        - text: 北京注册会计师协会培训网 版权所有 京ICP备05026838号
+        - link "京公网安备 11010802024103号" [ref=e70] [cursor=pointer]:
+          - /url: http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=11010802024103
+          - img [ref=e71]
+          - text: 京公网安备 11010802024103号
+  - text: 

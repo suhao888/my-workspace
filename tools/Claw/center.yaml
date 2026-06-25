@@ -1,0 +1,425 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - generic [ref=e5]:
+      - generic [ref=e6]:
+        - generic [ref=e7]:
+          - link "设为首页" [ref=e8] [cursor=pointer]:
+            - /url: javascript:;
+          - text: "|"
+          - link "加入收藏" [ref=e9] [cursor=pointer]:
+            - /url: javascript:;
+        - list [ref=e11]:
+          - listitem [ref=e12]:
+            - link "官方微博" [ref=e13] [cursor=pointer]:
+              - /url: http://weibo.com/bicpaedu
+            - emphasis [ref=e14]: "|"
+          - listitem [ref=e15]:
+            - link "官方微信" [ref=e16] [cursor=pointer]:
+              - /url: "#"
+            - emphasis [ref=e17]: "|"
+          - listitem [ref=e18]:
+            - link "手机看课" [ref=e19] [cursor=pointer]:
+              - /url: http://www.bicpaedu.com/news/20190411/43777.html
+            - emphasis [ref=e20]: "|"
+          - listitem [ref=e21]:
+            - link "模考训练营" [ref=e22] [cursor=pointer]:
+              - /url: /bicpa/mk/center_index.jspr
+            - emphasis [ref=e23]: "|"
+          - listitem [ref=e24]: 咨询电话：4000-356-365
+      - generic [ref=e25]:
+        - heading "北京注册会计师协会培训网 中国CPA在线" [level=1] [ref=e26]:
+          - link "北京注册会计师协会培训网" [ref=e27] [cursor=pointer]:
+            - /url: http://www.bicpaedu.com
+            - img "北京注册会计师协会培训网" [ref=e28]
+          - strong [ref=e29]: 中国CPA在线
+        - generic [ref=e30]:
+          - generic [ref=e31]:
+            - text: 亲爱的 1120260109，培训网欢迎您
+            - link "[进入会员中心]" [ref=e32] [cursor=pointer]:
+              - /url: /bicpa/edu/learnUserCourse_centerFrame.jspr
+            - link "[退出]" [ref=e33] [cursor=pointer]:
+              - /url: /bicpa/mem/mem_logout.jspr
+          - generic [ref=e34]:
+            - textbox [ref=e35]: CPA课程
+            - button "搜索" [ref=e36] [cursor=pointer]
+      - list [ref=e37]:
+        - listitem [ref=e38]:
+          - link "首页" [ref=e39] [cursor=pointer]:
+            - /url: /
+            - generic [ref=e40]: 首页
+          - emphasis [ref=e41]: "|"
+        - listitem [ref=e42]:
+          - generic [ref=e43]: CPA考试
+          - link "专业阶段" [ref=e44] [cursor=pointer]:
+            - /url: /cpa/
+          - link "综合阶段" [ref=e45] [cursor=pointer]:
+            - /url: /cpazonghe/
+          - emphasis [ref=e46]: "|"
+        - listitem [ref=e47]:
+          - generic [ref=e48]: 继续教育
+          - link "CPA继续教育" [ref=e49] [cursor=pointer]:
+            - /url: /cpajxjy/
+          - link "PV继续教育" [ref=e50] [cursor=pointer]:
+            - /url: /cpvjxjy/
+          - emphasis [ref=e51]: "|"
+        - listitem [ref=e52]:
+          - generic [ref=e53]: 岗位技能
+          - link "企业内训" [ref=e54] [cursor=pointer]:
+            - /url: /qiyeneixun.html
+        - listitem [ref=e55]:
+          - img [ref=e57]
+          - link "我要选课" [ref=e58] [cursor=pointer]:
+            - /url: javascript:chooseCourse('kaoqian');
+          - link "CPA考试" [ref=e59] [cursor=pointer]:
+            - /url: javascript:chooseCourse('kaoqian');
+          - link "CPA/PV继续教育" [ref=e60] [cursor=pointer]:
+            - /url: javascript:chooseCourse('jijiao');
+          - emphasis [ref=e61]: "|"
+        - listitem [ref=e62]:
+          - link "精英团队" [ref=e63] [cursor=pointer]:
+            - /url: /teachers/
+          - emphasis [ref=e64]: "|"
+        - listitem [ref=e65]:
+          - generic [ref=e66]: 免费试听
+          - link "CPA专业阶段" [ref=e67] [cursor=pointer]:
+            - /url: http://www.bicpaedu.com/listenfree2020/index.jhtml
+          - link "CPA综合阶段" [ref=e68] [cursor=pointer]:
+            - /url: http://www.bicpaedu.com/listenfree2020/index.jhtml
+    - generic [ref=e69]:
+      - generic [ref=e71]:
+        - table [ref=e73]:
+          - rowgroup [ref=e74]:
+            - row "学习" [ref=e75]:
+              - cell "学习" [ref=e76]:
+                - listitem [ref=e77]:
+                  - link "学习" [ref=e78] [cursor=pointer]:
+                    - /url: "#"
+            - row "• 我的课堂" [ref=e79]:
+              - cell "• 我的课堂" [ref=e80]:
+                - listitem [ref=e81]:
+                  - text: •
+                  - link "我的课堂" [ref=e82] [cursor=pointer]:
+                    - /url: /bicpa/edu/learnUserCourse_indexJXJY.jspr
+            - row "• 听课记录" [ref=e83]:
+              - cell "• 听课记录" [ref=e84]:
+                - listitem [ref=e85]:
+                  - text: •
+                  - link "听课记录" [ref=e86] [cursor=pointer]:
+                    - /url: /bicpa/edu/learnUserCourse_toListenRecord.jspr
+            - row "• 学时统计" [ref=e87]:
+              - cell "• 学时统计" [ref=e88]:
+                - listitem [ref=e89]:
+                  - text: •
+                  - link "学时统计" [ref=e90] [cursor=pointer]:
+                    - /url: /bicpa/edu/creditHour_show.jspr
+            - row "• 打印学时证明" [ref=e91]:
+              - cell "• 打印学时证明" [ref=e92]:
+                - listitem [ref=e93]:
+                  - text: •
+                  - link "打印学时证明" [ref=e94] [cursor=pointer]:
+                    - /url: /bicpa/edu/creditHour_print.jspr
+            - row "• 会计继续教育" [ref=e95]:
+              - cell "• 会计继续教育" [ref=e96]:
+                - listitem [ref=e97]:
+                  - text: •
+                  - link "会计继续教育" [ref=e98] [cursor=pointer]:
+                    - /url: https://www.bicpa.org.cn/p1/tzgg/20260515/55310.html
+            - row "个人信息" [ref=e99]:
+              - cell "个人信息" [ref=e100]:
+                - listitem [ref=e101]:
+                  - link "个人信息" [ref=e102] [cursor=pointer]:
+                    - /url: "#"
+            - row "• 修改会员信息" [ref=e103]:
+              - cell "• 修改会员信息" [ref=e104]:
+                - listitem [ref=e105]:
+                  - text: •
+                  - link "修改会员信息" [ref=e106] [cursor=pointer]:
+                    - /url: /bicpa/edu/member_toUpdate.jspr?userFlag=02
+            - row "• 修改密码" [ref=e107]:
+              - cell "• 修改密码" [ref=e108]:
+                - listitem [ref=e109]:
+                  - text: •
+                  - link "修改密码" [ref=e110] [cursor=pointer]:
+                    - /url: /bicpa/edu/member_toPwdUpdate.jspr
+            - row "• 消息中心" [ref=e111]:
+              - cell "• 消息中心" [ref=e112]:
+                - listitem [ref=e113]:
+                  - text: •
+                  - link "消息中心" [ref=e114] [cursor=pointer]:
+                    - /url: /bicpa/edu/message_memMessageRecord.jspr
+        - generic [ref=e115]:
+          - generic [ref=e116]: 培训说明
+          - link "2026年所有参加继续教育学习的非执业会员，请按照继续教育学时要求完成40学时的课程，会员可根据学习需求自选课程学习。" [ref=e164] [cursor=pointer]:
+            - /url: /memjxjycpaf1/20101225/4259.html
+          - generic [ref=e119]: 客服电话:4000-356-365
+      - iframe [ref=e120]:
+        - generic [ref=f5e2]:
+          - generic [ref=f5e5]:
+            - generic [ref=f5e6]:
+              - generic [ref=f5e7]:
+                - link "设为首页" [ref=f5e8] [cursor=pointer]:
+                  - /url: javascript:;
+                - text: "|"
+                - link "加入收藏" [ref=f5e9] [cursor=pointer]:
+                  - /url: javascript:;
+              - list [ref=f5e11]:
+                - listitem [ref=f5e12]:
+                  - link "官方微博" [ref=f5e13] [cursor=pointer]:
+                    - /url: http://weibo.com/bicpaedu
+                  - emphasis [ref=f5e14]: "|"
+                - listitem [ref=f5e15]:
+                  - link "官方微信" [ref=f5e16] [cursor=pointer]:
+                    - /url: "#"
+                  - emphasis [ref=f5e17]: "|"
+                - listitem [ref=f5e18]:
+                  - link "手机看课" [ref=f5e19] [cursor=pointer]:
+                    - /url: http://www.bicpaedu.com/news/20190411/43777.html
+                  - emphasis [ref=f5e20]: "|"
+                - listitem [ref=f5e21]:
+                  - link "模考训练营" [ref=f5e22] [cursor=pointer]:
+                    - /url: /bicpa/mk/center_index.jspr
+                  - emphasis [ref=f5e23]: "|"
+                - listitem [ref=f5e24]: 咨询电话：4000-356-365
+            - generic [ref=f5e25]:
+              - heading "北京注册会计师协会培训网 中国CPA在线" [level=1] [ref=f5e26]:
+                - link "北京注册会计师协会培训网" [ref=f5e27] [cursor=pointer]:
+                  - /url: http://www.bicpaedu.com
+                  - img "北京注册会计师协会培训网" [ref=f5e28]
+                - strong [ref=f5e29]: 中国CPA在线
+              - generic [ref=f5e30]:
+                - generic [ref=f5e31]:
+                  - text: 亲爱的 1120260109，培训网欢迎您
+                  - link "[进入会员中心]" [ref=f5e32] [cursor=pointer]:
+                    - /url: /bicpa/edu/learnUserCourse_centerFrame.jspr
+                  - link "[退出]" [ref=f5e33] [cursor=pointer]:
+                    - /url: /bicpa/mem/mem_logout.jspr
+                - generic [ref=f5e34]:
+                  - textbox [ref=f5e35]: CPA课程
+                  - button "搜索" [ref=f5e36] [cursor=pointer]
+            - list [ref=f5e37]:
+              - listitem [ref=f5e38]:
+                - link "首页" [ref=f5e39] [cursor=pointer]:
+                  - /url: /
+                  - generic [ref=f5e40]: 首页
+                - emphasis [ref=f5e41]: "|"
+              - listitem [ref=f5e42]:
+                - generic [ref=f5e43]: CPA考试
+                - link "专业阶段" [ref=f5e44] [cursor=pointer]:
+                  - /url: /cpa/
+                - link "综合阶段" [ref=f5e45] [cursor=pointer]:
+                  - /url: /cpazonghe/
+                - emphasis [ref=f5e46]: "|"
+              - listitem [ref=f5e47]:
+                - generic [ref=f5e48]: 继续教育
+                - link "CPA继续教育" [ref=f5e49] [cursor=pointer]:
+                  - /url: /cpajxjy/
+                - link "PV继续教育" [ref=f5e50] [cursor=pointer]:
+                  - /url: /cpvjxjy/
+                - emphasis [ref=f5e51]: "|"
+              - listitem [ref=f5e52]:
+                - generic [ref=f5e53]: 岗位技能
+                - link "企业内训" [ref=f5e54] [cursor=pointer]:
+                  - /url: /qiyeneixun.html
+              - listitem [ref=f5e55]:
+                - img [ref=f5e57]
+                - link "我要选课" [ref=f5e58] [cursor=pointer]:
+                  - /url: javascript:chooseCourse('kaoqian');
+                - link "CPA考试" [ref=f5e59] [cursor=pointer]:
+                  - /url: javascript:chooseCourse('kaoqian');
+                - link "CPA/PV继续教育" [ref=f5e60] [cursor=pointer]:
+                  - /url: javascript:chooseCourse('jijiao');
+                - emphasis [ref=f5e61]: "|"
+              - listitem [ref=f5e62]:
+                - link "精英团队" [ref=f5e63] [cursor=pointer]:
+                  - /url: /teachers/
+                - emphasis [ref=f5e64]: "|"
+              - listitem [ref=f5e65]:
+                - generic [ref=f5e66]: 免费试听
+                - link "CPA专业阶段" [ref=f5e67] [cursor=pointer]:
+                  - /url: http://www.bicpaedu.com/listenfree2020/index.jhtml
+                - link "CPA综合阶段" [ref=f5e68] [cursor=pointer]:
+                  - /url: http://www.bicpaedu.com/listenfree2020/index.jhtml
+          - generic [ref=f5e70]:
+            - generic [ref=f5e73]:
+              - img [ref=f5e74]
+              - paragraph [ref=f5e75]:
+                - text: 请检查您输入的地址是否有误，您也可以由此进入
+                - link "北京注协培训网首页" [ref=f5e77] [cursor=pointer]:
+                  - /url: http://www.bicpaedu.com/
+            - generic [ref=f5e78]:
+              - img [ref=f5e80]
+              - generic [ref=f5e82]:
+                - heading "没有找到方法:[URI:/bicpa/edu/learnUserCourse_queryLearnTime.jspr]" [level=3] [ref=f5e83]
+                - list [ref=f5e84]:
+                  - listitem [ref=f5e85]: 您可以尝试以下操作： 1. 如果您收藏了这个页面，请回到会员中心继续操作，因为它是无效的。
+                  - listitem [ref=f5e86]: 2. 重置您的浏览器，如IE浏览器请选择"工具 > Internet选项 > 高级 > 重置Internet Explorer设置"，点击"重置"，勾选"删除个性化设置"， 重新启动IE浏览器即可。
+              - img [ref=f5e88]
+            - list [ref=f5e90]:
+              - listitem [ref=f5e91]:
+                - text: CPA考试频道：
+                - link "报考指南" [ref=f5e92] [cursor=pointer]:
+                  - /url: http://www.bicpaedu.com/cpabaokao.html
+                - text: "|"
+                - link "考试信息" [ref=f5e93] [cursor=pointer]:
+                  - /url: http://www.bicpaedu.com/cpakaoshi/
+                - text: "|"
+                - link "复习指导" [ref=f5e94] [cursor=pointer]:
+                  - /url: http://www.bicpaedu.com/cpazhidao/
+                - text: "|"
+                - link "考试大纲" [ref=f5e95] [cursor=pointer]:
+                  - /url: http://www.bicpaedu.com/cpadagang/
+                - text: "|"
+                - link "试题中心" [ref=f5e96] [cursor=pointer]:
+                  - /url: http://www.bicpaedu.com/cpashiti/
+                - text: "|"
+                - link "网络招生辅导方案" [ref=f5e97] [cursor=pointer]:
+                  - /url: http://www.bicpaedu.com/cpawlzhaosheng.html
+                - text: "|"
+                - link "面授招生辅导方案" [ref=f5e98] [cursor=pointer]:
+                  - /url: http://www.bicpaedu.com/cpamszhaosheng.html
+              - listitem [ref=f5e99]:
+                - text: CPA继续教育：
+                - link "培训信息" [ref=f5e100] [cursor=pointer]:
+                  - /url: http://www.bicpaedu.com/cpajxjynews/
+                - text: "|"
+                - link "培训法规" [ref=f5e101] [cursor=pointer]:
+                  - /url: http://www.bicpaedu.com/cpajxjylaw/
+                - text: "|"
+                - link "使用指南" [ref=f5e102] [cursor=pointer]:
+                  - /url: http://www.bicpaedu.com/jxjyguide.html
+                - text: CPV继续教育：
+                - link "培训信息" [ref=f5e104] [cursor=pointer]:
+                  - /url: http://www.bicpaedu.com/cpvjxjynews/
+                - text: "|"
+                - link "培训法规" [ref=f5e105] [cursor=pointer]:
+                  - /url: http://www.bicpaedu.com/cpvjxjylaw/
+                - text: "|"
+                - link "使用指南" [ref=f5e106] [cursor=pointer]:
+                  - /url: http://www.bicpaedu.com/jxjyguide.html
+          - generic [ref=f5e109]:
+            - generic [ref=f5e110]:
+              - link [ref=f5e111] [cursor=pointer]:
+                - /url: http://www.bicpa.org.cn/
+                - img [ref=f5e112]
+              - paragraph [ref=f5e113]:
+                - link "北京注册会计师协会" [ref=f5e114] [cursor=pointer]:
+                  - /url: http://www.bicpa.org.cn/
+            - list [ref=f5e115]:
+              - listitem [ref=f5e116]:
+                - link "关于我们" [ref=f5e117] [cursor=pointer]:
+                  - /url: /contact.html
+                - link "网站简介" [ref=f5e118] [cursor=pointer]:
+                  - /url: /contact.html#aboutUs
+                - link "联系我们" [ref=f5e119] [cursor=pointer]:
+                  - /url: /contact.html#contactUs
+                - link "欢迎合作" [ref=f5e120] [cursor=pointer]:
+                  - /url: /contact.html#hezuo
+                - link "人才招聘" [ref=f5e121] [cursor=pointer]:
+                  - /url: /job.html
+                - link "建议反馈" [ref=f5e122] [cursor=pointer]:
+                  - /url: /bicpa/errCorrect/errCr_toCorrectCenter.jspr
+              - listitem [ref=f5e123]:
+                - paragraph [ref=f5e124]: 培训网项目
+                - generic [ref=f5e125]:
+                  - link "CPA考试专业阶段" [ref=f5e126] [cursor=pointer]:
+                    - /url: /cpa
+                  - link "CPA继续教育" [ref=f5e127] [cursor=pointer]:
+                    - /url: /cpajxjy
+                - generic [ref=f5e128]:
+                  - link "CPA考试综合阶段" [ref=f5e129] [cursor=pointer]:
+                    - /url: /cpazonghe
+                  - link "PV继续教育" [ref=f5e130] [cursor=pointer]:
+                    - /url: /cpvjxjy
+              - listitem [ref=f5e131]:
+                - generic [ref=f5e132]: 快速通道
+                - link "快速购课" [ref=f5e133] [cursor=pointer]:
+                  - /url: /bicpa/h/courselist/index.html
+                - link "快速注卡" [ref=f5e134] [cursor=pointer]:
+                  - /url: /bicpa/edu/learnUserCourse_centerFrame.jspr?framesrc=/bicpa/edu/account_reCharge.jspr
+                - link "软件下载" [ref=f5e135] [cursor=pointer]:
+                  - /url: /download.html
+                - link "报考指南" [ref=f5e136] [cursor=pointer]:
+                  - /url: /cpabaokao.html
+              - listitem [ref=f5e137]:
+                - link "帮助中心" [ref=f5e138] [cursor=pointer]:
+                  - /url: /help.html
+                - link "登录问题" [ref=f5e139] [cursor=pointer]:
+                  - /url: /help.html#b2
+                - link "技术问题" [ref=f5e140] [cursor=pointer]:
+                  - /url: /help.html#a48
+                - link "学习问题" [ref=f5e141] [cursor=pointer]:
+                  - /url: /help.html#a24
+              - listitem [ref=f5e142]:
+                - generic [ref=f5e143]: 官方微信
+                - img [ref=f5e144]
+            - paragraph [ref=f5e145]:
+              - text: 报名咨询电话：4000-356-365 传真：010-62969077
+              - text: 北京注册会计师协会培训网 版权所有 京ICP备05026838号
+              - link "京公网安备 11010802024103号" [ref=f5e146] [cursor=pointer]:
+                - /url: http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=11010802024103
+                - img [ref=f5e147]
+                - text: 京公网安备 11010802024103号
+    - generic [ref=e123]:
+      - generic [ref=e124]:
+        - link [ref=e125] [cursor=pointer]:
+          - /url: http://www.bicpa.org.cn/
+          - img [ref=e126]
+        - paragraph [ref=e127]:
+          - link "北京注册会计师协会" [ref=e128] [cursor=pointer]:
+            - /url: http://www.bicpa.org.cn/
+      - list [ref=e129]:
+        - listitem [ref=e130]:
+          - link "关于我们" [ref=e131] [cursor=pointer]:
+            - /url: /contact.html
+          - link "网站简介" [ref=e132] [cursor=pointer]:
+            - /url: /contact.html#aboutUs
+          - link "联系我们" [ref=e133] [cursor=pointer]:
+            - /url: /contact.html#contactUs
+          - link "欢迎合作" [ref=e134] [cursor=pointer]:
+            - /url: /contact.html#hezuo
+          - link "人才招聘" [ref=e135] [cursor=pointer]:
+            - /url: /job.html
+          - link "建议反馈" [ref=e136] [cursor=pointer]:
+            - /url: /bicpa/errCorrect/errCr_toCorrectCenter.jspr
+        - listitem [ref=e137]:
+          - paragraph [ref=e138]: 培训网项目
+          - generic [ref=e139]:
+            - link "CPA考试专业阶段" [ref=e140] [cursor=pointer]:
+              - /url: /cpa
+            - link "CPA继续教育" [ref=e141] [cursor=pointer]:
+              - /url: /cpajxjy
+          - generic [ref=e142]:
+            - link "CPA考试综合阶段" [ref=e143] [cursor=pointer]:
+              - /url: /cpazonghe
+            - link "PV继续教育" [ref=e144] [cursor=pointer]:
+              - /url: /cpvjxjy
+        - listitem [ref=e145]:
+          - generic [ref=e146]: 快速通道
+          - link "快速购课" [ref=e147] [cursor=pointer]:
+            - /url: /bicpa/h/courselist/index.html
+          - link "快速注卡" [ref=e148] [cursor=pointer]:
+            - /url: /bicpa/edu/learnUserCourse_centerFrame.jspr?framesrc=/bicpa/edu/account_reCharge.jspr
+          - link "软件下载" [ref=e149] [cursor=pointer]:
+            - /url: /download.html
+          - link "报考指南" [ref=e150] [cursor=pointer]:
+            - /url: /cpabaokao.html
+        - listitem [ref=e151]:
+          - link "帮助中心" [ref=e152] [cursor=pointer]:
+            - /url: /help.html
+          - link "登录问题" [ref=e153] [cursor=pointer]:
+            - /url: /help.html#b2
+          - link "技术问题" [ref=e154] [cursor=pointer]:
+            - /url: /help.html#a48
+          - link "学习问题" [ref=e155] [cursor=pointer]:
+            - /url: /help.html#a24
+        - listitem [ref=e156]:
+          - generic [ref=e157]: 官方微信
+          - img [ref=e158]
+      - paragraph [ref=e159]:
+        - text: 报名咨询电话：4000-356-365 传真：010-62969077
+        - text: 北京注册会计师协会培训网 版权所有 京ICP备05026838号
+        - link "京公网安备 11010802024103号" [ref=e160] [cursor=pointer]:
+          - /url: http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=11010802024103
+          - img [ref=e161]
+          - text: 京公网安备 11010802024103号
+  - img [ref=e163] [cursor=pointer]

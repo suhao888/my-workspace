@@ -1,0 +1,53 @@
+- generic [ref=e2]:
+  - link [ref=e4] [cursor=pointer]:
+    - /url: http://www.bicpaedu.com
+    - img [ref=e5]
+  - generic [ref=e6]:
+    - list [ref=e7]:
+      - listitem [ref=e8]:
+        - link "会员中心" [ref=e9] [cursor=pointer]:
+          - /url: "#"
+          - img [ref=e11]
+          - text: 会员中心
+      - listitem [ref=e12]:
+        - link "下载中心" [ref=e13] [cursor=pointer]:
+          - /url: "#"
+          - img [ref=e15]
+          - text: 下载中心
+    - generic [ref=e16]:
+      - generic [ref=e17]:
+        - heading "(2025企业内部控制评价及审计（2025）-谢东良) 企业内部控制评价及审计3/7" [level=1] [ref=e18]
+        - generic [ref=e38]:
+          - link "隐藏老师" [ref=e39] [cursor=pointer]:
+            - /url: javascript:switchSrc();
+          - link "课程评价" [ref=e41] [cursor=pointer]:
+            - /url: "#"
+          - link "手机扫码看课" [ref=e42] [cursor=pointer]:
+            - /url: "#tk_codes"
+          - generic [ref=e43]: 已学时长：4分钟
+      - generic [ref=e44]:
+        - generic [ref=e45]: 课程目录
+        - generic [ref=e46]:
+          - generic [ref=e50] [cursor=pointer]:
+            - paragraph [ref=e51]:
+              - link "企业内部控制评价及审计1/7" [ref=e52]:
+                - /url: "#"
+            - paragraph [ref=e53]:
+              - link "企业内部控制评价及审计2/7" [ref=e54]:
+                - /url: "#"
+            - paragraph [ref=e55]:
+              - link "企业内部控制评价及审计3/7" [ref=e56]:
+                - /url: "#"
+            - paragraph [ref=e57]:
+              - link "企业内部控制评价及审计4/7" [ref=e58]:
+                - /url: "#"
+            - paragraph [ref=e59]:
+              - link "企业内部控制评价及审计5/7" [ref=e60]:
+                - /url: "#"
+            - paragraph [ref=e61]:
+              - link "企业内部控制评价及审计6/7" [ref=e62]:
+                - /url: "#"
+            - paragraph [ref=e63]:
+              - link "企业内部控制评价及审计7/7" [ref=e64]:
+                - /url: "#"
+          - paragraph [ref=e67]

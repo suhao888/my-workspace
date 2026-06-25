@@ -1,0 +1,205 @@
+- generic [ref=e1]:
+  - table [ref=e3]:
+    - rowgroup [ref=e4]:
+      - row "用户名：1120260109 会员类型：CPA非执业会员 您2026年继续教育未通过，已获33.5学时。 最新动态 • 关于领取执业注册会计师证书的通知 [2024-11-13] • 关于\"CPA/CPV继续教育\"会员登录的通知 [2023-07-05] • 北京注册会计师协会 北京资产评估协会 ....... [2025-06-16] • 2025年CPA非执业继续教育培训开课通知 [2024-03-12] • 北京资产评估协会关于举办新登记资产评....... [2024-11-07]" [ref=e154]:
+        - cell "用户名：1120260109 会员类型：CPA非执业会员 您2026年继续教育未通过，已获33.5学时。" [ref=e6]:
+          - generic [ref=e7]:
+            - img [ref=e9]
+            - generic [ref=e10]:
+              - text: 用户名：1120260109
+              - text: 会员类型：CPA非执业会员
+              - text: 您2026年继续教育未通过，已获33.5学时。
+        - cell "最新动态 • 关于领取执业注册会计师证书的通知 [2024-11-13] • 关于\"CPA/CPV继续教育\"会员登录的通知 [2023-07-05] • 北京注册会计师协会 北京资产评估协会 ....... [2025-06-16] • 2025年CPA非执业继续教育培训开课通知 [2024-03-12] • 北京资产评估协会关于举办新登记资产评....... [2024-11-07]" [ref=e155]:
+          - generic [ref=e156]:
+            - generic [ref=e157]: 最新动态
+            - list [ref=e158]:
+              - listitem [ref=e159]:
+                - text: •
+                - link "关于领取执业注册会计师证书的通知" [ref=e160] [cursor=pointer]:
+                  - /url: /cpajxjynews/20241113/64545.html
+                - text: "[2024-11-13]"
+              - listitem [ref=e161]:
+                - text: •
+                - link "关于\"CPA/CPV继续教育\"会员登录的通知" [ref=e162] [cursor=pointer]:
+                  - /url: /cpajxjynews/20230705/59999.html
+                - text: "[2023-07-05]"
+              - listitem [ref=e163]:
+                - text: •
+                - link "北京注册会计师协会 北京资产评估协会 ......." [ref=e164] [cursor=pointer]:
+                  - /url: /cpajxjynews/20250616/64926.html
+                - text: "[2025-06-16]"
+              - listitem [ref=e165]:
+                - text: •
+                - link "2025年CPA非执业继续教育培训开课通知" [ref=e166] [cursor=pointer]:
+                  - /url: /cpajxjynews/20240312/62364.html
+                - text: "[2024-03-12]"
+              - listitem [ref=e167]:
+                - text: •
+                - link "北京资产评估协会关于举办新登记资产评......." [ref=e168] [cursor=pointer]:
+                  - /url: /cpajxjydt/20241107/64490.html
+                - text: "[2024-11-07]"
+  - generic [ref=e13]:
+    - generic [ref=e169]: 培训网提示
+    - list [ref=e171]:
+      - paragraph [ref=e172]:
+        - link "关于会员继续教育学时折算会计人员继续教育学分的通知" [ref=e173] [cursor=pointer]:
+          - /url: https://www.bicpa.org.cn/p1/tzgg/20260515/55310.html
+      - paragraph [ref=e174]: 培训时间：2026年3月9日-12月20日。注:1.已完成续教育学时，将于一周后更新在年检系统中。
+      - paragraph [ref=e175]: 2.未完成2025年度继续教育学时的，应在2026年课表中完成所需的学时。
+      - paragraph [ref=e176]: 3.听课请使用播放器‘正常速度’播放，不要使用‘倍速’播放。
+  - generic [ref=e15]:
+    - table [ref=e17]:
+      - rowgroup [ref=e18]:
+        - row "课程表（2026年度） 全部课程 已听课程" [ref=e19]:
+          - cell [ref=e20]
+          - cell "课程表（2026年度）" [ref=e21]
+          - cell "全部课程 已听课程" [ref=e22]:
+            - list:
+              - listitem [ref=e23] [cursor=pointer]: 全部课程
+              - listitem [ref=e24] [cursor=pointer]: 已听课程
+          - cell [ref=e25]
+    - generic [ref=e26]:
+      - table [ref=e27]:
+        - rowgroup [ref=e28]:
+          - row "类别 课程名称 主讲老师 总时长 （分钟） 已学 时长 学时 类型 听课 操作 学习 状态" [ref=e29]:
+            - cell "类别" [ref=e30]
+            - cell "课程名称" [ref=e31]
+            - cell "主讲老师" [ref=e32]
+            - cell "总时长 （分钟）" [ref=e33]:
+              - generic [ref=e34]:
+                - text: 总时长
+                - text: （分钟）
+            - cell "已学 时长" [ref=e35]:
+              - generic [ref=e36]:
+                - text: 已学
+                - text: 时长
+            - cell "学时 类型" [ref=e37]:
+              - generic [ref=e38]:
+                - text: 学时
+                - text: 类型
+            - cell "听课" [ref=e39]
+            - cell "操作" [ref=e40]
+            - cell "学习 状态" [ref=e41]:
+              - generic [ref=e42]:
+                - text: 学习
+                - text: 状态
+          - row "专业课 独立性准则讲解 王晖妤 110 125 网络课程 通过" [ref=e43]:
+            - cell "专业课" [ref=e44]
+            - cell "独立性准则讲解" [ref=e45]
+            - cell "王晖妤" [ref=e46]
+            - cell "110" [ref=e47]
+            - cell "125" [ref=e48]
+            - cell "网络课程" [ref=e49]
+            - cell [ref=e50]:
+              - link [ref=e51] [cursor=pointer]:
+                - /url: /bicpa/edu/learnUserCourse_toLearnChapter.jspr?courseid=40288b739c228699019cb7902e325f30&coursewareid=40288b7398e9edd30198f3bf85ed2056&termYear=2026
+                - img [ref=e52]
+            - cell [ref=e53]
+            - cell "通过" [ref=e54]
+          - row "专业课 企业内部控制评价及审计（2025） 谢东良 350 277 网络课程 通过" [ref=e55]:
+            - cell "专业课" [ref=e56]
+            - cell "企业内部控制评价及审计（2025）" [ref=e57]
+            - cell "谢东良" [ref=e58]
+            - cell "350" [ref=e59]
+            - cell "277" [ref=e60]
+            - cell "网络课程" [ref=e61]
+            - cell [ref=e62]:
+              - link [ref=e63] [cursor=pointer]:
+                - /url: /bicpa/edu/learnUserCourse_toLearnChapter.jspr?courseid=40288b739c228699019cb7902df45f24&coursewareid=40288b7396aef4100196fbd198ed4171&termYear=2026
+                - img [ref=e64]
+            - cell [ref=e65]
+            - cell "通过" [ref=e66]
+          - row "专业课 2024年新公司法重点问题解读（2024） 赵松梅 134 141 网络课程 通过" [ref=e67]:
+            - cell "专业课" [ref=e68]
+            - cell "2024年新公司法重点问题解读（2024）" [ref=e69]
+            - cell "赵松梅" [ref=e70]
+            - cell "134" [ref=e71]
+            - cell "141" [ref=e72]
+            - cell "网络课程" [ref=e73]
+            - cell [ref=e74]:
+              - link [ref=e75] [cursor=pointer]:
+                - /url: /bicpa/edu/learnUserCourse_toLearnChapter.jspr?courseid=40288b739c228699019cb7901fd75e3a&coursewareid=40288b739023c575019034423f1a0628&termYear=2026
+                - img [ref=e76]
+            - cell [ref=e77]
+            - cell "通过" [ref=e78]
+          - row "专业课 财政支出政策绩效评价的若干问题（2024） 施青军 162 15 网络课程 未通过" [ref=e79]:
+            - cell "专业课" [ref=e80]
+            - cell "财政支出政策绩效评价的若干问题（2024）" [ref=e81]
+            - cell "施青军" [ref=e82]
+            - cell "162" [ref=e83]
+            - cell "15" [ref=e84]
+            - cell "网络课程" [ref=e85]
+            - cell [ref=e86]:
+              - link [ref=e87] [cursor=pointer]:
+                - /url: /bicpa/edu/learnUserCourse_toLearnChapter.jspr?courseid=40288b739c228699019cb7902da55f20&coursewareid=40288b7d8f600b15018f93d0126041e7&termYear=2026
+                - img [ref=e88]
+            - cell [ref=e89]
+            - cell "未通过" [ref=e90]
+          - row "专业课 成本预算绩效管理与典型案例分析专题讲座（2024） 姜竹 159 141 网络课程 通过" [ref=e91]:
+            - cell "专业课" [ref=e92]
+            - cell "成本预算绩效管理与典型案例分析专题讲座（2024）" [ref=e93]
+            - cell "姜竹" [ref=e94]
+            - cell "159" [ref=e95]
+            - cell "141" [ref=e96]
+            - cell "网络课程" [ref=e97]
+            - cell [ref=e98]:
+              - link [ref=e99] [cursor=pointer]:
+                - /url: /bicpa/edu/learnUserCourse_toLearnChapter.jspr?courseid=40288b739c228699019cb7902d955f1e&coursewareid=40288b7d8f600b15018f93cf0da841e1&termYear=2026
+                - img [ref=e100]
+            - cell [ref=e101]
+            - cell "通过" [ref=e102]
+          - row "专业课 项目支出绩效评价核心原理与实务操作（2024） 童伟 160 167 网络课程 通过" [ref=e103]:
+            - cell "专业课" [ref=e104]
+            - cell "项目支出绩效评价核心原理与实务操作（2024）" [ref=e105]
+            - cell "童伟" [ref=e106]
+            - cell "160" [ref=e107]
+            - cell "167" [ref=e108]
+            - cell "网络课程" [ref=e109]
+            - cell [ref=e110]:
+              - link [ref=e111] [cursor=pointer]:
+                - /url: /bicpa/edu/learnUserCourse_toLearnChapter.jspr?courseid=40288b739c228699019cb7902d855f1c&coursewareid=40288b7d8f600b15018f93cd7b2141da&termYear=2026
+                - img [ref=e112]
+            - cell [ref=e113]
+            - cell "通过" [ref=e114]
+          - row "专业课 预算绩效管理的理论基础、发展演变与北京模式（2024） 吕素香 179 209 网络课程 通过" [ref=e115]:
+            - cell "专业课" [ref=e116]
+            - cell "预算绩效管理的理论基础、发展演变与北京模式（2024）" [ref=e117]
+            - cell "吕素香" [ref=e118]
+            - cell "179" [ref=e119]
+            - cell "209" [ref=e120]
+            - cell "网络课程" [ref=e121]
+            - cell [ref=e122]:
+              - link [ref=e123] [cursor=pointer]:
+                - /url: /bicpa/edu/learnUserCourse_toLearnChapter.jspr?courseid=40288b739c228699019cb7902d855f1a&coursewareid=40288b7d8f600b15018f93cc616341d0&termYear=2026
+                - img [ref=e124]
+            - cell [ref=e125]
+            - cell "通过" [ref=e126]
+          - row "专业课 租赁准则及相关实务应用问题（2025） 聂琳 171 215 网络课程 通过" [ref=e127]:
+            - cell "专业课" [ref=e128]
+            - cell "租赁准则及相关实务应用问题（2025）" [ref=e129]
+            - cell "聂琳" [ref=e130]
+            - cell "171" [ref=e131]
+            - cell "215" [ref=e132]
+            - cell "网络课程" [ref=e133]
+            - cell [ref=e134]:
+              - link [ref=e135] [cursor=pointer]:
+                - /url: /bicpa/edu/learnUserCourse_toLearnChapter.jspr?courseid=40288b739c228699019cb7902e135f2a&coursewareid=40288b73980d6ee5019873c880c522b7&termYear=2026
+                - img [ref=e136]
+            - cell [ref=e137]
+            - cell "通过" [ref=e138]
+          - row "专业课 保险业务概述及新保险合同准则主要内容（2025） 沈艳利 183 165 网络课程 通过" [ref=e139]:
+            - cell "专业课" [ref=e140]
+            - cell "保险业务概述及新保险合同准则主要内容（2025）" [ref=e141]
+            - cell "沈艳利" [ref=e142]
+            - cell "183" [ref=e143]
+            - cell "165" [ref=e144]
+            - cell "网络课程" [ref=e145]
+            - cell [ref=e146]:
+              - link [ref=e147] [cursor=pointer]:
+                - /url: /bicpa/edu/learnUserCourse_toLearnChapter.jspr?courseid=40288b739c228699019cb7902e225f2c&coursewareid=40288b73980d6ee5019873c7969022b0&termYear=2026
+                - img [ref=e148]
+            - cell [ref=e149]
+            - cell "通过" [ref=e150]
+      - generic [ref=e151]:
+        - generic [ref=e152]: 共 9 条 1/1 页
+        - generic [ref=e153]: "1"

@@ -1,0 +1,25 @@
+- generic [ref=e2]:
+  - generic [ref=e3]:
+    - generic [ref=e4]:
+      - link "1120260109" [ref=e5] [cursor=pointer]:
+        - /url: /bicpa/edu/learnUserCourse_centerFrame.jspr
+      - text: 欢迎您！ 会员类型：CPA非执业会员[北京] 。
+    - link "[退出登录]" [ref=e7] [cursor=pointer]:
+      - /url: /bicpa/mem/mem_logout.jspr
+  - generic [ref=e8]: 听课列表>> 注会非执业 >> 财政支出政策绩效评价的若干问题（2024）
+  - generic [ref=e10]:
+    - table [ref=e11]:
+      - rowgroup [ref=e12]:
+        - row "课程内容 时长（分钟） 已学时长（分钟） 听课" [ref=e13]:
+          - cell "课程内容" [ref=e14]
+          - cell "时长（分钟）" [ref=e15]
+          - cell "已学时长（分钟）" [ref=e16]
+          - cell "听课" [ref=e17]
+        - row "财政支出政策绩效评价的若干问题 162 15 听课>>" [ref=e18]:
+          - cell "财政支出政策绩效评价的若干问题" [ref=e19]
+          - cell "162" [ref=e20]
+          - cell "15" [ref=e21]
+          - cell "听课>>" [ref=e22]:
+            - link "听课>>" [ref=e23] [cursor=pointer]:
+              - /url: javascript:openWindow('40288b7d8f600b15018f93e77bed4299','40288b7d8f600b15018f93d0126041e7','40288b739c228699019cb7902da55f20','2026')
+    - generic [ref=e24]: 共 1 条 1/1 页 1

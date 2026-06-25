@@ -1,0 +1,424 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - generic [ref=e5]:
+      - generic [ref=e6]:
+        - generic [ref=e7]:
+          - link "设为首页" [ref=e8] [cursor=pointer]:
+            - /url: javascript:;
+          - text: "|"
+          - link "加入收藏" [ref=e9] [cursor=pointer]:
+            - /url: javascript:;
+        - list [ref=e11]:
+          - listitem [ref=e12]:
+            - link "官方微博" [ref=e13] [cursor=pointer]:
+              - /url: http://weibo.com/bicpaedu
+            - emphasis [ref=e14]: "|"
+          - listitem [ref=e15]:
+            - link "官方微信" [ref=e16] [cursor=pointer]:
+              - /url: "#"
+            - emphasis [ref=e17]: "|"
+          - listitem [ref=e18]:
+            - link "手机看课" [ref=e19] [cursor=pointer]:
+              - /url: http://www.bicpaedu.com/news/20190411/43777.html
+            - emphasis [ref=e20]: "|"
+          - listitem [ref=e21]:
+            - link "模考训练营" [ref=e22] [cursor=pointer]:
+              - /url: /bicpa/mk/center_index.jspr
+            - emphasis [ref=e23]: "|"
+          - listitem [ref=e24]: 咨询电话：4000-356-365
+      - generic [ref=e25]:
+        - heading "北京注册会计师协会培训网 中国CPA在线" [level=1] [ref=e26]:
+          - link "北京注册会计师协会培训网" [ref=e27] [cursor=pointer]:
+            - /url: http://www.bicpaedu.com
+            - img "北京注册会计师协会培训网" [ref=e28]
+          - strong [ref=e29]: 中国CPA在线
+        - generic [ref=e30]:
+          - generic [ref=e31]:
+            - text: 亲爱的 1120260109，培训网欢迎您
+            - link "[进入会员中心]" [ref=e32] [cursor=pointer]:
+              - /url: /bicpa/edu/learnUserCourse_centerFrame.jspr
+            - link "[退出]" [ref=e33] [cursor=pointer]:
+              - /url: /bicpa/mem/mem_logout.jspr
+          - generic [ref=e34]:
+            - textbox [ref=e35]: CPA课程
+            - button "搜索" [ref=e36] [cursor=pointer]
+      - list [ref=e37]:
+        - listitem [ref=e38]:
+          - link "首页" [ref=e39] [cursor=pointer]:
+            - /url: /
+            - generic [ref=e40]: 首页
+          - emphasis [ref=e41]: "|"
+        - listitem [ref=e42]:
+          - generic [ref=e43]: CPA考试
+          - link "专业阶段" [ref=e44] [cursor=pointer]:
+            - /url: /cpa/
+          - link "综合阶段" [ref=e45] [cursor=pointer]:
+            - /url: /cpazonghe/
+          - emphasis [ref=e46]: "|"
+        - listitem [ref=e47]:
+          - generic [ref=e48]: 继续教育
+          - link "CPA继续教育" [ref=e49] [cursor=pointer]:
+            - /url: /cpajxjy/
+          - link "PV继续教育" [ref=e50] [cursor=pointer]:
+            - /url: /cpvjxjy/
+          - emphasis [ref=e51]: "|"
+        - listitem [ref=e52]:
+          - generic [ref=e53]: 岗位技能
+          - link "企业内训" [ref=e54] [cursor=pointer]:
+            - /url: /qiyeneixun.html
+        - listitem [ref=e55]:
+          - img [ref=e57]
+          - link "我要选课" [ref=e58] [cursor=pointer]:
+            - /url: javascript:chooseCourse('kaoqian');
+          - link "CPA考试" [ref=e59] [cursor=pointer]:
+            - /url: javascript:chooseCourse('kaoqian');
+          - link "CPA/PV继续教育" [ref=e60] [cursor=pointer]:
+            - /url: javascript:chooseCourse('jijiao');
+          - emphasis [ref=e61]: "|"
+        - listitem [ref=e62]:
+          - link "精英团队" [ref=e63] [cursor=pointer]:
+            - /url: /teachers/
+          - emphasis [ref=e64]: "|"
+        - listitem [ref=e65]:
+          - generic [ref=e66]: 免费试听
+          - link "CPA专业阶段" [ref=e67] [cursor=pointer]:
+            - /url: http://www.bicpaedu.com/listenfree2020/index.jhtml
+          - link "CPA综合阶段" [ref=e68] [cursor=pointer]:
+            - /url: http://www.bicpaedu.com/listenfree2020/index.jhtml
+    - generic [ref=e69]:
+      - generic [ref=e71]:
+        - table [ref=e73]:
+          - rowgroup [ref=e74]:
+            - row "学习" [ref=e75]:
+              - cell "学习" [ref=e76]:
+                - listitem [ref=e77]:
+                  - link "学习" [ref=e78] [cursor=pointer]:
+                    - /url: "#"
+            - row "• 我的课堂" [ref=e79]:
+              - cell "• 我的课堂" [ref=e80]:
+                - listitem [ref=e81]:
+                  - text: •
+                  - link "我的课堂" [ref=e82] [cursor=pointer]:
+                    - /url: /bicpa/edu/learnUserCourse_indexJXJY.jspr
+            - row "• 听课记录" [ref=e83]:
+              - cell "• 听课记录" [ref=e84]:
+                - listitem [ref=e85]:
+                  - text: •
+                  - link "听课记录" [ref=e86] [cursor=pointer]:
+                    - /url: /bicpa/edu/learnUserCourse_toListenRecord.jspr
+            - row "• 学时统计" [ref=e87]:
+              - cell "• 学时统计" [ref=e88]:
+                - listitem [ref=e89]:
+                  - text: •
+                  - link "学时统计" [ref=e90] [cursor=pointer]:
+                    - /url: /bicpa/edu/creditHour_show.jspr
+            - row "• 打印学时证明" [ref=e91]:
+              - cell "• 打印学时证明" [ref=e92]:
+                - listitem [ref=e93]:
+                  - text: •
+                  - link "打印学时证明" [ref=e94] [cursor=pointer]:
+                    - /url: /bicpa/edu/creditHour_print.jspr
+            - row "• 会计继续教育" [ref=e95]:
+              - cell "• 会计继续教育" [ref=e96]:
+                - listitem [ref=e97]:
+                  - text: •
+                  - link "会计继续教育" [ref=e98] [cursor=pointer]:
+                    - /url: https://www.bicpa.org.cn/p1/tzgg/20260515/55310.html
+            - row "个人信息" [ref=e99]:
+              - cell "个人信息" [ref=e100]:
+                - listitem [ref=e101]:
+                  - link "个人信息" [ref=e102] [cursor=pointer]:
+                    - /url: "#"
+            - row "• 修改会员信息" [ref=e103]:
+              - cell "• 修改会员信息" [ref=e104]:
+                - listitem [ref=e105]:
+                  - text: •
+                  - link "修改会员信息" [ref=e106] [cursor=pointer]:
+                    - /url: /bicpa/edu/member_toUpdate.jspr?userFlag=02
+            - row "• 修改密码" [ref=e107]:
+              - cell "• 修改密码" [ref=e108]:
+                - listitem [ref=e109]:
+                  - text: •
+                  - link "修改密码" [ref=e110] [cursor=pointer]:
+                    - /url: /bicpa/edu/member_toPwdUpdate.jspr
+            - row "• 消息中心" [ref=e111]:
+              - cell "• 消息中心" [ref=e112]:
+                - listitem [ref=e113]:
+                  - text: •
+                  - link "消息中心" [ref=e114] [cursor=pointer]:
+                    - /url: /bicpa/edu/message_memMessageRecord.jspr
+        - generic [ref=e115]:
+          - generic [ref=e116]: 培训说明
+          - link "2026年所有参加继续教育学习的非执业会员，请按照继续教育学时要求完成40学时的课程，会员可根据学习需求自选课程学习。" [ref=e118] [cursor=pointer]:
+            - /url: /memjxjycpaf1/20101225/4259.html
+          - generic [ref=e120]: 客服电话:4000-356-365
+      - iframe [ref=e121]:
+        - generic [ref=f1e1]:
+          - table [ref=f1e3]:
+            - rowgroup [ref=f1e4]:
+              - row "用户名：1120260109 会员类型：CPA非执业会员 您2026年继续教育未通过，已获0学时。 最新动态 • 关于领取执业注册会计师证书的通知 [2024-11-13] • 关于\"CPA/CPV继续教育\"会员登录的通知 [2023-07-05] • 北京注册会计师协会 北京资产评估协会 ....... [2025-06-16] • 2025年CPA非执业继续教育培训开课通知 [2024-03-12] • 北京资产评估协会关于举办新登记资产评....... [2024-11-07]" [ref=f1e5]:
+                - cell "用户名：1120260109 会员类型：CPA非执业会员 您2026年继续教育未通过，已获0学时。" [ref=f1e6]:
+                  - generic [ref=f1e7]:
+                    - img [ref=f1e9]
+                    - generic [ref=f1e10]:
+                      - text: 用户名：1120260109
+                      - text: 会员类型：CPA非执业会员
+                      - text: 您2026年继续教育未通过，已获0学时。
+                - cell "最新动态 • 关于领取执业注册会计师证书的通知 [2024-11-13] • 关于\"CPA/CPV继续教育\"会员登录的通知 [2023-07-05] • 北京注册会计师协会 北京资产评估协会 ....... [2025-06-16] • 2025年CPA非执业继续教育培训开课通知 [2024-03-12] • 北京资产评估协会关于举办新登记资产评....... [2024-11-07]" [ref=f1e11]:
+                  - generic [ref=f1e13]:
+                    - generic [ref=f1e14]: 最新动态
+                    - list [ref=f1e15]:
+                      - listitem [ref=f1e16]:
+                        - text: •
+                        - link "关于领取执业注册会计师证书的通知" [ref=f1e17] [cursor=pointer]:
+                          - /url: /cpajxjynews/20241113/64545.html
+                        - text: "[2024-11-13]"
+                      - listitem [ref=f1e18]:
+                        - text: •
+                        - link "关于\"CPA/CPV继续教育\"会员登录的通知" [ref=f1e19] [cursor=pointer]:
+                          - /url: /cpajxjynews/20230705/59999.html
+                        - text: "[2023-07-05]"
+                      - listitem [ref=f1e20]:
+                        - text: •
+                        - link "北京注册会计师协会 北京资产评估协会 ......." [ref=f1e21] [cursor=pointer]:
+                          - /url: /cpajxjynews/20250616/64926.html
+                        - text: "[2025-06-16]"
+                      - listitem [ref=f1e22]:
+                        - text: •
+                        - link "2025年CPA非执业继续教育培训开课通知" [ref=f1e23] [cursor=pointer]:
+                          - /url: /cpajxjynews/20240312/62364.html
+                        - text: "[2024-03-12]"
+                      - listitem [ref=f1e24]:
+                        - text: •
+                        - link "北京资产评估协会关于举办新登记资产评......." [ref=f1e25] [cursor=pointer]:
+                          - /url: /cpajxjydt/20241107/64490.html
+                        - text: "[2024-11-07]"
+          - generic [ref=f1e26]:
+            - generic [ref=f1e27]: 培训网提示
+            - list [ref=f1e29]:
+              - paragraph [ref=f1e30]:
+                - link "关于会员继续教育学时折算会计人员继续教育学分的通知" [ref=f1e31] [cursor=pointer]:
+                  - /url: https://www.bicpa.org.cn/p1/tzgg/20260515/55310.html
+              - paragraph [ref=f1e32]: 培训时间：2026年3月9日-12月20日。注:1.已完成续教育学时，将于一周后更新在年检系统中。
+              - paragraph [ref=f1e33]: 2.未完成2025年度继续教育学时的，应在2026年课表中完成所需的学时。
+              - paragraph [ref=f1e34]: 3.听课请使用播放器‘正常速度’播放，不要使用‘倍速’播放。
+          - generic [ref=f1e36]:
+            - table [ref=f1e38]:
+              - rowgroup [ref=f1e39]:
+                - row "课程表（2026年度） 全部课程 已听课程" [ref=f1e40]:
+                  - cell [ref=f1e41]
+                  - cell "课程表（2026年度）" [ref=f1e42]
+                  - cell "全部课程 已听课程" [ref=f1e43]:
+                    - list:
+                      - listitem [ref=f1e44] [cursor=pointer]: 全部课程
+                      - listitem [ref=f1e45] [cursor=pointer]: 已听课程
+                  - cell [ref=f1e46]
+            - generic [ref=f1e47]:
+              - table [ref=f1e48]:
+                - rowgroup [ref=f1e49]:
+                  - row "类别 课程名称 主讲老师 总时长 （分钟） 已学 时长 学时 类型 听课 操作 学习 状态" [ref=f1e50]:
+                    - cell "类别" [ref=f1e51]
+                    - cell "课程名称" [ref=f1e52]
+                    - cell "主讲老师" [ref=f1e53]
+                    - cell "总时长 （分钟）" [ref=f1e54]:
+                      - generic [ref=f1e55]:
+                        - text: 总时长
+                        - text: （分钟）
+                    - cell "已学 时长" [ref=f1e56]:
+                      - generic [ref=f1e57]:
+                        - text: 已学
+                        - text: 时长
+                    - cell "学时 类型" [ref=f1e58]:
+                      - generic [ref=f1e59]:
+                        - text: 学时
+                        - text: 类型
+                    - cell "听课" [ref=f1e60]
+                    - cell "操作" [ref=f1e61]
+                    - cell "学习 状态" [ref=f1e62]:
+                      - generic [ref=f1e63]:
+                        - text: 学习
+                        - text: 状态
+                  - row "专业课 独立性准则讲解 王晖妤 110 16 网络课程 未通过" [ref=f1e64]:
+                    - cell "专业课" [ref=f1e65]
+                    - cell "独立性准则讲解" [ref=f1e66]
+                    - cell "王晖妤" [ref=f1e67]
+                    - cell "110" [ref=f1e68]
+                    - cell "16" [ref=f1e69]
+                    - cell "网络课程" [ref=f1e70]
+                    - cell [ref=f1e71]:
+                      - link [ref=f1e72] [cursor=pointer]:
+                        - /url: /bicpa/edu/learnUserCourse_toLearnChapter.jspr?courseid=40288b739c228699019cb7902e325f30&coursewareid=40288b7398e9edd30198f3bf85ed2056&termYear=2026
+                        - img [ref=f1e73]
+                    - cell [ref=f1e74]
+                    - cell "未通过" [ref=f1e75]
+                  - row "专业课 企业内部控制评价及审计（2025） 谢东良 350 127 网络课程 未通过" [ref=f1e76]:
+                    - cell "专业课" [ref=f1e77]
+                    - cell "企业内部控制评价及审计（2025）" [ref=f1e78]
+                    - cell "谢东良" [ref=f1e79]
+                    - cell "350" [ref=f1e80]
+                    - cell "127" [ref=f1e81]
+                    - cell "网络课程" [ref=f1e82]
+                    - cell [ref=f1e83]:
+                      - link [ref=f1e84] [cursor=pointer]:
+                        - /url: /bicpa/edu/learnUserCourse_toLearnChapter.jspr?courseid=40288b739c228699019cb7902df45f24&coursewareid=40288b7396aef4100196fbd198ed4171&termYear=2026
+                        - img [ref=f1e85]
+                    - cell [ref=f1e86]
+                    - cell "未通过" [ref=f1e87]
+                  - row "专业课 2024年新公司法重点问题解读（2024） 赵松梅 134 16 网络课程 未通过" [ref=f1e88]:
+                    - cell "专业课" [ref=f1e89]
+                    - cell "2024年新公司法重点问题解读（2024）" [ref=f1e90]
+                    - cell "赵松梅" [ref=f1e91]
+                    - cell "134" [ref=f1e92]
+                    - cell "16" [ref=f1e93]
+                    - cell "网络课程" [ref=f1e94]
+                    - cell [ref=f1e95]:
+                      - link [ref=f1e96] [cursor=pointer]:
+                        - /url: /bicpa/edu/learnUserCourse_toLearnChapter.jspr?courseid=40288b739c228699019cb7901fd75e3a&coursewareid=40288b739023c575019034423f1a0628&termYear=2026
+                        - img [ref=f1e97]
+                    - cell [ref=f1e98]
+                    - cell "未通过" [ref=f1e99]
+                  - row "专业课 财政支出政策绩效评价的若干问题（2024） 施青军 162 15 网络课程 未通过" [ref=f1e100]:
+                    - cell "专业课" [ref=f1e101]
+                    - cell "财政支出政策绩效评价的若干问题（2024）" [ref=f1e102]
+                    - cell "施青军" [ref=f1e103]
+                    - cell "162" [ref=f1e104]
+                    - cell "15" [ref=f1e105]
+                    - cell "网络课程" [ref=f1e106]
+                    - cell [ref=f1e107]:
+                      - link [ref=f1e108] [cursor=pointer]:
+                        - /url: /bicpa/edu/learnUserCourse_toLearnChapter.jspr?courseid=40288b739c228699019cb7902da55f20&coursewareid=40288b7d8f600b15018f93d0126041e7&termYear=2026
+                        - img [ref=f1e109]
+                    - cell [ref=f1e110]
+                    - cell "未通过" [ref=f1e111]
+                  - row "专业课 成本预算绩效管理与典型案例分析专题讲座（2024） 姜竹 159 5 网络课程 未通过" [ref=f1e112]:
+                    - cell "专业课" [ref=f1e113]
+                    - cell "成本预算绩效管理与典型案例分析专题讲座（2024）" [ref=f1e114]
+                    - cell "姜竹" [ref=f1e115]
+                    - cell "159" [ref=f1e116]
+                    - cell "5" [ref=f1e117]
+                    - cell "网络课程" [ref=f1e118]
+                    - cell [ref=f1e119]:
+                      - link [ref=f1e120] [cursor=pointer]:
+                        - /url: /bicpa/edu/learnUserCourse_toLearnChapter.jspr?courseid=40288b739c228699019cb7902d955f1e&coursewareid=40288b7d8f600b15018f93cf0da841e1&termYear=2026
+                        - img [ref=f1e121]
+                    - cell [ref=f1e122]
+                    - cell "未通过" [ref=f1e123]
+                  - row "专业课 项目支出绩效评价核心原理与实务操作（2024） 童伟 160 12 网络课程 未通过" [ref=f1e124]:
+                    - cell "专业课" [ref=f1e125]
+                    - cell "项目支出绩效评价核心原理与实务操作（2024）" [ref=f1e126]
+                    - cell "童伟" [ref=f1e127]
+                    - cell "160" [ref=f1e128]
+                    - cell "12" [ref=f1e129]
+                    - cell "网络课程" [ref=f1e130]
+                    - cell [ref=f1e131]:
+                      - link [ref=f1e132] [cursor=pointer]:
+                        - /url: /bicpa/edu/learnUserCourse_toLearnChapter.jspr?courseid=40288b739c228699019cb7902d855f1c&coursewareid=40288b7d8f600b15018f93cd7b2141da&termYear=2026
+                        - img [ref=f1e133]
+                    - cell [ref=f1e134]
+                    - cell "未通过" [ref=f1e135]
+                  - row "专业课 预算绩效管理的理论基础、发展演变与北京模式（2024） 吕素香 179 10 网络课程 未通过" [ref=f1e136]:
+                    - cell "专业课" [ref=f1e137]
+                    - cell "预算绩效管理的理论基础、发展演变与北京模式（2024）" [ref=f1e138]
+                    - cell "吕素香" [ref=f1e139]
+                    - cell "179" [ref=f1e140]
+                    - cell "10" [ref=f1e141]
+                    - cell "网络课程" [ref=f1e142]
+                    - cell [ref=f1e143]:
+                      - link [ref=f1e144] [cursor=pointer]:
+                        - /url: /bicpa/edu/learnUserCourse_toLearnChapter.jspr?courseid=40288b739c228699019cb7902d855f1a&coursewareid=40288b7d8f600b15018f93cc616341d0&termYear=2026
+                        - img [ref=f1e145]
+                    - cell [ref=f1e146]
+                    - cell "未通过" [ref=f1e147]
+                  - row "专业课 租赁准则及相关实务应用问题（2025） 聂琳 171 12 网络课程 未通过" [ref=f1e148]:
+                    - cell "专业课" [ref=f1e149]
+                    - cell "租赁准则及相关实务应用问题（2025）" [ref=f1e150]
+                    - cell "聂琳" [ref=f1e151]
+                    - cell "171" [ref=f1e152]
+                    - cell "12" [ref=f1e153]
+                    - cell "网络课程" [ref=f1e154]
+                    - cell [ref=f1e155]:
+                      - link [ref=f1e156] [cursor=pointer]:
+                        - /url: /bicpa/edu/learnUserCourse_toLearnChapter.jspr?courseid=40288b739c228699019cb7902e135f2a&coursewareid=40288b73980d6ee5019873c880c522b7&termYear=2026
+                        - img [ref=f1e157]
+                    - cell [ref=f1e158]
+                    - cell "未通过" [ref=f1e159]
+                  - row "专业课 保险业务概述及新保险合同准则主要内容（2025） 沈艳利 183 17 网络课程 未通过" [ref=f1e160]:
+                    - cell "专业课" [ref=f1e161]
+                    - cell "保险业务概述及新保险合同准则主要内容（2025）" [ref=f1e162]
+                    - cell "沈艳利" [ref=f1e163]
+                    - cell "183" [ref=f1e164]
+                    - cell "17" [ref=f1e165]
+                    - cell "网络课程" [ref=f1e166]
+                    - cell [ref=f1e167]:
+                      - link [ref=f1e168] [cursor=pointer]:
+                        - /url: /bicpa/edu/learnUserCourse_toLearnChapter.jspr?courseid=40288b739c228699019cb7902e225f2c&coursewareid=40288b73980d6ee5019873c7969022b0&termYear=2026
+                        - img [ref=f1e169]
+                    - cell [ref=f1e170]
+                    - cell "未通过" [ref=f1e171]
+              - generic [ref=f1e172]:
+                - generic [ref=f1e173]: 共 9 条 1/1 页
+                - generic [ref=f1e174]: "1"
+    - generic [ref=e124]:
+      - generic [ref=e125]:
+        - link [ref=e126] [cursor=pointer]:
+          - /url: http://www.bicpa.org.cn/
+          - img [ref=e127]
+        - paragraph [ref=e128]:
+          - link "北京注册会计师协会" [ref=e129] [cursor=pointer]:
+            - /url: http://www.bicpa.org.cn/
+      - list [ref=e130]:
+        - listitem [ref=e131]:
+          - link "关于我们" [ref=e132] [cursor=pointer]:
+            - /url: /contact.html
+          - link "网站简介" [ref=e133] [cursor=pointer]:
+            - /url: /contact.html#aboutUs
+          - link "联系我们" [ref=e134] [cursor=pointer]:
+            - /url: /contact.html#contactUs
+          - link "欢迎合作" [ref=e135] [cursor=pointer]:
+            - /url: /contact.html#hezuo
+          - link "人才招聘" [ref=e136] [cursor=pointer]:
+            - /url: /job.html
+          - link "建议反馈" [ref=e137] [cursor=pointer]:
+            - /url: /bicpa/errCorrect/errCr_toCorrectCenter.jspr
+        - listitem [ref=e138]:
+          - paragraph [ref=e139]: 培训网项目
+          - generic [ref=e140]:
+            - link "CPA考试专业阶段" [ref=e141] [cursor=pointer]:
+              - /url: /cpa
+            - link "CPA继续教育" [ref=e142] [cursor=pointer]:
+              - /url: /cpajxjy
+          - generic [ref=e143]:
+            - link "CPA考试综合阶段" [ref=e144] [cursor=pointer]:
+              - /url: /cpazonghe
+            - link "PV继续教育" [ref=e145] [cursor=pointer]:
+              - /url: /cpvjxjy
+        - listitem [ref=e146]:
+          - generic [ref=e147]: 快速通道
+          - link "快速购课" [ref=e148] [cursor=pointer]:
+            - /url: /bicpa/h/courselist/index.html
+          - link "快速注卡" [ref=e149] [cursor=pointer]:
+            - /url: /bicpa/edu/learnUserCourse_centerFrame.jspr?framesrc=/bicpa/edu/account_reCharge.jspr
+          - link "软件下载" [ref=e150] [cursor=pointer]:
+            - /url: /download.html
+          - link "报考指南" [ref=e151] [cursor=pointer]:
+            - /url: /cpabaokao.html
+        - listitem [ref=e152]:
+          - link "帮助中心" [ref=e153] [cursor=pointer]:
+            - /url: /help.html
+          - link "登录问题" [ref=e154] [cursor=pointer]:
+            - /url: /help.html#b2
+          - link "技术问题" [ref=e155] [cursor=pointer]:
+            - /url: /help.html#a48
+          - link "学习问题" [ref=e156] [cursor=pointer]:
+            - /url: /help.html#a24
+        - listitem [ref=e157]:
+          - generic [ref=e158]: 官方微信
+          - img [ref=e159]
+      - paragraph [ref=e160]:
+        - text: 报名咨询电话：4000-356-365 传真：010-62969077
+        - text: 北京注册会计师协会培训网 版权所有 京ICP备05026838号
+        - link "京公网安备 11010802024103号" [ref=e161] [cursor=pointer]:
+          - /url: http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=11010802024103
+          - img [ref=e162]
+          - text: 京公网安备 11010802024103号
+  - img [ref=e164] [cursor=pointer]
