@@ -196,7 +196,7 @@ def add_finding(
             FONT_CN_BODY,
             FONT_EN,
             11,
-            bold=True,
+            bold=False,
             color_hex=COLOR_BLACK,
         )
         pa.paragraph_format.space_after = Pt(4)

@@ -151,6 +151,29 @@ def _remove_table_borders(table):
     tblPr.append(parse_xml(xml))
 
 
+def _set_table_borders_black(table, sz: int = 4):
+    """将表格所有边框设为黑色实线。
+
+    Args:
+        table: python-docx Table 对象
+        sz: 线宽（1/8 磅单位，4 = 0.5pt）
+    """
+    tblPr = table._tbl.tblPr
+    # 移除旧的 tblBorders（如果有）
+    old = tblPr.find(qn("w:tblBorders"))
+    if old is not None:
+        tblPr.remove(old)
+    xml = (
+        f"<w:tblBorders {nsdecls('w')}>"
+        + "".join(
+            f'<w:{e} w:val="single" w:sz="{sz}" w:space="0" w:color="000000"/>'
+            for e in ("top", "left", "bottom", "right", "insideH", "insideV")
+        )
+        + "</w:tblBorders>"
+    )
+    tblPr.append(parse_xml(xml))
+
+
 # ============================================================
 # DocBuilder
 # ============================================================
@@ -520,7 +543,7 @@ class DocBuilder:
         col_widths: Optional[List[float]] = None,
         caption: str = "",
     ):
-        """创建标准表格（浅灰表头 + 黑色文字）。
+        """创建标准表格（浅灰表头，全黑边框，内容居中）。
 
         Args:
             headers: 表头
@@ -535,7 +558,7 @@ class DocBuilder:
                 FONT_CN_HEADING,
                 FONT_EN,
                 11,
-                bold=True,
+                bold=False,
                 color_hex=COLOR_BLACK,
             )
             p.paragraph_format.space_after = Pt(4)
@@ -545,8 +568,9 @@ class DocBuilder:
         table.style = "Table Grid"
         table.alignment = WD_TABLE_ALIGNMENT.CENTER
         table.autofit = True
+        _set_table_borders_black(table)
 
-        # 表头（浅灰背景 + 黑色加粗文字）
+        # 表头（浅灰背景，黑色文字，居中）
         for j, h in enumerate(headers):
             c = table.rows[0].cells[j]
             c.text = ""
@@ -554,25 +578,21 @@ class DocBuilder:
             cp.alignment = WD_ALIGN_PARAGRAPH.CENTER
             _set_run_font(
                 cp.add_run(h),
-                FONT_CN_HEADING,
+                FONT_CN_BODY,
                 FONT_EN,
                 10.5,
-                bold=True,
                 color_hex=COLOR_BLACK,
             )
             _set_cell_shading(c, COLOR_LIGHT_BG)
             c.vertical_alignment = WD_ALIGN_VERTICAL.CENTER
 
-        # 数据行（纯黑色文字，无交替色）
+        # 数据行（居中，上下居中，纯黑色）
         for i, row in enumerate(rows):
             for j, val in enumerate(row):
                 c = table.rows[i + 1].cells[j]
                 c.text = ""
                 cp = c.paragraphs[0]
-                is_num = isinstance(val, (int, float))
-                cp.alignment = (
-                    WD_ALIGN_PARAGRAPH.CENTER if is_num else WD_ALIGN_PARAGRAPH.LEFT
-                )
+                cp.alignment = WD_ALIGN_PARAGRAPH.CENTER
                 _set_run_font(
                     cp.add_run(str(val)),
                     FONT_CN_BODY,
@@ -580,6 +600,7 @@ class DocBuilder:
                     10.5,
                     color_hex=COLOR_BLACK,
                 )
+                c.vertical_alignment = WD_ALIGN_VERTICAL.CENTER
 
         # 列宽
         if col_widths and len(col_widths) == ncols:
@@ -592,32 +613,38 @@ class DocBuilder:
         return self
 
     def add_kv_table(self, items: List[Tuple[str, str]], label_width: float = 3.5):
-        """键值对表格。"""
+        """键值对表格（全黑边框，标签列浅灰背景，内容居中）。"""
         table = self.doc.add_table(rows=len(items), cols=2)
         table.style = "Table Grid"
-        table.alignment = WD_TABLE_ALIGNMENT.LEFT
+        table.alignment = WD_TABLE_ALIGNMENT.CENTER
+        _set_table_borders_black(table)
         for i, (k, v) in enumerate(items):
             ck = table.rows[i].cells[0]
             ck.text = ""
+            cpk = ck.paragraphs[0]
+            cpk.alignment = WD_ALIGN_PARAGRAPH.CENTER
             _set_cell_shading(ck, COLOR_LIGHT_BG)
             _set_run_font(
-                ck.paragraphs[0].add_run(k),
-                FONT_CN_HEADING,
-                FONT_EN,
-                10.5,
-                bold=True,
-                color_hex=COLOR_BLACK,
-            )
-            ck.width = Cm(label_width)
-            cv = table.rows[i].cells[1]
-            cv.text = ""
-            _set_run_font(
-                cv.paragraphs[0].add_run(str(v)),
+                cpk.add_run(k),
                 FONT_CN_BODY,
                 FONT_EN,
                 10.5,
                 color_hex=COLOR_BLACK,
             )
+            ck.vertical_alignment = WD_ALIGN_VERTICAL.CENTER
+            ck.width = Cm(label_width)
+            cv = table.rows[i].cells[1]
+            cv.text = ""
+            cpv = cv.paragraphs[0]
+            cpv.alignment = WD_ALIGN_PARAGRAPH.CENTER
+            _set_run_font(
+                cpv.add_run(str(v)),
+                FONT_CN_BODY,
+                FONT_EN,
+                10.5,
+                color_hex=COLOR_BLACK,
+            )
+            cv.vertical_alignment = WD_ALIGN_VERTICAL.CENTER
         self.add_space(6)
         return self
 
