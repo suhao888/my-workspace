@@ -1,0 +1,60 @@
+version: "0.1"
+app:
+  id: edge
+  name: Microsoft Edge
+  platform: windows
+  launch_hint: attach_after_launch
+visual_box:
+  id: edge-capsule
+  mode: same_session_virtual_display
+  platform: windows
+  display:
+    width_px: 1920
+    height_px: 1080
+    scale: 1
+    dpi_x: 96
+    dpi_y: 96
+    refresh_rate_hz: 60
+  coordinate_space: normalized_client_rect
+  contract:
+    require_same_display: true
+    require_client_size_px: [ 1920, 1080 ]
+    tolerate_client_size_delta_px: 2
+    warn_client_size_delta_px: 40
+    require_unminimized: true
+    require_foreground_for_input: true
+    validate_before_each_action: true
+  fallbacks: []
+regions: []
+states: []
+transitions: []
+workflows: []
+repair_policy:
+  max_auto_repair_level: 3
+  geometry:
+    tolerate_client_size_delta_px: 2
+    tolerate_origin_change: true
+    require_same_dpi: true
+  state:
+    min_anchor_score: 0.86
+    min_ocr_similarity: 0.88
+    min_visual_similarity: 0.82
+  control_relocation:
+    confidence_threshold: 0.92
+    max_bbox_shift_norm: 0.08
+  destructive_actions:
+    auto_repair_before_action: false
+    require_user_confirmation: true
+safety_policy:
+  forbidden_action_categories: [ payment, destructive, external_communication, permission_change, captcha ]
+  require_approval_for_risk_levels: [ requires_confirmation, destructive ]
+  redaction_patterns: []
+  allow_cloud_vlm: false
+  audit_log_retention_days: 30
+input_lease_policy:
+  default_lease_ms: 5000
+  break_on_user_input: true
+  break_hotkey: Esc Esc
+  require_revalidate_after_break: true
+metadata:
+  tags: []

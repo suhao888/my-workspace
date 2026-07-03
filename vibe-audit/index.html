@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>30多岁转行做审计</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html, body { width: 1080px; height: 1920px; overflow: hidden; background: #000; font-family: 'Inter', sans-serif; }
+
+.scene { position: absolute; top: 0; left: 0; width: 1080px; height: 1920px; }
+.bg { position: absolute; top: 0; left: 0; width: 1080px; height: 1920px; object-fit: cover; }
+.overlay { position: absolute; top: 0; left: 0; width: 1080px; height: 1920px; background: linear-gradient(180deg, rgba(0,0,0,0.2), rgba(0,0,0,0.6)); }
+.content { position: absolute; top: 0; left: 0; width: 1080px; height: 1920px; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 160px 120px; }
+</style>
+</head>
+<body>
+<div data-composition-id="vibe-audit-main" data-width="1080" data-height="1920" data-duration="37" data-start="0">
+
+<!-- Audio tracks -->
+<audio id="tts-0" data-track-index="0" data-start="0.5" data-duration="7" src="media/tts_000.mp3" preload="auto"></audio>
+<audio id="tts-1" data-track-index="1" data-start="7.5" data-duration="8" src="media/tts_001.mp3" preload="auto"></audio>
+<audio id="tts-2" data-track-index="2" data-start="15.5" data-duration="9" src="media/tts_002.mp3" preload="auto"></audio>
+<audio id="tts-3" data-track-index="3" data-start="24.5" data-duration="7" src="media/tts_003.mp3" preload="auto"></audio>
+<audio id="tts-4" data-track-index="4" data-start="31.5" data-duration="6" src="media/tts_004.mp3" preload="auto"></audio>
+<audio id="bgm" data-track-index="5" data-start="0" data-duration="37" src="media/bgm.mp3" preload="auto"></audio>
+
+<!-- Scene 0: Hook 0-7s -->
+<div class="scene" id="s0">
+  <img class="bg" src="media/bg_hook.png">
+  <div class="overlay"></div>
+  <div class="content">
+    <div class="hook-text" style="font-size:80px;font-weight:700;color:#fff;text-align:center;line-height:1.6;">30多岁了，想转行做审计<br>还来得及吗？</div>
+  </div>
+</div>
+
+<!-- Scene 1: Proof 7-15s -->
+<div class="scene" id="s1" style="opacity:0">
+  <img class="bg" src="media/bg_proof.png">
+  <div class="overlay"></div>
+  <div class="content">
+    <div class="p1-title" style="font-size:64px;font-weight:700;color:#fff;text-align:center;line-height:1.5;margin-bottom:60px;">审计行业最缺的<br>恰恰是<span style="color:#c9a84c;">30岁以上</span>有阅历的人</div>
+    <div class="p1-item" style="font-size:44px;color:rgba(255,255,255,0.85);margin:22px 0;">✦ 企业经验</div>
+    <div class="p1-item" style="font-size:44px;color:rgba(255,255,255,0.85);margin:22px 0;">✦ 沟通能力</div>
+    <div class="p1-item" style="font-size:44px;color:rgba(255,255,255,0.85);margin:22px 0;">✦ 职业判断</div>
+  </div>
+</div>
+
+<!-- Scene 2: Mechanism 15-24s -->
+<div class="scene" id="s2" style="opacity:0">
+  <img class="bg" src="media/bg_mechanism.png">
+  <div class="overlay"></div>
+  <div class="content">
+    <div class="m2-title" style="font-size:64px;font-weight:700;color:#fff;text-align:center;line-height:1.5;margin-bottom:50px;"><span style="color:#c9a84c;">内资八大</span> 各有特色</div>
+    <div class="m2-item" style="font-size:42px;color:rgba(255,255,255,0.85);margin:20px 0;">有的强在国企审计</div>
+    <div class="m2-item" style="font-size:42px;color:rgba(255,255,255,0.85);margin:20px 0;">有的擅长上市公司</div>
+    <div class="m2-item" style="font-size:42px;color:rgba(255,255,255,0.85);margin:20px 0;">选对平台，起步就不一样</div>
+  </div>
+</div>
+
+<!-- Scene 3: Path 24-31s -->
+<div class="scene" id="s3" style="opacity:0">
+  <img class="bg" src="media/bg_path.png">
+  <div class="overlay"></div>
+  <div class="content">
+    <div class="p3-title" style="font-size:60px;font-weight:700;color:#fff;text-align:center;line-height:1.5;margin-bottom:50px;">30岁入行，<span style="color:#c9a84c;">40岁</span>正好做到高层</div>
+    <div class="p3-item" style="font-size:40px;color:rgba(255,255,255,0.85);margin:18px 0;">审计员 → 项目经理 3-5年</div>
+    <div class="p3-item" style="font-size:40px;color:rgba(255,255,255,0.85);margin:18px 0;">经理 → 高级经理 再5年</div>
+    <div class="p3-item" style="font-size:44px;color:#c9a84c;font-weight:700;margin:20px 0;">这条路，走得通</div>
+  </div>
+</div>
+
+<!-- Scene 4: Close 31-37s -->
+<div class="scene" id="s4" style="opacity:0">
+  <img class="bg" src="media/bg_close.png">
+  <div class="overlay"></div>
+  <div class="content">
+    <div class="c4-main" style="font-size:76px;font-weight:700;color:#fff;text-align:center;line-height:1.6;">种一棵树<br>最好的时间是<span style="color:#c9a84c;">十年前</span></div>
+    <div style="width:120px;height:3px;background:#c9a84c;margin:30px auto;"></div>
+    <div class="c4-sub" style="font-size:56px;color:#c9a84c;font-weight:700;text-align:center;">其次是现在</div>
+  </div>
+</div>
+
+<script>
+window.__timelines = window.__timelines || {};
+
+const tl = gsap.timeline({ paused: true });
+
+// Scene 0: Hook (0s - 7s)
+tl.fromTo('#s0 .hook-text', { opacity: 0, y: 80 }, { opacity: 1, y: 0, duration: 1.2, ease: 'power2.out' }, 0.3)
+  .to('#s0 .hook-text', { opacity: 0, y: -40, duration: 0.8, ease: 'power2.in' }, 6);
+
+// Scene 1: Proof (7s - 15s)
+tl.set('#s1', { opacity: 1 }, 7)
+  .fromTo('#s1 .p1-title', { opacity: 0, y: 60 }, { opacity: 1, y: 0, duration: 1, ease: 'power2.out' }, 7.3)
+  .fromTo('#s1 .p1-item', { opacity: 0, x: -60 }, { opacity: 1, x: 0, duration: 0.8, stagger: 0.5, ease: 'power2.out' }, 9)
+  .set('#s1', { opacity: 0 }, 14.5);
+
+// Scene 2: Mechanism (15s - 24s)
+tl.set('#s2', { opacity: 1 }, 15)
+  .fromTo('#s2 .m2-title', { opacity: 0, scale: 0.9 }, { opacity: 1, scale: 1, duration: 1, ease: 'power2.out' }, 15.3)
+  .fromTo('#s2 .m2-item', { opacity: 0, x: 80 }, { opacity: 1, x: 0, duration: 0.8, stagger: 0.6, ease: 'power2.out' }, 17)
+  .set('#s2', { opacity: 0 }, 23.5);
+
+// Scene 3: Path (24s - 31s)
+tl.set('#s3', { opacity: 1 }, 24)
+  .fromTo('#s3 .p3-title', { opacity: 0, y: 50 }, { opacity: 1, y: 0, duration: 1, ease: 'power2.out' }, 24.3)
+  .fromTo('#s3 .p3-item', { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 0.7, stagger: 0.5, ease: 'power2.out' }, 26)
+  .set('#s3', { opacity: 0 }, 30.5);
+
+// Scene 4: Close (31s - 37s)
+tl.set('#s4', { opacity: 1 }, 31)
+  .fromTo('#s4 .c4-main', { opacity: 0, scale: 0.85 }, { opacity: 1, scale: 1, duration: 1.2, ease: 'power2.out' }, 31.3)
+  .fromTo('#s4 .c4-sub', { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 0.8, ease: 'power2.out' }, 33.5);
+
+window.__timelines['vibe-audit-main'] = tl;
+</script>
+</div>
+</body>
+</html>

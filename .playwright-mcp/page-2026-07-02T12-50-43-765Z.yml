@@ -1,0 +1,262 @@
+- generic [ref=e2]:
+  - generic [ref=e3]:
+    - link "Skip to content" [ref=e4] [cursor=pointer]:
+      - /url: "#start-of-content"
+    - banner "Global navigation menu" [ref=e8]:
+      - generic [ref=e9]:
+        - generic [ref=e10]:
+          - button "Open menu" [ref=e12] [cursor=pointer]:
+            - img [ref=e13]
+          - link "Homepage (g then d)" [ref=e15] [cursor=pointer]:
+            - /url: /
+            - img [ref=e16]
+        - generic [ref=e18]:
+          - navigation "Breadcrumbs" [ref=e19]:
+            - list [ref=e20]:
+              - listitem [ref=e21]:
+                - link "Dashboard" [ref=e22] [cursor=pointer]:
+                  - /url: https://github.com/
+                  - generic [ref=e23]: Dashboard
+          - button "Search or jump to…" [ref=e26] [cursor=pointer]:
+            - generic [ref=e27]:
+              - generic:
+                - img
+              - generic [ref=e28]:
+                - generic:
+                  - text: Type
+                  - generic: /
+                  - text: to search
+        - generic [ref=e29]:
+          - generic [ref=e30]:
+            - generic [ref=e33]:
+              - link "Chat with Copilot" [ref=e35] [cursor=pointer]:
+                - /url: /copilot
+                - img [ref=e36]
+              - button "Open Copilot…" [ref=e40] [cursor=pointer]:
+                - generic:
+                  - img
+            - button "Create new..." [ref=e42] [cursor=pointer]:
+              - generic [ref=e43]:
+                - generic:
+                  - img
+              - generic:
+                - img
+            - generic [ref=e44]:
+              - link "All issues (g then i)" [ref=e45] [cursor=pointer]:
+                - /url: /issues
+                - img [ref=e46]
+              - link "All pull requests (g then p)" [ref=e49] [cursor=pointer]:
+                - /url: /pulls
+                - img [ref=e50]
+              - link "All repositories" [ref=e52] [cursor=pointer]:
+                - /url: /repos
+                - img [ref=e53]
+          - link "You have no unread notifications (g then n)" [ref=e55] [cursor=pointer]:
+            - /url: /notifications
+            - img [ref=e56]
+          - button "Open user navigation menu" [ref=e59] [cursor=pointer]:
+            - img "User avatar" [ref=e60]
+  - generic [ref=e64]:
+    - complementary "Account" [ref=e65]:
+      - navigation "Repositories" [ref=e72]:
+        - generic [ref=e73]:
+          - generic [ref=e74]:
+            - heading "Top repositories" [level=2] [ref=e75]
+            - link "New" [ref=e76] [cursor=pointer]:
+              - /url: /new
+              - generic [ref=e77]:
+                - generic:
+                  - img
+                - generic [ref=e78]: New
+          - search "Top repositories" [ref=e79]:
+            - textbox "Find a repository…" [ref=e80]
+          - list [ref=e81]:
+            - listitem [ref=e82]:
+              - generic [ref=e83]:
+                - link "Repository" [ref=e84] [cursor=pointer]:
+                  - /url: /suhao888/audit-note-filler-v2
+                  - img "Repository" [ref=e85]
+                - link "suhao888/audit-note-filler-v2" [ref=e87] [cursor=pointer]:
+                  - /url: /suhao888/audit-note-filler-v2
+            - listitem [ref=e88]:
+              - generic [ref=e89]:
+                - link "Repository" [ref=e90] [cursor=pointer]:
+                  - /url: /suhao888/my-workspace
+                  - img "Repository" [ref=e91]
+                - link "suhao888/my-workspace" [ref=e93] [cursor=pointer]:
+                  - /url: /suhao888/my-workspace
+            - listitem [ref=e94]:
+              - generic [ref=e95]:
+                - link "Repository" [ref=e96] [cursor=pointer]:
+                  - /url: /suhao888/audit-note-filler
+                  - img "Repository" [ref=e97]
+                - link "suhao888/audit-note-filler" [ref=e99] [cursor=pointer]:
+                  - /url: /suhao888/audit-note-filler
+            - listitem [ref=e100]:
+              - generic [ref=e101]:
+                - link "Repository" [ref=e102] [cursor=pointer]:
+                  - /url: /suhao888/sj
+                  - img "Repository" [ref=e103]
+                - link "suhao888/sj" [ref=e105] [cursor=pointer]:
+                  - /url: /suhao888/sj
+    - generic [ref=e108]:
+      - generic [ref=e109]:
+        - main [ref=e110]:
+          - generic [ref=e112]:
+            - heading "Dashboard" [level=1] [ref=e113]
+            - heading "Home" [level=2] [ref=e115]
+            - generic [ref=e116]:
+              - generic [ref=e120]:
+                - generic [ref=e124]:
+                  - status [ref=e125]
+                  - textbox "Ask anything or type @ to add context" [ref=e128]
+                  - generic [ref=e129]:
+                    - button "Ask" [ref=e132] [cursor=pointer]:
+                      - generic [ref=e133]:
+                        - generic:
+                          - img
+                        - generic [ref=e134]: Ask
+                      - generic:
+                        - img
+                    - generic [ref=e135]:
+                      - button "Select repositories to attach to conversation" [ref=e136] [cursor=pointer]:
+                        - generic [ref=e137]:
+                          - generic:
+                            - img
+                          - generic "All repositories" [ref=e139]
+                        - generic:
+                          - img
+                      - button "Add files, and spaces" [ref=e140] [cursor=pointer]:
+                        - img [ref=e141]
+                    - button "Send now (enter)" [ref=e145] [cursor=pointer]:
+                      - img [ref=e146]
+                - heading "Chat Commands" [level=2] [ref=e148]
+                - list [ref=e150]:
+                  - listitem [ref=e151]:
+                    - button "Agent" [ref=e152] [cursor=pointer]:
+                      - img [ref=e153]
+                      - generic [ref=e156]: Agent
+                  - listitem [ref=e157]:
+                    - button "Create issue" [ref=e158] [cursor=pointer]:
+                      - img [ref=e159]
+                      - generic [ref=e161]: Create issue
+                  - listitem [ref=e162]:
+                    - button "Write code" [ref=e163] [cursor=pointer]:
+                      - img [ref=e166]
+                      - generic [ref=e168]:
+                        - text: Write code
+                        - img [ref=e170]
+                  - listitem [ref=e172]:
+                    - button "Git" [ref=e173] [cursor=pointer]:
+                      - img [ref=e176]
+                      - generic [ref=e178]:
+                        - text: Git
+                        - img [ref=e180]
+                  - listitem [ref=e182]:
+                    - button "Pull requests" [ref=e183] [cursor=pointer]:
+                      - img [ref=e186]
+                      - generic [ref=e188]:
+                        - text: Pull requests
+                        - img [ref=e190]
+              - generic [ref=e192]:
+                - generic [ref=e193]:
+                  - heading "Feed" [level=2] [ref=e194]
+                  - group [ref=e197]:
+                    - button "Filter" [ref=e198] [cursor=pointer]:
+                      - img [ref=e199]
+                      - text: Filter
+                - article [ref=e204]:
+                  - generic [ref=e206]:
+                    - generic [ref=e208]:
+                      - img [ref=e210]
+                      - heading "Trending repositories" [level=3] [ref=e212]
+                      - generic [ref=e213]: ·
+                      - link "See more" [ref=e214] [cursor=pointer]:
+                        - /url: https://github.com/trending
+                    - generic [ref=e215]:
+                      - region "repository body 0-0" [ref=e218]:
+                        - generic [ref=e219]:
+                          - generic [ref=e220]:
+                            - generic [ref=e221]:
+                              - link "@usestrix profile" [ref=e222] [cursor=pointer]:
+                                - /url: /usestrix
+                                - img "@usestrix profile" [ref=e223]
+                              - link "usestrix/strix" [ref=e224] [cursor=pointer]:
+                                - /url: /usestrix/strix
+                            - generic [ref=e225]:
+                              - generic [ref=e226]: Open-source AI penetration testing tool to find and fix your app’s vulnerabilities.
+                              - region "Repo Details 0-0" [ref=e228]:
+                                - generic [ref=e230]: Python
+                                - link "30904 stargazers" [ref=e232] [cursor=pointer]:
+                                  - /url: /usestrix/strix/stargazers
+                                  - img [ref=e233]
+                                  - text: 30.9k
+                          - generic [ref=e237]:
+                            - button "Star this repository" [ref=e239] [cursor=pointer]:
+                              - img [ref=e240]
+                              - text: Star
+                            - button "Add this repository to a list" [ref=e245] [cursor=pointer]:
+                              - img
+                      - article [ref=e247]:
+                        - generic [ref=e249]:
+                          - separator [ref=e250]
+                          - region "repository body 0-1" [ref=e254]:
+                            - generic [ref=e255]:
+                              - generic [ref=e256]:
+                                - generic [ref=e257]:
+                                  - link "@JuliusBrussee profile" [ref=e258] [cursor=pointer]:
+                                    - /url: /JuliusBrussee
+                                    - img "@JuliusBrussee profile" [ref=e259]
+                                  - link "JuliusBrussee/caveman" [ref=e260] [cursor=pointer]:
+                                    - /url: /JuliusBrussee/caveman
+                                - generic [ref=e261]:
+                                  - generic [ref=e262]: 🪨 why use many token when few token do trick — Claude Code skill that cuts 65% of tokens by talking like caveman
+                                  - region "Repo Details 0-1" [ref=e264]:
+                                    - generic [ref=e266]: JavaScript
+                                    - link "79643 stargazers" [ref=e268] [cursor=pointer]:
+                                      - /url: /JuliusBrussee/caveman/stargazers
+                                      - img [ref=e269]
+                                      - text: 79.6k
+                              - generic [ref=e273]:
+                                - button "Star this repository" [ref=e275] [cursor=pointer]:
+                                  - img [ref=e276]
+                                  - text: Star
+                                - button "Add this repository to a list" [ref=e281] [cursor=pointer]:
+                                  - img
+        - contentinfo [ref=e282]:
+          - heading "Footer" [level=2] [ref=e283]
+          - generic [ref=e284]:
+            - generic [ref=e285]:
+              - link "GitHub Homepage" [ref=e286] [cursor=pointer]:
+                - /url: https://github.com
+                - img [ref=e287]
+              - generic [ref=e289]: © 2026 GitHub, Inc.
+            - navigation "Footer" [ref=e290]:
+              - heading "Footer navigation" [level=3] [ref=e291]
+              - list "Footer navigation" [ref=e292]:
+                - listitem [ref=e293]:
+                  - link "Terms" [ref=e294] [cursor=pointer]:
+                    - /url: https://docs.github.com/site-policy/github-terms/github-terms-of-service
+                - listitem [ref=e295]:
+                  - link "Privacy" [ref=e296] [cursor=pointer]:
+                    - /url: https://docs.github.com/site-policy/privacy-policies/github-privacy-statement
+                - listitem [ref=e297]:
+                  - link "Security" [ref=e298] [cursor=pointer]:
+                    - /url: https://github.com/security
+                - listitem [ref=e299]:
+                  - link "Status" [ref=e300] [cursor=pointer]:
+                    - /url: https://www.githubstatus.com/
+                - listitem [ref=e301]:
+                  - link "Community" [ref=e302] [cursor=pointer]:
+                    - /url: https://github.community/
+                - listitem [ref=e303]:
+                  - link "Docs" [ref=e304] [cursor=pointer]:
+                    - /url: https://docs.github.com/
+                - listitem [ref=e305]:
+                  - link "Contact" [ref=e306] [cursor=pointer]:
+                    - /url: https://support.github.com?tags=dotcom-footer
+                - listitem [ref=e307]:
+                  - button "Manage cookies" [ref=e309] [cursor=pointer]
+                - listitem [ref=e310]:
+                  - button "Do not share my personal information" [ref=e312] [cursor=pointer]
+      - complementary "Explore" [ref=e313]

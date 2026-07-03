@@ -1,0 +1,12 @@
+name: vibe-audit
+aspect: 9:16
+defaultSceneDuration: 5
+providers:
+  image: null
+  tts: null
+  transcribe: null
+budget:
+  maxUsd: 0
+composition:
+  engine: hyperframes
+  entry: index.html

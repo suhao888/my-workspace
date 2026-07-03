@@ -1,0 +1,763 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>小学数学试卷</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: "楷体", "KaiTi", "SimKai", serif;
+    font-size: 16px;
+    color: #000;
+    background: #fff;
+    padding: 0;
+  }
+
+  .page {
+    width: 210mm;
+    min-height: 297mm;
+    margin: 0 auto;
+    padding: 15mm 18mm 15mm 18mm;
+    background: #fff;
+  }
+
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 10px;
+    border-bottom: 2px solid #000;
+    padding-bottom: 6px;
+  }
+  .header .title {
+    font-size: 22px;
+    font-weight: bold;
+    font-family: "黑体","SimHei",sans-serif;
+    letter-spacing: 2px;
+  }
+  .header .info {
+    font-size: 15px;
+    display: flex;
+    gap: 30px;
+  }
+  .header .info span {
+    border-bottom: 1px solid #000;
+    min-width: 80px;
+    display: inline-block;
+  }
+
+  .section {
+    margin-top: 18px;
+  }
+  .section-title {
+    font-size: 17px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    font-family: "黑体","SimHei",sans-serif;
+  }
+
+  /* ====== 一、计算 ====== */
+  .calc-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px 6px;
+    margin-left: 10px;
+  }
+  .calc-item {
+    font-size: 16px;
+    line-height: 2;
+    white-space: nowrap;
+  }
+  .ans-line {
+    display: inline-block;
+    width: 36px;
+    border-bottom: 1.5px solid #000;
+    vertical-align: bottom;
+    margin-bottom: 2px;
+  }
+
+  /* ====== 二、填空 ====== */
+  .fill-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px 6px;
+    margin-left: 10px;
+  }
+  .fill-item {
+    font-size: 16px;
+    line-height: 2.2;
+    white-space: nowrap;
+  }
+  .blank {
+    display: inline-block;
+    width: 32px;
+    border-bottom: 1.5px solid #000;
+    vertical-align: bottom;
+    margin-bottom: 2px;
+  }
+
+  /* ====== 三、比大小 ====== */
+  .compare-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px 6px;
+    margin-left: 10px;
+  }
+  .compare-item {
+    font-size: 16px;
+    line-height: 2.2;
+    white-space: nowrap;
+  }
+  .circle-blank {
+    display: inline-block;
+    width: 22px;
+    height: 22px;
+    border: 1.5px solid #000;
+    border-radius: 50%;
+    vertical-align: middle;
+    text-align: center;
+    line-height: 20px;
+  }
+
+  /* ====== 四、连线 ====== */
+  .lianxian-wrap {
+    display: flex;
+    gap: 30px;
+    margin-left: 10px;
+  }
+  .lianxian-col {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    min-width: 70px;
+  }
+  .lianxian-col .lx-item {
+    font-size: 15px;
+    line-height: 2;
+  }
+  .lianxian-divider {
+    border-left: 1.5px solid #000;
+    margin: 0 8px;
+  }
+
+  /* ====== 五、分与合 ====== */
+  .fenhege-row {
+    display: flex;
+    gap: 28px;
+    align-items: flex-end;
+    margin-left: 10px;
+    flex-wrap: wrap;
+  }
+  .diamond-wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+    margin-bottom: 8px;
+  }
+  .diamond-top {
+    font-size: 15px;
+    font-weight: bold;
+    text-align: center;
+    min-width: 24px;
+  }
+  .diamond-mid {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .diamond-line {
+    width: 24px;
+    height: 0;
+    border-bottom: 1.5px solid #000;
+    transform: rotate(35deg);
+    transform-origin: right center;
+  }
+  .diamond-line-r {
+    width: 24px;
+    height: 0;
+    border-bottom: 1.5px solid #000;
+    transform: rotate(-35deg);
+    transform-origin: left center;
+  }
+  .diamond-bot {
+    display: flex;
+    gap: 20px;
+    font-size: 15px;
+    font-weight: bold;
+    margin-top: 2px;
+  }
+  .sq {
+    display: inline-block;
+    width: 22px;
+    height: 22px;
+    border: 1.5px solid #000;
+    vertical-align: middle;
+    text-align: center;
+    line-height: 20px;
+  }
+
+  /* 分合图 SVG 风格 */
+  .fh-item {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 10px 12px 0;
+  }
+  .fh-top { font-size:16px; font-weight:bold; min-width:24px; text-align:center; }
+  .fh-lines {
+    display: flex;
+    width: 60px;
+    justify-content: space-between;
+    position: relative;
+    height: 22px;
+  }
+  .fh-lines::before {
+    content: '';
+    position: absolute;
+    left: 50%; top: 0;
+    width: 1.5px; height: 22px;
+    background: transparent;
+  }
+  .fh-line-l {
+    width: 30px; height: 22px;
+    border-bottom: 1.5px solid #000;
+    border-left: 0;
+    transform-origin: top right;
+    transform: rotate(0deg);
+    position: relative;
+  }
+  .fh-bot { display:flex; gap:16px; font-size:16px; font-weight:bold; }
+
+  /* 用SVG画分合图 */
+  .fh-svg-wrap { display:inline-flex; flex-direction:column; align-items:center; margin:4px 12px 4px 0; }
+  .fh-svg-wrap .fh-num { font-size:16px; font-weight:bold; }
+  .fh-svg-wrap .fh-sq {
+    display:inline-block; width:22px; height:22px;
+    border:1.5px solid #000; vertical-align:middle;
+    text-align:center; line-height:20px;
+  }
+  .fh-row { display:flex; gap:8px; }
+
+  /* ====== 六、按顺序填数 ====== */
+  .shunxu-row {
+    font-size: 16px;
+    line-height: 2.4;
+    margin-left: 10px;
+    margin-bottom: 8px;
+  }
+  .num-blank {
+    display: inline-block;
+    width: 28px;
+    border-bottom: 1.5px solid #000;
+    vertical-align: bottom;
+    margin: 0 2px 2px 2px;
+  }
+  /* 表格填数 */
+  .num-table {
+    border-collapse: collapse;
+    margin: 6px 0 8px 10px;
+  }
+  .num-table td {
+    border: 1.5px solid #000;
+    width: 36px;
+    height: 32px;
+    text-align: center;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 0;
+  }
+  .num-table td.empty {
+    background: #fff;
+  }
+
+  /* ====== 七、看图列算式 ====== */
+  .tushuan-wrap {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px 30px;
+    margin-left: 10px;
+  }
+  .tushuan-item { font-size:15px; }
+  .tushuan-icons { font-size: 20px; letter-spacing:3px; margin-bottom:4px; }
+  .tushuan-formula { font-size: 15px; line-height:2; }
+
+  /* ====== 八、单双数 ====== */
+  .danshuang-wrap { margin-left:10px; font-size:16px; line-height:2.4; }
+
+  /* ====== 九、从大到小 ====== */
+  .paixu-wrap { margin-left:10px; font-size:16px; line-height:2.4; }
+  .box-blank {
+    display: inline-block;
+    width: 26px;
+    height: 26px;
+    border: 1.5px solid #000;
+    vertical-align: middle;
+    text-align: center;
+    line-height: 24px;
+    margin: 0 2px;
+  }
+
+  /* ====== 十、从小到大 ====== */
+
+  /* 打印样式 */
+  @media print {
+    body { background: #fff; }
+    .page {
+      width: 210mm;
+      min-height: 297mm;
+      margin: 0;
+      padding: 12mm 16mm 12mm 16mm;
+      page-break-after: always;
+    }
+    .no-print { display: none; }
+  }
+
+  .print-btn {
+    position: fixed;
+    top: 20px;
+    right: 30px;
+    z-index: 999;
+    background: #1677ff;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    padding: 10px 28px;
+    font-size: 16px;
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    font-family: "黑体","SimHei",sans-serif;
+  }
+  .print-btn:hover { background: #0958d9; }
+</style>
+</head>
+<body>
+
+<button class="print-btn no-print" onclick="window.print()">🖨️ 打印试卷</button>
+
+<div class="page">
+
+  <!-- 页眉 -->
+  <div class="header">
+    <div class="title">小学数学练习试卷（1~10的认识）</div>
+    <div class="info">
+      姓名：<span style="min-width:100px;">&nbsp;</span>
+    </div>
+  </div>
+
+  <!-- 一、计算 -->
+  <div class="section">
+    <div class="section-title">一、计算</div>
+    <div class="calc-grid">
+      <div class="calc-item">4+4-6 = <span class="ans-line"></span></div>
+      <div class="calc-item">3+6-9 = <span class="ans-line"></span></div>
+      <div class="calc-item">8-3+5 = <span class="ans-line"></span></div>
+      <div class="calc-item">8-4-2 = <span class="ans-line"></span></div>
+
+      <div class="calc-item">9-2-3 = <span class="ans-line"></span></div>
+      <div class="calc-item">7-5+2 = <span class="ans-line"></span></div>
+      <div class="calc-item">2+2+3 = <span class="ans-line"></span></div>
+      <div class="calc-item">1+5+3 = <span class="ans-line"></span></div>
+
+      <div class="calc-item">5+2-4 = <span class="ans-line"></span></div>
+      <div class="calc-item">10-6+3 = <span class="ans-line"></span></div>
+      <div class="calc-item">9-1-7 = <span class="ans-line"></span></div>
+      <div class="calc-item">3+3+3 = <span class="ans-line"></span></div>
+    </div>
+  </div>
+
+  <!-- 二、填空 -->
+  <div class="section">
+    <div class="section-title">二、填空</div>
+    <div class="fill-grid">
+      <div class="fill-item">（<span class="blank"></span>）- 7 = 3</div>
+      <div class="fill-item">10 -（<span class="blank"></span>）= 4</div>
+      <div class="fill-item">（<span class="blank"></span>）- 2 = 0</div>
+      <div class="fill-item">（<span class="blank"></span>）+ 2 = 2</div>
+
+      <div class="fill-item">5 +（<span class="blank"></span>）= 8</div>
+      <div class="fill-item">6 -（<span class="blank"></span>）= 6</div>
+      <div class="fill-item">（<span class="blank"></span>）+ 3 = 7</div>
+      <div class="fill-item">（<span class="blank"></span>）- 3 = 3</div>
+
+      <div class="fill-item">（<span class="blank"></span>）+ 4 = 9</div>
+      <div class="fill-item">（<span class="blank"></span>）- 2 = 7</div>
+      <div class="fill-item">7 -（<span class="blank"></span>）= 1</div>
+      <div class="fill-item">4 -（<span class="blank"></span>）= 2</div>
+    </div>
+  </div>
+
+  <!-- 三、比大小 -->
+  <div class="section">
+    <div class="section-title">三、比大小</div>
+    <div class="compare-grid">
+      <div class="compare-item">5-2 <span class="circle-blank"></span> 2+2</div>
+      <div class="compare-item">2+4 <span class="circle-blank"></span> 7-2</div>
+      <div class="compare-item">8-6 <span class="circle-blank"></span> 1+3</div>
+      <div class="compare-item">9-6 <span class="circle-blank"></span> 6-3</div>
+
+      <div class="compare-item">10-5 <span class="circle-blank"></span> 7-2</div>
+      <div class="compare-item">3+3 <span class="circle-blank"></span> 2+4</div>
+      <div class="compare-item">2+3 <span class="circle-blank"></span> 7-1</div>
+      <div class="compare-item">1+4 <span class="circle-blank"></span> 8-6</div>
+    </div>
+  </div>
+
+  <!-- 四、连线 -->
+  <div class="section">
+    <div class="section-title">四、连线（将相等的算式用线连起来）</div>
+    <div style="display:flex; gap:40px; margin-left:10px;">
+      <!-- 左组 -->
+      <div style="display:flex; gap:16px; align-items:flex-start;">
+        <div class="lianxian-col">
+          <div class="lx-item">5+3</div>
+          <div class="lx-item">10-3</div>
+          <div class="lx-item">2+7</div>
+          <div class="lx-item">9-6</div>
+        </div>
+        <div class="lianxian-divider"></div>
+        <div class="lianxian-col">
+          <div class="lx-item">8-5</div>
+          <div class="lx-item">4+5</div>
+          <div class="lx-item">9-2</div>
+          <div class="lx-item">2+6</div>
+        </div>
+      </div>
+      <!-- 右组 -->
+      <div style="display:flex; gap:16px; align-items:flex-start;">
+        <div class="lianxian-col">
+          <div class="lx-item">10-8</div>
+          <div class="lx-item">9-5</div>
+          <div class="lx-item">4+5</div>
+          <div class="lx-item">3+3</div>
+        </div>
+        <div class="lianxian-divider"></div>
+        <div class="lianxian-col">
+          <div class="lx-item">3+6</div>
+          <div class="lx-item">4-2</div>
+          <div class="lx-item">10-4</div>
+          <div class="lx-item">8-4</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 五、分与合填数 -->
+  <div class="section">
+    <div class="section-title">五、分与合填数</div>
+    <div style="margin-left:10px;">
+      <!-- 第一行 分合图 -->
+      <div style="display:flex; align-items:flex-end; gap:24px; flex-wrap:wrap; margin-bottom:8px;">
+
+        <!-- 图1: 顶部□，底4,4 -->
+        <div style="text-align:center;">
+          <div><span class="sq"></span></div>
+          <svg width="50" height="22" style="display:block;margin:0 auto;">
+            <line x1="25" y1="0" x2="8" y2="22" stroke="#000" stroke-width="1.5"/>
+            <line x1="25" y1="0" x2="42" y2="22" stroke="#000" stroke-width="1.5"/>
+          </svg>
+          <div style="display:flex;gap:14px;justify-content:center;font-size:16px;font-weight:bold;">
+            <span>4</span><span>4</span>
+          </div>
+        </div>
+
+        <!-- 图2: 顶部10，底3,□ -->
+        <div style="text-align:center;">
+          <div style="font-size:16px;font-weight:bold;">10</div>
+          <svg width="50" height="22" style="display:block;margin:0 auto;">
+            <line x1="25" y1="0" x2="8" y2="22" stroke="#000" stroke-width="1.5"/>
+            <line x1="25" y1="0" x2="42" y2="22" stroke="#000" stroke-width="1.5"/>
+          </svg>
+          <div style="display:flex;gap:10px;justify-content:center;font-size:16px;font-weight:bold;">
+            <span>3</span><span><span class="sq"></span></span>
+          </div>
+        </div>
+
+        <!-- 图3: 顶部2，底□,4 -->
+        <div style="text-align:center;">
+          <div style="font-size:16px;font-weight:bold;">2</div>
+          <svg width="50" height="22" style="display:block;margin:0 auto;">
+            <line x1="25" y1="0" x2="8" y2="22" stroke="#000" stroke-width="1.5"/>
+            <line x1="25" y1="0" x2="42" y2="22" stroke="#000" stroke-width="1.5"/>
+          </svg>
+          <div style="display:flex;gap:10px;justify-content:center;font-size:16px;font-weight:bold;">
+            <span><span class="sq"></span></span><span>4</span>
+          </div>
+        </div>
+
+        <!-- 图4: 顶部□，底□,7（菱形，两层） -->
+        <div style="text-align:center;">
+          <div><span class="sq"></span></div>
+          <svg width="50" height="22" style="display:block;margin:0 auto;">
+            <line x1="25" y1="0" x2="8" y2="22" stroke="#000" stroke-width="1.5"/>
+            <line x1="25" y1="0" x2="42" y2="22" stroke="#000" stroke-width="1.5"/>
+          </svg>
+          <div style="display:flex;gap:10px;justify-content:center;font-size:16px;font-weight:bold;">
+            <span><span class="sq"></span></span><span>7</span>
+          </div>
+        </div>
+
+        <!-- 图5: 顶部3，底□,3 -->
+        <div style="text-align:center;">
+          <div style="font-size:16px;font-weight:bold;">3</div>
+          <svg width="50" height="22" style="display:block;margin:0 auto;">
+            <line x1="25" y1="0" x2="8" y2="22" stroke="#000" stroke-width="1.5"/>
+            <line x1="25" y1="0" x2="42" y2="22" stroke="#000" stroke-width="1.5"/>
+          </svg>
+          <div style="display:flex;gap:10px;justify-content:center;font-size:16px;font-weight:bold;">
+            <span><span class="sq"></span></span><span>3</span>
+          </div>
+        </div>
+
+        <!-- 图6: 顶部6，底□,3 -->
+        <div style="text-align:center;">
+          <div style="font-size:16px;font-weight:bold;">6</div>
+          <svg width="50" height="22" style="display:block;margin:0 auto;">
+            <line x1="25" y1="0" x2="8" y2="22" stroke="#000" stroke-width="1.5"/>
+            <line x1="25" y1="0" x2="42" y2="22" stroke="#000" stroke-width="1.5"/>
+          </svg>
+          <div style="display:flex;gap:10px;justify-content:center;font-size:16px;font-weight:bold;">
+            <span><span class="sq"></span></span><span>3</span>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- 第二行 -->
+      <div style="display:flex; align-items:flex-end; gap:24px; flex-wrap:wrap; margin-bottom:4px;">
+
+        <!-- 图7: 底部□，顶2,3（倒三角） -->
+        <div style="text-align:center;">
+          <div style="display:flex;gap:14px;justify-content:center;font-size:16px;font-weight:bold;">
+            <span>2</span><span>3</span>
+          </div>
+          <svg width="50" height="22" style="display:block;margin:0 auto;">
+            <line x1="8" y1="0" x2="25" y2="22" stroke="#000" stroke-width="1.5"/>
+            <line x1="42" y1="0" x2="25" y2="22" stroke="#000" stroke-width="1.5"/>
+          </svg>
+          <div><span class="sq"></span></div>
+        </div>
+
+        <!-- 图8: 底部4，顶□,1（倒三角）-->
+        <div style="text-align:center;">
+          <div style="display:flex;gap:10px;justify-content:center;font-size:16px;font-weight:bold;">
+            <span><span class="sq"></span></span><span>1</span>
+          </div>
+          <svg width="50" height="22" style="display:block;margin:0 auto;">
+            <line x1="8" y1="0" x2="25" y2="22" stroke="#000" stroke-width="1.5"/>
+            <line x1="42" y1="0" x2="25" y2="22" stroke="#000" stroke-width="1.5"/>
+          </svg>
+          <div style="font-size:16px;font-weight:bold;">4</div>
+        </div>
+
+        <!-- 图9: 底部9，顶5,□ -->
+        <div style="text-align:center;">
+          <div style="display:flex;gap:10px;justify-content:center;font-size:16px;font-weight:bold;">
+            <span>5</span><span><span class="sq"></span></span>
+          </div>
+          <svg width="50" height="22" style="display:block;margin:0 auto;">
+            <line x1="8" y1="0" x2="25" y2="22" stroke="#000" stroke-width="1.5"/>
+            <line x1="42" y1="0" x2="25" y2="22" stroke="#000" stroke-width="1.5"/>
+          </svg>
+          <div style="font-size:16px;font-weight:bold;">9</div>
+        </div>
+
+        <!-- 图10: 10在上，□在中，2在底 （两层菱形）-->
+        <div style="text-align:center;">
+          <div style="font-size:16px;font-weight:bold;">10</div>
+          <svg width="50" height="22" style="display:block;margin:0 auto;">
+            <line x1="25" y1="0" x2="8" y2="22" stroke="#000" stroke-width="1.5"/>
+            <line x1="25" y1="0" x2="42" y2="22" stroke="#000" stroke-width="1.5"/>
+          </svg>
+          <div style="display:flex;gap:10px;justify-content:center;">
+            <span><span class="sq"></span></span><span style="font-size:16px;font-weight:bold;margin-top:2px;"></span>
+          </div>
+          <svg width="50" height="22" style="display:block;margin:0 auto;">
+            <line x1="8" y1="0" x2="25" y2="22" stroke="#000" stroke-width="1.5"/>
+            <line x1="42" y1="0" x2="25" y2="22" stroke="#000" stroke-width="1.5"/>
+          </svg>
+          <div style="font-size:16px;font-weight:bold;">2</div>
+        </div>
+
+        <!-- 图11: □在上，底□,4,6（两层） -->
+        <div style="text-align:center;">
+          <div><span class="sq"></span></div>
+          <svg width="50" height="22" style="display:block;margin:0 auto;">
+            <line x1="25" y1="0" x2="8" y2="22" stroke="#000" stroke-width="1.5"/>
+            <line x1="25" y1="0" x2="42" y2="22" stroke="#000" stroke-width="1.5"/>
+          </svg>
+          <div style="display:flex;gap:10px;justify-content:center;font-size:16px;font-weight:bold;">
+            <span>4</span><span>6</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- 六、按顺序填数 -->
+  <div class="section">
+    <div class="section-title">六、按顺序填数</div>
+    <div class="shunxu-row">
+      ①&nbsp;1&nbsp;&nbsp;2&nbsp;（<span class="num-blank"></span>）（<span class="num-blank"></span>）5（<span class="num-blank"></span>）7（<span class="num-blank"></span>）（<span class="num-blank"></span>）10
+    </div>
+    <div class="shunxu-row">
+      ②&nbsp;10（<span class="num-blank"></span>）8（<span class="num-blank"></span>）（<span class="num-blank"></span>）5（<span class="num-blank"></span>）（<span class="num-blank"></span>）2（<span class="num-blank"></span>）
+    </div>
+    <!-- 表格题 -->
+    <div style="display:flex; gap:30px; margin-left:10px; margin-top:8px; flex-wrap:wrap;">
+      <!-- 左表1 -->
+      <table class="num-table">
+        <tr>
+          <td class="empty"></td>
+          <td>7</td>
+          <td class="empty"></td>
+          <td>5</td>
+          <td>4</td>
+        </tr>
+      </table>
+      <!-- 右表1 -->
+      <table class="num-table">
+        <tr>
+          <td>2</td>
+          <td class="empty"></td>
+          <td>4</td>
+          <td>5</td>
+          <td class="empty"></td>
+          <td>8</td>
+          <td class="empty"></td>
+          <td>10</td>
+        </tr>
+      </table>
+    </div>
+    <div style="display:flex; gap:30px; margin-left:10px; margin-top:8px; flex-wrap:wrap;">
+      <!-- 左表2 -->
+      <table class="num-table">
+        <tr>
+          <td>10</td>
+          <td class="empty"></td>
+          <td>8</td>
+          <td class="empty"></td>
+          <td>6</td>
+        </tr>
+      </table>
+      <!-- 右表2 -->
+      <table class="num-table">
+        <tr>
+          <td>10</td>
+          <td class="empty"></td>
+          <td>7</td>
+          <td>6</td>
+          <td class="empty"></td>
+          <td>4</td>
+          <td class="empty"></td>
+          <td>2</td>
+        </tr>
+      </table>
+    </div>
+  </div>
+
+  <!-- 七、看图列算式 -->
+  <div class="section">
+    <div class="section-title">七、看图列算式</div>
+    <div class="tushuan-wrap">
+      <!-- 左1：○○○ ○○○○○ -->
+      <div class="tushuan-item">
+        <div class="tushuan-icons">○○○&nbsp;&nbsp;○○○○○</div>
+        <div class="tushuan-formula">
+          <span class="box-blank"></span>&nbsp;○&nbsp;<span class="box-blank"></span>&nbsp;=&nbsp;<span class="box-blank"></span>
+        </div>
+      </div>
+      <!-- 右1：女女女女女女女女女 -->
+      <div class="tushuan-item">
+        <div class="tushuan-icons">女女女&nbsp;女女&nbsp;女女女女</div>
+        <div class="tushuan-formula">
+          <span class="box-blank"></span>&nbsp;○&nbsp;<span class="box-blank"></span>&nbsp;○&nbsp;<span class="box-blank"></span>&nbsp;=&nbsp;<span class="box-blank"></span>
+        </div>
+      </div>
+      <!-- 左2：△△△△△ △△△（后3个划掉） -->
+      <div class="tushuan-item">
+        <div class="tushuan-icons">△△△△△&nbsp;<s>△△△</s></div>
+        <div class="tushuan-formula">
+          <span class="box-blank"></span>&nbsp;○&nbsp;<span class="box-blank"></span>&nbsp;=&nbsp;<span class="box-blank"></span>
+        </div>
+      </div>
+      <!-- 右2：PPP PP PPPP -->
+      <div class="tushuan-item">
+        <div class="tushuan-icons">PPP&nbsp;&nbsp;PP&nbsp;&nbsp;PPPP</div>
+        <div class="tushuan-formula">
+          <span class="box-blank"></span>&nbsp;○&nbsp;<span class="box-blank"></span>&nbsp;○&nbsp;<span class="box-blank"></span>&nbsp;=&nbsp;<span class="box-blank"></span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 八、请找出下列数字中的单数和双数 -->
+  <div class="section">
+    <div class="section-title">八、请找出下列数字中的单数和双数</div>
+    <div class="danshuang-wrap">
+      <div style="margin-bottom:6px; font-size:17px; letter-spacing:4px;">
+        1&nbsp;&nbsp;2&nbsp;&nbsp;3&nbsp;&nbsp;4&nbsp;&nbsp;5&nbsp;&nbsp;6&nbsp;&nbsp;7&nbsp;&nbsp;8&nbsp;&nbsp;9&nbsp;&nbsp;10
+      </div>
+      <div>
+        单数：（<span class="num-blank"></span>）（<span class="num-blank"></span>）（<span class="num-blank"></span>）（<span class="num-blank"></span>）（<span class="num-blank"></span>）
+      </div>
+      <div>
+        双数：（<span class="num-blank"></span>）（<span class="num-blank"></span>）（<span class="num-blank"></span>）（<span class="num-blank"></span>）（<span class="num-blank"></span>）
+      </div>
+    </div>
+  </div>
+
+  <!-- 九、将下列数字从大到小排列 -->
+  <div class="section">
+    <div class="section-title">九、将下列数字从大到小排列</div>
+    <div class="paixu-wrap">
+      <div style="margin-bottom:6px;">
+        ①&nbsp;2、5、7、4、3、9
+      </div>
+      <div style="margin-bottom:10px;">
+        <span class="box-blank"></span>&nbsp;&gt;&nbsp;
+        <span class="box-blank"></span>&nbsp;&gt;&nbsp;
+        <span class="box-blank"></span>&nbsp;&gt;&nbsp;
+        <span class="box-blank"></span>&nbsp;&gt;&nbsp;
+        <span class="box-blank"></span>&nbsp;&gt;&nbsp;
+        <span class="box-blank"></span>
+      </div>
+      <div style="margin-bottom:6px;">
+        ②&nbsp;8、4、2、6、10、1
+      </div>
+      <div>
+        <span class="box-blank"></span>&nbsp;&gt;&nbsp;
+        <span class="box-blank"></span>&nbsp;&gt;&nbsp;
+        <span class="box-blank"></span>&nbsp;&gt;&nbsp;
+        <span class="box-blank"></span>&nbsp;&gt;&nbsp;
+        <span class="box-blank"></span>&nbsp;&gt;&nbsp;
+        <span class="box-blank"></span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 十、将下列数从小到大排列 -->
+  <div class="section">
+    <div class="section-title">十、将下列数从小到大排列</div>
+    <div class="paixu-wrap">
+      <div style="margin-bottom:6px;">
+        3、7、10、5、2、6
+      </div>
+      <div>
+        <span class="box-blank"></span>&nbsp;&lt;&nbsp;
+        <span class="box-blank"></span>&nbsp;&lt;&nbsp;
+        <span class="box-blank"></span>&nbsp;&lt;&nbsp;
+        <span class="box-blank"></span>&nbsp;&lt;&nbsp;
+        <span class="box-blank"></span>&nbsp;&lt;&nbsp;
+        <span class="box-blank"></span>
+      </div>
+    </div>
+  </div>
+
+  <div style="margin-top:30px; text-align:center; font-size:13px; color:#999;">—— 试卷完 ——</div>
+
+</div>
+
+</body>
+</html>

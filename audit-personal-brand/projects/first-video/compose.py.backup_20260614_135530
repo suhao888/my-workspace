@@ -1,0 +1,120 @@
+"""Compose the first personal brand video — slides → video clips → concat + BGM."""
+
+import subprocess, os, shutil, tempfile
+
+PROJECT = os.path.dirname(os.path.abspath(__file__))
+BGM = os.path.join(os.path.dirname(os.path.abspath(__file__)), "bgm_uplift.mp3")
+FFMPEG = "ffmpeg"
+
+# slide timings (seconds)
+TIMINGS = [5, 4, 5, 4, 5]
+FADE_DURATION = 0.8
+FPS = 30
+
+slides = [os.path.join(PROJECT, f"slide-{i + 1:02d}.png") for i in range(5)]
+
+tmp = tempfile.mkdtemp(prefix="intro_")
+clips = []
+
+print("=== Step 1: Generate individual clips ===")
+for i, (slide, dur) in enumerate(zip(slides, TIMINGS)):
+    clip = os.path.join(tmp, f"clip-{i + 1:02d}.mp4")
+    fade_out_start = dur - FADE_DURATION
+    cmd = [
+        FFMPEG,
+        "-y",
+        "-loop",
+        "1",
+        "-i",
+        slide,
+        "-c:v",
+        "libx264",
+        "-t",
+        str(dur),
+        "-pix_fmt",
+        "yuv420p",
+        "-r",
+        str(FPS),
+        "-vf",
+        f"fade=t=in:st=0:d={FADE_DURATION},fade=t=out:st={fade_out_start}:d={FADE_DURATION}",
+        "-an",
+        clip,
+    ]
+    r = subprocess.run(cmd, capture_output=True, text=True)
+    if r.returncode == 0:
+        sz = os.path.getsize(clip)
+        print(f"  clip-{i + 1:02d}.mp4: {sz / 1024:.1f} KB ({dur}s)")
+        clips.append(clip)
+    else:
+        print(f"  clip-{i + 1:02d}: FAILED - {r.stderr[:200]}")
+
+print(f"\n=== Step 2: Concat clips ===")
+video_no_audio = os.path.join(tmp, "concat.mp4")
+with tempfile.NamedTemporaryFile(mode="w", suffix=".txt", delete=False) as f:
+    concat_file = f.name
+    for c in clips:
+        f.write(f"file '{os.path.abspath(c)}'\n")
+
+cmd = [
+    FFMPEG,
+    "-y",
+    "-f",
+    "concat",
+    "-safe",
+    "0",
+    "-i",
+    concat_file,
+    "-c",
+    "copy",
+    video_no_audio,
+]
+r = subprocess.run(cmd, capture_output=True, text=True)
+if r.returncode == 0:
+    sz = os.path.getsize(video_no_audio)
+    dur = subprocess.run(
+        [FFMPEG, "-i", video_no_audio, "-f", "null", "-"],
+        capture_output=True,
+        text=True,
+    )
+    print(f"  concat.mp4: {sz / 1024:.1f} KB")
+else:
+    print(f"  Concat FAILED: {r.stderr[:200]}")
+    exit(1)
+
+total_dur = sum(TIMINGS)
+print(f"\n=== Step 3: Add BGM ===")
+output = os.path.join(PROJECT, "intro_v1.mp4")
+cmd = [
+    FFMPEG,
+    "-y",
+    "-i",
+    video_no_audio,
+    "-i",
+    BGM,
+    "-filter_complex",
+    f"[1:a]atrim=0:{total_dur},afade=t=out:st={total_dur - 2}:d=2,volume=0.15[a]",
+    "-map",
+    "0:v",
+    "-map",
+    "[a]",
+    "-c:v",
+    "copy",
+    "-c:a",
+    "aac",
+    "-shortest",
+    output,
+]
+r = subprocess.run(cmd, capture_output=True, text=True)
+if r.returncode == 0:
+    sz = os.path.getsize(output)
+    print(f"  Output: {output}")
+    print(f"  Size: {sz / 1024:.1f} KB ({sz / 1024 / 1024:.2f} MB)")
+    print(f"  Duration: {total_dur}s")
+else:
+    print(f"  BGM add FAILED: {r.stderr[:200]}")
+    exit(1)
+
+# cleanup
+os.remove(concat_file)
+shutil.rmtree(tmp)
+print("\n=== Done ===")

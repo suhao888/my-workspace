@@ -1,0 +1,10 @@
+{
+  "name": "vibe-audit",
+  "aspect": "9:16",
+  "fps": 30,
+  "quality": "high",
+  "entry": "index.html",
+  "compositionsDir": "compositions",
+  "assetsDir": "assets",
+  "rendersDir": "renders"
+}

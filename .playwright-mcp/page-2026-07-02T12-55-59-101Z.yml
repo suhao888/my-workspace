@@ -1,0 +1,271 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - generic:
+      - img [ref=e4]
+      - generic [ref=e5]:
+        - text: Tampermonkey
+        - superscript [ref=e6]: ®
+        - generic [ref=e7]: by Jan Biniok
+      - generic [ref=e9]:
+        - text: ▼
+        - combobox [ref=e10] [cursor=pointer]:
+          - option "en"
+          - option "zh" [selected]
+          - option "de"
+          - option "fr"
+          - option "es"
+          - option "pt"
+          - option "ru"
+          - option "it"
+          - option "ja"
+  - generic [ref=e14]:
+    - link "首页" [ref=e15] [cursor=pointer]:
+      - /url: https://www.tampermonkey.net/index.php
+      - generic [ref=e16]:
+        - img [ref=e17]
+        - text: 首页
+    - link "用户脚本" [ref=e19] [cursor=pointer]:
+      - /url: https://www.tampermonkey.net/scripts.php
+      - generic [ref=e20]:
+        - img [ref=e21]
+        - text: 用户脚本
+    - link "文档" [ref=e23] [cursor=pointer]:
+      - /url: https://www.tampermonkey.net/faq.php
+      - generic [ref=e24]:
+        - img [ref=e25]
+        - text: 文档
+    - link "更新日志" [ref=e27] [cursor=pointer]:
+      - /url: https://www.tampermonkey.net/changelog.php
+      - generic [ref=e28]:
+        - img [ref=e29]
+        - text: 更新日志
+    - link "捐助" [ref=e31] [cursor=pointer]:
+      - /url: https://www.tampermonkey.net/contrib.php
+      - generic [ref=e32]:
+        - img [ref=e33]
+        - text: 捐助
+    - link "关于" [ref=e35] [cursor=pointer]:
+      - /url: https://www.tampermonkey.net/imprint.php
+      - generic [ref=e36]:
+        - img [ref=e37]
+        - text: 关于
+  - generic [ref=e42]:
+    - link "Chrome" [ref=e43] [cursor=pointer]:
+      - /url: https://www.tampermonkey.net/index.php?browser=chrome
+      - generic [ref=e44]:
+        - img [ref=e45]
+        - text: Chrome
+    - link "Microsoft Edge" [ref=e47] [cursor=pointer]:
+      - /url: https://www.tampermonkey.net/index.php?browser=edge
+      - generic [ref=e48]:
+        - img [ref=e49]
+        - text: Microsoft Edge
+    - link "Firefox" [ref=e51] [cursor=pointer]:
+      - /url: https://www.tampermonkey.net/index.php?browser=firefox
+      - generic [ref=e52]:
+        - img [ref=e53]
+        - text: Firefox
+    - link "Safari" [ref=e55] [cursor=pointer]:
+      - /url: https://www.tampermonkey.net/index.php?browser=safari
+      - generic [ref=e56]:
+        - img [ref=e57]
+        - text: Safari
+    - link "Opera Next" [ref=e59] [cursor=pointer]:
+      - /url: https://www.tampermonkey.net/index.php?browser=opera
+      - generic [ref=e60]:
+        - img [ref=e61]
+        - text: Opera Next
+  - generic [ref=e64]:
+    - generic [ref=e65]:
+      - paragraph [ref=e66]:
+        - strong [ref=e67]: 篡改猴 (Tampermonkey)
+        - text: 是拥有
+        - strong [ref=e68]: 超过 1000 万用户
+        - text: 的最流行的浏览器扩展之一。 它适用于
+        - link "Chrome" [ref=e69] [cursor=pointer]:
+          - /url: https://www.tampermonkey.net/index.php?browser=chrome
+          - strong [ref=e70]: Chrome
+        - text: 、
+        - link "Microsoft Edge" [ref=e71] [cursor=pointer]:
+          - /url: https://www.tampermonkey.net/index.php?browser=edge
+          - strong [ref=e72]: Microsoft Edge
+        - text: 、
+        - link "Safari" [ref=e73] [cursor=pointer]:
+          - /url: https://www.tampermonkey.net/index.php?browser=safari
+          - strong [ref=e74]: Safari
+        - text: 、
+        - link "Opera Next" [ref=e75] [cursor=pointer]:
+          - /url: https://www.tampermonkey.net/index.php?browser=opera
+          - strong [ref=e76]: Opera Next
+        - text: 和
+        - link "Firefox" [ref=e77] [cursor=pointer]:
+          - /url: https://www.tampermonkey.net/index.php?browser=firefox
+          - strong [ref=e78]: Firefox
+        - text: 。
+      - paragraph [ref=e79]: 有些人也会把篡改猴(Tampermonkey)称作油猴(Greasemonkey)，尽管后者只是一款仅适用于 Firefox 浏览器的浏览器扩展程序。
+      - paragraph [ref=e80]:
+        - text: 它允许用户自定义并
+        - strong [ref=e81]: 增强您最喜爱的网页的功能
+        - text: 。用户脚本是小型 JavaScript 程序，可用于向网页添加新功能或修改现有功能。使用 篡改猴，您可以轻松在任何网站上创建、管理和运行这些用户脚本。
+      - paragraph [ref=e82]: 例如，使用 篡改猴，您可以向网页添加一个新按钮，可以快速在社交媒体上分享链接，或自动填写带有个人信息的表格。在数字化时代，这特别有用，因为网页常常被用作访问广泛的服务和应用程序的用户界面。
+      - paragraph [ref=e83]:
+        - text: 此外，篡改猴
+        - strong [ref=e84]: 使您轻松找到并安装其他用户创建的用户脚本
+        - text: 。这意味着您可以快速轻松地访问为您喜爱的网页定制的广泛库，而无需花费数小时编写自己的代码。
+      - paragraph [ref=e85]:
+        - text: 无论您是希望为您的站点添加新功能的
+        - strong [ref=e86]: Web 开发人员
+        - text: ，还是只是希望
+        - strong [ref=e87]: 改善在线体验的普通用户
+        - text: ，篡改猴 都是您的工具箱中的一个很好的工具。
+      - table [ref=e88]:
+        - rowgroup [ref=e89]:
+          - row [ref=e90]:
+            - columnheader [ref=e91]
+            - columnheader [ref=e92]
+        - rowgroup [ref=e93]:
+          - row "扫描二维码，通过 Microsoft Edge 在您的安卓手机/平板上使用 Tampermonkey。" [ref=e94]:
+            - cell [ref=e95]:
+              - link [ref=e96] [cursor=pointer]:
+                - /url: /qr/e
+            - cell "扫描二维码，通过 Microsoft Edge 在您的安卓手机/平板上使用 Tampermonkey。" [ref=e99]:
+              - img [ref=e100]
+              - text: 扫描
+              - link "二维码" [ref=e102] [cursor=pointer]:
+                - /url: /qr/e
+              - text: ，通过 Microsoft Edge 在您的安卓手机/平板上使用 Tampermonkey。
+    - generic [ref=e104]:
+      - heading "下载" [level=1] [ref=e105]
+      - list [ref=e107]:
+        - listitem [ref=e108]:
+          - generic [ref=e109]:
+            - generic [ref=e110]:
+              - img [ref=e111]
+              - generic [ref=e112]:
+                - paragraph [ref=e113]: Tampermonkey
+                - paragraph [ref=e114]: Microsoft Edge 79+
+            - table [ref=e116]:
+              - rowgroup [ref=e117]:
+                - row "免费 | 多语言 隐私政策 去商店" [ref=e118]:
+                  - cell "免费 | 多语言 隐私政策" [ref=e119]:
+                    - text: 免费 | 多语言
+                    - link "隐私政策" [ref=e120] [cursor=pointer]:
+                      - /url: https://www.tampermonkey.net/privacy.php#extension
+                  - cell "去商店" [ref=e121]:
+                    - link "去商店" [ref=e122] [cursor=pointer]:
+                      - /url: https://microsoftedge.microsoft.com/addons/detail/iikmkjmpaadaobahmlepeloendndfphd
+                      - img [ref=e123]
+                      - text: 去商店
+        - listitem [ref=e125]:
+          - generic [ref=e126]:
+            - generic [ref=e127]:
+              - img [ref=e128]
+              - generic [ref=e129]:
+                - paragraph [ref=e130]: Tampermonkey BETA
+                - paragraph [ref=e131]: Microsoft Edge 79+
+            - table [ref=e133]:
+              - rowgroup [ref=e134]:
+                - row "免费 | 多语言 隐私政策 去商店" [ref=e135]:
+                  - cell "免费 | 多语言 隐私政策" [ref=e136]:
+                    - text: 免费 | 多语言
+                    - link "隐私政策" [ref=e137] [cursor=pointer]:
+                      - /url: https://www.tampermonkey.net/privacy.php#extension
+                  - cell "去商店" [ref=e138]:
+                    - link "去商店" [ref=e139] [cursor=pointer]:
+                      - /url: https://microsoftedge.microsoft.com/addons/detail/fcmfnpggmnlmfebfghbfnillijihnkoh
+                      - img [ref=e140]
+                      - text: 去商店
+    - generic [ref=e142]:
+      - heading "特色" [level=1] [ref=e143]
+      - heading "方便的脚本管理" [level=2] [ref=e144] [cursor=pointer]
+      - paragraph [ref=e145]:
+        - img "popup menu" [ref=e146]
+      - paragraph [ref=e147]: 篡改猴(Tampermonkey) 使管理您的用户脚本变得非常简单。位于右上方的 篡改猴 图标显示正在运行的脚本的数量,单击图标就可以看到正在运行的脚本和可能在这个网页上运行的脚本。
+      - paragraph [ref=e148]:
+        - link "( 视频教程)" [ref=e150] [cursor=pointer]:
+          - /url: javascript:void(0)
+          - text: (
+          - img [ref=e151]
+          - text: 视频教程)
+      - heading "脚本概览" [level=2] [ref=e153] [cursor=pointer]
+      - paragraph
+      - paragraph [ref=e154]:
+        - img "script overview" [ref=e155] [cursor=pointer]
+        - generic [ref=e156]: 单击图片进行放大
+      - paragraph
+      - paragraph [ref=e157]:
+        - text: 篡改猴 概览清晰地显示所有安装的脚本。您可以看到它们最后的更新时间,如果它们有自己的主页,您还可以对它们进行分类和其他更多的功能...
+        - link "( 视频教程)" [ref=e159] [cursor=pointer]:
+          - /url: javascript:void(0)
+          - text: (
+          - img [ref=e160]
+          - text: 视频教程)
+      - heading "设置多样性" [level=2] [ref=e162] [cursor=pointer]
+      - paragraph [ref=e163]:
+        - img "config mode" [ref=e164]
+      - paragraph [ref=e165]:
+        - text: 您可以为设置页面在三种不同的等级中进行选择。不常用的选项将被隐藏,通过这种方式来简化页面。
+        - link "( 视频教程)" [ref=e167] [cursor=pointer]:
+          - /url: javascript:void(0)
+          - text: (
+          - img [ref=e168]
+          - text: 视频教程)
+      - heading "脚本自动更新" [level=2] [ref=e170] [cursor=pointer]
+      - paragraph [ref=e171]:
+        - img "script update settings" [ref=e172]
+      - paragraph [ref=e173]: 您可以对脚本的检查更新频率进行设置。不再因为过时的脚本而产生漏洞。:)
+      - heading "安全" [level=2] [ref=e174] [cursor=pointer]
+      - paragraph
+      - paragraph
+      - paragraph
+      - paragraph [ref=e176]:
+        - img "security settings" [ref=e177] [cursor=pointer]
+        - generic [ref=e178]: 单击图片进行放大
+      - paragraph
+      - paragraph [ref=e179]: 只有偏执狂才能生存!把所有不该使用脚本的网站都列入黑名单。
+      - heading "兼容性" [level=2] [ref=e180] [cursor=pointer]
+      - paragraph [ref=e181]:
+        - img "compatibility settings" [ref=e182]
+      - paragraph [ref=e183]: 许多为火狐用户脚本管理器攥写的用户脚本叫做 Greasemonkey(油猴) <= 3.x,这就是为什么篡改猴要提供一个兼容层并自动检测配套设置。
+      - heading "同步" [level=2] [ref=e184] [cursor=pointer]
+      - paragraph [ref=e185]:
+        - img "sync settings" [ref=e186]
+      - paragraph [ref=e187]: 您正在使用多个浏览器,一个家用,一个工作用?您希望您可以同步自己的脚本?那么,您仅需设置 篡改猴 的同步功能。
+      - heading "CodeMirror 编辑器" [level=2] [ref=e188] [cursor=pointer]
+      - paragraph [ref=e189]:
+        - img "editor settings" [ref=e190]
+      - paragraph [ref=e191]: 您需要开发并编辑一个脚本?没问题!篡改猴 提供一个嵌入式的编辑器。
+      - heading "ESLint 语法检查" [level=2] [ref=e192] [cursor=pointer]
+      - paragraph
+      - paragraph [ref=e193]:
+        - img "editor with linter hints" [ref=e194] [cursor=pointer]
+        - generic [ref=e195]: 单击图片进行放大
+      - paragraph
+      - paragraph [ref=e196]: 您的脚本无法运行?篡改猴 的语法检查或许可以帮您找到问题...:)
+      - heading "快速开发" [level=2] [ref=e197] [cursor=pointer]
+      - paragraph
+      - paragraph [ref=e198]:
+        - img "allow access to file urls" [ref=e199] [cursor=pointer]
+        - generic [ref=e200]: 单击图片进行放大
+      - paragraph
+      - paragraph [ref=e201]: 篡改猴的编辑器是很棒的，然而您拥有自己的编辑器，它更快、更好……解决办法是启用“允许访问文件网址”，然后您就可以通过@require调用您脚本的本地副本了。
+      - paragraph [ref=e202]:
+        - text: 您也可以嘗試使用
+        - link "篡改猴 Editors 擴展" [ref=e203] [cursor=pointer]:
+          - /url: https://chrome.google.com/webstore/detail/tampermonkey-editors/lieodnapokbjkkdkhdljlllmgkmdokcm
+        - text: 在
+        - link "vscode.dev" [ref=e204] [cursor=pointer]:
+          - /url: https://vscode.dev?connectTo=tampermonkey
+        - text: 頁面上編輯篡改猴的用戶腳本。
+      - heading "卸载" [level=2] [ref=e205] [cursor=pointer]
+      - paragraph [ref=e206]: 如果您对篡改猴不满意(这不大可能发生,但是谁知道呢;),您可以在 Chrome 浏览器的插件页面移除它。
+      - paragraph [ref=e207]:
+        - text: ::video[
+        - link "https://www.youtube-nocookie.com/embed/Microsoft" [ref=e208] [cursor=pointer]:
+          - /url: https://www.youtube-nocookie.com/embed/Microsoft
+        - text: Edge?loop=1 800 400]
+  - generic [ref=e211]:
+    - link "联系方式" [ref=e213] [cursor=pointer]:
+      - /url: https://www.tampermonkey.net/imprint.php
+    - link "隐私政策" [ref=e215] [cursor=pointer]:
+      - /url: https://www.tampermonkey.net/privacy.php

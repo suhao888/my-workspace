@@ -1,0 +1,973 @@
+- generic [ref=e2]:
+  - generic [ref=e3]:
+    - link "Skip to content" [ref=e4] [cursor=pointer]:
+      - /url: "#start-of-content"
+    - banner "Global navigation menu" [ref=e8]:
+      - generic [ref=e9]:
+        - generic [ref=e10]:
+          - button "Open menu" [ref=e12] [cursor=pointer]:
+            - img [ref=e13]
+          - link "Homepage (g then d)" [ref=e15] [cursor=pointer]:
+            - /url: /
+            - img [ref=e16]
+        - generic [ref=e18]:
+          - navigation "Breadcrumbs" [ref=e19]:
+            - list [ref=e20]:
+              - listitem [ref=e21]:
+                - link "violentmonkey" [ref=e22] [cursor=pointer]:
+                  - /url: /violentmonkey
+                  - generic [ref=e23]: violentmonkey
+              - listitem [ref=e24]:
+                - link "violentmonkey" [ref=e25] [cursor=pointer]:
+                  - /url: /violentmonkey/violentmonkey
+                - button "Switch repository (alt shift r)" [ref=e26] [cursor=pointer]:
+                  - img [ref=e27]
+          - button "Search or jump to…" [ref=e31] [cursor=pointer]:
+            - generic [ref=e32]:
+              - generic:
+                - img
+              - generic [ref=e33]:
+                - generic:
+                  - text: Type
+                  - generic: /
+                  - text: to search
+        - generic [ref=e34]:
+          - generic [ref=e35]:
+            - generic [ref=e38]:
+              - link "Chat with Copilot" [ref=e40] [cursor=pointer]:
+                - /url: /copilot
+                - img [ref=e41]
+              - button "Open Copilot…" [ref=e45] [cursor=pointer]:
+                - generic:
+                  - img
+            - button "Create new..." [ref=e47] [cursor=pointer]:
+              - generic [ref=e48]:
+                - generic:
+                  - img
+              - generic:
+                - img
+            - generic [ref=e49]:
+              - link "All issues" [ref=e50] [cursor=pointer]:
+                - /url: /issues
+                - img [ref=e51]
+              - link "All pull requests" [ref=e54] [cursor=pointer]:
+                - /url: /pulls
+                - img [ref=e55]
+              - link "All repositories" [ref=e57] [cursor=pointer]:
+                - /url: /repos
+                - img [ref=e58]
+          - link "You have no unread notifications (g then n)" [ref=e60] [cursor=pointer]:
+            - /url: /notifications
+            - img [ref=e61]
+          - button "Open user navigation menu" [ref=e64] [cursor=pointer]:
+            - img "User avatar" [ref=e65]
+      - heading "Repository navigation" [level=2] [ref=e66]
+      - navigation "Repository" [ref=e67]:
+        - list [ref=e68]:
+          - listitem [ref=e69]:
+            - link "Code" [ref=e70] [cursor=pointer]:
+              - /url: /violentmonkey/violentmonkey
+              - img [ref=e72]
+              - generic [ref=e74]: Code
+          - listitem [ref=e75]:
+            - link "Issues (80)" [ref=e76] [cursor=pointer]:
+              - /url: /violentmonkey/violentmonkey/issues
+              - img [ref=e78]
+              - generic [ref=e81]: Issues
+              - generic [ref=e82]:
+                - generic [ref=e83]: "80"
+                - generic [ref=e84]: (80)
+          - listitem [ref=e85]:
+            - link "Pull requests (7)" [ref=e86] [cursor=pointer]:
+              - /url: /violentmonkey/violentmonkey/pulls
+              - img [ref=e88]
+              - generic [ref=e90]: Pull requests
+              - generic [ref=e91]:
+                - generic [ref=e92]: "7"
+                - generic [ref=e93]: (7)
+          - listitem [ref=e94]:
+            - link "Discussions" [ref=e95] [cursor=pointer]:
+              - /url: /violentmonkey/violentmonkey/discussions
+              - img [ref=e97]
+              - generic [ref=e99]: Discussions
+          - listitem [ref=e100]:
+            - link "Actions" [ref=e101] [cursor=pointer]:
+              - /url: /violentmonkey/violentmonkey/actions
+              - img [ref=e103]
+              - generic [ref=e105]: Actions
+          - listitem [ref=e106]:
+            - link "Projects" [ref=e107] [cursor=pointer]:
+              - /url: /violentmonkey/violentmonkey/projects
+              - img [ref=e109]
+              - generic [ref=e111]: Projects
+          - listitem [ref=e112]:
+            - link "Security and quality" [ref=e113] [cursor=pointer]:
+              - /url: /violentmonkey/violentmonkey/security
+              - img [ref=e115]
+              - generic [ref=e117]: Security and quality
+          - listitem [ref=e118]:
+            - link "Insights" [ref=e119] [cursor=pointer]:
+              - /url: /violentmonkey/violentmonkey/pulse
+              - img [ref=e121]
+              - generic [ref=e123]: Insights
+  - main [ref=e127]:
+    - generic [ref=e129]:
+      - 'heading "Releases: violentmonkey/violentmonkey" [level=1] [ref=e130]'
+      - generic [ref=e131]:
+        - generic [ref=e133]:
+          - navigation "Releases and Tags" [ref=e134]:
+            - link "Releases" [ref=e135] [cursor=pointer]:
+              - /url: /violentmonkey/violentmonkey/releases
+            - link "Tags" [ref=e136] [cursor=pointer]:
+              - /url: /violentmonkey/violentmonkey/tags
+          - generic [ref=e139]:
+            - searchbox "Find a release" [ref=e140]
+            - img
+        - generic [ref=e141]:
+          - generic [ref=e142]:
+            - generic [ref=e143]:
+              - heading "Release list" [level=2] [ref=e144]
+              - navigation "Release list navigation" [ref=e146]:
+                - list [ref=e148]:
+                  - listitem [ref=e149]:
+                    - link "BETA v2.41.1" [ref=e150] [cursor=pointer]:
+                      - /url: "#release-v2.41.1"
+                      - generic [ref=e151]: BETA v2.41.1
+                  - listitem [ref=e152]:
+                    - link "v2.41.0" [ref=e153] [cursor=pointer]:
+                      - /url: "#release-v2.41.0"
+                      - generic [ref=e154]: v2.41.0
+                  - listitem [ref=e155]:
+                    - link "v2.40.0" [ref=e156] [cursor=pointer]:
+                      - /url: "#release-v2.40.0"
+                      - generic [ref=e157]: v2.40.0
+                  - listitem [ref=e158]:
+                    - link "v2.39.0" [ref=e159] [cursor=pointer]:
+                      - /url: "#release-v2.39.0"
+                      - generic [ref=e160]: v2.39.0
+                  - listitem [ref=e161]:
+                    - link "v2.38.0" [ref=e162] [cursor=pointer]:
+                      - /url: "#release-v2.38.0"
+                      - generic [ref=e163]: v2.38.0
+                  - listitem [ref=e164]:
+                    - link "BETA v2.37.5" [ref=e165] [cursor=pointer]:
+                      - /url: "#release-v2.37.5"
+                      - generic [ref=e166]: BETA v2.37.5
+                  - listitem [ref=e167]:
+                    - link "BETA v2.37.4" [ref=e168] [cursor=pointer]:
+                      - /url: "#release-v2.37.4"
+                      - generic [ref=e169]: BETA v2.37.4
+                  - listitem [ref=e170]:
+                    - link "BETA v2.37.3" [ref=e171] [cursor=pointer]:
+                      - /url: "#release-v2.37.3"
+                      - generic [ref=e172]: BETA v2.37.3
+                  - listitem [ref=e173]:
+                    - link "BETA v2.37.2" [ref=e174] [cursor=pointer]:
+                      - /url: "#release-v2.37.2"
+                      - generic [ref=e175]: BETA v2.37.2
+                  - listitem [ref=e176]:
+                    - link "BETA v2.37.1" [ref=e177] [cursor=pointer]:
+                      - /url: "#release-v2.37.1"
+                      - generic [ref=e178]: BETA v2.37.1
+              - navigation "Release list pagination" [ref=e180]:
+                - link "Previous page" [disabled] [ref=e181]: Previous
+                - link "Next page" [ref=e182] [cursor=pointer]:
+                  - /url: /violentmonkey/violentmonkey/releases?page=2
+                  - text: Next
+            - generic [ref=e183]:
+              - region "BETA v2.41.1" [ref=e184]:
+                - heading "BETA v2.41.1" [level=2] [ref=e185]
+                - generic [ref=e188]:
+                  - generic [ref=e189]:
+                    - generic [ref=e190]:
+                      - generic [ref=e192]:
+                        - link "BETA v2.41.1" [ref=e194] [cursor=pointer]:
+                          - /url: /violentmonkey/violentmonkey/releases/tag/v2.41.1
+                        - generic [ref=e196]: Pre-release
+                      - button "Compare" [ref=e200] [cursor=pointer]:
+                        - generic [ref=e201]:
+                          - generic [ref=e202]: Compare
+                          - generic:
+                            - img
+                    - generic [ref=e204]:
+                      - generic [ref=e205]:
+                        - img "@github-actions" [ref=e206]
+                        - link "github-actions" [ref=e207] [cursor=pointer]:
+                          - /url: /apps/github-actions
+                        - text: released this 01 Jun 18:09 Jun 2
+                      - link "Tag v2.41.1" [ref=e209] [cursor=pointer]:
+                        - /url: /violentmonkey/violentmonkey/tree/v2.41.1
+                        - generic [ref=e210]:
+                          - img "Tag" [ref=e211]
+                          - text: v2.41.1
+                      - link "Commit 2a7f26d" [ref=e214] [cursor=pointer]:
+                        - /url: /violentmonkey/violentmonkey/commit/2a7f26d2bcfb2702349d13029bee1201685ab1b5
+                        - img "Commit" [ref=e215]
+                        - code [ref=e217]: 2a7f26d
+                    - generic [ref=e218]:
+                      - paragraph [ref=e219]:
+                        - strong [ref=e220]:
+                          - text: This is a beta release of Violentmonkey (also in
+                          - link "WebStore" [ref=e221] [cursor=pointer]:
+                            - /url: https://chrome.google.com/webstore/detail/violentmonkey-beta/opokoaglpekkimldnlggpoagmjegichg
+                          - text: ), use it at your own risk.
+                        - text: If you already use Violentmonkey, click
+                        - code [ref=e222]: Export to zip
+                        - text: in settings before installing the beta.
+                      - paragraph [ref=e223]: "Notable changes since v2.41.0:"
+                      - list [ref=e224]:
+                        - listitem [ref=e225]: improve responsive sizing of header
+                        - listitem [ref=e226]:
+                          - text: change "C" button to
+                          - code [ref=e227]: content
+                          - text: inside ... menu
+                        - listitem [ref=e228]: "fix GMxhr response for data: or blob: URL when using Promise or readystatechange event."
+                      - paragraph [ref=e229]:
+                        - text: "Commit log:"
+                        - link "v2.41.0...v2.41.1" [ref=e230] [cursor=pointer]:
+                          - /url: https://github.com/violentmonkey/violentmonkey/compare/v2.41.0...v2.41.1
+                  - generic [ref=e231]:
+                    - group [ref=e234]:
+                      - button "Assets 4" [ref=e235] [cursor=pointer]:
+                        - generic [ref=e236]:
+                          - generic [ref=e237]: Assets
+                          - generic "4" [ref=e238]
+                    - generic [ref=e240]:
+                      - group [ref=e242]:
+                        - generic "Add or remove reactions" [ref=e243] [cursor=pointer]:
+                          - img [ref=e244]
+                      - 'button "thumbs up (11): github-actions[bot], 02:07AM on June 02" [ref=e248] [cursor=pointer]':
+                        - generic [ref=e249]: 👍
+                        - generic [ref=e250]: "11"
+                      - generic [ref=e251]: 11 people reacted
+              - region "v2.41.0" [ref=e252]:
+                - heading "v2.41.0" [level=2] [ref=e253]
+                - generic [ref=e256]:
+                  - generic [ref=e257]:
+                    - generic [ref=e258]:
+                      - generic [ref=e260]:
+                        - link "v2.41.0" [ref=e262] [cursor=pointer]:
+                          - /url: /violentmonkey/violentmonkey/releases/tag/v2.41.0
+                        - link "Latest" [ref=e264] [cursor=pointer]:
+                          - /url: /violentmonkey/violentmonkey/releases/latest
+                          - generic [ref=e265]: Latest
+                      - button "Compare" [ref=e269] [cursor=pointer]:
+                        - generic [ref=e270]:
+                          - generic [ref=e271]: Compare
+                          - generic:
+                            - img
+                    - generic [ref=e273]:
+                      - generic [ref=e274]:
+                        - img "@github-actions" [ref=e275]
+                        - link "github-actions" [ref=e276] [cursor=pointer]:
+                          - /url: /apps/github-actions
+                        - text: released this 31 May 19:41 Jun 1
+                      - link "Tag v2.41.0" [ref=e278] [cursor=pointer]:
+                        - /url: /violentmonkey/violentmonkey/tree/v2.41.0
+                        - generic [ref=e279]:
+                          - img "Tag" [ref=e280]
+                          - text: v2.41.0
+                      - link "Commit e1ab063" [ref=e283] [cursor=pointer]:
+                        - /url: /violentmonkey/violentmonkey/commit/e1ab063b57529cc69a367941d920102c94bfac72
+                        - img "Commit" [ref=e284]
+                        - code [ref=e286]: e1ab063
+                    - generic [ref=e287]:
+                      - paragraph [ref=e288]: "Notable changes since v2.40.0:"
+                      - list [ref=e289]:
+                        - listitem [ref=e290]:
+                          - text: fix
+                          - link "#2542" [ref=e291] [cursor=pointer]:
+                            - /url: https://github.com/violentmonkey/violentmonkey/issues/2542
+                          - text: ": restore edit button in mobile popup + improve label wrapping in dashboard"
+                      - paragraph [ref=e292]:
+                        - text: "Commit log:"
+                        - link "v2.40.0...v2.41.0" [ref=e293] [cursor=pointer]:
+                          - /url: https://github.com/violentmonkey/violentmonkey/compare/v2.40.0...v2.41.0
+                  - generic [ref=e294]:
+                    - group [ref=e297]:
+                      - button "Assets 3" [expanded] [ref=e298] [cursor=pointer]:
+                        - generic [ref=e299]:
+                          - generic [ref=e300]: Assets
+                          - generic "3" [ref=e301]
+                      - generic [ref=e304]:
+                        - img [ref=e305]
+                        - generic [ref=e308]: Loading
+                    - generic [ref=e310]:
+                      - group [ref=e312]:
+                        - generic "Add or remove reactions" [ref=e313] [cursor=pointer]:
+                          - img [ref=e314]
+                      - generic [ref=e317]:
+                        - 'button "thumbs up (6): github-actions[bot], 03:09AM on June 01" [ref=e318] [cursor=pointer]':
+                          - generic [ref=e319]: 👍
+                          - generic [ref=e320]: "6"
+                        - 'button "hooray (2): github-actions[bot], 03:09AM on June 01" [ref=e321] [cursor=pointer]':
+                          - generic [ref=e322]: 🎉
+                          - generic [ref=e323]: "2"
+                        - 'button "heart (2): github-actions[bot], 03:09AM on June 01" [ref=e324] [cursor=pointer]':
+                          - generic [ref=e325]: ❤️
+                          - generic [ref=e326]: "2"
+                      - generic [ref=e327]: 7 people reacted
+              - region "v2.40.0" [ref=e328]:
+                - heading "v2.40.0" [level=2] [ref=e329]
+                - generic [ref=e332]:
+                  - generic [ref=e333]:
+                    - generic [ref=e334]:
+                      - link "v2.40.0" [ref=e338] [cursor=pointer]:
+                        - /url: /violentmonkey/violentmonkey/releases/tag/v2.40.0
+                      - button "Compare" [ref=e343] [cursor=pointer]:
+                        - generic [ref=e344]:
+                          - generic [ref=e345]: Compare
+                          - generic:
+                            - img
+                    - generic [ref=e347]:
+                      - generic [ref=e348]:
+                        - img "@github-actions" [ref=e349]
+                        - link "github-actions" [ref=e350] [cursor=pointer]:
+                          - /url: /apps/github-actions
+                        - text: released this 27 May 22:24 May 28
+                      - link "Tag v2.40.0" [ref=e352] [cursor=pointer]:
+                        - /url: /violentmonkey/violentmonkey/tree/v2.40.0
+                        - generic [ref=e353]:
+                          - img "Tag" [ref=e354]
+                          - text: v2.40.0
+                      - link "Commit 8fcae91" [ref=e357] [cursor=pointer]:
+                        - /url: /violentmonkey/violentmonkey/commit/8fcae9122bb9a48b186f203ed8834359c669dfce
+                        - img "Commit" [ref=e358]
+                        - code [ref=e360]: 8fcae91
+                    - generic [ref=e361]:
+                      - paragraph [ref=e362]: "Notable changes since v2.39.0:"
+                      - list [ref=e363]:
+                        - listitem [ref=e364]: fix search in dashboard
+                      - paragraph [ref=e365]:
+                        - text: "Commit log:"
+                        - link "v2.39.0...v2.40.0" [ref=e366] [cursor=pointer]:
+                          - /url: https://github.com/violentmonkey/violentmonkey/compare/v2.39.0...v2.40.0
+                  - generic [ref=e367]:
+                    - group [ref=e370]:
+                      - button "Assets 3" [ref=e371] [cursor=pointer]:
+                        - generic [ref=e372]:
+                          - generic [ref=e373]: Assets
+                          - generic "3" [ref=e374]
+                    - generic [ref=e376]:
+                      - group [ref=e378]:
+                        - generic "Add or remove reactions" [ref=e379] [cursor=pointer]:
+                          - img [ref=e380]
+                      - generic [ref=e383]:
+                        - 'button "thumbs up (7): github-actions[bot], 06:21AM on May 28" [ref=e384] [cursor=pointer]':
+                          - generic [ref=e385]: 👍
+                          - generic [ref=e386]: "7"
+                        - 'button "hooray (1): github-actions[bot], 06:21AM on May 28" [ref=e387] [cursor=pointer]':
+                          - generic [ref=e388]: 🎉
+                          - generic [ref=e389]: "1"
+                        - 'button "heart (3): github-actions[bot], 06:21AM on May 28" [ref=e390] [cursor=pointer]':
+                          - generic [ref=e391]: ❤️
+                          - generic [ref=e392]: "3"
+                      - generic [ref=e393]: 10 people reacted
+              - region "v2.39.0" [ref=e394]:
+                - heading "v2.39.0" [level=2] [ref=e395]
+                - generic [ref=e398]:
+                  - generic [ref=e399]:
+                    - generic [ref=e400]:
+                      - link "v2.39.0" [ref=e404] [cursor=pointer]:
+                        - /url: /violentmonkey/violentmonkey/releases/tag/v2.39.0
+                      - button "Compare" [ref=e409] [cursor=pointer]:
+                        - generic [ref=e410]:
+                          - generic [ref=e411]: Compare
+                          - generic:
+                            - img
+                    - generic [ref=e413]:
+                      - generic [ref=e414]:
+                        - img "@github-actions" [ref=e415]
+                        - link "github-actions" [ref=e416] [cursor=pointer]:
+                          - /url: /apps/github-actions
+                        - text: released this 26 May 09:07 May 26
+                      - link "Tag v2.39.0" [ref=e418] [cursor=pointer]:
+                        - /url: /violentmonkey/violentmonkey/tree/v2.39.0
+                        - generic [ref=e419]:
+                          - img "Tag" [ref=e420]
+                          - text: v2.39.0
+                      - link "Commit b9f3cc4" [ref=e423] [cursor=pointer]:
+                        - /url: /violentmonkey/violentmonkey/commit/b9f3cc45f2c515a65e37191eb9df338656a2b70e
+                        - img "Commit" [ref=e424]
+                        - code [ref=e426]: b9f3cc4
+                    - generic [ref=e427]:
+                      - paragraph [ref=e428]:
+                        - text: Notable changes since
+                        - link "v2.38.0" [ref=e429] [cursor=pointer]:
+                          - /url: https://github.com/violentmonkey/violentmonkey/releases/tag/v2.38.0
+                        - text: ":"
+                      - list [ref=e430]:
+                        - listitem [ref=e431]:
+                          - text: fix
+                          - link "#2535" [ref=e432] [cursor=pointer]:
+                            - /url: https://github.com/violentmonkey/violentmonkey/issues/2535
+                          - text: ": don't hide updated scripts in dashboard"
+                      - paragraph [ref=e433]:
+                        - text: "Commit log:"
+                        - link "v2.38.0...v2.39.0" [ref=e434] [cursor=pointer]:
+                          - /url: https://github.com/violentmonkey/violentmonkey/compare/v2.38.0...v2.39.0
+                  - generic [ref=e435]:
+                    - group [ref=e438]:
+                      - button "Assets 3" [ref=e439] [cursor=pointer]:
+                        - generic [ref=e440]:
+                          - generic [ref=e441]: Assets
+                          - generic "3" [ref=e442]
+                    - generic [ref=e444]:
+                      - group [ref=e446]:
+                        - generic "Add or remove reactions" [ref=e447] [cursor=pointer]:
+                          - img [ref=e448]
+                      - generic [ref=e451]:
+                        - 'button "thumbs up (6): github-actions[bot], 05:04PM on May 26" [ref=e452] [cursor=pointer]':
+                          - generic [ref=e453]: 👍
+                          - generic [ref=e454]: "6"
+                        - 'button "hooray (1): github-actions[bot], 05:04PM on May 26" [ref=e455] [cursor=pointer]':
+                          - generic [ref=e456]: 🎉
+                          - generic [ref=e457]: "1"
+                        - 'button "heart (6): github-actions[bot], 05:04PM on May 26" [ref=e458] [cursor=pointer]':
+                          - generic [ref=e459]: ❤️
+                          - generic [ref=e460]: "6"
+                        - 'button "rocket (2): github-actions[bot], 05:04PM on May 26" [ref=e461] [cursor=pointer]':
+                          - generic [ref=e462]: 🚀
+                          - generic [ref=e463]: "2"
+                      - generic [ref=e464]: 11 people reacted
+              - region "v2.38.0" [ref=e465]:
+                - heading "v2.38.0" [level=2] [ref=e466]
+                - generic [ref=e469]:
+                  - generic [ref=e470]:
+                    - generic [ref=e471]:
+                      - link "v2.38.0" [ref=e475] [cursor=pointer]:
+                        - /url: /violentmonkey/violentmonkey/releases/tag/v2.38.0
+                      - button "Compare" [ref=e480] [cursor=pointer]:
+                        - generic [ref=e481]:
+                          - generic [ref=e482]: Compare
+                          - generic:
+                            - img
+                    - generic [ref=e484]:
+                      - generic [ref=e485]:
+                        - img "@github-actions" [ref=e486]
+                        - link "github-actions" [ref=e487] [cursor=pointer]:
+                          - /url: /apps/github-actions
+                        - text: released this 25 May 14:54 May 25
+                      - link "Tag v2.38.0" [ref=e489] [cursor=pointer]:
+                        - /url: /violentmonkey/violentmonkey/tree/v2.38.0
+                        - generic [ref=e490]:
+                          - img "Tag" [ref=e491]
+                          - text: v2.38.0
+                      - link "Commit 5248990" [ref=e494] [cursor=pointer]:
+                        - /url: /violentmonkey/violentmonkey/commit/5248990c7750470ccc11c2e28bd22b776e8e2f31
+                        - img "Commit" [ref=e495]
+                        - code [ref=e497]: "5248990"
+                    - generic [ref=e498]:
+                      - paragraph [ref=e499]: "Known bugs:"
+                      - list [ref=e500]:
+                        - listitem [ref=e501]:
+                          - link "#2535" [ref=e502] [cursor=pointer]:
+                            - /url: https://github.com/violentmonkey/violentmonkey/issues/2535
+                          - text: ": checking for updates in dashboard hides the updatable scripts from the list."
+                      - paragraph [ref=e503]: "Notable changes since v2.37.0:"
+                      - list [ref=e504]:
+                        - listitem [ref=e505]: "group scripts when searching in dashboard by location of the match: name (the occurrence is highlighted) > tags > description > code"
+                        - listitem [ref=e506]:
+                          - text: show
+                          - code [ref=e507]: C
+                          - text: for scripts
+                          - link "in content mode" [ref=e508] [cursor=pointer]:
+                            - /url: https://violentmonkey.github.io/posts/inject-into-context/
+                          - text: in popup
+                        - listitem [ref=e509]:
+                          - text: fix
+                          - link "#2527" [ref=e510] [cursor=pointer]:
+                            - /url: https://github.com/violentmonkey/violentmonkey/issues/2527
+                          - text: ": complain about \"*\" host suffix in"
+                          - code [ref=e511]: "@match"
+                        - listitem [ref=e512]:
+                          - text: fix opening dashboard when there are scripts with
+                          - code [ref=e513]: // @tag
+                        - listitem [ref=e514]: fix update button in dashboard
+                        - listitem [ref=e515]:
+                          - text: add S3-compatible sync provider (
+                          - link "#2521" [ref=e516] [cursor=pointer]:
+                            - /url: https://github.com/violentmonkey/violentmonkey/pull/2521
+                          - text: ) by
+                          - link "@Arlind-dev" [ref=e517] [cursor=pointer]:
+                            - /url: https://github.com/Arlind-dev
+                        - listitem [ref=e518]:
+                          - text: show script commands in page context menu by
+                          - link "@117649" [ref=e519] [cursor=pointer]:
+                            - /url: https://github.com/117649
+                          - text: ", the option can be toggled via dashboard or popup (disabled by default)."
+                          - link "image" [ref=e520] [cursor=pointer]:
+                            - /url: https://private-user-images.githubusercontent.com/1310400/590148001-a361f6b6-2f7b-457b-9067-bc0741152ba1.png?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3ODI5OTc1MjUsIm5iZiI6MTc4Mjk5NzIyNSwicGF0aCI6Ii8xMzEwNDAwLzU5MDE0ODAwMS1hMzYxZjZiNi0yZjdiLTQ1N2ItOTA2Ny1iYzA3NDExNTJiYTEucG5nP1gtQW16LUFsZ29yaXRobT1BV1M0LUhNQUMtU0hBMjU2JlgtQW16LUNyZWRlbnRpYWw9QUtJQVZDT0RZTFNBNTNQUUs0WkElMkYyMDI2MDcwMiUyRnVzLWVhc3QtMSUyRnMzJTJGYXdzNF9yZXF1ZXN0JlgtQW16LURhdGU9MjAyNjA3MDJUMTMwMDI1WiZYLUFtei1FeHBpcmVzPTMwMCZYLUFtei1TaWduYXR1cmU9MDM4M2FkOGYxZTExZmU4ZmQ2NmEyYmM3NTE0ZWEwZGQ3ZjkxN2E3ZjM3MWE2ZTBmOTMzMmEwNjk2NDI1Yzc5YiZYLUFtei1TaWduZWRIZWFkZXJzPWhvc3QmcmVzcG9uc2UtY29udGVudC10eXBlPWltYWdlJTJGcG5nIn0.5-0KT-XS6rTKMdqj1aUADhO4THZFanX1x1V10heLiD4
+                            - img "image" [ref=e521]
+                          - link "image" [ref=e522] [cursor=pointer]:
+                            - /url: https://private-user-images.githubusercontent.com/1310400/590146604-566c2b41-c01d-4520-aaf5-fe9bd2cfe0da.png?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3ODI5OTc1MjUsIm5iZiI6MTc4Mjk5NzIyNSwicGF0aCI6Ii8xMzEwNDAwLzU5MDE0NjYwNC01NjZjMmI0MS1jMDFkLTQ1MjAtYWFmNS1mZTliZDJjZmUwZGEucG5nP1gtQW16LUFsZ29yaXRobT1BV1M0LUhNQUMtU0hBMjU2JlgtQW16LUNyZWRlbnRpYWw9QUtJQVZDT0RZTFNBNTNQUUs0WkElMkYyMDI2MDcwMiUyRnVzLWVhc3QtMSUyRnMzJTJGYXdzNF9yZXF1ZXN0JlgtQW16LURhdGU9MjAyNjA3MDJUMTMwMDI1WiZYLUFtei1FeHBpcmVzPTMwMCZYLUFtei1TaWduYXR1cmU9NGRjYzg5YTE3NDZlZmQwNWY1MWVmOWRhYmI0YWE3MjI2MGYwN2Y5YjhlYWM0N2NmZmU3ZDIxNzNmZTUyMGY1OCZYLUFtei1TaWduZWRIZWFkZXJzPWhvc3QmcmVzcG9uc2UtY29udGVudC10eXBlPWltYWdlJTJGcG5nIn0.3dv0JI9QbRJ0Mwc5dCP_ovoJ8jkDyAcSO8DgPvZDWB0
+                            - img "image" [ref=e523]
+                      - paragraph [ref=e524]:
+                        - text: "Commit log:"
+                        - link "v2.37.5...v2.38.0" [ref=e525] [cursor=pointer]:
+                          - /url: https://github.com/violentmonkey/violentmonkey/compare/v2.37.5...v2.38.0
+                  - generic [ref=e526]:
+                    - generic [ref=e527]:
+                      - heading "Contributors" [level=3] [ref=e528]
+                      - list [ref=e529]:
+                        - listitem [ref=e530]:
+                          - link "@117649" [ref=e531] [cursor=pointer]:
+                            - /url: https://github.com/117649
+                            - img "@117649" [ref=e532]
+                        - listitem [ref=e533]:
+                          - link "@Arlind-dev" [ref=e534] [cursor=pointer]:
+                            - /url: https://github.com/Arlind-dev
+                            - img "@Arlind-dev" [ref=e535]
+                      - generic [ref=e536]: 117649 and Arlind-dev
+                    - group [ref=e539]:
+                      - button "Assets 3" [ref=e540] [cursor=pointer]:
+                        - generic [ref=e541]:
+                          - generic [ref=e542]: Assets
+                          - generic "3" [ref=e543]
+                    - generic [ref=e545]:
+                      - group [ref=e547]:
+                        - generic "Add or remove reactions" [ref=e548] [cursor=pointer]:
+                          - img [ref=e549]
+                      - generic [ref=e552]:
+                        - 'button "thumbs up (7): github-actions[bot], 10:51PM on May 25" [ref=e553] [cursor=pointer]':
+                          - generic [ref=e554]: 👍
+                          - generic [ref=e555]: "7"
+                        - 'button "hooray (1): github-actions[bot], 10:51PM on May 25" [ref=e556] [cursor=pointer]':
+                          - generic [ref=e557]: 🎉
+                          - generic [ref=e558]: "1"
+                        - 'button "heart (9): github-actions[bot], 10:51PM on May 25" [ref=e559] [cursor=pointer]':
+                          - generic [ref=e560]: ❤️
+                          - generic [ref=e561]: "9"
+                      - generic [ref=e562]: 13 people reacted
+              - region "BETA v2.37.5" [ref=e563]:
+                - heading "BETA v2.37.5" [level=2] [ref=e564]
+                - generic [ref=e567]:
+                  - generic [ref=e568]:
+                    - generic [ref=e569]:
+                      - generic [ref=e571]:
+                        - link "BETA v2.37.5" [ref=e573] [cursor=pointer]:
+                          - /url: /violentmonkey/violentmonkey/releases/tag/v2.37.5
+                        - generic [ref=e575]: Pre-release
+                      - button "Compare" [ref=e579] [cursor=pointer]:
+                        - generic [ref=e580]:
+                          - generic [ref=e581]: Compare
+                          - generic:
+                            - img
+                    - generic [ref=e583]:
+                      - generic [ref=e584]:
+                        - img "@github-actions" [ref=e585]
+                        - link "github-actions" [ref=e586] [cursor=pointer]:
+                          - /url: /apps/github-actions
+                        - text: released this 22 May 10:04 May 22
+                      - link "Tag v2.37.5" [ref=e588] [cursor=pointer]:
+                        - /url: /violentmonkey/violentmonkey/tree/v2.37.5
+                        - generic [ref=e589]:
+                          - img "Tag" [ref=e590]
+                          - text: v2.37.5
+                      - link "Commit ce72ffa" [ref=e593] [cursor=pointer]:
+                        - /url: /violentmonkey/violentmonkey/commit/ce72ffa332d187d473445d27c19c9237107a62f4
+                        - img "Commit" [ref=e594]
+                        - code [ref=e596]: ce72ffa
+                    - generic [ref=e597]:
+                      - paragraph [ref=e598]:
+                        - strong [ref=e599]:
+                          - text: This is a beta release of Violentmonkey (also in
+                          - link "WebStore" [ref=e600] [cursor=pointer]:
+                            - /url: https://chrome.google.com/webstore/detail/violentmonkey-beta/opokoaglpekkimldnlggpoagmjegichg
+                          - text: ), use it at your own risk.
+                        - text: If you already use Violentmonkey, click
+                        - code [ref=e601]: Export to zip
+                        - text: in settings before installing the beta.
+                      - paragraph [ref=e602]: "Notable changes since v2.37.4:"
+                      - list [ref=e603]:
+                        - listitem [ref=e604]: fix top kebab menu in popup
+                        - listitem [ref=e605]: fix page commands in context menu in restored tabs in Firefox
+                      - paragraph [ref=e606]:
+                        - text: "Commit log:"
+                        - link "v2.37.4...v2.37.5" [ref=e607] [cursor=pointer]:
+                          - /url: https://github.com/violentmonkey/violentmonkey/compare/v2.37.4...v2.37.5
+                  - generic [ref=e608]:
+                    - group [ref=e611]:
+                      - button "Assets 4" [ref=e612] [cursor=pointer]:
+                        - generic [ref=e613]:
+                          - generic [ref=e614]: Assets
+                          - generic "4" [ref=e615]
+                    - generic [ref=e617]:
+                      - group [ref=e619]:
+                        - generic "Add or remove reactions" [ref=e620] [cursor=pointer]:
+                          - img [ref=e621]
+                      - 'button "thumbs up (3): github-actions[bot], 06:02PM on May 22" [ref=e625] [cursor=pointer]':
+                        - generic [ref=e626]: 👍
+                        - generic [ref=e627]: "3"
+                      - generic [ref=e628]: 3 people reacted
+              - region "BETA v2.37.4" [ref=e629]:
+                - heading "BETA v2.37.4" [level=2] [ref=e630]
+                - generic [ref=e633]:
+                  - generic [ref=e634]:
+                    - generic [ref=e635]:
+                      - generic [ref=e637]:
+                        - link "BETA v2.37.4" [ref=e639] [cursor=pointer]:
+                          - /url: /violentmonkey/violentmonkey/releases/tag/v2.37.4
+                        - generic [ref=e641]: Pre-release
+                      - button "Compare" [ref=e645] [cursor=pointer]:
+                        - generic [ref=e646]:
+                          - generic [ref=e647]: Compare
+                          - generic:
+                            - img
+                    - generic [ref=e649]:
+                      - generic [ref=e650]:
+                        - img "@github-actions" [ref=e651]
+                        - link "github-actions" [ref=e652] [cursor=pointer]:
+                          - /url: /apps/github-actions
+                        - text: released this 20 May 11:24 May 20
+                      - link "Tag v2.37.4" [ref=e654] [cursor=pointer]:
+                        - /url: /violentmonkey/violentmonkey/tree/v2.37.4
+                        - generic [ref=e655]:
+                          - img "Tag" [ref=e656]
+                          - text: v2.37.4
+                      - link "Commit 943fd72" [ref=e659] [cursor=pointer]:
+                        - /url: /violentmonkey/violentmonkey/commit/943fd72bf0bb7ee5b175d6d02d8c379be48d9f95
+                        - img "Commit" [ref=e660]
+                        - code [ref=e662]: 943fd72
+                    - generic [ref=e663]:
+                      - paragraph [ref=e664]:
+                        - strong [ref=e665]:
+                          - text: This is a beta release of Violentmonkey (also in
+                          - link "WebStore" [ref=e666] [cursor=pointer]:
+                            - /url: https://chrome.google.com/webstore/detail/violentmonkey-beta/opokoaglpekkimldnlggpoagmjegichg
+                          - text: ), use it at your own risk.
+                        - text: If you already use Violentmonkey, click
+                        - code [ref=e667]: Export to zip
+                        - text: in settings before installing the beta.
+                      - paragraph [ref=e668]: "Notable changes since v2.37.3:"
+                      - list [ref=e669]:
+                        - listitem [ref=e670]:
+                          - text: add S3-compatible sync provider (
+                          - link "#2521" [ref=e671] [cursor=pointer]:
+                            - /url: https://github.com/violentmonkey/violentmonkey/pull/2521
+                          - text: ) by
+                          - link "@Arlind-dev" [ref=e672] [cursor=pointer]:
+                            - /url: https://github.com/Arlind-dev
+                        - listitem [ref=e673]:
+                          - text: fix
+                          - link "#2518" [ref=e674] [cursor=pointer]:
+                            - /url: https://github.com/violentmonkey/violentmonkey/issues/2518
+                          - text: ": clearInterval/clearTimeout with same-origin iframes"
+                        - listitem [ref=e675]:
+                          - text: fix
+                          - link "#2520" [ref=e676] [cursor=pointer]:
+                            - /url: https://github.com/violentmonkey/violentmonkey/issues/2520
+                          - text: ": GM_download for"
+                          - code [ref=e677]: "data:"
+                          - text: URI
+                        - listitem [ref=e678]:
+                          - text: fix
+                          - link "#2527" [ref=e679] [cursor=pointer]:
+                            - /url: https://github.com/violentmonkey/violentmonkey/issues/2527
+                          - text: ": complain about \"*\" host suffix in"
+                          - code [ref=e680]: "@match"
+                        - listitem [ref=e681]:
+                          - text: "fix: toggling"
+                          - code [ref=e682]: Show script commands in page menu
+                          - text: is now applied to the open tabs without reloading them
+                        - listitem [ref=e683]:
+                          - text: show
+                          - code [ref=e684]: C
+                          - text: for scripts
+                          - link "in content mode" [ref=e685] [cursor=pointer]:
+                            - /url: https://violentmonkey.github.io/posts/inject-into-context/
+                          - text: in popup
+                      - paragraph [ref=e686]:
+                        - text: "Commit log:"
+                        - link "v2.37.3...v2.37.4" [ref=e687] [cursor=pointer]:
+                          - /url: https://github.com/violentmonkey/violentmonkey/compare/v2.37.3...v2.37.4
+                  - generic [ref=e688]:
+                    - generic [ref=e689]:
+                      - heading "Contributors" [level=3] [ref=e690]
+                      - list [ref=e691]:
+                        - listitem [ref=e692]:
+                          - link "@Arlind-dev" [ref=e693] [cursor=pointer]:
+                            - /url: https://github.com/Arlind-dev
+                            - img "@Arlind-dev" [ref=e694]
+                      - generic [ref=e695]: Arlind-dev
+                    - group [ref=e698]:
+                      - button "Assets 4" [ref=e699] [cursor=pointer]:
+                        - generic [ref=e700]:
+                          - generic [ref=e701]: Assets
+                          - generic "4" [ref=e702]
+                    - generic [ref=e704]:
+                      - group [ref=e706]:
+                        - generic "Add or remove reactions" [ref=e707] [cursor=pointer]:
+                          - img [ref=e708]
+                      - generic [ref=e711]:
+                        - 'button "thumbs up (3): github-actions[bot], 07:21PM on May 20" [ref=e712] [cursor=pointer]':
+                          - generic [ref=e713]: 👍
+                          - generic [ref=e714]: "3"
+                        - 'button "rocket (4): github-actions[bot], 07:21PM on May 20" [ref=e715] [cursor=pointer]':
+                          - generic [ref=e716]: 🚀
+                          - generic [ref=e717]: "4"
+                      - generic [ref=e718]: 7 people reacted
+              - region "BETA v2.37.3" [ref=e719]:
+                - heading "BETA v2.37.3" [level=2] [ref=e720]
+                - generic [ref=e723]:
+                  - generic [ref=e724]:
+                    - generic [ref=e725]:
+                      - generic [ref=e727]:
+                        - link "BETA v2.37.3" [ref=e729] [cursor=pointer]:
+                          - /url: /violentmonkey/violentmonkey/releases/tag/v2.37.3
+                        - generic [ref=e731]: Pre-release
+                      - button "Compare" [ref=e735] [cursor=pointer]:
+                        - generic [ref=e736]:
+                          - generic [ref=e737]: Compare
+                          - generic:
+                            - img
+                    - generic [ref=e739]:
+                      - generic [ref=e740]:
+                        - img "@github-actions" [ref=e741]
+                        - link "github-actions" [ref=e742] [cursor=pointer]:
+                          - /url: /apps/github-actions
+                        - text: released this 10 May 22:00 May 11
+                      - link "Tag v2.37.3" [ref=e744] [cursor=pointer]:
+                        - /url: /violentmonkey/violentmonkey/tree/v2.37.3
+                        - generic [ref=e745]:
+                          - img "Tag" [ref=e746]
+                          - text: v2.37.3
+                      - link "Commit 06aa4bf" [ref=e749] [cursor=pointer]:
+                        - /url: /violentmonkey/violentmonkey/commit/06aa4bf034c7269ffb98214159979b8612313e06
+                        - img "Commit" [ref=e750]
+                        - code [ref=e752]: 06aa4bf
+                    - generic [ref=e753]:
+                      - paragraph [ref=e754]:
+                        - strong [ref=e755]:
+                          - text: This is a beta release of Violentmonkey (also in
+                          - link "WebStore" [ref=e756] [cursor=pointer]:
+                            - /url: https://chrome.google.com/webstore/detail/violentmonkey-beta/opokoaglpekkimldnlggpoagmjegichg
+                          - text: ), use it at your own risk.
+                        - text: If you already use Violentmonkey, click
+                        - code [ref=e757]: Export to zip
+                        - text: in settings before installing the beta.
+                      - paragraph [ref=e758]: "Notable changes since v2.37.2:"
+                      - list [ref=e759]:
+                        - listitem [ref=e760]:
+                          - text: script commands in page context menu by
+                          - link "@117649" [ref=e761] [cursor=pointer]:
+                            - /url: https://github.com/117649
+                          - text: ", the option can be toggled via dashboard or popup (disabled by default). This beta requires reloading the page(s) after toggling the option, which won't be necessary in the next release."
+                      - paragraph [ref=e762]:
+                        - text: "Commit log:"
+                        - link "v2.37.2...v2.37.3" [ref=e763] [cursor=pointer]:
+                          - /url: https://github.com/violentmonkey/violentmonkey/compare/v2.37.2...v2.37.3
+                  - generic [ref=e764]:
+                    - generic [ref=e765]:
+                      - heading "Contributors" [level=3] [ref=e766]
+                      - list [ref=e767]:
+                        - listitem [ref=e768]:
+                          - link "@117649" [ref=e769] [cursor=pointer]:
+                            - /url: https://github.com/117649
+                            - img "@117649" [ref=e770]
+                      - generic [ref=e771]: "117649"
+                    - group [ref=e774]:
+                      - button "Assets 4" [ref=e775] [cursor=pointer]:
+                        - generic [ref=e776]:
+                          - generic [ref=e777]: Assets
+                          - generic "4" [ref=e778]
+                    - generic [ref=e780]:
+                      - group [ref=e782]:
+                        - generic "Add or remove reactions" [ref=e783] [cursor=pointer]:
+                          - img [ref=e784]
+                      - 'button "heart (2): github-actions[bot], 05:56AM on May 11" [ref=e788] [cursor=pointer]':
+                        - generic [ref=e789]: ❤️
+                        - generic [ref=e790]: "2"
+                      - generic [ref=e791]: 2 people reacted
+              - region "BETA v2.37.2" [ref=e792]:
+                - heading "BETA v2.37.2" [level=2] [ref=e793]
+                - generic [ref=e796]:
+                  - generic [ref=e797]:
+                    - generic [ref=e798]:
+                      - generic [ref=e800]:
+                        - link "BETA v2.37.2" [ref=e802] [cursor=pointer]:
+                          - /url: /violentmonkey/violentmonkey/releases/tag/v2.37.2
+                        - generic [ref=e804]: Pre-release
+                      - button "Compare" [ref=e808] [cursor=pointer]:
+                        - generic [ref=e809]:
+                          - generic [ref=e810]: Compare
+                          - generic:
+                            - img
+                    - generic [ref=e812]:
+                      - generic [ref=e813]:
+                        - img "@github-actions" [ref=e814]
+                        - link "github-actions" [ref=e815] [cursor=pointer]:
+                          - /url: /apps/github-actions
+                        - text: released this 09 May 09:27 May 9
+                      - link "Tag v2.37.2" [ref=e817] [cursor=pointer]:
+                        - /url: /violentmonkey/violentmonkey/tree/v2.37.2
+                        - generic [ref=e818]:
+                          - img "Tag" [ref=e819]
+                          - text: v2.37.2
+                      - link "Commit b587c74" [ref=e822] [cursor=pointer]:
+                        - /url: /violentmonkey/violentmonkey/commit/b587c74c6841417943e6744b874bdd2aa8ad4e31
+                        - img "Commit" [ref=e823]
+                        - code [ref=e825]: b587c74
+                    - generic [ref=e826]:
+                      - paragraph [ref=e827]:
+                        - strong [ref=e828]:
+                          - text: This is a beta release of Violentmonkey (also in
+                          - link "WebStore" [ref=e829] [cursor=pointer]:
+                            - /url: https://chrome.google.com/webstore/detail/violentmonkey-beta/opokoaglpekkimldnlggpoagmjegichg
+                          - text: ), use it at your own risk.
+                        - text: If you already use Violentmonkey, click
+                        - code [ref=e830]: Export to zip
+                        - text: in settings before installing the beta.
+                      - paragraph [ref=e831]: Some edge case bugs fixed.
+                      - paragraph [ref=e832]:
+                        - text: "Commit log:"
+                        - link "v2.37.1...v2.37.2" [ref=e833] [cursor=pointer]:
+                          - /url: https://github.com/violentmonkey/violentmonkey/compare/v2.37.1...v2.37.2
+                  - generic [ref=e834]:
+                    - group [ref=e837]:
+                      - button "Assets 4" [ref=e838] [cursor=pointer]:
+                        - generic [ref=e839]:
+                          - generic [ref=e840]: Assets
+                          - generic "4" [ref=e841]
+                    - generic [ref=e843]:
+                      - group [ref=e845]:
+                        - generic "Add or remove reactions" [ref=e846] [cursor=pointer]:
+                          - img [ref=e847]
+                      - generic [ref=e850]:
+                        - 'button "thumbs up (6): github-actions[bot], 05:15PM on May 09" [ref=e851] [cursor=pointer]':
+                          - generic [ref=e852]: 👍
+                          - generic [ref=e853]: "6"
+                        - 'button "heart (1): github-actions[bot], 05:15PM on May 09" [ref=e854] [cursor=pointer]':
+                          - generic [ref=e855]: ❤️
+                          - generic [ref=e856]: "1"
+                      - generic [ref=e857]: 7 people reacted
+              - region "BETA v2.37.1" [ref=e858]:
+                - heading "BETA v2.37.1" [level=2] [ref=e859]
+                - generic [ref=e862]:
+                  - generic [ref=e863]:
+                    - generic [ref=e864]:
+                      - generic [ref=e866]:
+                        - link "BETA v2.37.1" [ref=e868] [cursor=pointer]:
+                          - /url: /violentmonkey/violentmonkey/releases/tag/v2.37.1
+                        - generic [ref=e870]: Pre-release
+                      - button "Compare" [ref=e874] [cursor=pointer]:
+                        - generic [ref=e875]:
+                          - generic [ref=e876]: Compare
+                          - generic:
+                            - img
+                    - generic [ref=e878]:
+                      - generic [ref=e879]:
+                        - img "@github-actions" [ref=e880]
+                        - link "github-actions" [ref=e881] [cursor=pointer]:
+                          - /url: /apps/github-actions
+                        - text: released this 30 Apr 12:28 Apr 30
+                      - link "Tag v2.37.1" [ref=e883] [cursor=pointer]:
+                        - /url: /violentmonkey/violentmonkey/tree/v2.37.1
+                        - generic [ref=e884]:
+                          - img "Tag" [ref=e885]
+                          - text: v2.37.1
+                      - link "Commit 5dc848c" [ref=e888] [cursor=pointer]:
+                        - /url: /violentmonkey/violentmonkey/commit/5dc848c9b3b7e024d89847d88943a6de1079815b
+                        - img "Commit" [ref=e889]
+                        - code [ref=e891]: 5dc848c
+                    - generic [ref=e892]:
+                      - paragraph [ref=e893]:
+                        - strong [ref=e894]:
+                          - text: This is a beta release of Violentmonkey (also in
+                          - link "WebStore" [ref=e895] [cursor=pointer]:
+                            - /url: https://chrome.google.com/webstore/detail/violentmonkey-beta/opokoaglpekkimldnlggpoagmjegichg
+                          - text: ), use it at your own risk.
+                        - text: If you already use Violentmonkey, click
+                        - code [ref=e896]: Export to zip
+                        - text: in settings before installing the beta.
+                      - paragraph [ref=e897]: "Notable changes since v2.37.0:"
+                      - list [ref=e898]:
+                        - listitem [ref=e899]:
+                          - text: "dashboard: fix opening when there are scripts with"
+                          - code [ref=e900]: // @tag
+                        - listitem [ref=e901]: "dashboard: rename tab to \"Settings | Update | Sync\""
+                        - listitem [ref=e902]: "dashboard: don't force an update on normal click"
+                        - listitem [ref=e903]: "dashboard: restore classic sort order with English names on top"
+                      - paragraph [ref=e904]:
+                        - text: "Commit log:"
+                        - link "v2.37.0...v2.37.1" [ref=e905] [cursor=pointer]:
+                          - /url: https://github.com/violentmonkey/violentmonkey/compare/v2.37.0...v2.37.1
+                  - generic [ref=e906]:
+                    - group [ref=e909]:
+                      - button "Assets 4" [ref=e910] [cursor=pointer]:
+                        - generic [ref=e911]:
+                          - generic [ref=e912]: Assets
+                          - generic "4" [ref=e913]
+                    - generic [ref=e915]:
+                      - group [ref=e917]:
+                        - generic "Add or remove reactions" [ref=e918] [cursor=pointer]:
+                          - img [ref=e919]
+                      - generic [ref=e922]:
+                        - 'button "thumbs up (9): github-actions[bot], 08:25PM on April 30" [ref=e923] [cursor=pointer]':
+                          - generic [ref=e924]: 👍
+                          - generic [ref=e925]: "9"
+                        - 'button "heart (2): github-actions[bot], 08:25PM on April 30" [ref=e926] [cursor=pointer]':
+                          - generic [ref=e927]: ❤️
+                          - generic [ref=e928]: "2"
+                      - generic [ref=e929]: 11 people reacted
+          - navigation "Pagination" [ref=e932]:
+            - link "Previous page" [disabled] [ref=e933]: Previous
+            - emphasis [ref=e934] [cursor=pointer]: "1"
+            - link "Page 2" [ref=e935] [cursor=pointer]:
+              - /url: /violentmonkey/violentmonkey/releases?page=2
+              - text: "2"
+            - link "Page 3" [ref=e936] [cursor=pointer]:
+              - /url: /violentmonkey/violentmonkey/releases?page=3
+              - text: "3"
+            - link "Page 4" [ref=e937] [cursor=pointer]:
+              - /url: /violentmonkey/violentmonkey/releases?page=4
+              - text: "4"
+            - link "Page 5" [ref=e938] [cursor=pointer]:
+              - /url: /violentmonkey/violentmonkey/releases?page=5
+              - text: "5"
+            - generic [ref=e939]: …
+            - link "Page 20" [ref=e940] [cursor=pointer]:
+              - /url: /violentmonkey/violentmonkey/releases?page=20
+              - text: "20"
+            - link "Page 21" [ref=e941] [cursor=pointer]:
+              - /url: /violentmonkey/violentmonkey/releases?page=21
+              - text: "21"
+            - link "Next page" [ref=e942] [cursor=pointer]:
+              - /url: /violentmonkey/violentmonkey/releases?page=2
+              - text: Next
+  - contentinfo [ref=e943]:
+    - heading "Footer" [level=2] [ref=e944]
+    - generic [ref=e945]:
+      - generic [ref=e946]:
+        - link "GitHub Homepage" [ref=e947] [cursor=pointer]:
+          - /url: https://github.com
+          - img [ref=e948]
+        - generic [ref=e950]: © 2026 GitHub, Inc.
+      - navigation "Footer" [ref=e951]:
+        - heading "Footer navigation" [level=3] [ref=e952]
+        - list "Footer navigation" [ref=e953]:
+          - listitem [ref=e954]:
+            - link "Terms" [ref=e955] [cursor=pointer]:
+              - /url: https://docs.github.com/site-policy/github-terms/github-terms-of-service
+          - listitem [ref=e956]:
+            - link "Privacy" [ref=e957] [cursor=pointer]:
+              - /url: https://docs.github.com/site-policy/privacy-policies/github-privacy-statement
+          - listitem [ref=e958]:
+            - link "Security" [ref=e959] [cursor=pointer]:
+              - /url: https://github.com/security
+          - listitem [ref=e960]:
+            - link "Status" [ref=e961] [cursor=pointer]:
+              - /url: https://www.githubstatus.com/
+          - listitem [ref=e962]:
+            - link "Community" [ref=e963] [cursor=pointer]:
+              - /url: https://github.community/
+          - listitem [ref=e964]:
+            - link "Docs" [ref=e965] [cursor=pointer]:
+              - /url: https://docs.github.com/
+          - listitem [ref=e966]:
+            - link "Contact" [ref=e967] [cursor=pointer]:
+              - /url: https://support.github.com?tags=dotcom-footer
+          - listitem [ref=e968]:
+            - button "Manage cookies" [ref=e970] [cursor=pointer]
+          - listitem [ref=e971]:
+            - button "Do not share my personal information" [ref=e973] [cursor=pointer]

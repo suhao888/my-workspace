@@ -1,0 +1,163 @@
+- generic [ref=e4]:
+  - generic [ref=e5]:
+    - banner [ref=e6]:
+      - generic [ref=e8]:
+        - list [ref=e9]:
+          - listitem [ref=e10]
+          - listitem [ref=e13]
+          - listitem [ref=e16]
+          - listitem [ref=e19]
+          - listitem [ref=e22]
+        - link [ref=e25] [cursor=pointer]:
+          - /url: /
+        - list [ref=e26]:
+          - listitem [ref=e27]
+          - listitem [ref=e29]
+          - listitem [ref=e31]
+          - listitem [ref=e33]
+          - listitem [ref=e35]
+          - listitem [ref=e37]
+    - generic [ref=e39]:
+      - generic [ref=e40]:
+        - img [ref=e41]
+        - generic [ref=e42]:
+          - text: 💾 请速转存资源
+          - text: 网盘分享随时可能停止
+      - generic [ref=e43]:
+        - heading [level=3]
+      - generic [ref=e44]:
+        - generic [ref=e45]:
+          - generic [ref=e46]: ⚠️
+          - generic [ref=e47]: 当前网址随时失效，请截图保存发布页或邮箱，获取最新地址！
+        - paragraph [ref=e48]:
+          - text: 网站随时失效请记住📌 永久地址：
+          - link "libvio.app" [ref=e49] [cursor=pointer]:
+            - /url: https://www.libvio.app
+          - text: （实时更新）
+        - paragraph [ref=e50]: 网址失效或资源问题可邮件反馈： help@libvio.com
+        - generic [ref=e51]:
+          - generic [ref=e52]: 推荐浏览器：
+          - link "Chrome" [ref=e53] [cursor=pointer]:
+            - /url: //www.google.cn/chrome/
+          - link "Firefox" [ref=e54] [cursor=pointer]:
+            - /url: //www.mozilla.org/zh-CN/firefox/
+          - link "X" [ref=e55] [cursor=pointer]:
+            - /url: //www.xbext.com/
+          - link "Via" [ref=e56] [cursor=pointer]:
+            - /url: //viayoo.com/zh-cn/
+          - link "狐猴" [ref=e57] [cursor=pointer]:
+            - /url: //lemurbrowser.com/
+        - generic [ref=e58]:
+          - img [ref=e59]
+          - link [ref=e60] [cursor=pointer]:
+            - /url: /fCuxIdNBxrxWfsLXknT333333/
+          - link [ref=e62] [cursor=pointer]:
+            - /url: /fCuxIdNBxrxWfsLXknT222222/
+          - link [ref=e64] [cursor=pointer]:
+            - /url: /fCuxIdNBxrxWfsLXknT111111/
+      - generic [ref=e67] [cursor=pointer]: 务必记住哦
+    - generic [ref=e68]:
+      - generic [ref=e70]:
+        - link [ref=e71] [cursor=pointer]:
+          - /url: javascript:void(0)
+          - img [ref=e72]
+        - generic [ref=e73]: 广告
+        - generic [ref=e74]: 关闭
+      - generic [ref=e75]:
+        - list [ref=e76]:
+          - listitem [ref=e77]
+          - listitem [ref=e85]
+          - listitem [ref=e93]
+          - listitem [ref=e101]
+          - listitem [ref=e109]
+          - listitem [ref=e117]
+          - listitem [ref=e125]
+          - listitem [ref=e133]
+          - listitem [ref=e141]
+          - listitem [ref=e149]
+          - listitem [ref=e157]
+          - listitem [ref=e165]
+        - generic [ref=e173]:
+          - link "更多 " [ref=e174] [cursor=pointer]:
+            - /url: /show/1-----------.html
+          - heading " 电影" [level=3] [ref=e176]
+          - paragraph [ref=e179]
+        - list [ref=e188]:
+          - listitem [ref=e189]
+          - listitem [ref=e197]
+          - listitem [ref=e205]
+          - listitem [ref=e213]
+          - listitem [ref=e221]
+          - listitem [ref=e229]
+          - listitem [ref=e237]
+          - listitem [ref=e245]
+          - listitem [ref=e253]
+          - listitem [ref=e261]
+          - listitem [ref=e269]
+          - listitem [ref=e277]
+        - generic [ref=e285]:
+          - link "更多 " [ref=e286] [cursor=pointer]:
+            - /url: /show/2-----------.html
+          - heading " 剧集" [level=3] [ref=e288]
+          - paragraph [ref=e291]
+        - list [ref=e298]:
+          - listitem [ref=e299]
+          - listitem [ref=e307]
+          - listitem [ref=e315]
+          - listitem [ref=e323]
+          - listitem [ref=e331]
+          - listitem [ref=e339]
+          - listitem [ref=e347]
+          - listitem [ref=e355]
+          - listitem [ref=e363]
+          - listitem [ref=e371]
+          - listitem [ref=e379]
+          - listitem [ref=e387]
+        - generic [ref=e395]:
+          - link "更多 " [ref=e396] [cursor=pointer]:
+            - /url: /show/4-----------.html
+          - heading " 番剧" [level=3] [ref=e398]
+          - paragraph
+        - list [ref=e401]:
+          - listitem [ref=e402]
+          - listitem [ref=e410]
+          - listitem [ref=e418]
+          - listitem [ref=e426]
+          - listitem [ref=e434]
+          - listitem [ref=e442]
+          - listitem [ref=e450]
+          - listitem [ref=e458]
+          - listitem [ref=e466]
+          - listitem [ref=e474]
+          - listitem [ref=e482]
+          - listitem [ref=e490]
+        - generic [ref=e498]:
+          - link "更多 " [ref=e499] [cursor=pointer]:
+            - /url: /show/3-----------.html
+          - heading " 综艺" [level=3] [ref=e501]
+          - paragraph
+        - list [ref=e504]:
+          - listitem [ref=e505]
+          - listitem [ref=e513]
+          - listitem [ref=e521]
+          - listitem [ref=e529]
+          - listitem [ref=e537]
+          - listitem [ref=e545]
+          - listitem [ref=e553]
+          - listitem [ref=e561]
+          - listitem [ref=e569]
+          - listitem [ref=e577]
+          - listitem [ref=e585]
+          - listitem [ref=e593]
+        - list
+  - contentinfo [ref=e603]:
+    - generic [ref=e604]:
+      - generic [ref=e606]:
+        - link "当前网址随时可能失效，请点击进入永久发布页收藏保存 →" [ref=e607] [cursor=pointer]:
+          - /url: https://ifabu.vip/
+          - generic [ref=e609]: 当前网址随时可能失效，请点击进入永久发布页收藏保存
+          - generic [ref=e610]: →
+        - generic [ref=e611]:
+          - paragraph [ref=e612]
+          - paragraph [ref=e614]: 确认后，我们会立即删除。
+      - generic [ref=e615]: © 2026 LIBVIO · 仅供学习交流

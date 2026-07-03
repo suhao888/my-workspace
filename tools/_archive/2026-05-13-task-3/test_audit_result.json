@@ -1,0 +1,4576 @@
+{
+  "summary": {
+    "audit_scope": {
+      "holders": [
+        "张三",
+        "李四"
+      ],
+      "holder_count": 2,
+      "channels": [
+        "微信支付",
+        "银行卡"
+      ],
+      "channel_count": 2,
+      "period_start": "2025-06-01",
+      "period_end": "2025-06-30"
+    },
+    "totals": {
+      "transaction_count": 91,
+      "total_income": 1520000.0,
+      "total_expense": 1767000.0,
+      "net_flow": -247000.0
+    },
+    "anomaly_stats": {
+      "total_anomaly_transactions": 76,
+      "high_risk_count": 7,
+      "medium_risk_count": 17,
+      "low_risk_count": 52,
+      "anomaly_rate": 83.52
+    },
+    "cross_holder_links": 16,
+    "by_channel": {
+      "银行卡": {
+        "count": 76,
+        "income": 1520000.0,
+        "expense": 1767000.0,
+        "anomaly_count": 76
+      },
+      "微信支付": {
+        "count": 15,
+        "income": 0,
+        "expense": 0,
+        "anomaly_count": 0
+      }
+    },
+    "by_holder": {
+      "张三": {
+        "count": 65,
+        "income": 940000.0,
+        "expense": 1340000.0,
+        "anomaly_count": 50,
+        "holders": []
+      },
+      "李四": {
+        "count": 26,
+        "income": 580000.0,
+        "expense": 427000.0,
+        "anomaly_count": 26,
+        "holders": []
+      }
+    },
+    "top_counterparties": [
+      [
+        "张三",
+        {
+          "count": 18,
+          "income": 580000.0,
+          "expense": 297000.0,
+          "holders": "{'李四'}"
+        }
+      ],
+      [
+        "None",
+        {
+          "count": 16,
+          "income": 0,
+          "expense": 290000.0,
+          "holders": "{'张三', '李四'}"
+        }
+      ],
+      [
+        "YY供应链",
+        {
+          "count": 14,
+          "income": 430000.0,
+          "expense": 500000.0,
+          "holders": "{'张三'}"
+        }
+      ],
+      [
+        "李四",
+        {
+          "count": 13,
+          "income": 0,
+          "expense": 280000.0,
+          "holders": "{'张三'}"
+        }
+      ],
+      [
+        "XX能源公司",
+        {
+          "count": 9,
+          "income": 230000.0,
+          "expense": 0,
+          "holders": "{'张三'}"
+        }
+      ],
+      [
+        "ZZ工程公司",
+        {
+          "count": 9,
+          "income": 190000.0,
+          "expense": 200000.0,
+          "holders": "{'张三'}"
+        }
+      ],
+      [
+        "AA物资公司",
+        {
+          "count": 5,
+          "income": 90000.0,
+          "expense": 0,
+          "holders": "{'张三'}"
+        }
+      ],
+      [
+        "银行卡",
+        {
+          "count": 3,
+          "income": 0,
+          "expense": 0,
+          "holders": "{'张三'}"
+        }
+      ],
+      [
+        "钱七",
+        {
+          "count": 1,
+          "income": 0,
+          "expense": 200000.0,
+          "holders": "{'张三'}"
+        }
+      ],
+      [
+        "赵六",
+        {
+          "count": 1,
+          "income": 0,
+          "expense": 0,
+          "holders": "{'张三'}"
+        }
+      ],
+      [
+        "京东",
+        {
+          "count": 1,
+          "income": 0,
+          "expense": 0,
+          "holders": "{'张三'}"
+        }
+      ],
+      [
+        "王五",
+        {
+          "count": 1,
+          "income": 0,
+          "expense": 0,
+          "holders": "{'张三'}"
+        }
+      ]
+    ]
+  },
+  "transactions": [
+    {
+      "source_file": "张三_工商银行_流水.xlsx",
+      "holder_name": "张三",
+      "channel": "银行卡",
+      "date": "2025-06-01",
+      "time": "00:00:00",
+      "datetime": "2025-06-01 00:00:00",
+      "direction": "expense",
+      "amount": 50000.0,
+      "balance_after": 450000.0,
+      "counterparty": "李四",
+      "counterparty_account": "",
+      "remarks": "转账",
+      "txn_id": "",
+      "is_atm": false,
+      "is_internal_transfer": false,
+      "is_refund": false,
+      "fee": 0.0,
+      "refund_amount": 0.0,
+      "anomalies": [
+        {
+          "code": "B1",
+          "desc": "大额支出 50,000.00元",
+          "level": "medium"
+        },
+        {
+          "code": "B3",
+          "desc": "整数金额",
+          "level": "low"
+        },
+        {
+          "code": "C3",
+          "desc": "深夜交易(00:00:00) 50,000.00元",
+          "level": "low"
+        }
+      ],
+      "risk_level": "medium"
+    },
+    {
+      "source_file": "张三_工商银行_流水.xlsx",
+      "holder_name": "张三",
+      "channel": "银行卡",
+      "date": "2025-06-01",
+      "time": "00:00:00",
+      "datetime": "2025-06-01 00:00:00",
+      "direction": "income",
+      "amount": 20000.0,
+      "balance_after": 470000.0,
+      "counterparty": "XX能源公司",
+      "counterparty_account": "",
+      "remarks": "收到XX能源公司货款",
+      "txn_id": "",
+      "is_atm": false,
+      "is_internal_transfer": false,
+      "is_refund": false,
+      "fee": 0.0,
+      "refund_amount": 0.0,
+      "anomalies": [
+        {
+          "code": "B3",
+          "desc": "整数金额",
+          "level": "low"
+        },
+        {
+          "code": "C3",
+          "desc": "深夜交易(00:00:00) 20,000.00元",
+          "level": "low"
+        }
+      ],
+      "risk_level": "low"
+    },
+    {
+      "source_file": "张三_工商银行_流水.xlsx",
+      "holder_name": "张三",
+      "channel": "银行卡",
+      "date": "2025-06-02",
+      "time": "00:00:00",
+      "datetime": "2025-06-02 00:00:00",
+      "direction": "expense",
+      "amount": 20000.0,
+      "balance_after": 450000.0,
+      "counterparty": "None",
+      "counterparty_account": "",
+      "remarks": "ATM取款",
+      "txn_id": "",
+      "is_atm": true,
+      "is_internal_transfer": false,
+      "is_refund": false,
+      "fee": 0.0,
+      "refund_amount": 0.0,
+      "anomalies": [
+        {
+          "code": "B3",
+          "desc": "整数金额",
+          "level": "low"
+        },
+        {
+          "code": "C1",
+          "desc": "ATM大额取现 20,000.00元",
+          "level": "medium"
+        },
+        {
+          "code": "C3",
+          "desc": "深夜交易(00:00:00) 20,000.00元",
+          "level": "low"
+        }
+      ],
+      "risk_level": "medium"
+    },
+    {
+      "source_file": "张三_工商银行_流水.xlsx",
+      "holder_name": "张三",
+      "channel": "银行卡",
+      "date": "2025-06-02",
+      "time": "00:00:00",
+      "datetime": "2025-06-02 00:00:00",
+      "direction": "expense",
+      "amount": 30000.0,
+      "balance_after": 420000.0,
+      "counterparty": "李四",
+      "counterparty_account": "",
+      "remarks": "转账",
+      "txn_id": "",
+      "is_atm": false,
+      "is_internal_transfer": false,
+      "is_refund": false,
+      "fee": 0.0,
+      "refund_amount": 0.0,
+      "anomalies": [
+        {
+          "code": "B3",
+          "desc": "整数金额",
+          "level": "low"
+        },
+        {
+          "code": "C3",
+          "desc": "深夜交易(00:00:00) 30,000.00元",
+          "level": "low"
+        }
+      ],
+      "risk_level": "low"
+    },
+    {
+      "source_file": "张三_工商银行_流水.xlsx",
+      "holder_name": "张三",
+      "channel": "银行卡",
+      "date": "2025-06-02",
+      "time": "00:00:00",
+      "datetime": "2025-06-02 00:00:00",
+      "direction": "income",
+      "amount": 10000.0,
+      "balance_after": 430000.0,
+      "counterparty": "YY供应链",
+      "counterparty_account": "",
+      "remarks": "收到YY供应链货款",
+      "txn_id": "",
+      "is_atm": false,
+      "is_internal_transfer": false,
+      "is_refund": false,
+      "fee": 0.0,
+      "refund_amount": 0.0,
+      "anomalies": [
+        {
+          "code": "B3",
+          "desc": "整数金额",
+          "level": "low"
+        },
+        {
+          "code": "C3",
+          "desc": "深夜交易(00:00:00) 10,000.00元",
+          "level": "low"
+        }
+      ],
+      "risk_level": "low"
+    },
+    {
+      "source_file": "张三_工商银行_流水.xlsx",
+      "holder_name": "张三",
+      "channel": "银行卡",
+      "date": "2025-06-03",
+      "time": "00:00:00",
+      "datetime": "2025-06-03 00:00:00",
+      "direction": "income",
+      "amount": 10000.0,
+      "balance_after": 440000.0,
+      "counterparty": "YY供应链",
+      "counterparty_account": "",
+      "remarks": "收到YY供应链货款",
+      "txn_id": "",
+      "is_atm": false,
+      "is_internal_transfer": false,
+      "is_refund": false,
+      "fee": 0.0,
+      "refund_amount": 0.0,
+      "anomalies": [
+        {
+          "code": "B3",
+          "desc": "整数金额",
+          "level": "low"
+        },
+        {
+          "code": "C3",
+          "desc": "深夜交易(00:00:00) 10,000.00元",
+          "level": "low"
+        }
+      ],
+      "risk_level": "low"
+    },
+    {
+      "source_file": "张三_工商银行_流水.xlsx",
+      "holder_name": "张三",
+      "channel": "银行卡",
+      "date": "2025-06-04",
+      "time": "00:00:00",
+      "datetime": "2025-06-04 00:00:00",
+      "direction": "expense",
+      "amount": 30000.0,
+      "balance_after": 410000.0,
+      "counterparty": "李四",
+      "counterparty_account": "",
+      "remarks": "转账",
+      "txn_id": "",
+      "is_atm": false,
+      "is_internal_transfer": false,
+      "is_refund": false,
+      "fee": 0.0,
+      "refund_amount": 0.0,
+      "anomalies": [
+        {
+          "code": "B3",
+          "desc": "整数金额",
+          "level": "low"
+        },
+        {
+          "code": "C3",
+          "desc": "深夜交易(00:00:00) 30,000.00元",
+          "level": "low"
+        },
+        {
+          "code": "A1",
+          "desc": "关联链路: 张三 → 李四 → 张三 (金额差2%, 间隔24.0h)",
+          "level": "high"
+        }
+      ],
+      "risk_level": "high"
+    },
+    {
+      "source_file": "张三_工商银行_流水.xlsx",
+      "holder_name": "张三",
+      "channel": "银行卡",
+      "date": "2025-06-04",
+      "time": "00:00:00",
+      "datetime": "2025-06-04 00:00:00",
+      "direction": "expense",
+      "amount": 100000.0,
+      "balance_after": 310000.0,
+      "counterparty": "YY供应链",
+      "counterparty_account": "",
+      "remarks": "货款",
+      "txn_id": "",
+      "is_atm": false,
+      "is_internal_transfer": false,
+      "is_refund": false,
+      "fee": 0.0,
+      "refund_amount": 0.0,
+      "anomalies": [
+        {
+          "code": "B1",
+          "desc": "大额支出 100,000.00元",
+          "level": "medium"
+        },
+        {
+          "code": "B3",
+          "desc": "整数金额",
+          "level": "low"
+        },
+        {
+          "code": "C3",
+          "desc": "深夜交易(00:00:00) 100,000.00元",
+          "level": "low"
+        }
+      ],
+      "risk_level": "medium"
+    },
+    {
+      "source_file": "张三_工商银行_流水.xlsx",
+      "holder_name": "张三",
+      "channel": "银行卡",
+      "date": "2025-06-05",
+      "time": "00:00:00",
+      "datetime": "2025-06-05 00:00:00",
+      "direction": "income",
+      "amount": 20000.0,
+      "balance_after": 330000.0,
+      "counterparty": "ZZ工程公司",
+      "counterparty_account": "",
+      "remarks": "收到ZZ工程公司货款",
+      "txn_id": "",
+      "is_atm": false,
+      "is_internal_transfer": false,
+      "is_refund": false,
+      "fee": 0.0,
+      "refund_amount": 0.0,
+      "anomalies": [
+        {
+          "code": "B3",
+          "desc": "整数金额",
+          "level": "low"
+        },
+        {
+          "code": "C3",
+          "desc": "深夜交易(00:00:00) 20,000.00元",
+          "level": "low"
+        }
+      ],
+      "risk_level": "low"
+    },
+    {
+      "source_file": "张三_工商银行_流水.xlsx",
+      "holder_name": "张三",
+      "channel": "银行卡",
+      "date": "2025-06-06",
+      "time": "00:00:00",
+      "datetime": "2025-06-06 00:00:00",
+      "direction": "expense",
+      "amount": 200000.0,
+      "balance_after": 130000.0,
+      "counterparty": "ZZ工程公司",
+      "counterparty_account": "",
+      "remarks": "货款",
+      "txn_id": "",
+      "is_atm": false,
+      "is_internal_transfer": false,
+      "is_refund": false,
+      "fee": 0.0,
+      "refund_amount": 0.0,
+      "anomalies": [
+        {
+          "code": "B1",
+          "desc": "大额支出 200,000.00元",
+          "level": "medium"
+        },
+        {
+          "code": "B3",
+          "desc": "整数金额",
+          "level": "low"
+        },
+        {
+          "code": "C3",
+          "desc": "深夜交易(00:00:00) 200,000.00元",
+          "level": "low"
+        }
+      ],
+      "risk_level": "medium"
+    },
+    {
+      "source_file": "张三_工商银行_流水.xlsx",
+      "holder_name": "张三",
+      "channel": "银行卡",
+      "date": "2025-06-07",
+      "time": "00:00:00",
+      "datetime": "2025-06-07 00:00:00",
+      "direction": "expense",
+      "amount": 30000.0,
+      "balance_after": 100000.0,
+      "counterparty": "李四",
+      "counterparty_account": "",
+      "remarks": "转账",
+      "txn_id": "",
+      "is_atm": false,
+      "is_internal_transfer": false,
+      "is_refund": false,
+      "fee": 0.0,
+      "refund_amount": 0.0,
+      "anomalies": [
+        {
+          "code": "B3",
+          "desc": "整数金额",
+          "level": "low"
+        },
+        {
+          "code": "C3",
+          "desc": "深夜交易(00:00:00) 30,000.00元",
+          "level": "low"
+        },
+        {
+          "code": "A1",
+          "desc": "关联链路: 张三 → 李四 → 张三 (金额差2%, 间隔48.0h)",
+          "level": "high"
+        }
+      ],
+      "risk_level": "high"
+    },
+    {
+      "source_file": "张三_工商银行_流水.xlsx",
+      "holder_name": "张三",
+      "channel": "银行卡",
+      "date": "2025-06-07",
+      "time": "00:00:00",
+      "datetime": "2025-06-07 00:00:00",
+      "direction": "expense",
+      "amount": 20000.0,
+      "balance_after": 80000.0,
+      "counterparty": "None",
+      "counterparty_account": "",
+      "remarks": "ATM取款",
+      "txn_id": "",
+      "is_atm": true,
+      "is_internal_transfer": false,
+      "is_refund": false,
+      "fee": 0.0,
+      "refund_amount": 0.0,
+      "anomalies": [
+        {
+          "code": "B3",
+          "desc": "整数金额",
+          "level": "low"
+        },
+        {
+          "code": "C1",
+          "desc": "ATM大额取现 20,000.00元",
+          "level": "medium"
+        },
+        {
+          "code": "C3",
+          "desc": "深夜交易(00:00:00) 20,000.00元",
+          "level": "low"
+        }
+      ],
+      "risk_level": "medium"
+    },
+    {
+      "source_file": "张三_工商银行_流水.xlsx",
+      "holder_name": "张三",
+      "channel": "银行卡",
+      "date": "2025-06-08",
+      "time": "00:00:00",
+      "datetime": "2025-06-08 00:00:00",
+      "direction": "income",
+      "amount": 50000.0,
+      "balance_after": 130000.0,
+      "counterparty": "AA物资公司",
+      "counterparty_account": "",
+      "remarks": "收到AA物资公司货款",
+      "txn_id": "",
+      "is_atm": false,
+      "is_internal_transfer": false,
+      "is_refund": false,
+      "fee": 0.0,
+      "refund_amount": 0.0,
+      "anomalies": [
+        {
+          "code": "B3",
+          "desc": "整数金额",
+          "level": "low"
+        },
+        {
+          "code": "C3",
+          "desc": "深夜交易(00:00:00) 50,000.00元",
+          "level": "low"
+        }
+      ],
+      "risk_level": "low"
+    },
+    {
+      "source_file": "张三_工商银行_流水.xlsx",
+      "holder_name": "张三",
+      "channel": "银行卡",
+      "date": "2025-06-09",
+      "time": "00:00:00",
+      "datetime": "2025-06-09 00:00:00",
+      "direction": "expense",
+      "amount": 30000.0,
+      "balance_after": 100000.0,
+      "counterparty": "李四",
+      "counterparty_account": "",
+      "remarks": "转账",
+      "txn_id": "",
+      "is_atm": false,
+      "is_internal_transfer": false,
+      "is_refund": false,
+      "fee": 0.0,
+      "refund_amount": 0.0,
+      "anomalies": [
+        {
+          "code": "B3",
+          "desc": "整数金额",
+          "level": "low"
+        },
+        {
+          "code": "C3",
+          "desc": "深夜交易(00:00:00) 30,000.00元",
+          "level": "low"
+        },
+        {
+          "code": "A1",
+          "desc": "关联链路: 张三 → 李四 → 张三 (金额差65%, 间隔24.0h)",
+          "level": "medium"
+        }
+      ],
+      "risk_level": "low"
+    },
+    {
+      "source_file": "张三_工商银行_流水.xlsx",
+      "holder_name": "张三",
+      "channel": "银行卡",
+      "date": "2025-06-10",
+      "time": "00:00:00",
+      "datetime": "2025-06-10 00:00:00",
+      "direction": "income",
+      "amount": 10000.0,
+      "balance_after": 110000.0,
+      "counterparty": "XX能源公司",
+      "counterparty_account": "",
+      "remarks": "收到XX能源公司货款",
+      "txn_id": "",
+      "is_atm": false,
+      "is_internal_transfer": false,
+      "is_refund": false,
+      "fee": 0.0,
+      "refund_amount": 0.0,
+      "anomalies": [
+        {
+          "code": "B3",
+          "desc": "整数金额",
+          "level": "low"
+        },
+        {
+          "code": "C3",
+          "desc": "深夜交易(00:00:00) 10,000.00元",
+          "level": "low"
+        }
+      ],
+      "risk_level": "low"
+    },
+    {
+      "source_file": "张三_工商银行_流水.xlsx",
+      "holder_name": "张三",
+      "channel": "银行卡",
+      "date": "2025-06-11",
+      "time": "00:00:00",
+      "datetime": "2025-06-11 00:00:00",
+      "direction": "income",
+      "amount": 80000.0,
+      "balance_after": 190000.0,
+      "counterparty": "YY供应链",
+      "counterparty_account": "",
+      "remarks": "收到YY供应链货款",
+      "txn_id": "",
+      "is_atm": false,
+      "is_internal_transfer": false,
+      "is_refund": false,
+      "fee": 0.0,
+      "refund_amount": 0.0,
+      "anomalies": [
+        {
+          "code": "B3",
+          "desc": "整数金额",
+          "level": "low"
+        },
+        {
+          "code": "C3",
+          "desc": "深夜交易(00:00:00) 80,000.00元",
+          "level": "low"
+        }
+      ],
+      "risk_level": "low"
+    },
+    {
+      "source_file": "张三_工商银行_流水.xlsx",
+      "holder_name": "张三",
+      "channel": "银行卡",
+      "date": "2025-06-12",
+      "time": "00:00:00",
+      "datetime": "2025-06-12 00:00:00",
+      "direction": "income",
+      "amount": 20000.0,
+      "balance_after": 210000.0,
+      "counterparty": "YY供应链",
+      "counterparty_account": "",
+      "remarks": "收到YY供应链货款",
+      "txn_id": "",
+      "is_atm": false,
+      "is_internal_transfer": false,
+      "is_refund": false,
+      "fee": 0.0,
+      "refund_amount": 0.0,
+      "anomalies": [
+        {
+          "code": "B3",
+          "desc": "整数金额",
+          "level": "low"
+        },
+        {
+          "code": "C3",
+          "desc": "深夜交易(00:00:00) 20,000.00元",
+          "level": "low"
+        }
+      ],
+      "risk_level": "low"
+    },
+    {
+      "source_file": "张三_工商银行_流水.xlsx",
+      "holder_name": "张三",
+      "channel": "银行卡",
+      "date": "2025-06-13",
+      "time": "00:00:00",
+      "datetime": "2025-06-13 00:00:00",
+      "direction": "income",
+      "amount": 10000.0,
+      "balance_after": 220000.0,
+      "counterparty": "XX能源公司",
+      "counterparty_account": "",
+      "remarks": "收到XX能源公司货款",
+      "txn_id": "",
+      "is_atm": false,
+      "is_internal_transfer": false,
+      "is_refund": false,
+      "fee": 0.0,
+      "refund_amount": 0.0,
+      "anomalies": [
+        {
+          "code": "B3",
+          "desc": "整数金额",
+          "level": "low"
+        },
+        {
+          "code": "C3",
+          "desc": "深夜交易(00:00:00) 10,000.00元",
+          "level": "low"
+        }
+      ],
+      "risk_level": "low"
+    },
+    {
+      "source_file": "张三_工商银行_流水.xlsx",
+      "holder_name": "张三",
+      "channel": "银行卡",
+      "date": "2025-06-14",
+      "time": "00:00:00",
+      "datetime": "2025-06-14 00:00:00",
+      "direction": "income",
+      "amount": 80000.0,
+      "balance_after": 300000.0,
+      "counterparty": "YY供应链",
+      "counterparty_account": "",
+      "remarks": "收到YY供应链货款",
+      "txn_id": "",
+      "is_atm": false,
+      "is_internal_transfer": false,
+      "is_refund": false,
+      "fee": 0.0,
+      "refund_amount": 0.0,
+      "anomalies": [
+        {
+          "code": "B3",
+          "desc": "整数金额",
+          "level": "low"
+        },
+        {
+          "code": "C3",
+          "desc": "深夜交易(00:00:00) 80,000.00元",
+          "level": "low"
+        }
+      ],
+      "risk_level": "low"
+    },
+    {
+      "source_file": "张三_工商银行_流水.xlsx",
+      "holder_name": "张三",
+      "channel": "银行卡",
+      "date": "2025-06-14",
+      "time": "00:00:00",
+      "datetime": "2025-06-14 00:00:00",
+      "direction": "income",
+      "amount": 80000.0,
+      "balance_after": 380000.0,
+      "counterparty": "YY供应链",
+      "counterparty_account": "",
+      "remarks": "收到YY供应链货款",
+      "txn_id": "",
+      "is_atm": false,
+      "is_internal_transfer": false,
+      "is_refund": false,
+      "fee": 0.0,
+      "refund_amount": 0.0,
+      "anomalies": [
+        {
+          "code": "B3",
+          "desc": "整数金额",
+          "level": "low"
+        },
+        {
+          "code": "C3",
+          "desc": "深夜交易(00:00:00) 80,000.00元",
+          "level": "low"
+        }
+      ],
+      "risk_level": "low"
+    },
+    {
+      "source_file": "张三_工商银行_流水.xlsx",
+      "holder_name": "张三",
+      "channel": "银行卡",
+      "date": "2025-06-15",
+      "time": "00:00:00",
+      "datetime": "2025-06-15 00:00:00",
+      "direction": "expense",
+      "amount": 20000.0,
+      "balance_after": 360000.0,
+      "counterparty": "None",
+      "counterparty_account": "",
+      "remarks": "ATM取款",
+      "txn_id": "",
+      "is_atm": true,
+      "is_internal_transfer": false,
+      "is_refund": false,
+      "fee": 0.0,
+      "refund_amount": 0.0,
+      "anomalies": [
+        {
+          "code": "B3",
+          "desc": "整数金额",
+          "level": "low"
+        },
+        {
+          "code": "C1",
+          "desc": "ATM大额取现 20,000.00元",
+          "level": "medium"
+        },
+        {
+          "code": "C3",
+          "desc": "深夜交易(00:00:00) 20,000.00元",
+          "level": "low"
+        }
+      ],
+      "risk_level": "medium"
+    },
+    {
+      "source_file": "张三_工商银行_流水.xlsx",
+      "holder_name": "张三",
+      "channel": "银行卡",
+      "date": "2025-06-15",
+      "time": "00:00:00",
+      "datetime": "2025-06-15 00:00:00",
+      "direction": "income",
+      "amount": 20000.0,
+      "balance_after": 380000.0,
+      "counterparty": "YY供应链",
+      "counterparty_account": "",
+      "remarks": "收到YY供应链货款",
+      "txn_id": "",
+      "is_atm": false,
+      "is_internal_transfer": false,
+      "is_refund": false,
+      "fee": 0.0,
+      "refund_amount": 0.0,
+      "anomalies": [
+        {
+          "code": "B3",
+          "desc": "整数金额",
+          "level": "low"
+        },
+        {
+          "code": "C3",
+          "desc": "深夜交易(00:00:00) 20,000.00元",
+          "level": "low"
+        }
+      ],
+      "risk_level": "low"
+    },
+    {
+      "source_file": "张三_工商银行_流水.xlsx",
+      "holder_name": "张三",
+      "channel": "银行卡",
+      "date": "2025-06-16",
+      "time": "00:00:00",
+      "datetime": "2025-06-16 00:00:00",
+      "direction": "income",
+      "amount": 10000.0,
+      "balance_after": 390000.0,
+      "counterparty": "YY供应链",
+      "counterparty_account": "",
+      "remarks": "收到YY供应链货款",
+      "txn_id": "",
+      "is_atm": false,
+      "is_internal_transfer": false,
+      "is_refund": false,
+      "fee": 0.0,
+      "refund_amount": 0.0,
+      "anomalies": [
+        {
+          "code": "B3",
+          "desc": "整数金额",
+          "level": "low"
+        },
+        {
+          "code": "C3",
+          "desc": "深夜交易(00:00:00) 10,000.00元",
+          "level": "low"
+        }
+      ],
+      "risk_level": "low"
+    },
+    {
+      "source_file": "张三_工商银行_流水.xlsx",
+      "holder_name": "张三",
+      "channel": "银行卡",
+      "date": "2025-06-16",
+      "time": "00:00:00",
+      "datetime": "2025-06-16 00:00:00",
+      "direction": "income",
+      "amount": 10000.0,
+      "balance_after": 400000.0,
+      "counterparty": "ZZ工程公司",
+      "counterparty_account": "",
+      "remarks": "收到ZZ工程公司货款",
+      "txn_id": "",
+      "is_atm": false,
+      "is_internal_transfer": false,
+      "is_refund": false,
+      "fee": 0.0,
+      "refund_amount": 0.0,
+      "anomalies": [
+        {
+          "code": "B3",
+          "desc": "整数金额",
+          "level": "low"
+        },
+        {
+          "code": "C3",
+          "desc": "深夜交易(00:00:00) 10,000.00元",
+          "level": "low"
+        }
+      ],
+      "risk_level": "low"
+    },
+    {
+      "source_file": "张三_工商银行_流水.xlsx",
+      "holder_name": "张三",
+      "channel": "银行卡",
+      "date": "2025-06-16",
+      "time": "00:00:00",
+      "datetime": "2025-06-16 00:00:00",
+      "direction": "income",
+      "amount": 20000.0,
+      "balance_after": 420000.0,
+      "counterparty": "ZZ工程公司",
+      "counterparty_account": "",
+      "remarks": "收到ZZ工程公司货款",
+      "txn_id": "",
+      "is_atm": false,
+      "is_internal_transfer": false,
+      "is_refund": false,
+      "fee": 0.0,
+      "refund_amount": 0.0,
+      "anomalies": [
+        {
+          "code": "B3",
+          "desc": "整数金额",
+          "level": "low"
+        },
+        {
+          "code": "C3",
+          "desc": "深夜交易(00:00:00) 20,000.00元",
+          "level": "low"
+        }
+      ],
+      "risk_level": "low"
+    },
+    {
+      "source_file": "张三_工商银行_流水.xlsx",
+      "holder_name": "张三",
+      "channel": "银行卡",
+      "date": "2025-06-17",
+      "time": "00:00:00",
+      "datetime": "2025-06-17 00:00:00",
+      "direction": "income",
+      "amount": 10000.0,
+      "balance_after": 430000.0,
+      "counterparty": "AA物资公司",
+      "counterparty_account": "",
+      "remarks": "收到AA物资公司货款",
+      "txn_id": "",
+      "is_atm": false,
+      "is_internal_transfer": false,
+      "is_refund": false,
+      "fee": 0.0,
+      "refund_amount": 0.0,
+      "anomalies": [
+        {
+          "code": "B3",
+          "desc": "整数金额",
+          "level": "low"
+        },
+        {
+          "code": "C3",
+          "desc": "深夜交易(00:00:00) 10,000.00元",
+          "level": "low"
+        }
+      ],
+      "risk_level": "low"
+    },
+    {
+      "source_file": "张三_工商银行_流水.xlsx",
+      "holder_name": "张三",
+      "channel": "银行卡",
+      "date": "2025-06-18",
+      "time": "00:00:00",
+      "datetime": "2025-06-18 00:00:00",
+      "direction": "expense",
+      "amount": 200000.0,
+      "balance_after": 230000.0,
+      "counterparty": "YY供应链",
+      "counterparty_account": "",
+      "remarks": "货款",
+      "txn_id": "",
+      "is_atm": false,
+      "is_internal_transfer": false,
+      "is_refund": false,
+      "fee": 0.0,
+      "refund_amount": 0.0,
+      "anomalies": [
+        {
+          "code": "B1",
+          "desc": "大额支出 200,000.00元",
+          "level": "medium"
+        },
+        {
+          "code": "B3",
+          "desc": "整数金额",
+          "level": "low"
+        },
+        {
+          "code": "C3",
+          "desc": "深夜交易(00:00:00) 200,000.00元",
+          "level": "low"
+        }
+      ],
+      "risk_level": "medium"
+    },
+    {
+      "source_file": "张三_工商银行_流水.xlsx",
+      "holder_name": "张三",
+      "channel": "银行卡",
+      "date": "2025-06-18",
+      "time": "00:00:00",
+      "datetime": "2025-06-18 00:00:00",
+      "direction": "income",
+      "amount": 50000.0,
+      "balance_after": 280000.0,
+      "counterparty": "XX能源公司",
+      "counterparty_account": "",
+      "remarks": "收到XX能源公司货款",
+      "txn_id": "",
+      "is_atm": false,
+      "is_internal_transfer": false,
+      "is_refund": false,
+      "fee": 0.0,
+      "refund_amount": 0.0,
+      "anomalies": [
+        {
+          "code": "B3",
+          "desc": "整数金额",
+          "level": "low"
+        },
+        {
+          "code": "C3",
+          "desc": "深夜交易(00:00:00) 50,000.00元",
+          "level": "low"
+        }
+      ],
+      "risk_level": "low"
+    },
+    {
+      "source_file": "张三_工商银行_流水.xlsx",
+      "holder_name": "张三",
+      "channel": "银行卡",
+      "date": "2025-06-18",
+      "time": "00:00:00",
+      "datetime": "2025-06-18 00:00:00",
+      "direction": "income",
+      "amount": 20000.0,
+      "balance_after": 300000.0,
+      "counterparty": "AA物资公司",
+      "counterparty_account": "",
+      "remarks": "收到AA物资公司货款",
+      "txn_id": "",
+      "is_atm": false,
+      "is_internal_transfer": false,
+      "is_refund": false,
+      "fee": 0.0,
+      "refund_amount": 0.0,
+      "anomalies": [
+        {
+          "code": "B3",
+          "desc": "整数金额",
+          "level": "low"
+        },
+        {
+          "code": "C3",
+          "desc": "深夜交易(00:00:00) 20,000.00元",
+          "level": "low"
+        }
+      ],
+      "risk_level": "low"
+    },
+    {
+      "source_file": "张三_工商银行_流水.xlsx",
+      "holder_name": "张三",
+      "channel": "银行卡",
+      "date": "2025-06-19",
+      "time": "00:00:00",
+      "datetime": "2025-06-19 00:00:00",
+      "direction": "income",
+      "amount": 20000.0,
+      "balance_after": 320000.0,
+      "counterparty": "ZZ工程公司",
+      "counterparty_account": "",
+      "remarks": "收到ZZ工程公司货款",
+      "txn_id": "",
+      "is_atm": false,
+      "is_internal_transfer": false,
+      "is_refund": false,
+      "fee": 0.0,
+      "refund_amount": 0.0,
+      "anomalies": [
+        {
+          "code": "B3",
+          "desc": "整数金额",
+          "level": "low"
+        },
+        {
+          "code": "C3",
+          "desc": "深夜交易(00:00:00) 20,000.00元",
+          "level": "low"
+        }
+      ],
+      "risk_level": "low"
+    },
+    {
+      "source_file": "张三_工商银行_流水.xlsx",
+      "holder_name": "张三",
+      "channel": "银行卡",
+      "date": "2025-06-19",
+      "time": "00:00:00",
+      "datetime": "2025-06-19 00:00:00",
+      "direction": "expense",
+      "amount": 20000.0,
+      "balance_after": 300000.0,
+      "counterparty": "None",
+      "counterparty_account": "",
+      "remarks": "ATM取款",
+      "txn_id": "",
+      "is_atm": true,
+      "is_internal_transfer": false,
+      "is_refund": false,
+      "fee": 0.0,
+      "refund_amount": 0.0,
+      "anomalies": [
+        {
+          "code": "B3",
+          "desc": "整数金额",
+          "level": "low"
+        },
+        {
+          "code": "C1",
+          "desc": "ATM大额取现 20,000.00元",
+          "level": "medium"
+        },
+        {
+          "code": "C3",
+          "desc": "深夜交易(00:00:00) 20,000.00元",
+          "level": "low"
+        }
+      ],
+      "risk_level": "medium"
+    },
+    {
+      "source_file": "张三_工商银行_流水.xlsx",
+      "holder_name": "张三",
+      "channel": "银行卡",
+      "date": "2025-06-19",
+      "time": "00:00:00",
+      "datetime": "2025-06-19 00:00:00",
+      "direction": "expense",
+      "amount": 20000.0,
+      "balance_after": 280000.0,
+      "counterparty": "None",
+      "counterparty_account": "",
+      "remarks": "ATM取款",
+      "txn_id": "",
+      "is_atm": true,
+      "is_internal_transfer": false,
+      "is_refund": false,
+      "fee": 0.0,
+      "refund_amount": 0.0,
+      "anomalies": [
+        {
+          "code": "B3",
+          "desc": "整数金额",
+          "level": "low"
+        },
+        {
+          "code": "C1",
+          "desc": "ATM大额取现 20,000.00元",
+          "level": "medium"
+        },
+        {
+          "code": "C3",
+          "desc": "深夜交易(00:00:00) 20,000.00元",
+          "level": "low"
+        }
+      ],
+      "risk_level": "medium"
+    },
+    {
+      "source_file": "张三_工商银行_流水.xlsx",
+      "holder_name": "张三",
+      "channel": "银行卡",
+      "date": "2025-06-20",
+      "time": "00:00:00",
+      "datetime": "2025-06-20 00:00:00",
+      "direction": "expense",
+      "amount": 20000.0,
+      "balance_after": 260000.0,
+      "counterparty": "None",
+      "counterparty_account": "",
+      "remarks": "ATM取款",
+      "txn_id": "",
+      "is_atm": true,
+      "is_internal_transfer": false,
+      "is_refund": false,
+      "fee": 0.0,
+      "refund_amount": 0.0,
+      "anomalies": [
+        {
+          "code": "B3",
+          "desc": "整数金额",
+          "level": "low"
+        },
+        {
+          "code": "C1",
+          "desc": "ATM大额取现 20,000.00元",
+          "level": "medium"
+        },
+        {
+          "code": "C3",
+          "desc": "深夜交易(00:00:00) 20,000.00元",
+          "level": "low"
+        }
+      ],
+      "risk_level": "medium"
+    },
+    {
+      "source_file": "张三_工商银行_流水.xlsx",
+      "holder_name": "张三",
+      "channel": "银行卡",
+      "date": "2025-06-20",
+      "time": "00:00:00",
+      "datetime": "2025-06-20 00:00:00",
+      "direction": "income",
+      "amount": 20000.0,
+      "balance_after": 280000.0,
+      "counterparty": "YY供应链",
+      "counterparty_account": "",
+      "remarks": "收到YY供应链货款",
+      "txn_id": "",
+      "is_atm": false,
+      "is_internal_transfer": false,
+      "is_refund": false,
+      "fee": 0.0,
+      "refund_amount": 0.0,
+      "anomalies": [
+        {
+          "code": "B3",
+          "desc": "整数金额",
+          "level": "low"
+        },
+        {
+          "code": "C3",
+          "desc": "深夜交易(00:00:00) 20,000.00元",
+          "level": "low"
+        }
+      ],
+      "risk_level": "low"
+    },
+    {
+      "source_file": "张三_工商银行_流水.xlsx",
+      "holder_name": "张三",
+      "channel": "银行卡",
+      "date": "2025-06-21",
+      "time": "00:00:00",
+      "datetime": "2025-06-21 00:00:00",
+      "direction": "income",
+      "amount": 10000.0,
+      "balance_after": 290000.0,
+      "counterparty": "AA物资公司",
+      "counterparty_account": "",
+      "remarks": "收到AA物资公司货款",
+      "txn_id": "",
+      "is_atm": false,
+      "is_internal_transfer": false,
+      "is_refund": false,
+      "fee": 0.0,
+      "refund_amount": 0.0,
+      "anomalies": [
+        {
+          "code": "B3",
+          "desc": "整数金额",
+          "level": "low"
+        },
+        {
+          "code": "C3",
+          "desc": "深夜交易(00:00:00) 10,000.00元",
+          "level": "low"
+        }
+      ],
+      "risk_level": "low"
+    },
+    {
+      "source_file": "张三_工商银行_流水.xlsx",
+      "holder_name": "张三",
+      "channel": "银行卡",
+      "date": "2025-06-21",
+      "time": "00:00:00",
+      "datetime": "2025-06-21 00:00:00",
+      "direction": "income",
+      "amount": 80000.0,
+      "balance_after": 370000.0,
+      "counterparty": "ZZ工程公司",
+      "counterparty_account": "",
+      "remarks": "收到ZZ工程公司货款",
+      "txn_id": "",
+      "is_atm": false,
+      "is_internal_transfer": false,
+      "is_refund": false,
+      "fee": 0.0,
+      "refund_amount": 0.0,
+      "anomalies": [
+        {
+          "code": "B3",
+          "desc": "整数金额",
+          "level": "low"
+        },
+        {
+          "code": "C3",
+          "desc": "深夜交易(00:00:00) 80,000.00元",
+          "level": "low"
+        }
+      ],
+      "risk_level": "low"
+    },
+    {
+      "source_file": "张三_工商银行_流水.xlsx",
+      "holder_name": "张三",
+      "channel": "银行卡",
+      "date": "2025-06-22",
+      "time": "00:00:00",
+      "datetime": "2025-06-22 00:00:00",
+      "direction": "expense",
+      "amount": 200000.0,
+      "balance_after": 170000.0,
+      "counterparty": "钱七",
+      "counterparty_account": "",
+      "remarks": "货款",
+      "txn_id": "",
+      "is_atm": false,
+      "is_internal_transfer": false,
+      "is_refund": false,
+      "fee": 0.0,
+      "refund_amount": 0.0,
+      "anomalies": [
+        {
+          "code": "B1",
+          "desc": "大额支出 200,000.00元",
+          "level": "medium"
+        },
+        {
+          "code": "B3",
+          "desc": "整数金额",
+          "level": "low"
+        },
+        {
+          "code": "C3",
+          "desc": "深夜交易(00:00:00) 200,000.00元",
+          "level": "low"
+        }
+      ],
+      "risk_level": "medium"
+    },
+    {
+      "source_file": "张三_工商银行_流水.xlsx",
+      "holder_name": "张三",
+      "channel": "银行卡",
+      "date": "2025-06-23",
+      "time": "00:00:00",
+      "datetime": "2025-06-23 00:00:00",
+      "direction": "income",
+      "amount": 20000.0,
+      "balance_after": 190000.0,
+      "counterparty": "XX能源公司",
+      "counterparty_account": "",
+      "remarks": "收到XX能源公司货款",
+      "txn_id": "",
+      "is_atm": false,
+      "is_internal_transfer": false,
+      "is_refund": false,
+      "fee": 0.0,
+      "refund_amount": 0.0,
+      "anomalies": [
+        {
+          "code": "B3",
+          "desc": "整数金额",
+          "level": "low"
+        },
+        {
+          "code": "C3",
+          "desc": "深夜交易(00:00:00) 20,000.00元",
+          "level": "low"
+        }
+      ],
+      "risk_level": "low"
+    },
+    {
+      "source_file": "张三_工商银行_流水.xlsx",
+      "holder_name": "张三",
+      "channel": "银行卡",
+      "date": "2025-06-24",
+      "time": "00:00:00",
+      "datetime": "2025-06-24 00:00:00",
+      "direction": "income",
+      "amount": 50000.0,
+      "balance_after": 240000.0,
+      "counterparty": "YY供应链",
+      "counterparty_account": "",
+      "remarks": "收到YY供应链货款",
+      "txn_id": "",
+      "is_atm": false,
+      "is_internal_transfer": false,
+      "is_refund": false,
+      "fee": 0.0,
+      "refund_amount": 0.0,
+      "anomalies": [
+        {
+          "code": "B3",
+          "desc": "整数金额",
+          "level": "low"
+        },
+        {
+          "code": "C3",
+          "desc": "深夜交易(00:00:00) 50,000.00元",
+          "level": "low"
+        }
+      ],
+      "risk_level": "low"
+    },
+    {
+      "source_file": "张三_工商银行_流水.xlsx",
+      "holder_name": "张三",
+      "channel": "银行卡",
+      "date": "2025-06-24",
+      "time": "00:00:00",
+      "datetime": "2025-06-24 00:00:00",
+      "direction": "income",
+      "amount": 20000.0,
+      "balance_after": 260000.0,
+      "counterparty": "ZZ工程公司",
+      "counterparty_account": "",
+      "remarks": "收到ZZ工程公司货款",
+      "txn_id": "",
+      "is_atm": false,
+      "is_internal_transfer": false,
+      "is_refund": false,
+      "fee": 0.0,
+      "refund_amount": 0.0,
+      "anomalies": [
+        {
+          "code": "B3",
+          "desc": "整数金额",
+          "level": "low"
+        },
+        {
+          "code": "C3",
+          "desc": "深夜交易(00:00:00) 20,000.00元",
+          "level": "low"
+        }
+      ],
+      "risk_level": "low"
+    },
+    {
+      "source_file": "张三_工商银行_流水.xlsx",
+      "holder_name": "张三",
+      "channel": "银行卡",
+      "date": "2025-06-25",
+      "time": "00:00:00",
+      "datetime": "2025-06-25 00:00:00",
+      "direction": "expense",
+      "amount": 200000.0,
+      "balance_after": 60000.0,
+      "counterparty": "YY供应链",
+      "counterparty_account": "",
+      "remarks": "货款",
+      "txn_id": "",
+      "is_atm": false,
+      "is_internal_transfer": false,
+      "is_refund": false,
+      "fee": 0.0,
+      "refund_amount": 0.0,
+      "anomalies": [
+        {
+          "code": "B1",
+          "desc": "大额支出 200,000.00元",
+          "level": "medium"
+        },
+        {
+          "code": "B3",
+          "desc": "整数金额",
+          "level": "low"
+        },
+        {
+          "code": "C3",
+          "desc": "深夜交易(00:00:00) 200,000.00元",
+          "level": "low"
+        }
+      ],
+      "risk_level": "medium"
+    },
+    {
+      "source_file": "张三_工商银行_流水.xlsx",
+      "holder_name": "张三",
+      "channel": "银行卡",
+      "date": "2025-06-25",
+      "time": "00:00:00",
+      "datetime": "2025-06-25 00:00:00",
+      "direction": "income",
+      "amount": 20000.0,
+      "balance_after": 80000.0,
+      "counterparty": "ZZ工程公司",
+      "counterparty_account": "",
+      "remarks": "收到ZZ工程公司货款",
+      "txn_id": "",
+      "is_atm": false,
+      "is_internal_transfer": false,
+      "is_refund": false,
+      "fee": 0.0,
+      "refund_amount": 0.0,
+      "anomalies": [
+        {
+          "code": "B3",
+          "desc": "整数金额",
+          "level": "low"
+        },
+        {
+          "code": "C3",
+          "desc": "深夜交易(00:00:00) 20,000.00元",
+          "level": "low"
+        }
+      ],
+      "risk_level": "low"
+    },
+    {
+      "source_file": "张三_工商银行_流水.xlsx",
+      "holder_name": "张三",
+      "channel": "银行卡",
+      "date": "2025-06-25",
+      "time": "00:00:00",
+      "datetime": "2025-06-25 00:00:00",
+      "direction": "income",
+      "amount": 50000.0,
+      "balance_after": 130000.0,
+      "counterparty": "XX能源公司",
+      "counterparty_account": "",
+      "remarks": "收到XX能源公司货款",
+      "txn_id": "",
+      "is_atm": false,
+      "is_internal_transfer": false,
+      "is_refund": false,
+      "fee": 0.0,
+      "refund_amount": 0.0,
+      "anomalies": [
+        {
+          "code": "B3",
+          "desc": "整数金额",
+          "level": "low"
+        },
+        {
+          "code": "C3",
+          "desc": "深夜交易(00:00:00) 50,000.00元",
+          "level": "low"
+        }
+      ],
+      "risk_level": "low"
+    },
+    {
+      "source_file": "张三_工商银行_流水.xlsx",
+      "holder_name": "张三",
+      "channel": "银行卡",
+      "date": "2025-06-26",
+      "time": "00:00:00",
+      "datetime": "2025-06-26 00:00:00",
+      "direction": "income",
+      "amount": 50000.0,
+      "balance_after": 180000.0,
+      "counterparty": "XX能源公司",
+      "counterparty_account": "",
+      "remarks": "收到XX能源公司货款",
+      "txn_id": "",
+      "is_atm": false,
+      "is_internal_transfer": false,
+      "is_refund": false,
+      "fee": 0.0,
+      "refund_amount": 0.0,
+      "anomalies": [
+        {
+          "code": "B3",
+          "desc": "整数金额",
+          "level": "low"
+        },
+        {
+          "code": "C3",
+          "desc": "深夜交易(00:00:00) 50,000.00元",
+          "level": "low"
+        }
+      ],
+      "risk_level": "low"
+    },
+    {
+      "source_file": "张三_工商银行_流水.xlsx",
+      "holder_name": "张三",
+      "channel": "银行卡",
+      "date": "2025-06-27",
+      "time": "00:00:00",
+      "datetime": "2025-06-27 00:00:00",
+      "direction": "expense",
+      "amount": 30000.0,
+      "balance_after": 150000.0,
+      "counterparty": "李四",
+      "counterparty_account": "",
+      "remarks": "转账",
+      "txn_id": "",
+      "is_atm": false,
+      "is_internal_transfer": false,
+      "is_refund": false,
+      "fee": 0.0,
+      "refund_amount": 0.0,
+      "anomalies": [
+        {
+          "code": "B3",
+          "desc": "整数金额",
+          "level": "low"
+        },
+        {
+          "code": "C3",
+          "desc": "深夜交易(00:00:00) 30,000.00元",
+          "level": "low"
+        },
+        {
+          "code": "A1",
+          "desc": "关联链路: 张三 → 李四 → 张三 (金额差2%, 间隔48.0h)",
+          "level": "high"
+        }
+      ],
+      "risk_level": "high"
+    },
+    {
+      "source_file": "张三_工商银行_流水.xlsx",
+      "holder_name": "张三",
+      "channel": "银行卡",
+      "date": "2025-06-27",
+      "time": "00:00:00",
+      "datetime": "2025-06-27 00:00:00",
+      "direction": "income",
+      "amount": 50000.0,
+      "balance_after": 200000.0,
+      "counterparty": "YY供应链",
+      "counterparty_account": "",
+      "remarks": "收到YY供应链货款",
+      "txn_id": "",
+      "is_atm": false,
+      "is_internal_transfer": false,
+      "is_refund": false,
+      "fee": 0.0,
+      "refund_amount": 0.0,
+      "anomalies": [
+        {
+          "code": "B3",
+          "desc": "整数金额",
+          "level": "low"
+        },
+        {
+          "code": "C3",
+          "desc": "深夜交易(00:00:00) 50,000.00元",
+          "level": "low"
+        }
+      ],
+      "risk_level": "low"
+    },
+    {
+      "source_file": "张三_工商银行_流水.xlsx",
+      "holder_name": "张三",
+      "channel": "银行卡",
+      "date": "2025-06-28",
+      "time": "00:00:00",
+      "datetime": "2025-06-28 00:00:00",
+      "direction": "expense",
+      "amount": 80000.0,
+      "balance_after": 120000.0,
+      "counterparty": "李四",
+      "counterparty_account": "",
+      "remarks": "转账",
+      "txn_id": "",
+      "is_atm": false,
+      "is_internal_transfer": false,
+      "is_refund": false,
+      "fee": 0.0,
+      "refund_amount": 0.0,
+      "anomalies": [
+        {
+          "code": "B1",
+          "desc": "大额支出 80,000.00元",
+          "level": "medium"
+        },
+        {
+          "code": "B3",
+          "desc": "整数金额",
+          "level": "low"
+        },
+        {
+          "code": "C3",
+          "desc": "深夜交易(00:00:00) 80,000.00元",
+          "level": "low"
+        },
+        {
+          "code": "A1",
+          "desc": "关联链路: 张三 → 李四 → 张三 (金额差1%, 间隔48.0h)",
+          "level": "high"
+        }
+      ],
+      "risk_level": "high"
+    },
+    {
+      "source_file": "张三_工商银行_流水.xlsx",
+      "holder_name": "张三",
+      "channel": "银行卡",
+      "date": "2025-06-28",
+      "time": "00:00:00",
+      "datetime": "2025-06-28 00:00:00",
+      "direction": "expense",
+      "amount": 20000.0,
+      "balance_after": 100000.0,
+      "counterparty": "None",
+      "counterparty_account": "",
+      "remarks": "ATM取款",
+      "txn_id": "",
+      "is_atm": true,
+      "is_internal_transfer": false,
+      "is_refund": false,
+      "fee": 0.0,
+      "refund_amount": 0.0,
+      "anomalies": [
+        {
+          "code": "B3",
+          "desc": "整数金额",
+          "level": "low"
+        },
+        {
+          "code": "C1",
+          "desc": "ATM大额取现 20,000.00元",
+          "level": "medium"
+        },
+        {
+          "code": "C3",
+          "desc": "深夜交易(00:00:00) 20,000.00元",
+          "level": "low"
+        }
+      ],
+      "risk_level": "medium"
+    },
+    {
+      "source_file": "张三_工商银行_流水.xlsx",
+      "holder_name": "张三",
+      "channel": "银行卡",
+      "date": "2025-06-29",
+      "time": "00:00:00",
+      "datetime": "2025-06-29 00:00:00",
+      "direction": "expense",
+      "amount": 20000.0,
+      "balance_after": 80000.0,
+      "counterparty": "None",
+      "counterparty_account": "",
+      "remarks": "ATM取款",
+      "txn_id": "",
+      "is_atm": true,
+      "is_internal_transfer": false,
+      "is_refund": false,
+      "fee": 0.0,
+      "refund_amount": 0.0,
+      "anomalies": [
+        {
+          "code": "B3",
+          "desc": "整数金额",
+          "level": "low"
+        },
+        {
+          "code": "C1",
+          "desc": "ATM大额取现 20,000.00元",
+          "level": "medium"
+        },
+        {
+          "code": "C3",
+          "desc": "深夜交易(00:00:00) 20,000.00元",
+          "level": "low"
+        }
+      ],
+      "risk_level": "medium"
+    },
+    {
+      "source_file": "张三_工商银行_流水.xlsx",
+      "holder_name": "张三",
+      "channel": "银行卡",
+      "date": "2025-06-29",
+      "time": "00:00:00",
+      "datetime": "2025-06-29 00:00:00",
+      "direction": "income",
+      "amount": 20000.0,
+      "balance_after": 100000.0,
+      "counterparty": "XX能源公司",
+      "counterparty_account": "",
+      "remarks": "收到XX能源公司货款",
+      "txn_id": "",
+      "is_atm": false,
+      "is_internal_transfer": false,
+      "is_refund": false,
+      "fee": 0.0,
+      "refund_amount": 0.0,
+      "anomalies": [
+        {
+          "code": "B3",
+          "desc": "整数金额",
+          "level": "low"
+        },
+        {
+          "code": "C3",
+          "desc": "深夜交易(00:00:00) 20,000.00元",
+          "level": "low"
+        }
+      ],
+      "risk_level": "low"
+    },
+    {
+      "source_file": "张三_微信支付_2025年.csv",
+      "holder_name": "张三",
+      "channel": "微信支付",
+      "date": "2025-06-01",
+      "time": "21:00:00",
+      "datetime": "2025-06-01 21:00:00",
+      "direction": "unknown",
+      "amount": 2971.48,
+      "balance_after": 0.0,
+      "counterparty": "李四",
+      "counterparty_account": "",
+      "remarks": "",
+      "txn_id": "TXN443254",
+      "is_atm": false,
+      "is_internal_transfer": false,
+      "is_refund": false,
+      "fee": 0.0,
+      "refund_amount": 0.0,
+      "anomalies": [],
+      "risk_level": ""
+    },
+    {
+      "source_file": "张三_微信支付_2025年.csv",
+      "holder_name": "张三",
+      "channel": "微信支付",
+      "date": "2025-06-02",
+      "time": "22:00:00",
+      "datetime": "2025-06-02 22:00:00",
+      "direction": "unknown",
+      "amount": 1753.75,
+      "balance_after": 0.0,
+      "counterparty": "赵六",
+      "counterparty_account": "",
+      "remarks": "商品购买",
+      "txn_id": "TXN391773",
+      "is_atm": false,
+      "is_internal_transfer": false,
+      "is_refund": false,
+      "fee": 0.0,
+      "refund_amount": 0.0,
+      "anomalies": [],
+      "risk_level": ""
+    },
+    {
+      "source_file": "张三_微信支付_2025年.csv",
+      "holder_name": "张三",
+      "channel": "微信支付",
+      "date": "2025-06-04",
+      "time": "07:00:00",
+      "datetime": "2025-06-04 07:00:00",
+      "direction": "unknown",
+      "amount": 8431.65,
+      "balance_after": 0.0,
+      "counterparty": "李四",
+      "counterparty_account": "",
+      "remarks": "",
+      "txn_id": "TXN593152",
+      "is_atm": false,
+      "is_internal_transfer": false,
+      "is_refund": false,
+      "fee": 0.0,
+      "refund_amount": 0.0,
+      "anomalies": [],
+      "risk_level": ""
+    },
+    {
+      "source_file": "张三_微信支付_2025年.csv",
+      "holder_name": "张三",
+      "channel": "微信支付",
+      "date": "2025-06-04",
+      "time": "19:00:00",
+      "datetime": "2025-06-04 19:00:00",
+      "direction": "unknown",
+      "amount": 9543.24,
+      "balance_after": 0.0,
+      "counterparty": "李四",
+      "counterparty_account": "",
+      "remarks": "",
+      "txn_id": "TXN335113",
+      "is_atm": false,
+      "is_internal_transfer": false,
+      "is_refund": false,
+      "fee": 0.0,
+      "refund_amount": 0.0,
+      "anomalies": [],
+      "risk_level": ""
+    },
+    {
+      "source_file": "张三_微信支付_2025年.csv",
+      "holder_name": "张三",
+      "channel": "微信支付",
+      "date": "2025-06-06",
+      "time": "05:00:00",
+      "datetime": "2025-06-06 05:00:00",
+      "direction": "unknown",
+      "amount": 4790.7,
+      "balance_after": 0.0,
+      "counterparty": "XX能源公司",
+      "counterparty_account": "",
+      "remarks": "商品购买",
+      "txn_id": "TXN890870",
+      "is_atm": false,
+      "is_internal_transfer": false,
+      "is_refund": false,
+      "fee": 0.0,
+      "refund_amount": 0.0,
+      "anomalies": [],
+      "risk_level": ""
+    },
+    {
+      "source_file": "张三_微信支付_2025年.csv",
+      "holder_name": "张三",
+      "channel": "微信支付",
+      "date": "2025-06-06",
+      "time": "19:00:00",
+      "datetime": "2025-06-06 19:00:00",
+      "direction": "unknown",
+      "amount": 693.61,
+      "balance_after": 0.0,
+      "counterparty": "李四",
+      "counterparty_account": "",
+      "remarks": "",
+      "txn_id": "TXN259784",
+      "is_atm": false,
+      "is_internal_transfer": false,
+      "is_refund": false,
+      "fee": 0.0,
+      "refund_amount": 0.0,
+      "anomalies": [],
+      "risk_level": ""
+    },
+    {
+      "source_file": "张三_微信支付_2025年.csv",
+      "holder_name": "张三",
+      "channel": "微信支付",
+      "date": "2025-06-07",
+      "time": "22:00:00",
+      "datetime": "2025-06-07 22:00:00",
+      "direction": "unknown",
+      "amount": 3380.35,
+      "balance_after": 0.0,
+      "counterparty": "京东",
+      "counterparty_account": "",
+      "remarks": "商品购买",
+      "txn_id": "TXN328552",
+      "is_atm": false,
+      "is_internal_transfer": false,
+      "is_refund": false,
+      "fee": 0.0,
+      "refund_amount": 0.0,
+      "anomalies": [],
+      "risk_level": ""
+    },
+    {
+      "source_file": "张三_微信支付_2025年.csv",
+      "holder_name": "张三",
+      "channel": "微信支付",
+      "date": "2025-06-09",
+      "time": "02:00:00",
+      "datetime": "2025-06-09 02:00:00",
+      "direction": "unknown",
+      "amount": 3857.8,
+      "balance_after": 0.0,
+      "counterparty": "ZZ工程公司",
+      "counterparty_account": "",
+      "remarks": "商品购买",
+      "txn_id": "TXN735324",
+      "is_atm": false,
+      "is_internal_transfer": false,
+      "is_refund": false,
+      "fee": 0.0,
+      "refund_amount": 0.0,
+      "anomalies": [],
+      "risk_level": ""
+    },
+    {
+      "source_file": "张三_微信支付_2025年.csv",
+      "holder_name": "张三",
+      "channel": "微信支付",
+      "date": "2025-06-10",
+      "time": "04:00:00",
+      "datetime": "2025-06-10 04:00:00",
+      "direction": "unknown",
+      "amount": 4111.17,
+      "balance_after": 0.0,
+      "counterparty": "银行卡",
+      "counterparty_account": "",
+      "remarks": "",
+      "txn_id": "TXN271720",
+      "is_atm": false,
+      "is_internal_transfer": false,
+      "is_refund": false,
+      "fee": 0.0,
+      "refund_amount": 0.0,
+      "anomalies": [],
+      "risk_level": ""
+    },
+    {
+      "source_file": "张三_微信支付_2025年.csv",
+      "holder_name": "张三",
+      "channel": "微信支付",
+      "date": "2025-06-10",
+      "time": "23:00:00",
+      "datetime": "2025-06-10 23:00:00",
+      "direction": "unknown",
+      "amount": 225.82,
+      "balance_after": 0.0,
+      "counterparty": "李四",
+      "counterparty_account": "",
+      "remarks": "商品购买",
+      "txn_id": "TXN703766",
+      "is_atm": false,
+      "is_internal_transfer": false,
+      "is_refund": false,
+      "fee": 0.0,
+      "refund_amount": 0.0,
+      "anomalies": [],
+      "risk_level": ""
+    },
+    {
+      "source_file": "张三_微信支付_2025年.csv",
+      "holder_name": "张三",
+      "channel": "微信支付",
+      "date": "2025-06-12",
+      "time": "05:00:00",
+      "datetime": "2025-06-12 05:00:00",
+      "direction": "unknown",
+      "amount": 9443.97,
+      "balance_after": 0.0,
+      "counterparty": "李四",
+      "counterparty_account": "",
+      "remarks": "",
+      "txn_id": "TXN307963",
+      "is_atm": false,
+      "is_internal_transfer": false,
+      "is_refund": false,
+      "fee": 0.0,
+      "refund_amount": 0.0,
+      "anomalies": [],
+      "risk_level": ""
+    },
+    {
+      "source_file": "张三_微信支付_2025年.csv",
+      "holder_name": "张三",
+      "channel": "微信支付",
+      "date": "2025-06-12",
+      "time": "20:00:00",
+      "datetime": "2025-06-12 20:00:00",
+      "direction": "unknown",
+      "amount": 4169.8,
+      "balance_after": 0.0,
+      "counterparty": "AA物资公司",
+      "counterparty_account": "",
+      "remarks": "商品购买",
+      "txn_id": "TXN206851",
+      "is_atm": false,
+      "is_internal_transfer": false,
+      "is_refund": false,
+      "fee": 0.0,
+      "refund_amount": 0.0,
+      "anomalies": [],
+      "risk_level": ""
+    },
+    {
+      "source_file": "张三_微信支付_2025年.csv",
+      "holder_name": "张三",
+      "channel": "微信支付",
+      "date": "2025-06-14",
+      "time": "06:00:00",
+      "datetime": "2025-06-14 06:00:00",
+      "direction": "unknown",
+      "amount": 3401.65,
+      "balance_after": 0.0,
+      "counterparty": "银行卡",
+      "counterparty_account": "",
+      "remarks": "",
+      "txn_id": "TXN226935",
+      "is_atm": false,
+      "is_internal_transfer": false,
+      "is_refund": false,
+      "fee": 0.0,
+      "refund_amount": 0.0,
+      "anomalies": [],
+      "risk_level": ""
+    },
+    {
+      "source_file": "张三_微信支付_2025年.csv",
+      "holder_name": "张三",
+      "channel": "微信支付",
+      "date": "2025-06-15",
+      "time": "07:00:00",
+      "datetime": "2025-06-15 07:00:00",
+      "direction": "unknown",
+      "amount": 2388.82,
+      "balance_after": 0.0,
+      "counterparty": "银行卡",
+      "counterparty_account": "",
+      "remarks": "",
+      "txn_id": "TXN549186",
+      "is_atm": false,
+      "is_internal_transfer": false,
+      "is_refund": false,
+      "fee": 0.0,
+      "refund_amount": 0.0,
+      "anomalies": [],
+      "risk_level": ""
+    },
+    {
+      "source_file": "张三_微信支付_2025年.csv",
+      "holder_name": "张三",
+      "channel": "微信支付",
+      "date": "2025-06-16",
+      "time": "05:00:00",
+      "datetime": "2025-06-16 05:00:00",
+      "direction": "unknown",
+      "amount": 2579.21,
+      "balance_after": 0.0,
+      "counterparty": "王五",
+      "counterparty_account": "",
+      "remarks": "商品购买",
+      "txn_id": "TXN113266",
+      "is_atm": false,
+      "is_internal_transfer": false,
+      "is_refund": false,
+      "fee": 0.0,
+      "refund_amount": 0.0,
+      "anomalies": [],
+      "risk_level": ""
+    },
+    {
+      "source_file": "李四_工商银行_流水.xlsx",
+      "holder_name": "李四",
+      "channel": "银行卡",
+      "date": "2025-06-01",
+      "time": "00:00:00",
+      "datetime": "2025-06-01 00:00:00",
+      "direction": "income",
+      "amount": 30000.0,
+      "balance_after": 230000.0,
+      "counterparty": "张三",
+      "counterparty_account": "",
+      "remarks": "转账收入",
+      "txn_id": "",
+      "is_atm": false,
+      "is_internal_transfer": false,
+      "is_refund": false,
+      "fee": 0.0,
+      "refund_amount": 0.0,
+      "anomalies": [
+        {
+          "code": "B3",
+          "desc": "整数金额",
+          "level": "low"
+        },
+        {
+          "code": "C3",
+          "desc": "深夜交易(00:00:00) 30,000.00元",
+          "level": "low"
+        }
+      ],
+      "risk_level": "low"
+    },
+    {
+      "source_file": "李四_工商银行_流水.xlsx",
+      "holder_name": "李四",
+      "channel": "银行卡",
+      "date": "2025-06-02",
+      "time": "00:00:00",
+      "datetime": "2025-06-02 00:00:00",
+      "direction": "income",
+      "amount": 80000.0,
+      "balance_after": 310000.0,
+      "counterparty": "张三",
+      "counterparty_account": "",
+      "remarks": "转账收入",
+      "txn_id": "",
+      "is_atm": false,
+      "is_internal_transfer": false,
+      "is_refund": false,
+      "fee": 0.0,
+      "refund_amount": 0.0,
+      "anomalies": [
+        {
+          "code": "B3",
+          "desc": "整数金额",
+          "level": "low"
+        },
+        {
+          "code": "C3",
+          "desc": "深夜交易(00:00:00) 80,000.00元",
+          "level": "low"
+        }
+      ],
+      "risk_level": "low"
+    },
+    {
+      "source_file": "李四_工商银行_流水.xlsx",
+      "holder_name": "李四",
+      "channel": "银行卡",
+      "date": "2025-06-03",
+      "time": "00:00:00",
+      "datetime": "2025-06-03 00:00:00",
+      "direction": "expense",
+      "amount": 15000.0,
+      "balance_after": 295000.0,
+      "counterparty": "None",
+      "counterparty_account": "",
+      "remarks": "微信消费",
+      "txn_id": "",
+      "is_atm": false,
+      "is_internal_transfer": false,
+      "is_refund": false,
+      "fee": 0.0,
+      "refund_amount": 0.0,
+      "anomalies": [
+        {
+          "code": "B3",
+          "desc": "整数金额",
+          "level": "low"
+        },
+        {
+          "code": "C3",
+          "desc": "深夜交易(00:00:00) 15,000.00元",
+          "level": "low"
+        }
+      ],
+      "risk_level": "low"
+    },
+    {
+      "source_file": "李四_工商银行_流水.xlsx",
+      "holder_name": "李四",
+      "channel": "银行卡",
+      "date": "2025-06-05",
+      "time": "00:00:00",
+      "datetime": "2025-06-05 00:00:00",
+      "direction": "income",
+      "amount": 30000.0,
+      "balance_after": 325000.0,
+      "counterparty": "张三",
+      "counterparty_account": "",
+      "remarks": "转账收入",
+      "txn_id": "",
+      "is_atm": false,
+      "is_internal_transfer": false,
+      "is_refund": false,
+      "fee": 0.0,
+      "refund_amount": 0.0,
+      "anomalies": [
+        {
+          "code": "B3",
+          "desc": "整数金额",
+          "level": "low"
+        },
+        {
+          "code": "C3",
+          "desc": "深夜交易(00:00:00) 30,000.00元",
+          "level": "low"
+        }
+      ],
+      "risk_level": "low"
+    },
+    {
+      "source_file": "李四_工商银行_流水.xlsx",
+      "holder_name": "李四",
+      "channel": "银行卡",
+      "date": "2025-06-05",
+      "time": "00:00:00",
+      "datetime": "2025-06-05 00:00:00",
+      "direction": "expense",
+      "amount": 29500.0,
+      "balance_after": 295500.0,
+      "counterparty": "张三",
+      "counterparty_account": "",
+      "remarks": "转账",
+      "txn_id": "",
+      "is_atm": false,
+      "is_internal_transfer": false,
+      "is_refund": false,
+      "fee": 0.0,
+      "refund_amount": 0.0,
+      "anomalies": [
+        {
+          "code": "B3",
+          "desc": "整数金额",
+          "level": "low"
+        },
+        {
+          "code": "C3",
+          "desc": "深夜交易(00:00:00) 29,500.00元",
+          "level": "low"
+        },
+        {
+          "code": "A1",
+          "desc": "关联链路: 张三 → 李四 → 张三 (金额差2%, 间隔24.0h)",
+          "level": "high"
+        }
+      ],
+      "risk_level": "high"
+    },
+    {
+      "source_file": "李四_工商银行_流水.xlsx",
+      "holder_name": "李四",
+      "channel": "银行卡",
+      "date": "2025-06-06",
+      "time": "00:00:00",
+      "datetime": "2025-06-06 00:00:00",
+      "direction": "expense",
+      "amount": 15000.0,
+      "balance_after": 280500.0,
+      "counterparty": "None",
+      "counterparty_account": "",
+      "remarks": "微信消费",
+      "txn_id": "",
+      "is_atm": false,
+      "is_internal_transfer": false,
+      "is_refund": false,
+      "fee": 0.0,
+      "refund_amount": 0.0,
+      "anomalies": [
+        {
+          "code": "B3",
+          "desc": "整数金额",
+          "level": "low"
+        },
+        {
+          "code": "C3",
+          "desc": "深夜交易(00:00:00) 15,000.00元",
+          "level": "low"
+        }
+      ],
+      "risk_level": "low"
+    },
+    {
+      "source_file": "李四_工商银行_流水.xlsx",
+      "holder_name": "李四",
+      "channel": "银行卡",
+      "date": "2025-06-07",
+      "time": "00:00:00",
+      "datetime": "2025-06-07 00:00:00",
+      "direction": "income",
+      "amount": 50000.0,
+      "balance_after": 330500.0,
+      "counterparty": "张三",
+      "counterparty_account": "",
+      "remarks": "转账收入",
+      "txn_id": "",
+      "is_atm": false,
+      "is_internal_transfer": false,
+      "is_refund": false,
+      "fee": 0.0,
+      "refund_amount": 0.0,
+      "anomalies": [
+        {
+          "code": "B3",
+          "desc": "整数金额",
+          "level": "low"
+        },
+        {
+          "code": "C3",
+          "desc": "深夜交易(00:00:00) 50,000.00元",
+          "level": "low"
+        }
+      ],
+      "risk_level": "low"
+    },
+    {
+      "source_file": "李四_工商银行_流水.xlsx",
+      "holder_name": "李四",
+      "channel": "银行卡",
+      "date": "2025-06-08",
+      "time": "00:00:00",
+      "datetime": "2025-06-08 00:00:00",
+      "direction": "expense",
+      "amount": 49500.0,
+      "balance_after": 281000.0,
+      "counterparty": "张三",
+      "counterparty_account": "",
+      "remarks": "转账",
+      "txn_id": "",
+      "is_atm": false,
+      "is_internal_transfer": false,
+      "is_refund": false,
+      "fee": 0.0,
+      "refund_amount": 0.0,
+      "anomalies": [
+        {
+          "code": "B3",
+          "desc": "整数金额",
+          "level": "low"
+        },
+        {
+          "code": "C3",
+          "desc": "深夜交易(00:00:00) 49,500.00元",
+          "level": "low"
+        },
+        {
+          "code": "A1",
+          "desc": "关联链路: 张三 → 李四 → 张三 (金额差65%, 间隔24.0h)",
+          "level": "medium"
+        }
+      ],
+      "risk_level": "low"
+    },
+    {
+      "source_file": "李四_工商银行_流水.xlsx",
+      "holder_name": "李四",
+      "channel": "银行卡",
+      "date": "2025-06-09",
+      "time": "00:00:00",
+      "datetime": "2025-06-09 00:00:00",
+      "direction": "income",
+      "amount": 80000.0,
+      "balance_after": 361000.0,
+      "counterparty": "张三",
+      "counterparty_account": "",
+      "remarks": "转账收入",
+      "txn_id": "",
+      "is_atm": false,
+      "is_internal_transfer": false,
+      "is_refund": false,
+      "fee": 0.0,
+      "refund_amount": 0.0,
+      "anomalies": [
+        {
+          "code": "B3",
+          "desc": "整数金额",
+          "level": "low"
+        },
+        {
+          "code": "C3",
+          "desc": "深夜交易(00:00:00) 80,000.00元",
+          "level": "low"
+        }
+      ],
+      "risk_level": "low"
+    },
+    {
+      "source_file": "李四_工商银行_流水.xlsx",
+      "holder_name": "李四",
+      "channel": "银行卡",
+      "date": "2025-06-10",
+      "time": "00:00:00",
+      "datetime": "2025-06-10 00:00:00",
+      "direction": "expense",
+      "amount": 15000.0,
+      "balance_after": 346000.0,
+      "counterparty": "None",
+      "counterparty_account": "",
+      "remarks": "微信消费",
+      "txn_id": "",
+      "is_atm": false,
+      "is_internal_transfer": false,
+      "is_refund": false,
+      "fee": 0.0,
+      "refund_amount": 0.0,
+      "anomalies": [
+        {
+          "code": "B3",
+          "desc": "整数金额",
+          "level": "low"
+        },
+        {
+          "code": "C3",
+          "desc": "深夜交易(00:00:00) 15,000.00元",
+          "level": "low"
+        }
+      ],
+      "risk_level": "low"
+    },
+    {
+      "source_file": "李四_工商银行_流水.xlsx",
+      "holder_name": "李四",
+      "channel": "银行卡",
+      "date": "2025-06-12",
+      "time": "00:00:00",
+      "datetime": "2025-06-12 00:00:00",
+      "direction": "income",
+      "amount": 80000.0,
+      "balance_after": 426000.0,
+      "counterparty": "张三",
+      "counterparty_account": "",
+      "remarks": "转账收入",
+      "txn_id": "",
+      "is_atm": false,
+      "is_internal_transfer": false,
+      "is_refund": false,
+      "fee": 0.0,
+      "refund_amount": 0.0,
+      "anomalies": [
+        {
+          "code": "B3",
+          "desc": "整数金额",
+          "level": "low"
+        },
+        {
+          "code": "C3",
+          "desc": "深夜交易(00:00:00) 80,000.00元",
+          "level": "low"
+        }
+      ],
+      "risk_level": "low"
+    },
+    {
+      "source_file": "李四_工商银行_流水.xlsx",
+      "holder_name": "李四",
+      "channel": "银行卡",
+      "date": "2025-06-13",
+      "time": "00:00:00",
+      "datetime": "2025-06-13 00:00:00",
+      "direction": "expense",
+      "amount": 79500.0,
+      "balance_after": 346500.0,
+      "counterparty": "张三",
+      "counterparty_account": "",
+      "remarks": "转账",
+      "txn_id": "",
+      "is_atm": false,
+      "is_internal_transfer": false,
+      "is_refund": false,
+      "fee": 0.0,
+      "refund_amount": 0.0,
+      "anomalies": [
+        {
+          "code": "B1",
+          "desc": "大额支出 79,500.00元",
+          "level": "medium"
+        },
+        {
+          "code": "B3",
+          "desc": "整数金额",
+          "level": "low"
+        },
+        {
+          "code": "C3",
+          "desc": "深夜交易(00:00:00) 79,500.00元",
+          "level": "low"
+        }
+      ],
+      "risk_level": "medium"
+    },
+    {
+      "source_file": "李四_工商银行_流水.xlsx",
+      "holder_name": "李四",
+      "channel": "银行卡",
+      "date": "2025-06-15",
+      "time": "00:00:00",
+      "datetime": "2025-06-15 00:00:00",
+      "direction": "expense",
+      "amount": 20000.0,
+      "balance_after": 326500.0,
+      "counterparty": "None",
+      "counterparty_account": "",
+      "remarks": "ATM取款",
+      "txn_id": "",
+      "is_atm": true,
+      "is_internal_transfer": false,
+      "is_refund": false,
+      "fee": 0.0,
+      "refund_amount": 0.0,
+      "anomalies": [
+        {
+          "code": "B3",
+          "desc": "整数金额",
+          "level": "low"
+        },
+        {
+          "code": "C1",
+          "desc": "ATM大额取现 20,000.00元",
+          "level": "medium"
+        },
+        {
+          "code": "C3",
+          "desc": "深夜交易(00:00:00) 20,000.00元",
+          "level": "low"
+        }
+      ],
+      "risk_level": "medium"
+    },
+    {
+      "source_file": "李四_工商银行_流水.xlsx",
+      "holder_name": "李四",
+      "channel": "银行卡",
+      "date": "2025-06-16",
+      "time": "00:00:00",
+      "datetime": "2025-06-16 00:00:00",
+      "direction": "income",
+      "amount": 30000.0,
+      "balance_after": 356500.0,
+      "counterparty": "张三",
+      "counterparty_account": "",
+      "remarks": "转账收入",
+      "txn_id": "",
+      "is_atm": false,
+      "is_internal_transfer": false,
+      "is_refund": false,
+      "fee": 0.0,
+      "refund_amount": 0.0,
+      "anomalies": [
+        {
+          "code": "B3",
+          "desc": "整数金额",
+          "level": "low"
+        },
+        {
+          "code": "C3",
+          "desc": "深夜交易(00:00:00) 30,000.00元",
+          "level": "low"
+        }
+      ],
+      "risk_level": "low"
+    },
+    {
+      "source_file": "李四_工商银行_流水.xlsx",
+      "holder_name": "李四",
+      "channel": "银行卡",
+      "date": "2025-06-18",
+      "time": "00:00:00",
+      "datetime": "2025-06-18 00:00:00",
+      "direction": "expense",
+      "amount": 20000.0,
+      "balance_after": 336500.0,
+      "counterparty": "None",
+      "counterparty_account": "",
+      "remarks": "微信消费",
+      "txn_id": "",
+      "is_atm": false,
+      "is_internal_transfer": false,
+      "is_refund": false,
+      "fee": 0.0,
+      "refund_amount": 0.0,
+      "anomalies": [
+        {
+          "code": "B3",
+          "desc": "整数金额",
+          "level": "low"
+        },
+        {
+          "code": "C3",
+          "desc": "深夜交易(00:00:00) 20,000.00元",
+          "level": "low"
+        }
+      ],
+      "risk_level": "low"
+    },
+    {
+      "source_file": "李四_工商银行_流水.xlsx",
+      "holder_name": "李四",
+      "channel": "银行卡",
+      "date": "2025-06-18",
+      "time": "00:00:00",
+      "datetime": "2025-06-18 00:00:00",
+      "direction": "income",
+      "amount": 30000.0,
+      "balance_after": 366500.0,
+      "counterparty": "张三",
+      "counterparty_account": "",
+      "remarks": "转账收入",
+      "txn_id": "",
+      "is_atm": false,
+      "is_internal_transfer": false,
+      "is_refund": false,
+      "fee": 0.0,
+      "refund_amount": 0.0,
+      "anomalies": [
+        {
+          "code": "B3",
+          "desc": "整数金额",
+          "level": "low"
+        },
+        {
+          "code": "C3",
+          "desc": "深夜交易(00:00:00) 30,000.00元",
+          "level": "low"
+        }
+      ],
+      "risk_level": "low"
+    },
+    {
+      "source_file": "李四_工商银行_流水.xlsx",
+      "holder_name": "李四",
+      "channel": "银行卡",
+      "date": "2025-06-20",
+      "time": "00:00:00",
+      "datetime": "2025-06-20 00:00:00",
+      "direction": "income",
+      "amount": 30000.0,
+      "balance_after": 396500.0,
+      "counterparty": "张三",
+      "counterparty_account": "",
+      "remarks": "转账收入",
+      "txn_id": "",
+      "is_atm": false,
+      "is_internal_transfer": false,
+      "is_refund": false,
+      "fee": 0.0,
+      "refund_amount": 0.0,
+      "anomalies": [
+        {
+          "code": "B3",
+          "desc": "整数金额",
+          "level": "low"
+        },
+        {
+          "code": "C3",
+          "desc": "深夜交易(00:00:00) 30,000.00元",
+          "level": "low"
+        }
+      ],
+      "risk_level": "low"
+    },
+    {
+      "source_file": "李四_工商银行_流水.xlsx",
+      "holder_name": "李四",
+      "channel": "银行卡",
+      "date": "2025-06-23",
+      "time": "00:00:00",
+      "datetime": "2025-06-23 00:00:00",
+      "direction": "expense",
+      "amount": 15000.0,
+      "balance_after": 381500.0,
+      "counterparty": "None",
+      "counterparty_account": "",
+      "remarks": "微信消费",
+      "txn_id": "",
+      "is_atm": false,
+      "is_internal_transfer": false,
+      "is_refund": false,
+      "fee": 0.0,
+      "refund_amount": 0.0,
+      "anomalies": [
+        {
+          "code": "B3",
+          "desc": "整数金额",
+          "level": "low"
+        },
+        {
+          "code": "C3",
+          "desc": "深夜交易(00:00:00) 15,000.00元",
+          "level": "low"
+        }
+      ],
+      "risk_level": "low"
+    },
+    {
+      "source_file": "李四_工商银行_流水.xlsx",
+      "holder_name": "李四",
+      "channel": "银行卡",
+      "date": "2025-06-24",
+      "time": "00:00:00",
+      "datetime": "2025-06-24 00:00:00",
+      "direction": "income",
+      "amount": 30000.0,
+      "balance_after": 411500.0,
+      "counterparty": "张三",
+      "counterparty_account": "",
+      "remarks": "转账收入",
+      "txn_id": "",
+      "is_atm": false,
+      "is_internal_transfer": false,
+      "is_refund": false,
+      "fee": 0.0,
+      "refund_amount": 0.0,
+      "anomalies": [
+        {
+          "code": "B3",
+          "desc": "整数金额",
+          "level": "low"
+        },
+        {
+          "code": "C3",
+          "desc": "深夜交易(00:00:00) 30,000.00元",
+          "level": "low"
+        }
+      ],
+      "risk_level": "low"
+    },
+    {
+      "source_file": "李四_工商银行_流水.xlsx",
+      "holder_name": "李四",
+      "channel": "银行卡",
+      "date": "2025-06-25",
+      "time": "00:00:00",
+      "datetime": "2025-06-25 00:00:00",
+      "direction": "expense",
+      "amount": 29500.0,
+      "balance_after": 382000.0,
+      "counterparty": "张三",
+      "counterparty_account": "",
+      "remarks": "转账",
+      "txn_id": "",
+      "is_atm": false,
+      "is_internal_transfer": false,
+      "is_refund": false,
+      "fee": 0.0,
+      "refund_amount": 0.0,
+      "anomalies": [
+        {
+          "code": "B3",
+          "desc": "整数金额",
+          "level": "low"
+        },
+        {
+          "code": "C3",
+          "desc": "深夜交易(00:00:00) 29,500.00元",
+          "level": "low"
+        },
+        {
+          "code": "A1",
+          "desc": "关联链路: 张三 → 李四 → 张三 (金额差2%, 间隔48.0h)",
+          "level": "high"
+        }
+      ],
+      "risk_level": "high"
+    },
+    {
+      "source_file": "李四_工商银行_流水.xlsx",
+      "holder_name": "李四",
+      "channel": "银行卡",
+      "date": "2025-06-25",
+      "time": "00:00:00",
+      "datetime": "2025-06-25 00:00:00",
+      "direction": "income",
+      "amount": 30000.0,
+      "balance_after": 412000.0,
+      "counterparty": "张三",
+      "counterparty_account": "",
+      "remarks": "转账收入",
+      "txn_id": "",
+      "is_atm": false,
+      "is_internal_transfer": false,
+      "is_refund": false,
+      "fee": 0.0,
+      "refund_amount": 0.0,
+      "anomalies": [
+        {
+          "code": "B3",
+          "desc": "整数金额",
+          "level": "low"
+        },
+        {
+          "code": "C3",
+          "desc": "深夜交易(00:00:00) 30,000.00元",
+          "level": "low"
+        }
+      ],
+      "risk_level": "low"
+    },
+    {
+      "source_file": "李四_工商银行_流水.xlsx",
+      "holder_name": "李四",
+      "channel": "银行卡",
+      "date": "2025-06-25",
+      "time": "00:00:00",
+      "datetime": "2025-06-25 00:00:00",
+      "direction": "expense",
+      "amount": 29500.0,
+      "balance_after": 382500.0,
+      "counterparty": "张三",
+      "counterparty_account": "",
+      "remarks": "转账",
+      "txn_id": "",
+      "is_atm": false,
+      "is_internal_transfer": false,
+      "is_refund": false,
+      "fee": 0.0,
+      "refund_amount": 0.0,
+      "anomalies": [
+        {
+          "code": "B3",
+          "desc": "整数金额",
+          "level": "low"
+        },
+        {
+          "code": "C3",
+          "desc": "深夜交易(00:00:00) 29,500.00元",
+          "level": "low"
+        },
+        {
+          "code": "A1",
+          "desc": "关联链路: 张三 → 李四 → 张三 (金额差2%, 间隔48.0h)",
+          "level": "high"
+        }
+      ],
+      "risk_level": "high"
+    },
+    {
+      "source_file": "李四_工商银行_流水.xlsx",
+      "holder_name": "李四",
+      "channel": "银行卡",
+      "date": "2025-06-25",
+      "time": "00:00:00",
+      "datetime": "2025-06-25 00:00:00",
+      "direction": "expense",
+      "amount": 15000.0,
+      "balance_after": 367500.0,
+      "counterparty": "None",
+      "counterparty_account": "",
+      "remarks": "微信消费",
+      "txn_id": "",
+      "is_atm": false,
+      "is_internal_transfer": false,
+      "is_refund": false,
+      "fee": 0.0,
+      "refund_amount": 0.0,
+      "anomalies": [
+        {
+          "code": "B3",
+          "desc": "整数金额",
+          "level": "low"
+        },
+        {
+          "code": "C3",
+          "desc": "深夜交易(00:00:00) 15,000.00元",
+          "level": "low"
+        }
+      ],
+      "risk_level": "low"
+    },
+    {
+      "source_file": "李四_工商银行_流水.xlsx",
+      "holder_name": "李四",
+      "channel": "银行卡",
+      "date": "2025-06-26",
+      "time": "00:00:00",
+      "datetime": "2025-06-26 00:00:00",
+      "direction": "income",
+      "amount": 80000.0,
+      "balance_after": 447500.0,
+      "counterparty": "张三",
+      "counterparty_account": "",
+      "remarks": "转账收入",
+      "txn_id": "",
+      "is_atm": false,
+      "is_internal_transfer": false,
+      "is_refund": false,
+      "fee": 0.0,
+      "refund_amount": 0.0,
+      "anomalies": [
+        {
+          "code": "B3",
+          "desc": "整数金额",
+          "level": "low"
+        },
+        {
+          "code": "C3",
+          "desc": "深夜交易(00:00:00) 80,000.00元",
+          "level": "low"
+        }
+      ],
+      "risk_level": "low"
+    },
+    {
+      "source_file": "李四_工商银行_流水.xlsx",
+      "holder_name": "李四",
+      "channel": "银行卡",
+      "date": "2025-06-26",
+      "time": "00:00:00",
+      "datetime": "2025-06-26 00:00:00",
+      "direction": "expense",
+      "amount": 79500.0,
+      "balance_after": 368000.0,
+      "counterparty": "张三",
+      "counterparty_account": "",
+      "remarks": "转账",
+      "txn_id": "",
+      "is_atm": false,
+      "is_internal_transfer": false,
+      "is_refund": false,
+      "fee": 0.0,
+      "refund_amount": 0.0,
+      "anomalies": [
+        {
+          "code": "B1",
+          "desc": "大额支出 79,500.00元",
+          "level": "medium"
+        },
+        {
+          "code": "B3",
+          "desc": "整数金额",
+          "level": "low"
+        },
+        {
+          "code": "C3",
+          "desc": "深夜交易(00:00:00) 79,500.00元",
+          "level": "low"
+        },
+        {
+          "code": "A1",
+          "desc": "关联链路: 张三 → 李四 → 张三 (金额差165%, 间隔24.0h)",
+          "level": "medium"
+        }
+      ],
+      "risk_level": "medium"
+    },
+    {
+      "source_file": "李四_工商银行_流水.xlsx",
+      "holder_name": "李四",
+      "channel": "银行卡",
+      "date": "2025-06-30",
+      "time": "00:00:00",
+      "datetime": "2025-06-30 00:00:00",
+      "direction": "expense",
+      "amount": 15000.0,
+      "balance_after": 353000.0,
+      "counterparty": "None",
+      "counterparty_account": "",
+      "remarks": "微信消费",
+      "txn_id": "",
+      "is_atm": false,
+      "is_internal_transfer": false,
+      "is_refund": false,
+      "fee": 0.0,
+      "refund_amount": 0.0,
+      "anomalies": [
+        {
+          "code": "B3",
+          "desc": "整数金额",
+          "level": "low"
+        },
+        {
+          "code": "C3",
+          "desc": "深夜交易(00:00:00) 15,000.00元",
+          "level": "low"
+        }
+      ],
+      "risk_level": "low"
+    }
+  ],
+  "cross_holder_links": [
+    {
+      "type": "bidirectional",
+      "path": "张三 → 李四 → 张三",
+      "from_amount": 30000.0,
+      "to_amount": 29500.0,
+      "hours_delta": 24.0,
+      "diff_ratio": 0.0167,
+      "txns": [
+        {
+          "source_file": "张三_工商银行_流水.xlsx",
+          "holder_name": "张三",
+          "channel": "银行卡",
+          "date": "2025-06-04",
+          "time": "00:00:00",
+          "datetime": "2025-06-04 00:00:00",
+          "direction": "expense",
+          "amount": 30000.0,
+          "balance_after": 410000.0,
+          "counterparty": "李四",
+          "counterparty_account": "",
+          "remarks": "转账",
+          "txn_id": "",
+          "is_atm": false,
+          "is_internal_transfer": false,
+          "is_refund": false,
+          "fee": 0.0,
+          "refund_amount": 0.0,
+          "anomalies": [
+            {
+              "code": "B3",
+              "desc": "整数金额",
+              "level": "low"
+            },
+            {
+              "code": "C3",
+              "desc": "深夜交易(00:00:00) 30,000.00元",
+              "level": "low"
+            },
+            {
+              "code": "A1",
+              "desc": "关联链路: 张三 → 李四 → 张三 (金额差2%, 间隔24.0h)",
+              "level": "high"
+            }
+          ],
+          "risk_level": "high"
+        },
+        {
+          "source_file": "李四_工商银行_流水.xlsx",
+          "holder_name": "李四",
+          "channel": "银行卡",
+          "date": "2025-06-05",
+          "time": "00:00:00",
+          "datetime": "2025-06-05 00:00:00",
+          "direction": "expense",
+          "amount": 29500.0,
+          "balance_after": 295500.0,
+          "counterparty": "张三",
+          "counterparty_account": "",
+          "remarks": "转账",
+          "txn_id": "",
+          "is_atm": false,
+          "is_internal_transfer": false,
+          "is_refund": false,
+          "fee": 0.0,
+          "refund_amount": 0.0,
+          "anomalies": [
+            {
+              "code": "B3",
+              "desc": "整数金额",
+              "level": "low"
+            },
+            {
+              "code": "C3",
+              "desc": "深夜交易(00:00:00) 29,500.00元",
+              "level": "low"
+            },
+            {
+              "code": "A1",
+              "desc": "关联链路: 张三 → 李四 → 张三 (金额差2%, 间隔24.0h)",
+              "level": "high"
+            }
+          ],
+          "risk_level": "high"
+        }
+      ],
+      "risk": "high"
+    },
+    {
+      "type": "bidirectional",
+      "path": "张三 → 李四 → 张三",
+      "from_amount": 30000.0,
+      "to_amount": 29500.0,
+      "hours_delta": 48.0,
+      "diff_ratio": 0.0167,
+      "txns": [
+        {
+          "source_file": "张三_工商银行_流水.xlsx",
+          "holder_name": "张三",
+          "channel": "银行卡",
+          "date": "2025-06-07",
+          "time": "00:00:00",
+          "datetime": "2025-06-07 00:00:00",
+          "direction": "expense",
+          "amount": 30000.0,
+          "balance_after": 100000.0,
+          "counterparty": "李四",
+          "counterparty_account": "",
+          "remarks": "转账",
+          "txn_id": "",
+          "is_atm": false,
+          "is_internal_transfer": false,
+          "is_refund": false,
+          "fee": 0.0,
+          "refund_amount": 0.0,
+          "anomalies": [
+            {
+              "code": "B3",
+              "desc": "整数金额",
+              "level": "low"
+            },
+            {
+              "code": "C3",
+              "desc": "深夜交易(00:00:00) 30,000.00元",
+              "level": "low"
+            },
+            {
+              "code": "A1",
+              "desc": "关联链路: 张三 → 李四 → 张三 (金额差2%, 间隔48.0h)",
+              "level": "high"
+            }
+          ],
+          "risk_level": "high"
+        },
+        {
+          "source_file": "李四_工商银行_流水.xlsx",
+          "holder_name": "李四",
+          "channel": "银行卡",
+          "date": "2025-06-05",
+          "time": "00:00:00",
+          "datetime": "2025-06-05 00:00:00",
+          "direction": "expense",
+          "amount": 29500.0,
+          "balance_after": 295500.0,
+          "counterparty": "张三",
+          "counterparty_account": "",
+          "remarks": "转账",
+          "txn_id": "",
+          "is_atm": false,
+          "is_internal_transfer": false,
+          "is_refund": false,
+          "fee": 0.0,
+          "refund_amount": 0.0,
+          "anomalies": [
+            {
+              "code": "B3",
+              "desc": "整数金额",
+              "level": "low"
+            },
+            {
+              "code": "C3",
+              "desc": "深夜交易(00:00:00) 29,500.00元",
+              "level": "low"
+            },
+            {
+              "code": "A1",
+              "desc": "关联链路: 张三 → 李四 → 张三 (金额差2%, 间隔24.0h)",
+              "level": "high"
+            }
+          ],
+          "risk_level": "high"
+        }
+      ],
+      "risk": "high"
+    },
+    {
+      "type": "bidirectional",
+      "path": "张三 → 李四 → 张三",
+      "from_amount": 30000.0,
+      "to_amount": 49500.0,
+      "hours_delta": 24.0,
+      "diff_ratio": 0.65,
+      "txns": [
+        {
+          "source_file": "张三_工商银行_流水.xlsx",
+          "holder_name": "张三",
+          "channel": "银行卡",
+          "date": "2025-06-07",
+          "time": "00:00:00",
+          "datetime": "2025-06-07 00:00:00",
+          "direction": "expense",
+          "amount": 30000.0,
+          "balance_after": 100000.0,
+          "counterparty": "李四",
+          "counterparty_account": "",
+          "remarks": "转账",
+          "txn_id": "",
+          "is_atm": false,
+          "is_internal_transfer": false,
+          "is_refund": false,
+          "fee": 0.0,
+          "refund_amount": 0.0,
+          "anomalies": [
+            {
+              "code": "B3",
+              "desc": "整数金额",
+              "level": "low"
+            },
+            {
+              "code": "C3",
+              "desc": "深夜交易(00:00:00) 30,000.00元",
+              "level": "low"
+            },
+            {
+              "code": "A1",
+              "desc": "关联链路: 张三 → 李四 → 张三 (金额差2%, 间隔48.0h)",
+              "level": "high"
+            }
+          ],
+          "risk_level": "high"
+        },
+        {
+          "source_file": "李四_工商银行_流水.xlsx",
+          "holder_name": "李四",
+          "channel": "银行卡",
+          "date": "2025-06-08",
+          "time": "00:00:00",
+          "datetime": "2025-06-08 00:00:00",
+          "direction": "expense",
+          "amount": 49500.0,
+          "balance_after": 281000.0,
+          "counterparty": "张三",
+          "counterparty_account": "",
+          "remarks": "转账",
+          "txn_id": "",
+          "is_atm": false,
+          "is_internal_transfer": false,
+          "is_refund": false,
+          "fee": 0.0,
+          "refund_amount": 0.0,
+          "anomalies": [
+            {
+              "code": "B3",
+              "desc": "整数金额",
+              "level": "low"
+            },
+            {
+              "code": "C3",
+              "desc": "深夜交易(00:00:00) 49,500.00元",
+              "level": "low"
+            },
+            {
+              "code": "A1",
+              "desc": "关联链路: 张三 → 李四 → 张三 (金额差65%, 间隔24.0h)",
+              "level": "medium"
+            }
+          ],
+          "risk_level": "low"
+        }
+      ],
+      "risk": "medium"
+    },
+    {
+      "type": "bidirectional",
+      "path": "张三 → 李四 → 张三",
+      "from_amount": 30000.0,
+      "to_amount": 49500.0,
+      "hours_delta": 24.0,
+      "diff_ratio": 0.65,
+      "txns": [
+        {
+          "source_file": "张三_工商银行_流水.xlsx",
+          "holder_name": "张三",
+          "channel": "银行卡",
+          "date": "2025-06-09",
+          "time": "00:00:00",
+          "datetime": "2025-06-09 00:00:00",
+          "direction": "expense",
+          "amount": 30000.0,
+          "balance_after": 100000.0,
+          "counterparty": "李四",
+          "counterparty_account": "",
+          "remarks": "转账",
+          "txn_id": "",
+          "is_atm": false,
+          "is_internal_transfer": false,
+          "is_refund": false,
+          "fee": 0.0,
+          "refund_amount": 0.0,
+          "anomalies": [
+            {
+              "code": "B3",
+              "desc": "整数金额",
+              "level": "low"
+            },
+            {
+              "code": "C3",
+              "desc": "深夜交易(00:00:00) 30,000.00元",
+              "level": "low"
+            },
+            {
+              "code": "A1",
+              "desc": "关联链路: 张三 → 李四 → 张三 (金额差65%, 间隔24.0h)",
+              "level": "medium"
+            }
+          ],
+          "risk_level": "low"
+        },
+        {
+          "source_file": "李四_工商银行_流水.xlsx",
+          "holder_name": "李四",
+          "channel": "银行卡",
+          "date": "2025-06-08",
+          "time": "00:00:00",
+          "datetime": "2025-06-08 00:00:00",
+          "direction": "expense",
+          "amount": 49500.0,
+          "balance_after": 281000.0,
+          "counterparty": "张三",
+          "counterparty_account": "",
+          "remarks": "转账",
+          "txn_id": "",
+          "is_atm": false,
+          "is_internal_transfer": false,
+          "is_refund": false,
+          "fee": 0.0,
+          "refund_amount": 0.0,
+          "anomalies": [
+            {
+              "code": "B3",
+              "desc": "整数金额",
+              "level": "low"
+            },
+            {
+              "code": "C3",
+              "desc": "深夜交易(00:00:00) 49,500.00元",
+              "level": "low"
+            },
+            {
+              "code": "A1",
+              "desc": "关联链路: 张三 → 李四 → 张三 (金额差65%, 间隔24.0h)",
+              "level": "medium"
+            }
+          ],
+          "risk_level": "low"
+        }
+      ],
+      "risk": "medium"
+    },
+    {
+      "type": "bidirectional",
+      "path": "张三 → 李四 → 张三",
+      "from_amount": 30000.0,
+      "to_amount": 29500.0,
+      "hours_delta": 48.0,
+      "diff_ratio": 0.0167,
+      "txns": [
+        {
+          "source_file": "张三_工商银行_流水.xlsx",
+          "holder_name": "张三",
+          "channel": "银行卡",
+          "date": "2025-06-27",
+          "time": "00:00:00",
+          "datetime": "2025-06-27 00:00:00",
+          "direction": "expense",
+          "amount": 30000.0,
+          "balance_after": 150000.0,
+          "counterparty": "李四",
+          "counterparty_account": "",
+          "remarks": "转账",
+          "txn_id": "",
+          "is_atm": false,
+          "is_internal_transfer": false,
+          "is_refund": false,
+          "fee": 0.0,
+          "refund_amount": 0.0,
+          "anomalies": [
+            {
+              "code": "B3",
+              "desc": "整数金额",
+              "level": "low"
+            },
+            {
+              "code": "C3",
+              "desc": "深夜交易(00:00:00) 30,000.00元",
+              "level": "low"
+            },
+            {
+              "code": "A1",
+              "desc": "关联链路: 张三 → 李四 → 张三 (金额差2%, 间隔48.0h)",
+              "level": "high"
+            }
+          ],
+          "risk_level": "high"
+        },
+        {
+          "source_file": "李四_工商银行_流水.xlsx",
+          "holder_name": "李四",
+          "channel": "银行卡",
+          "date": "2025-06-25",
+          "time": "00:00:00",
+          "datetime": "2025-06-25 00:00:00",
+          "direction": "expense",
+          "amount": 29500.0,
+          "balance_after": 382000.0,
+          "counterparty": "张三",
+          "counterparty_account": "",
+          "remarks": "转账",
+          "txn_id": "",
+          "is_atm": false,
+          "is_internal_transfer": false,
+          "is_refund": false,
+          "fee": 0.0,
+          "refund_amount": 0.0,
+          "anomalies": [
+            {
+              "code": "B3",
+              "desc": "整数金额",
+              "level": "low"
+            },
+            {
+              "code": "C3",
+              "desc": "深夜交易(00:00:00) 29,500.00元",
+              "level": "low"
+            },
+            {
+              "code": "A1",
+              "desc": "关联链路: 张三 → 李四 → 张三 (金额差2%, 间隔48.0h)",
+              "level": "high"
+            }
+          ],
+          "risk_level": "high"
+        }
+      ],
+      "risk": "high"
+    },
+    {
+      "type": "bidirectional",
+      "path": "张三 → 李四 → 张三",
+      "from_amount": 30000.0,
+      "to_amount": 29500.0,
+      "hours_delta": 48.0,
+      "diff_ratio": 0.0167,
+      "txns": [
+        {
+          "source_file": "张三_工商银行_流水.xlsx",
+          "holder_name": "张三",
+          "channel": "银行卡",
+          "date": "2025-06-27",
+          "time": "00:00:00",
+          "datetime": "2025-06-27 00:00:00",
+          "direction": "expense",
+          "amount": 30000.0,
+          "balance_after": 150000.0,
+          "counterparty": "李四",
+          "counterparty_account": "",
+          "remarks": "转账",
+          "txn_id": "",
+          "is_atm": false,
+          "is_internal_transfer": false,
+          "is_refund": false,
+          "fee": 0.0,
+          "refund_amount": 0.0,
+          "anomalies": [
+            {
+              "code": "B3",
+              "desc": "整数金额",
+              "level": "low"
+            },
+            {
+              "code": "C3",
+              "desc": "深夜交易(00:00:00) 30,000.00元",
+              "level": "low"
+            },
+            {
+              "code": "A1",
+              "desc": "关联链路: 张三 → 李四 → 张三 (金额差2%, 间隔48.0h)",
+              "level": "high"
+            }
+          ],
+          "risk_level": "high"
+        },
+        {
+          "source_file": "李四_工商银行_流水.xlsx",
+          "holder_name": "李四",
+          "channel": "银行卡",
+          "date": "2025-06-25",
+          "time": "00:00:00",
+          "datetime": "2025-06-25 00:00:00",
+          "direction": "expense",
+          "amount": 29500.0,
+          "balance_after": 382500.0,
+          "counterparty": "张三",
+          "counterparty_account": "",
+          "remarks": "转账",
+          "txn_id": "",
+          "is_atm": false,
+          "is_internal_transfer": false,
+          "is_refund": false,
+          "fee": 0.0,
+          "refund_amount": 0.0,
+          "anomalies": [
+            {
+              "code": "B3",
+              "desc": "整数金额",
+              "level": "low"
+            },
+            {
+              "code": "C3",
+              "desc": "深夜交易(00:00:00) 29,500.00元",
+              "level": "low"
+            },
+            {
+              "code": "A1",
+              "desc": "关联链路: 张三 → 李四 → 张三 (金额差2%, 间隔48.0h)",
+              "level": "high"
+            }
+          ],
+          "risk_level": "high"
+        }
+      ],
+      "risk": "high"
+    },
+    {
+      "type": "bidirectional",
+      "path": "张三 → 李四 → 张三",
+      "from_amount": 30000.0,
+      "to_amount": 79500.0,
+      "hours_delta": 24.0,
+      "diff_ratio": 1.65,
+      "txns": [
+        {
+          "source_file": "张三_工商银行_流水.xlsx",
+          "holder_name": "张三",
+          "channel": "银行卡",
+          "date": "2025-06-27",
+          "time": "00:00:00",
+          "datetime": "2025-06-27 00:00:00",
+          "direction": "expense",
+          "amount": 30000.0,
+          "balance_after": 150000.0,
+          "counterparty": "李四",
+          "counterparty_account": "",
+          "remarks": "转账",
+          "txn_id": "",
+          "is_atm": false,
+          "is_internal_transfer": false,
+          "is_refund": false,
+          "fee": 0.0,
+          "refund_amount": 0.0,
+          "anomalies": [
+            {
+              "code": "B3",
+              "desc": "整数金额",
+              "level": "low"
+            },
+            {
+              "code": "C3",
+              "desc": "深夜交易(00:00:00) 30,000.00元",
+              "level": "low"
+            },
+            {
+              "code": "A1",
+              "desc": "关联链路: 张三 → 李四 → 张三 (金额差2%, 间隔48.0h)",
+              "level": "high"
+            }
+          ],
+          "risk_level": "high"
+        },
+        {
+          "source_file": "李四_工商银行_流水.xlsx",
+          "holder_name": "李四",
+          "channel": "银行卡",
+          "date": "2025-06-26",
+          "time": "00:00:00",
+          "datetime": "2025-06-26 00:00:00",
+          "direction": "expense",
+          "amount": 79500.0,
+          "balance_after": 368000.0,
+          "counterparty": "张三",
+          "counterparty_account": "",
+          "remarks": "转账",
+          "txn_id": "",
+          "is_atm": false,
+          "is_internal_transfer": false,
+          "is_refund": false,
+          "fee": 0.0,
+          "refund_amount": 0.0,
+          "anomalies": [
+            {
+              "code": "B1",
+              "desc": "大额支出 79,500.00元",
+              "level": "medium"
+            },
+            {
+              "code": "B3",
+              "desc": "整数金额",
+              "level": "low"
+            },
+            {
+              "code": "C3",
+              "desc": "深夜交易(00:00:00) 79,500.00元",
+              "level": "low"
+            },
+            {
+              "code": "A1",
+              "desc": "关联链路: 张三 → 李四 → 张三 (金额差165%, 间隔24.0h)",
+              "level": "medium"
+            }
+          ],
+          "risk_level": "medium"
+        }
+      ],
+      "risk": "medium"
+    },
+    {
+      "type": "bidirectional",
+      "path": "张三 → 李四 → 张三",
+      "from_amount": 80000.0,
+      "to_amount": 79500.0,
+      "hours_delta": 48.0,
+      "diff_ratio": 0.0063,
+      "txns": [
+        {
+          "source_file": "张三_工商银行_流水.xlsx",
+          "holder_name": "张三",
+          "channel": "银行卡",
+          "date": "2025-06-28",
+          "time": "00:00:00",
+          "datetime": "2025-06-28 00:00:00",
+          "direction": "expense",
+          "amount": 80000.0,
+          "balance_after": 120000.0,
+          "counterparty": "李四",
+          "counterparty_account": "",
+          "remarks": "转账",
+          "txn_id": "",
+          "is_atm": false,
+          "is_internal_transfer": false,
+          "is_refund": false,
+          "fee": 0.0,
+          "refund_amount": 0.0,
+          "anomalies": [
+            {
+              "code": "B1",
+              "desc": "大额支出 80,000.00元",
+              "level": "medium"
+            },
+            {
+              "code": "B3",
+              "desc": "整数金额",
+              "level": "low"
+            },
+            {
+              "code": "C3",
+              "desc": "深夜交易(00:00:00) 80,000.00元",
+              "level": "low"
+            },
+            {
+              "code": "A1",
+              "desc": "关联链路: 张三 → 李四 → 张三 (金额差1%, 间隔48.0h)",
+              "level": "high"
+            }
+          ],
+          "risk_level": "high"
+        },
+        {
+          "source_file": "李四_工商银行_流水.xlsx",
+          "holder_name": "李四",
+          "channel": "银行卡",
+          "date": "2025-06-26",
+          "time": "00:00:00",
+          "datetime": "2025-06-26 00:00:00",
+          "direction": "expense",
+          "amount": 79500.0,
+          "balance_after": 368000.0,
+          "counterparty": "张三",
+          "counterparty_account": "",
+          "remarks": "转账",
+          "txn_id": "",
+          "is_atm": false,
+          "is_internal_transfer": false,
+          "is_refund": false,
+          "fee": 0.0,
+          "refund_amount": 0.0,
+          "anomalies": [
+            {
+              "code": "B1",
+              "desc": "大额支出 79,500.00元",
+              "level": "medium"
+            },
+            {
+              "code": "B3",
+              "desc": "整数金额",
+              "level": "low"
+            },
+            {
+              "code": "C3",
+              "desc": "深夜交易(00:00:00) 79,500.00元",
+              "level": "low"
+            },
+            {
+              "code": "A1",
+              "desc": "关联链路: 张三 → 李四 → 张三 (金额差165%, 间隔24.0h)",
+              "level": "medium"
+            }
+          ],
+          "risk_level": "medium"
+        }
+      ],
+      "risk": "high"
+    },
+    {
+      "type": "bidirectional",
+      "path": "李四 → 张三 → 李四",
+      "from_amount": 29500.0,
+      "to_amount": 30000.0,
+      "hours_delta": 24.0,
+      "diff_ratio": 0.0169,
+      "txns": [
+        {
+          "source_file": "李四_工商银行_流水.xlsx",
+          "holder_name": "李四",
+          "channel": "银行卡",
+          "date": "2025-06-05",
+          "time": "00:00:00",
+          "datetime": "2025-06-05 00:00:00",
+          "direction": "expense",
+          "amount": 29500.0,
+          "balance_after": 295500.0,
+          "counterparty": "张三",
+          "counterparty_account": "",
+          "remarks": "转账",
+          "txn_id": "",
+          "is_atm": false,
+          "is_internal_transfer": false,
+          "is_refund": false,
+          "fee": 0.0,
+          "refund_amount": 0.0,
+          "anomalies": [
+            {
+              "code": "B3",
+              "desc": "整数金额",
+              "level": "low"
+            },
+            {
+              "code": "C3",
+              "desc": "深夜交易(00:00:00) 29,500.00元",
+              "level": "low"
+            },
+            {
+              "code": "A1",
+              "desc": "关联链路: 张三 → 李四 → 张三 (金额差2%, 间隔24.0h)",
+              "level": "high"
+            }
+          ],
+          "risk_level": "high"
+        },
+        {
+          "source_file": "张三_工商银行_流水.xlsx",
+          "holder_name": "张三",
+          "channel": "银行卡",
+          "date": "2025-06-04",
+          "time": "00:00:00",
+          "datetime": "2025-06-04 00:00:00",
+          "direction": "expense",
+          "amount": 30000.0,
+          "balance_after": 410000.0,
+          "counterparty": "李四",
+          "counterparty_account": "",
+          "remarks": "转账",
+          "txn_id": "",
+          "is_atm": false,
+          "is_internal_transfer": false,
+          "is_refund": false,
+          "fee": 0.0,
+          "refund_amount": 0.0,
+          "anomalies": [
+            {
+              "code": "B3",
+              "desc": "整数金额",
+              "level": "low"
+            },
+            {
+              "code": "C3",
+              "desc": "深夜交易(00:00:00) 30,000.00元",
+              "level": "low"
+            },
+            {
+              "code": "A1",
+              "desc": "关联链路: 张三 → 李四 → 张三 (金额差2%, 间隔24.0h)",
+              "level": "high"
+            }
+          ],
+          "risk_level": "high"
+        }
+      ],
+      "risk": "high"
+    },
+    {
+      "type": "bidirectional",
+      "path": "李四 → 张三 → 李四",
+      "from_amount": 29500.0,
+      "to_amount": 30000.0,
+      "hours_delta": 48.0,
+      "diff_ratio": 0.0169,
+      "txns": [
+        {
+          "source_file": "李四_工商银行_流水.xlsx",
+          "holder_name": "李四",
+          "channel": "银行卡",
+          "date": "2025-06-05",
+          "time": "00:00:00",
+          "datetime": "2025-06-05 00:00:00",
+          "direction": "expense",
+          "amount": 29500.0,
+          "balance_after": 295500.0,
+          "counterparty": "张三",
+          "counterparty_account": "",
+          "remarks": "转账",
+          "txn_id": "",
+          "is_atm": false,
+          "is_internal_transfer": false,
+          "is_refund": false,
+          "fee": 0.0,
+          "refund_amount": 0.0,
+          "anomalies": [
+            {
+              "code": "B3",
+              "desc": "整数金额",
+              "level": "low"
+            },
+            {
+              "code": "C3",
+              "desc": "深夜交易(00:00:00) 29,500.00元",
+              "level": "low"
+            },
+            {
+              "code": "A1",
+              "desc": "关联链路: 张三 → 李四 → 张三 (金额差2%, 间隔24.0h)",
+              "level": "high"
+            }
+          ],
+          "risk_level": "high"
+        },
+        {
+          "source_file": "张三_工商银行_流水.xlsx",
+          "holder_name": "张三",
+          "channel": "银行卡",
+          "date": "2025-06-07",
+          "time": "00:00:00",
+          "datetime": "2025-06-07 00:00:00",
+          "direction": "expense",
+          "amount": 30000.0,
+          "balance_after": 100000.0,
+          "counterparty": "李四",
+          "counterparty_account": "",
+          "remarks": "转账",
+          "txn_id": "",
+          "is_atm": false,
+          "is_internal_transfer": false,
+          "is_refund": false,
+          "fee": 0.0,
+          "refund_amount": 0.0,
+          "anomalies": [
+            {
+              "code": "B3",
+              "desc": "整数金额",
+              "level": "low"
+            },
+            {
+              "code": "C3",
+              "desc": "深夜交易(00:00:00) 30,000.00元",
+              "level": "low"
+            },
+            {
+              "code": "A1",
+              "desc": "关联链路: 张三 → 李四 → 张三 (金额差2%, 间隔48.0h)",
+              "level": "high"
+            }
+          ],
+          "risk_level": "high"
+        }
+      ],
+      "risk": "high"
+    },
+    {
+      "type": "bidirectional",
+      "path": "李四 → 张三 → 李四",
+      "from_amount": 49500.0,
+      "to_amount": 30000.0,
+      "hours_delta": 24.0,
+      "diff_ratio": 0.3939,
+      "txns": [
+        {
+          "source_file": "李四_工商银行_流水.xlsx",
+          "holder_name": "李四",
+          "channel": "银行卡",
+          "date": "2025-06-08",
+          "time": "00:00:00",
+          "datetime": "2025-06-08 00:00:00",
+          "direction": "expense",
+          "amount": 49500.0,
+          "balance_after": 281000.0,
+          "counterparty": "张三",
+          "counterparty_account": "",
+          "remarks": "转账",
+          "txn_id": "",
+          "is_atm": false,
+          "is_internal_transfer": false,
+          "is_refund": false,
+          "fee": 0.0,
+          "refund_amount": 0.0,
+          "anomalies": [
+            {
+              "code": "B3",
+              "desc": "整数金额",
+              "level": "low"
+            },
+            {
+              "code": "C3",
+              "desc": "深夜交易(00:00:00) 49,500.00元",
+              "level": "low"
+            },
+            {
+              "code": "A1",
+              "desc": "关联链路: 张三 → 李四 → 张三 (金额差65%, 间隔24.0h)",
+              "level": "medium"
+            }
+          ],
+          "risk_level": "low"
+        },
+        {
+          "source_file": "张三_工商银行_流水.xlsx",
+          "holder_name": "张三",
+          "channel": "银行卡",
+          "date": "2025-06-07",
+          "time": "00:00:00",
+          "datetime": "2025-06-07 00:00:00",
+          "direction": "expense",
+          "amount": 30000.0,
+          "balance_after": 100000.0,
+          "counterparty": "李四",
+          "counterparty_account": "",
+          "remarks": "转账",
+          "txn_id": "",
+          "is_atm": false,
+          "is_internal_transfer": false,
+          "is_refund": false,
+          "fee": 0.0,
+          "refund_amount": 0.0,
+          "anomalies": [
+            {
+              "code": "B3",
+              "desc": "整数金额",
+              "level": "low"
+            },
+            {
+              "code": "C3",
+              "desc": "深夜交易(00:00:00) 30,000.00元",
+              "level": "low"
+            },
+            {
+              "code": "A1",
+              "desc": "关联链路: 张三 → 李四 → 张三 (金额差2%, 间隔48.0h)",
+              "level": "high"
+            }
+          ],
+          "risk_level": "high"
+        }
+      ],
+      "risk": "medium"
+    },
+    {
+      "type": "bidirectional",
+      "path": "李四 → 张三 → 李四",
+      "from_amount": 49500.0,
+      "to_amount": 30000.0,
+      "hours_delta": 24.0,
+      "diff_ratio": 0.3939,
+      "txns": [
+        {
+          "source_file": "李四_工商银行_流水.xlsx",
+          "holder_name": "李四",
+          "channel": "银行卡",
+          "date": "2025-06-08",
+          "time": "00:00:00",
+          "datetime": "2025-06-08 00:00:00",
+          "direction": "expense",
+          "amount": 49500.0,
+          "balance_after": 281000.0,
+          "counterparty": "张三",
+          "counterparty_account": "",
+          "remarks": "转账",
+          "txn_id": "",
+          "is_atm": false,
+          "is_internal_transfer": false,
+          "is_refund": false,
+          "fee": 0.0,
+          "refund_amount": 0.0,
+          "anomalies": [
+            {
+              "code": "B3",
+              "desc": "整数金额",
+              "level": "low"
+            },
+            {
+              "code": "C3",
+              "desc": "深夜交易(00:00:00) 49,500.00元",
+              "level": "low"
+            },
+            {
+              "code": "A1",
+              "desc": "关联链路: 张三 → 李四 → 张三 (金额差65%, 间隔24.0h)",
+              "level": "medium"
+            }
+          ],
+          "risk_level": "low"
+        },
+        {
+          "source_file": "张三_工商银行_流水.xlsx",
+          "holder_name": "张三",
+          "channel": "银行卡",
+          "date": "2025-06-09",
+          "time": "00:00:00",
+          "datetime": "2025-06-09 00:00:00",
+          "direction": "expense",
+          "amount": 30000.0,
+          "balance_after": 100000.0,
+          "counterparty": "李四",
+          "counterparty_account": "",
+          "remarks": "转账",
+          "txn_id": "",
+          "is_atm": false,
+          "is_internal_transfer": false,
+          "is_refund": false,
+          "fee": 0.0,
+          "refund_amount": 0.0,
+          "anomalies": [
+            {
+              "code": "B3",
+              "desc": "整数金额",
+              "level": "low"
+            },
+            {
+              "code": "C3",
+              "desc": "深夜交易(00:00:00) 30,000.00元",
+              "level": "low"
+            },
+            {
+              "code": "A1",
+              "desc": "关联链路: 张三 → 李四 → 张三 (金额差65%, 间隔24.0h)",
+              "level": "medium"
+            }
+          ],
+          "risk_level": "low"
+        }
+      ],
+      "risk": "medium"
+    },
+    {
+      "type": "bidirectional",
+      "path": "李四 → 张三 → 李四",
+      "from_amount": 29500.0,
+      "to_amount": 30000.0,
+      "hours_delta": 48.0,
+      "diff_ratio": 0.0169,
+      "txns": [
+        {
+          "source_file": "李四_工商银行_流水.xlsx",
+          "holder_name": "李四",
+          "channel": "银行卡",
+          "date": "2025-06-25",
+          "time": "00:00:00",
+          "datetime": "2025-06-25 00:00:00",
+          "direction": "expense",
+          "amount": 29500.0,
+          "balance_after": 382000.0,
+          "counterparty": "张三",
+          "counterparty_account": "",
+          "remarks": "转账",
+          "txn_id": "",
+          "is_atm": false,
+          "is_internal_transfer": false,
+          "is_refund": false,
+          "fee": 0.0,
+          "refund_amount": 0.0,
+          "anomalies": [
+            {
+              "code": "B3",
+              "desc": "整数金额",
+              "level": "low"
+            },
+            {
+              "code": "C3",
+              "desc": "深夜交易(00:00:00) 29,500.00元",
+              "level": "low"
+            },
+            {
+              "code": "A1",
+              "desc": "关联链路: 张三 → 李四 → 张三 (金额差2%, 间隔48.0h)",
+              "level": "high"
+            }
+          ],
+          "risk_level": "high"
+        },
+        {
+          "source_file": "张三_工商银行_流水.xlsx",
+          "holder_name": "张三",
+          "channel": "银行卡",
+          "date": "2025-06-27",
+          "time": "00:00:00",
+          "datetime": "2025-06-27 00:00:00",
+          "direction": "expense",
+          "amount": 30000.0,
+          "balance_after": 150000.0,
+          "counterparty": "李四",
+          "counterparty_account": "",
+          "remarks": "转账",
+          "txn_id": "",
+          "is_atm": false,
+          "is_internal_transfer": false,
+          "is_refund": false,
+          "fee": 0.0,
+          "refund_amount": 0.0,
+          "anomalies": [
+            {
+              "code": "B3",
+              "desc": "整数金额",
+              "level": "low"
+            },
+            {
+              "code": "C3",
+              "desc": "深夜交易(00:00:00) 30,000.00元",
+              "level": "low"
+            },
+            {
+              "code": "A1",
+              "desc": "关联链路: 张三 → 李四 → 张三 (金额差2%, 间隔48.0h)",
+              "level": "high"
+            }
+          ],
+          "risk_level": "high"
+        }
+      ],
+      "risk": "high"
+    },
+    {
+      "type": "bidirectional",
+      "path": "李四 → 张三 → 李四",
+      "from_amount": 29500.0,
+      "to_amount": 30000.0,
+      "hours_delta": 48.0,
+      "diff_ratio": 0.0169,
+      "txns": [
+        {
+          "source_file": "李四_工商银行_流水.xlsx",
+          "holder_name": "李四",
+          "channel": "银行卡",
+          "date": "2025-06-25",
+          "time": "00:00:00",
+          "datetime": "2025-06-25 00:00:00",
+          "direction": "expense",
+          "amount": 29500.0,
+          "balance_after": 382500.0,
+          "counterparty": "张三",
+          "counterparty_account": "",
+          "remarks": "转账",
+          "txn_id": "",
+          "is_atm": false,
+          "is_internal_transfer": false,
+          "is_refund": false,
+          "fee": 0.0,
+          "refund_amount": 0.0,
+          "anomalies": [
+            {
+              "code": "B3",
+              "desc": "整数金额",
+              "level": "low"
+            },
+            {
+              "code": "C3",
+              "desc": "深夜交易(00:00:00) 29,500.00元",
+              "level": "low"
+            },
+            {
+              "code": "A1",
+              "desc": "关联链路: 张三 → 李四 → 张三 (金额差2%, 间隔48.0h)",
+              "level": "high"
+            }
+          ],
+          "risk_level": "high"
+        },
+        {
+          "source_file": "张三_工商银行_流水.xlsx",
+          "holder_name": "张三",
+          "channel": "银行卡",
+          "date": "2025-06-27",
+          "time": "00:00:00",
+          "datetime": "2025-06-27 00:00:00",
+          "direction": "expense",
+          "amount": 30000.0,
+          "balance_after": 150000.0,
+          "counterparty": "李四",
+          "counterparty_account": "",
+          "remarks": "转账",
+          "txn_id": "",
+          "is_atm": false,
+          "is_internal_transfer": false,
+          "is_refund": false,
+          "fee": 0.0,
+          "refund_amount": 0.0,
+          "anomalies": [
+            {
+              "code": "B3",
+              "desc": "整数金额",
+              "level": "low"
+            },
+            {
+              "code": "C3",
+              "desc": "深夜交易(00:00:00) 30,000.00元",
+              "level": "low"
+            },
+            {
+              "code": "A1",
+              "desc": "关联链路: 张三 → 李四 → 张三 (金额差2%, 间隔48.0h)",
+              "level": "high"
+            }
+          ],
+          "risk_level": "high"
+        }
+      ],
+      "risk": "high"
+    },
+    {
+      "type": "bidirectional",
+      "path": "李四 → 张三 → 李四",
+      "from_amount": 79500.0,
+      "to_amount": 30000.0,
+      "hours_delta": 24.0,
+      "diff_ratio": 0.6226,
+      "txns": [
+        {
+          "source_file": "李四_工商银行_流水.xlsx",
+          "holder_name": "李四",
+          "channel": "银行卡",
+          "date": "2025-06-26",
+          "time": "00:00:00",
+          "datetime": "2025-06-26 00:00:00",
+          "direction": "expense",
+          "amount": 79500.0,
+          "balance_after": 368000.0,
+          "counterparty": "张三",
+          "counterparty_account": "",
+          "remarks": "转账",
+          "txn_id": "",
+          "is_atm": false,
+          "is_internal_transfer": false,
+          "is_refund": false,
+          "fee": 0.0,
+          "refund_amount": 0.0,
+          "anomalies": [
+            {
+              "code": "B1",
+              "desc": "大额支出 79,500.00元",
+              "level": "medium"
+            },
+            {
+              "code": "B3",
+              "desc": "整数金额",
+              "level": "low"
+            },
+            {
+              "code": "C3",
+              "desc": "深夜交易(00:00:00) 79,500.00元",
+              "level": "low"
+            },
+            {
+              "code": "A1",
+              "desc": "关联链路: 张三 → 李四 → 张三 (金额差165%, 间隔24.0h)",
+              "level": "medium"
+            }
+          ],
+          "risk_level": "medium"
+        },
+        {
+          "source_file": "张三_工商银行_流水.xlsx",
+          "holder_name": "张三",
+          "channel": "银行卡",
+          "date": "2025-06-27",
+          "time": "00:00:00",
+          "datetime": "2025-06-27 00:00:00",
+          "direction": "expense",
+          "amount": 30000.0,
+          "balance_after": 150000.0,
+          "counterparty": "李四",
+          "counterparty_account": "",
+          "remarks": "转账",
+          "txn_id": "",
+          "is_atm": false,
+          "is_internal_transfer": false,
+          "is_refund": false,
+          "fee": 0.0,
+          "refund_amount": 0.0,
+          "anomalies": [
+            {
+              "code": "B3",
+              "desc": "整数金额",
+              "level": "low"
+            },
+            {
+              "code": "C3",
+              "desc": "深夜交易(00:00:00) 30,000.00元",
+              "level": "low"
+            },
+            {
+              "code": "A1",
+              "desc": "关联链路: 张三 → 李四 → 张三 (金额差2%, 间隔48.0h)",
+              "level": "high"
+            }
+          ],
+          "risk_level": "high"
+        }
+      ],
+      "risk": "medium"
+    },
+    {
+      "type": "bidirectional",
+      "path": "李四 → 张三 → 李四",
+      "from_amount": 79500.0,
+      "to_amount": 80000.0,
+      "hours_delta": 48.0,
+      "diff_ratio": 0.0063,
+      "txns": [
+        {
+          "source_file": "李四_工商银行_流水.xlsx",
+          "holder_name": "李四",
+          "channel": "银行卡",
+          "date": "2025-06-26",
+          "time": "00:00:00",
+          "datetime": "2025-06-26 00:00:00",
+          "direction": "expense",
+          "amount": 79500.0,
+          "balance_after": 368000.0,
+          "counterparty": "张三",
+          "counterparty_account": "",
+          "remarks": "转账",
+          "txn_id": "",
+          "is_atm": false,
+          "is_internal_transfer": false,
+          "is_refund": false,
+          "fee": 0.0,
+          "refund_amount": 0.0,
+          "anomalies": [
+            {
+              "code": "B1",
+              "desc": "大额支出 79,500.00元",
+              "level": "medium"
+            },
+            {
+              "code": "B3",
+              "desc": "整数金额",
+              "level": "low"
+            },
+            {
+              "code": "C3",
+              "desc": "深夜交易(00:00:00) 79,500.00元",
+              "level": "low"
+            },
+            {
+              "code": "A1",
+              "desc": "关联链路: 张三 → 李四 → 张三 (金额差165%, 间隔24.0h)",
+              "level": "medium"
+            }
+          ],
+          "risk_level": "medium"
+        },
+        {
+          "source_file": "张三_工商银行_流水.xlsx",
+          "holder_name": "张三",
+          "channel": "银行卡",
+          "date": "2025-06-28",
+          "time": "00:00:00",
+          "datetime": "2025-06-28 00:00:00",
+          "direction": "expense",
+          "amount": 80000.0,
+          "balance_after": 120000.0,
+          "counterparty": "李四",
+          "counterparty_account": "",
+          "remarks": "转账",
+          "txn_id": "",
+          "is_atm": false,
+          "is_internal_transfer": false,
+          "is_refund": false,
+          "fee": 0.0,
+          "refund_amount": 0.0,
+          "anomalies": [
+            {
+              "code": "B1",
+              "desc": "大额支出 80,000.00元",
+              "level": "medium"
+            },
+            {
+              "code": "B3",
+              "desc": "整数金额",
+              "level": "low"
+            },
+            {
+              "code": "C3",
+              "desc": "深夜交易(00:00:00) 80,000.00元",
+              "level": "low"
+            },
+            {
+              "code": "A1",
+              "desc": "关联链路: 张三 → 李四 → 张三 (金额差1%, 间隔48.0h)",
+              "level": "high"
+            }
+          ],
+          "risk_level": "high"
+        }
+      ],
+      "risk": "high"
+    }
+  ]
+}

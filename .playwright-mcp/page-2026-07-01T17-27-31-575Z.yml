@@ -1,0 +1,2203 @@
+- generic [active] [ref=e1]:
+  - banner [ref=e2]:
+    - generic [ref=e3]:
+      - heading "最热的云盘资源分享站，多多影音只有免费分享，无APP无在线播放。" [level=1] [ref=e4]
+      - list [ref=e6]:
+        - listitem [ref=e7]:
+          - link " 首页" [ref=e8] [cursor=pointer]:
+            - /url: /
+            - generic [ref=e9]: 
+            - text: 首页
+        - listitem [ref=e10]:
+          - link " 多多电影" [ref=e11] [cursor=pointer]:
+            - /url: /index.php/vod/type/id/1.html
+            - generic [ref=e12]: 
+            - text: 多多电影
+        - listitem [ref=e13]:
+          - link " 多多剧集" [ref=e14] [cursor=pointer]:
+            - /url: /index.php/vod/type/id/2.html
+            - generic [ref=e15]: 
+            - text: 多多剧集
+        - listitem [ref=e16]:
+          - link " 动漫" [ref=e17] [cursor=pointer]:
+            - /url: /index.php/vod/type/id/4.html
+            - generic [ref=e18]: 
+            - text: 动漫
+        - listitem [ref=e19]:
+          - link " 短剧" [ref=e20] [cursor=pointer]:
+            - /url: /index.php/vod/type/id/5.html
+            - generic [ref=e21]: 
+            - text: 短剧
+        - listitem [ref=e22]:
+          - link " 综艺" [ref=e23] [cursor=pointer]:
+            - /url: /index.php/vod/type/id/3.html
+            - generic [ref=e24]: 
+            - text: 综艺
+        - listitem [ref=e25]:
+          - link " 纪录" [ref=e26] [cursor=pointer]:
+            - /url: /index.php/vod/type/id/20.html
+            - generic [ref=e27]: 
+            - text: 纪录
+        - listitem [ref=e28]
+        - listitem [ref=e29]:
+          - generic [ref=e31] [cursor=pointer]: 
+          - generic:
+            - generic:
+              - list:
+                - listitem:
+                  - link "":
+                    - /url: ""
+                    - generic: 
+                  - strong: 我的观影记录
+        - listitem [ref=e32]
+        - listitem [ref=e33]:
+          - generic [ref=e35] [cursor=pointer]: 
+          - generic:
+            - generic:
+              - list:
+                - listitem:
+                  - link " 首页":
+                    - /url: /
+                    - generic: 
+                    - generic "多多影音-最热的网盘资源分享站": 首页
+                - listitem:
+                  - link " 多多电影":
+                    - /url: /index.php/vod/type/id/1.html
+                    - generic: 
+                    - generic: 多多电影
+                - listitem:
+                  - link " 多多剧集":
+                    - /url: /index.php/vod/type/id/2.html
+                    - generic: 
+                    - generic: 多多剧集
+                - listitem:
+                  - link " 短剧":
+                    - /url: /index.php/vod/type/id/5.html
+                    - generic: 
+                    - generic: 短剧
+                - listitem:
+                  - link " 综艺":
+                    - /url: /index.php/vod/type/id/3.html
+                    - generic: 
+                    - generic: 综艺
+                - listitem:
+                  - link " 动漫":
+                    - /url: /index.php/vod/type/id/4.html
+                    - generic: 
+                    - generic: 动漫
+                - listitem:
+                  - link " 纪录":
+                    - /url: /index.php/vod/type/id/20.html
+                    - generic: 
+                    - generic: 纪录
+                - listitem:
+                  - link " 网址":
+                    - /url: /index.php/label/web.html
+                    - generic: 
+                    - generic "网址"
+                - listitem:
+                  - link " 专题":
+                    - /url: /index.php/topic/index.html
+                    - generic: 
+                    - generic "专题"
+                - listitem:
+                  - link "全部影片":
+                    - /url: /index.php/vod/show/id/1.html
+                    - generic: 全部影片
+        - listitem [ref=e36]
+        - listitem [ref=e37]:
+          - link "" [ref=e38] [cursor=pointer]:
+            - /url: /index.php/user/login.html
+            - generic [ref=e39]: 
+    - generic [ref=e40]:
+      - img "多多影音--最热的云盘资源分享站，只有免费分享，无APP无在线播放。" [ref=e43]
+      - generic [ref=e45]:
+        - textbox "搜索电影、电视剧、综艺、动漫" [ref=e46]
+        - generic:     
+        - button "" [ref=e47] [cursor=pointer]:
+          - generic [ref=e48]: 
+  - main [ref=e49]:
+    - generic [ref=e50]:
+      - generic [ref=e51]:
+        - generic [ref=e52]:
+          - group "1 / 11" [ref=e53]:
+            - link "多多剧集 我是刑警 全38集" [ref=e54] [cursor=pointer]:
+              - /url: /index.php/vod/detail/id/213.html
+              - generic [ref=e55]:
+                - paragraph [ref=e56]:
+                  - generic [ref=e57]: 多多剧集
+                - paragraph [ref=e58]: 我是刑警
+                - paragraph [ref=e59]: 全38集
+          - group "2 / 11" [ref=e60]:
+            - link "动漫 遮天 更新至169集" [ref=e61] [cursor=pointer]:
+              - /url: /index.php/vod/detail/id/95.html
+              - generic [ref=e62]:
+                - paragraph [ref=e63]:
+                  - generic [ref=e64]: 动漫
+                - paragraph [ref=e65]: 遮天
+                - paragraph [ref=e66]: 更新至169集
+          - group "3 / 11" [ref=e67]:
+            - link "动漫 仙逆 更新至147集" [ref=e68] [cursor=pointer]:
+              - /url: /index.php/vod/detail/id/28.html
+              - generic [ref=e69]:
+                - paragraph [ref=e70]:
+                  - generic [ref=e71]: 动漫
+                - paragraph [ref=e72]: 仙逆
+                - paragraph [ref=e73]: 更新至147集
+          - group "4 / 11" [ref=e74]:
+            - link "动漫 牧神记 更新至89集" [ref=e75] [cursor=pointer]:
+              - /url: /index.php/vod/detail/id/38.html
+              - generic [ref=e76]:
+                - paragraph [ref=e77]:
+                  - generic [ref=e78]: 动漫
+                - paragraph [ref=e79]: 牧神记
+                - paragraph [ref=e80]: 更新至89集
+          - group "5 / 11" [ref=e81]:
+            - link "多多剧集 凡人修仙传真人剧 全30集" [ref=e82] [cursor=pointer]:
+              - /url: /index.php/vod/detail/id/8468.html
+              - generic [ref=e83]:
+                - paragraph [ref=e84]:
+                  - generic [ref=e85]: 多多剧集
+                - paragraph [ref=e86]: 凡人修仙传真人剧
+                - paragraph [ref=e87]: 全30集
+          - group "6 / 11" [ref=e88]:
+            - link "多多剧集 低智商犯罪 全24集" [ref=e89] [cursor=pointer]:
+              - /url: /index.php/vod/detail/id/9429.html
+              - generic [ref=e90]:
+                - paragraph [ref=e91]:
+                  - generic [ref=e92]: 多多剧集
+                - paragraph [ref=e93]: 低智商犯罪
+                - paragraph [ref=e94]: 全24集
+          - group "7 / 11" [ref=e95]:
+            - link "多多剧集 漂白 全14集" [ref=e96] [cursor=pointer]:
+              - /url: /index.php/vod/detail/id/7912.html
+              - generic [ref=e97]:
+                - paragraph [ref=e98]:
+                  - generic [ref=e99]: 多多剧集
+                - paragraph [ref=e100]: 漂白
+                - paragraph [ref=e101]: 全14集
+          - group "8 / 11" [ref=e102]:
+            - link "多多剧集 玫瑰的故事 全38集" [ref=e103] [cursor=pointer]:
+              - /url: /index.php/vod/detail/id/715.html
+              - generic [ref=e104]:
+                - paragraph [ref=e105]:
+                  - generic [ref=e106]: 多多剧集
+                - paragraph [ref=e107]: 玫瑰的故事
+                - paragraph [ref=e108]: 全38集
+          - group "9 / 11" [ref=e109]:
+            - link "多多剧集 猎豹 全30集" [ref=e110] [cursor=pointer]:
+              - /url: /index.php/vod/detail/id/8771.html
+              - generic [ref=e111]:
+                - paragraph [ref=e112]:
+                  - generic [ref=e113]: 多多剧集
+                - paragraph [ref=e114]: 猎豹
+                - paragraph [ref=e115]: 全30集
+          - group "10 / 11" [ref=e116]:
+            - link "多多剧集 我是刑警 全38集" [ref=e117] [cursor=pointer]:
+              - /url: /index.php/vod/detail/id/213.html
+              - generic [ref=e118]:
+                - paragraph [ref=e119]:
+                  - generic [ref=e120]: 多多剧集
+                - paragraph [ref=e121]: 我是刑警
+                - paragraph [ref=e122]: 全38集
+          - group "11 / 11" [ref=e123]:
+            - link "动漫 遮天 更新至169集" [ref=e124] [cursor=pointer]:
+              - /url: /index.php/vod/detail/id/95.html
+              - generic [ref=e125]:
+                - paragraph [ref=e126]:
+                  - generic [ref=e127]: 动漫
+                - paragraph [ref=e128]: 遮天
+                - paragraph [ref=e129]: 更新至169集
+        - generic [ref=e130]:
+          - button "Go to slide 1" [ref=e131] [cursor=pointer]
+          - button "Go to slide 2" [ref=e132] [cursor=pointer]
+          - button "Go to slide 3" [ref=e133] [cursor=pointer]
+          - button "Go to slide 4" [ref=e134] [cursor=pointer]
+          - button "Go to slide 5" [ref=e135] [cursor=pointer]
+          - button "Go to slide 6" [ref=e136] [cursor=pointer]
+          - button "Go to slide 7" [ref=e137] [cursor=pointer]
+          - button "Go to slide 8" [ref=e138] [cursor=pointer]
+          - button "Go to slide 9" [ref=e139] [cursor=pointer]
+        - button "Previous slide" [ref=e140] [cursor=pointer]: prev
+        - button "Next slide" [ref=e141] [cursor=pointer]: next
+      - generic [ref=e142]:
+        - generic [ref=e143]:
+          - heading " 最新影片" [level=2] [ref=e144]:
+            - generic [ref=e145]: 
+            - text: 最新影片
+          - generic [ref=e146]:
+            - text: 
+            - generic [ref=e147]:
+              - text: 
+              - generic [ref=e148]:
+                - generic [ref=e149] [cursor=pointer]: 全部
+                - generic [ref=e150] [cursor=pointer]: 多多电影
+                - generic [ref=e151] [cursor=pointer]: 多多剧集
+                - generic [ref=e152] [cursor=pointer]: 动漫
+                - generic [ref=e153] [cursor=pointer]: 短剧
+                - generic [ref=e154] [cursor=pointer]: 综艺
+                - generic [ref=e155] [cursor=pointer]: 纪录
+        - generic [ref=e158]:
+          - generic [ref=e159]:
+            - generic [ref=e160]:
+              - generic:
+                - link "" [ref=e161] [cursor=pointer]:
+                  - /url: /index.php/vod/detail/id/9596.html
+                  - generic [ref=e162]: 
+                - img "非份之罪" [ref=e163]
+              - generic [ref=e164]:
+                - generic [ref=e165]: "2026"
+                - generic [ref=e166]: 多多剧集
+                - generic [ref=e167]: 香港
+              - generic [ref=e168]:
+                - link "非份之罪" [ref=e170] [cursor=pointer]:
+                  - /url: /index.php/vod/detail/id/9596.html
+                - generic [ref=e171]:
+                  - link "吴启华" [ref=e172] [cursor=pointer]:
+                    - /url: /index.php/vod/search/actor/%E5%90%B4%E5%90%AF%E5%8D%8E.html
+                  - link "朱敏瀚" [ref=e173] [cursor=pointer]:
+                    - /url: /index.php/vod/search/actor/%E6%9C%B1%E6%95%8F%E7%80%9A.html
+                  - link "赖慰玲" [ref=e174] [cursor=pointer]:
+                    - /url: /index.php/vod/search/actor/%E8%B5%96%E6%85%B0%E7%8E%B2.html
+                - generic [ref=e175]: 人类的欲望，能驱使我们超越自我，然而，当欲望失控，过度贪图金钱与权势、追求不属于自己的爱，非分之想被无限放大，稍不留神，便会陷入道德矛盾的深渊，犯下种种“非分之罪”……新界东重案组接连调查数起案件，包
+            - link "非份之罪" [ref=e177] [cursor=pointer]:
+              - /url: /index.php/vod/detail/id/9596.html
+            - generic [ref=e178]: 更新至03集
+          - generic [ref=e179]:
+            - generic [ref=e180]:
+              - generic:
+                - link "" [ref=e181] [cursor=pointer]:
+                  - /url: /index.php/vod/detail/id/9413.html
+                  - generic [ref=e182]: 
+                - img "盘龙" [ref=e183]
+              - generic [ref=e184]:
+                - generic [ref=e185]: "2026"
+                - generic [ref=e186]: 动漫
+                - generic [ref=e187]: 国产
+              - generic [ref=e188]:
+                - link "盘龙" [ref=e190] [cursor=pointer]:
+                  - /url: /index.php/vod/detail/id/9413.html
+                - link "未知" [ref=e192] [cursor=pointer]:
+                  - /url: /index.php/vod/search/actor/%E6%9C%AA%E7%9F%A5.html
+                - generic [ref=e193]: 玉兰大陆，一个充满神奇生物与绚丽魔法的魔幻世界。一天，乌山镇的没落贵族少年林雷·巴鲁克，踏入布满灰尘的祖屋当中，无意中得到一枚看似普通的戒指——盘龙戒指，从此他的人生发生了转变。在戒灵德林·柯沃特的帮
+            - link "盘龙" [ref=e195] [cursor=pointer]:
+              - /url: /index.php/vod/detail/id/9413.html
+            - generic [ref=e196]: 更新至12集
+          - generic [ref=e197]:
+            - generic [ref=e198]:
+              - generic:
+                - link "" [ref=e199] [cursor=pointer]:
+                  - /url: /index.php/vod/detail/id/9583.html
+                  - generic [ref=e200]: 
+                - img "斩神之凡尘神域 第二季" [ref=e201]
+              - generic [ref=e202]:
+                - generic [ref=e203]: "2026"
+                - generic [ref=e204]: 动漫
+                - generic [ref=e205]: 国产
+              - generic [ref=e206]:
+                - link "斩神之凡尘神域 第二季" [ref=e208] [cursor=pointer]:
+                  - /url: /index.php/vod/detail/id/9583.html
+                - generic [ref=e209]:
+                  - link "沈青竹" [ref=e210] [cursor=pointer]:
+                    - /url: /index.php/vod/search/actor/%E6%B2%88%E9%9D%92%E7%AB%B9.html
+                  - link "安卿鱼" [ref=e211] [cursor=pointer]:
+                    - /url: /index.php/vod/search/actor/%E5%AE%89%E5%8D%BF%E9%B1%BC.html
+                  - link "曹渊" [ref=e212] [cursor=pointer]:
+                    - /url: /index.php/vod/search/actor/%E6%9B%B9%E6%B8%8A.html
+                - generic [ref=e213]: 沧南危机解决后，林七夜完成津南山为期一年的守夜人集训考核，成为了正式的守夜人后，重回136小队，与伙伴再度开启一场与古神教会的崭新较量……新的西方邪神亮相，人类天花板齐聚沧南，一场巨大的灾难风暴正悄然
+            - link "斩神之凡尘神域 第二季" [ref=e215] [cursor=pointer]:
+              - /url: /index.php/vod/detail/id/9583.html
+            - generic [ref=e216]: 更新至04集
+          - generic [ref=e217]:
+            - generic [ref=e218]:
+              - generic:
+                - link "" [ref=e219] [cursor=pointer]:
+                  - /url: /index.php/vod/detail/id/9563.html
+                  - generic [ref=e220]: 
+                - img "问心2" [ref=e221]
+              - generic [ref=e222]:
+                - generic [ref=e223]: "2026"
+                - generic [ref=e224]: 多多剧集
+                - generic [ref=e225]: 大陆
+              - generic [ref=e226]:
+                - link "问心2" [ref=e228] [cursor=pointer]:
+                  - /url: /index.php/vod/detail/id/9563.html
+                - generic [ref=e229]:
+                  - link "赵又廷" [ref=e230] [cursor=pointer]:
+                    - /url: /index.php/vod/search/actor/%E8%B5%B5%E5%8F%88%E5%BB%B7.html
+                  - link "毛晓彤" [ref=e231] [cursor=pointer]:
+                    - /url: /index.php/vod/search/actor/%E6%AF%9B%E6%99%93%E5%BD%A4.html
+                  - link "金世佳" [ref=e232] [cursor=pointer]:
+                    - /url: /index.php/vod/search/actor/%E9%87%91%E4%B8%96%E4%BD%B3.html
+                - generic [ref=e233]: 两年后，周筱风援黔归来与林逸、方筱然会合，三人小分队再度并肩作战，但也面对全新挑战。周筱风自身执着奋进且严守医疗原则，机缘之下被破格提拔为东立医院史上最年轻的心内科执行主任。职位的晋升，让他看到了更多
+            - link "问心2" [ref=e235] [cursor=pointer]:
+              - /url: /index.php/vod/detail/id/9563.html
+            - generic [ref=e236]: 更新至30集
+          - generic [ref=e237]:
+            - generic [ref=e238]:
+              - generic:
+                - link "" [ref=e239] [cursor=pointer]:
+                  - /url: /index.php/vod/detail/id/9570.html
+                  - generic [ref=e240]: 
+                - img "云秀行" [ref=e241]
+              - generic [ref=e242]:
+                - generic [ref=e243]: "2026"
+                - generic [ref=e244]: 多多剧集
+                - generic [ref=e245]: 大陆
+              - generic [ref=e246]:
+                - link "云秀行" [ref=e248] [cursor=pointer]:
+                  - /url: /index.php/vod/detail/id/9570.html
+                - generic [ref=e249]:
+                  - link "李一桐" [ref=e250] [cursor=pointer]:
+                    - /url: /index.php/vod/search/actor/%E6%9D%8E%E4%B8%80%E6%A1%90.html
+                  - link "曾舜晞" [ref=e251] [cursor=pointer]:
+                    - /url: /index.php/vod/search/actor/%E6%9B%BE%E8%88%9C%E6%99%9E.html
+                  - link "邓为" [ref=e252] [cursor=pointer]:
+                    - /url: /index.php/vod/search/actor/%E9%82%93%E4%B8%BA.html
+                - generic [ref=e253]: 在传说中的九城，名门穷小姐范云和白切黑城主齐峥从彼此试探到相互信任，二人一路披荆斩棘为民谋利，最终收获友谊与爱情；范云也助齐峥平天下破陈规，解决九城危机，携手为民打造繁荣九城。
+            - link "云秀行" [ref=e255] [cursor=pointer]:
+              - /url: /index.php/vod/detail/id/9570.html
+            - generic [ref=e256]: 更新至25集
+          - generic [ref=e257]:
+            - generic [ref=e258]:
+              - generic:
+                - link "" [ref=e259] [cursor=pointer]:
+                  - /url: /index.php/vod/detail/id/9602.html
+                  - generic [ref=e260]: 
+                - img "黄飞鸿之巫蛊邪灵" [ref=e261]
+              - generic [ref=e262]:
+                - generic [ref=e263]: "2026"
+                - generic [ref=e264]: 短剧
+                - generic [ref=e265]: 大陆
+              - generic [ref=e266]:
+                - link "黄飞鸿之巫蛊邪灵" [ref=e268] [cursor=pointer]:
+                  - /url: /index.php/vod/detail/id/9602.html
+                - generic [ref=e269]:
+                  - link "莫十三" [ref=e270] [cursor=pointer]:
+                    - /url: /index.php/vod/search/actor/%E8%8E%AB%E5%8D%81%E4%B8%89.html
+                  - link "黄飞鸿" [ref=e271] [cursor=pointer]:
+                    - /url: /index.php/vod/search/actor/%E9%BB%84%E9%A3%9E%E9%B8%BF.html
+                - generic [ref=e272]: 清末民初，佛山武学宗师黄飞鸿因噩梦预感女记者莫十三遇险，携弟子前往古云村寻人。村中蜈蚣教借蛊术胁迫村民献祭孩童，莫十三探查真相时被擒，身中噬魂蛊。黄飞鸿闯祭坛救人，因不忍伤及被蛊惑的村民反中蛊毒，幸得
+            - link "黄飞鸿之巫蛊邪灵" [ref=e274] [cursor=pointer]:
+              - /url: /index.php/vod/detail/id/9602.html
+            - generic [ref=e275]: 全16集
+          - text:          
+        - text:                                                                                                
+      - generic [ref=e276]:
+        - generic [ref=e277]:
+          - heading " 多多电影" [level=2] [ref=e278]:
+            - generic [ref=e279]: 
+            - text: 多多电影
+          - link "更多多多电影 " [ref=e280] [cursor=pointer]:
+            - /url: /index.php/vod/type/id/1.html
+            - text: 更多多多电影
+            - generic [ref=e281]: 
+        - generic [ref=e283]:
+          - generic [ref=e284]:
+            - generic [ref=e285]:
+              - generic:
+                - link "" [ref=e286] [cursor=pointer]:
+                  - /url: /index.php/vod/detail/id/9573.html
+                  - generic [ref=e287]: 
+                - img "江湖格斗家" [ref=e288]
+              - generic [ref=e289]:
+                - generic [ref=e290]: "2026"
+                - generic [ref=e291]: 多多电影
+                - generic [ref=e292]: 大陆
+              - generic [ref=e293]:
+                - link "江湖格斗家" [ref=e295] [cursor=pointer]:
+                  - /url: /index.php/vod/detail/id/9573.html
+                - link "周天阳、麦杉杉、赵志凌、杨舒米" [ref=e297] [cursor=pointer]:
+                  - /url: /index.php/vod/search/actor/%E5%91%A8%E5%A4%A9%E9%98%B3%E3%80%81%E9%BA%A6%E6%9D%89%E6%9D%89%E3%80%81%E8%B5%B5%E5%BF%97%E5%87%8C%E3%80%81%E6%9D%A8%E8%88%92%E7%B1%B3.html
+                - generic [ref=e298]: “东星”、“西星”两大帮派一直争斗不止，文淑和静恬误入两大帮派，姐妹反目。两大帮派话事人子雄和阿耀也剑拔弩张，表面平静的小城，争斗愈发激烈，两派人马准备终极对决，败方将永远退出江湖。文淑背水一战，最终
+            - link "江湖格斗家" [ref=e300] [cursor=pointer]:
+              - /url: /index.php/vod/detail/id/9573.html
+            - generic [ref=e301]: 4K
+          - generic [ref=e302]:
+            - generic [ref=e303]:
+              - generic:
+                - link "" [ref=e304] [cursor=pointer]:
+                  - /url: /index.php/vod/detail/id/9599.html
+                  - generic [ref=e305]: 
+                - img "午夜电梯" [ref=e306]
+              - generic [ref=e307]:
+                - generic [ref=e308]: "2026"
+                - generic [ref=e309]: 多多电影
+                - generic [ref=e310]: 大陆
+              - generic [ref=e311]:
+                - link "午夜电梯" [ref=e313] [cursor=pointer]:
+                  - /url: /index.php/vod/detail/id/9599.html
+                - generic [ref=e314]:
+                  - link "刘博" [ref=e315] [cursor=pointer]:
+                    - /url: /index.php/vod/search/actor/%E5%88%98%E5%8D%9A.html
+                  - link "赵帅" [ref=e316] [cursor=pointer]:
+                    - /url: /index.php/vod/search/actor/%E8%B5%B5%E5%B8%85.html
+                - generic [ref=e317]: 午夜子时，血色符纸在电梯口燃尽，连接阴阳的“鬼奠梯”就此开启。 因为老宅拆迁，落魄女作家李心凌被迫回到重庆。然而，她惊恐地发现，每到午夜12点，那部废弃的电梯都会自行启动。电梯每开一次门，就有一位邻居
+            - link "午夜电梯" [ref=e319] [cursor=pointer]:
+              - /url: /index.php/vod/detail/id/9599.html
+            - generic [ref=e320]: 4K
+          - generic [ref=e321]:
+            - generic [ref=e322]:
+              - generic:
+                - link "" [ref=e323] [cursor=pointer]:
+                  - /url: /index.php/vod/detail/id/9598.html
+                  - generic [ref=e324]: 
+                - img "钟馗 2026" [ref=e325]
+              - generic [ref=e326]:
+                - generic [ref=e327]: "2026"
+                - generic [ref=e328]: 多多电影
+                - generic [ref=e329]: 大陆
+              - generic [ref=e330]:
+                - link "钟馗 2026" [ref=e332] [cursor=pointer]:
+                  - /url: /index.php/vod/detail/id/9598.html
+                - generic [ref=e333]:
+                  - link "段艺璇" [ref=e334] [cursor=pointer]:
+                    - /url: /index.php/vod/search/actor/%E6%AE%B5%E8%89%BA%E7%92%87.html
+                  - link "余昊威" [ref=e335] [cursor=pointer]:
+                    - /url: /index.php/vod/search/actor/%E4%BD%99%E6%98%8A%E5%A8%81.html
+                  - link "胡良伟" [ref=e336] [cursor=pointer]:
+                    - /url: /index.php/vod/search/actor/%E8%83%A1%E8%89%AF%E4%BC%9F.html
+                - generic [ref=e337]: 钟馗世代在暗中守护人妖两界安宁。一次追捕妖怪时，他救下人间少女初九，带她到地府疗伤。在这里，初九遇见了一群特别的朋友：神界顶流通灵耳、温柔的孟娘，还有憨萌可爱的牛头马面。一段充满奇趣的地府冒险就此展开
+            - link "钟馗 2026" [ref=e339] [cursor=pointer]:
+              - /url: /index.php/vod/detail/id/9598.html
+            - generic [ref=e340]: 4K HDR
+          - generic [ref=e341]:
+            - generic [ref=e342]:
+              - generic:
+                - link "" [ref=e343] [cursor=pointer]:
+                  - /url: /index.php/vod/detail/id/9597.html
+                  - generic [ref=e344]: 
+                - img "痴迷" [ref=e345]
+              - generic [ref=e346]:
+                - generic [ref=e347]: "2025"
+                - generic [ref=e348]: 多多电影
+                - generic [ref=e349]: 美国
+              - generic [ref=e350]:
+                - link "痴迷" [ref=e352] [cursor=pointer]:
+                  - /url: /index.php/vod/detail/id/9597.html
+                - generic [ref=e353]:
+                  - link "迈克尔·约翰斯顿" [ref=e354] [cursor=pointer]:
+                    - /url: /index.php/vod/search/actor/%E8%BF%88%E5%85%8B%E5%B0%94%C2%B7%E7%BA%A6%E7%BF%B0%E6%96%AF%E9%A1%BF.html
+                  - link "印达·纳瓦雷特" [ref=e355] [cursor=pointer]:
+                    - /url: /index.php/vod/search/actor/%E5%8D%B0%E8%BE%BE%C2%B7%E7%BA%B3%E7%93%A6%E9%9B%B7%E7%89%B9.html
+                - generic [ref=e356]: 影片讲述了一个绝望浪漫者的愿望引发超自然诅咒的故事。Woe（迈克尔·约翰斯顿 饰）长期暗恋童年好友Nikki（印达·纳瓦雷特 饰），在一次表白失败后，他通过一件具有“猴爪”式超自然力量的 饰品许愿，希
+            - link "痴迷" [ref=e358] [cursor=pointer]:
+              - /url: /index.php/vod/detail/id/9597.html
+            - generic [ref=e359]: 4K HDR10+
+          - generic [ref=e360]:
+            - generic [ref=e361]:
+              - generic:
+                - link "" [ref=e362] [cursor=pointer]:
+                  - /url: /index.php/vod/detail/id/9595.html
+                  - generic [ref=e363]: 
+                - img "宗师叶问2" [ref=e364]
+              - generic [ref=e365]:
+                - generic [ref=e366]: "2026"
+                - generic [ref=e367]: 多多电影
+                - generic [ref=e368]: 大陆
+              - generic [ref=e369]:
+                - link "宗师叶问2" [ref=e371] [cursor=pointer]:
+                  - /url: /index.php/vod/detail/id/9595.html
+                - generic [ref=e372]:
+                  - link "杜宇航" [ref=e373] [cursor=pointer]:
+                    - /url: /index.php/vod/search/actor/%E6%9D%9C%E5%AE%87%E8%88%AA.html
+                  - link "周小飞" [ref=e374] [cursor=pointer]:
+                    - /url: /index.php/vod/search/actor/%E5%91%A8%E5%B0%8F%E9%A3%9E.html
+                  - link "史蒂文·达兹" [ref=e375] [cursor=pointer]:
+                    - /url: /index.php/vod/search/actor/%E5%8F%B2%E8%92%82%E6%96%87%C2%B7%E8%BE%BE%E5%85%B9.html
+                - generic [ref=e376]: 影片以20世纪50年代的香港为背景，讲述叶问初到香港后因替受压迫的工人出头而得罪英商势力，遭陷害入狱，最终突破困境成为一代宗师的故事。
+            - link "宗师叶问2" [ref=e378] [cursor=pointer]:
+              - /url: /index.php/vod/detail/id/9595.html
+            - generic [ref=e379]: 4K DV&HDR UHD
+          - generic [ref=e380]:
+            - generic [ref=e381]:
+              - generic:
+                - link "" [ref=e382] [cursor=pointer]:
+                  - /url: /index.php/vod/detail/id/9593.html
+                  - generic [ref=e383]: 
+                - img "谎岛美人鱼" [ref=e384]
+              - generic [ref=e385]:
+                - generic [ref=e386]: "2025"
+                - generic [ref=e387]: 多多电影
+                - generic [ref=e388]: 香港
+              - generic [ref=e389]:
+                - link "谎岛美人鱼" [ref=e391] [cursor=pointer]:
+                  - /url: /index.php/vod/detail/id/9593.html
+                - generic [ref=e392]:
+                  - link "温碧霞" [ref=e393] [cursor=pointer]:
+                    - /url: /index.php/vod/search/actor/%E6%B8%A9%E7%A2%A7%E9%9C%9E.html
+                  - link "禾浩辰" [ref=e394] [cursor=pointer]:
+                    - /url: /index.php/vod/search/actor/%E7%A6%BE%E6%B5%A9%E8%BE%B0.html
+                  - link "归亚蕾" [ref=e395] [cursor=pointer]:
+                    - /url: /index.php/vod/search/actor/%E5%BD%92%E4%BA%9A%E8%95%BE.html
+                - generic [ref=e396]: 电影围绕一位情场失意的民宿老板娘“文”(温碧霞 饰)与一位潦倒编剧“乐”(禾浩辰 饰)之间因网络相识而展开的关系。看似虚拟的情感，逐渐在真实的接触中发酵，然而这段关系却藏着不愿揭开的秘密——当谎言成为爱的起点，最终能否走向童话般的结局？
+            - link "谎岛美人鱼" [ref=e398] [cursor=pointer]:
+              - /url: /index.php/vod/detail/id/9593.html
+            - generic [ref=e399]: 4K HDR
+          - generic [ref=e400]:
+            - generic [ref=e401]:
+              - generic:
+                - link "" [ref=e402] [cursor=pointer]:
+                  - /url: /index.php/vod/detail/id/9592.html
+                  - generic [ref=e403]: 
+                - img "森中有林" [ref=e404]
+              - generic [ref=e405]:
+                - generic [ref=e406]: "2026"
+                - generic [ref=e407]: 多多电影
+                - generic [ref=e408]: 大陆
+              - generic [ref=e409]:
+                - link "森中有林" [ref=e411] [cursor=pointer]:
+                  - /url: /index.php/vod/detail/id/9592.html
+                - generic [ref=e412]:
+                  - link "于和伟" [ref=e413] [cursor=pointer]:
+                    - /url: /index.php/vod/search/actor/%E4%BA%8E%E5%92%8C%E4%BC%9F.html
+                  - link "高圆圆" [ref=e414] [cursor=pointer]:
+                    - /url: /index.php/vod/search/actor/%E9%AB%98%E5%9C%86%E5%9C%86.html
+                  - link "韩庚" [ref=e415] [cursor=pointer]:
+                    - /url: /index.php/vod/search/actor/%E9%9F%A9%E5%BA%9A.html
+                - generic [ref=e416]: 廉加海（于和伟 饰）被吕新开（韩庚 饰）意外打瞎了一只眼，没能赴约错过了爱人王秀义（高圆圆 饰）。这场意外却让他用一只眼给女儿廉婕（张天爱 饰）换来了一生的幸福。多年后，廉加海与王秀义重逢，旧情复燃，
+            - link "森中有林" [ref=e418] [cursor=pointer]:
+              - /url: /index.php/vod/detail/id/9592.html
+            - generic [ref=e419]: 4K 臻彩MAX+ 60FPS
+          - generic [ref=e420]:
+            - generic [ref=e421]:
+              - generic:
+                - link "" [ref=e422] [cursor=pointer]:
+                  - /url: /index.php/vod/detail/id/9587.html
+                  - generic [ref=e423]: 
+                - img "蝴蝶楼·惊魂" [ref=e424]
+              - generic [ref=e425]:
+                - generic [ref=e426]: "2026"
+                - generic [ref=e427]: 多多电影
+                - generic [ref=e428]: 大陆
+              - generic [ref=e429]:
+                - link "蝴蝶楼·惊魂" [ref=e431] [cursor=pointer]:
+                  - /url: /index.php/vod/detail/id/9587.html
+                - generic [ref=e432]:
+                  - link "李梦" [ref=e433] [cursor=pointer]:
+                    - /url: /index.php/vod/search/actor/%E6%9D%8E%E6%A2%A6.html
+                  - link "刘思维" [ref=e434] [cursor=pointer]:
+                    - /url: /index.php/vod/search/actor/%E5%88%98%E6%80%9D%E7%BB%B4.html
+                  - link "姜卓君" [ref=e435] [cursor=pointer]:
+                    - /url: /index.php/vod/search/actor/%E5%A7%9C%E5%8D%93%E5%90%9B.html
+                - generic [ref=e436]: 神秘的陆家别墅又叫蝴蝶楼，是出了名的凶宅。理疗师李晗（李梦 饰）、心怀鬼胎的阿伟（刘思维 饰）先后住了进来。此后，一桩桩离奇事件接踵而至：头绑血纱的红裙女人在房间游荡，面目扭曲的无眼男童在凄厉嘶吼……
+            - link "蝴蝶楼·惊魂" [ref=e438] [cursor=pointer]:
+              - /url: /index.php/vod/detail/id/9587.html
+            - generic [ref=e439]: 4K
+          - generic [ref=e440]:
+            - generic [ref=e441]:
+              - generic:
+                - link "" [ref=e442] [cursor=pointer]:
+                  - /url: /index.php/vod/detail/id/9576.html
+                  - generic [ref=e443]: 
+                - img "重出江湖(2026)" [ref=e444]
+              - generic [ref=e445]:
+                - generic [ref=e446]: "2026"
+                - generic [ref=e447]: 多多电影
+                - generic [ref=e448]: 大陆
+              - generic [ref=e449]:
+                - link "重出江湖(2026)" [ref=e451] [cursor=pointer]:
+                  - /url: /index.php/vod/detail/id/9576.html
+                - generic [ref=e452]:
+                  - link "王浩信" [ref=e453] [cursor=pointer]:
+                    - /url: /index.php/vod/search/actor/%E7%8E%8B%E6%B5%A9%E4%BF%A1.html
+                  - link "叶项明" [ref=e454] [cursor=pointer]:
+                    - /url: /index.php/vod/search/actor/%E5%8F%B6%E9%A1%B9%E6%98%8E.html
+                - generic [ref=e455]: 昔日双花红棍张家乐为社团平乱误致恋人Gigi身亡，入狱八年后金盆洗手，在石澳开酒吧结识洁荷；然江湖未息，坐馆荣哥遭义子火山暗算，仇杀与权斗再起，家乐在守护所爱与彻底抽身之间艰难抉择，最终引向宿命对决。
+            - link "重出江湖(2026)" [ref=e457] [cursor=pointer]:
+              - /url: /index.php/vod/detail/id/9576.html
+            - generic [ref=e458]: 4K
+          - generic [ref=e459]:
+            - generic [ref=e460]:
+              - generic:
+                - link "" [ref=e461] [cursor=pointer]:
+                  - /url: /index.php/vod/detail/id/9572.html
+                  - generic [ref=e462]: 
+                - img "喜欢上“欠欠”的你" [ref=e463]
+              - generic [ref=e464]:
+                - generic [ref=e465]: "2026"
+                - generic [ref=e466]: 多多电影
+                - generic [ref=e467]: 大陆
+              - generic [ref=e468]:
+                - link "喜欢上“欠欠”的你" [ref=e470] [cursor=pointer]:
+                  - /url: /index.php/vod/detail/id/9572.html
+                - generic [ref=e471]:
+                  - link "秦霄贤" [ref=e472] [cursor=pointer]:
+                    - /url: /index.php/vod/search/actor/%E7%A7%A6%E9%9C%84%E8%B4%A4.html
+                  - link "王影璐" [ref=e473] [cursor=pointer]:
+                    - /url: /index.php/vod/search/actor/%E7%8E%8B%E5%BD%B1%E7%92%90.html
+                  - link "陈昊明" [ref=e474] [cursor=pointer]:
+                    - /url: /index.php/vod/search/actor/%E9%99%88%E6%98%8A%E6%98%8E.html
+                - generic [ref=e475]: 通过消费获取情绪满足的张若愚（秦霄贤 饰）遇上通过攒钱获取安全感的贾琼（王影璐 饰），一段“你花我拦”的奇妙纠葛就此开启。从互相嫌弃的省钱搭子，到渐生情愫的打趣逗乐，再到因误解而生出的刺痛猜疑……这段
+            - link "喜欢上“欠欠”的你" [ref=e477] [cursor=pointer]:
+              - /url: /index.php/vod/detail/id/9572.html
+            - generic [ref=e478]: 4K HDR
+          - generic [ref=e479]:
+            - generic [ref=e480]:
+              - generic:
+                - link "" [ref=e481] [cursor=pointer]:
+                  - /url: /index.php/vod/detail/id/9569.html
+                  - generic [ref=e482]: 
+                - img "人夫总动员" [ref=e483]
+              - generic [ref=e484]:
+                - generic [ref=e485]: "2026"
+                - generic [ref=e486]: 多多电影
+                - generic [ref=e487]: 大陆
+              - generic [ref=e488]:
+                - link "人夫总动员" [ref=e490] [cursor=pointer]:
+                  - /url: /index.php/vod/detail/id/9569.html
+                - generic [ref=e491]:
+                  - link "陈善圭" [ref=e492] [cursor=pointer]:
+                    - /url: /index.php/vod/search/actor/%E9%99%88%E5%96%84%E5%9C%AD.html
+                  - link "孔明" [ref=e493] [cursor=pointer]:
+                    - /url: /index.php/vod/search/actor/%E5%AD%94%E6%98%8E.html
+                  - link "金知硕" [ref=e494] [cursor=pointer]:
+                    - /url: /index.php/vod/search/actor/%E9%87%91%E7%9F%A5%E7%A1%95.html
+                - generic [ref=e495]: 为了追查绑架前妻的歹徒，一位刑警必须和前妻的现任丈夫携手合作。这对意外搭档能放下歧见，完成疯狂救援行动吗？
+            - link "人夫总动员" [ref=e497] [cursor=pointer]:
+              - /url: /index.php/vod/detail/id/9569.html
+            - generic [ref=e498]: 4K HDR
+          - generic [ref=e499]:
+            - generic [ref=e500]:
+              - generic:
+                - link "" [ref=e501] [cursor=pointer]:
+                  - /url: /index.php/vod/detail/id/9220.html
+                  - generic [ref=e502]: 
+                - img "镖人：风起大漠" [ref=e503]
+              - generic [ref=e504]:
+                - generic [ref=e505]: "2026"
+                - generic [ref=e506]: 多多电影
+                - generic [ref=e507]: 大陆
+              - generic [ref=e508]:
+                - link "镖人：风起大漠" [ref=e510] [cursor=pointer]:
+                  - /url: /index.php/vod/detail/id/9220.html
+                - generic [ref=e511]:
+                  - link "吴京" [ref=e512] [cursor=pointer]:
+                    - /url: /index.php/vod/search/actor/%E5%90%B4%E4%BA%AC.html
+                  - link "谢霆锋" [ref=e513] [cursor=pointer]:
+                    - /url: /index.php/vod/search/actor/%E8%B0%A2%E9%9C%86%E9%94%8B.html
+                  - link "于适" [ref=e514] [cursor=pointer]:
+                    - /url: /index.php/vod/search/actor/%E4%BA%8E%E9%80%82.html
+                - generic [ref=e515]: 大漠之上，镖人、官府、西域五大家族等多方势力盘根错节、暗潮涌动。“天字第二号逃犯”刀马接下特殊押镖任务，和同伴一起从西域护镖远赴长安。不料，他们的护送对象竟是“天字第一号逃犯”知世郎……天下熙熙皆为利
+            - link "镖人：风起大漠" [ref=e517] [cursor=pointer]:
+              - /url: /index.php/vod/detail/id/9220.html
+            - generic [ref=e518]: 4K HDR10
+          - text:    
+      - generic [ref=e519]:
+        - generic [ref=e520]:
+          - heading " 多多剧集" [level=2] [ref=e521]:
+            - generic [ref=e522]: 
+            - text: 多多剧集
+          - link "更多多多剧集 " [ref=e523] [cursor=pointer]:
+            - /url: /index.php/vod/type/id/2.html
+            - text: 更多多多剧集
+            - generic [ref=e524]: 
+        - generic [ref=e526]:
+          - generic [ref=e527]:
+            - generic [ref=e528]:
+              - generic:
+                - link "" [ref=e529] [cursor=pointer]:
+                  - /url: /index.php/vod/detail/id/9596.html
+                  - generic [ref=e530]: 
+                - img "非份之罪" [ref=e531]
+              - generic [ref=e532]:
+                - generic [ref=e533]: "2026"
+                - generic [ref=e534]: 多多剧集
+                - generic [ref=e535]: 香港
+              - generic [ref=e536]:
+                - link "非份之罪" [ref=e538] [cursor=pointer]:
+                  - /url: /index.php/vod/detail/id/9596.html
+                - generic [ref=e539]:
+                  - link "吴启华" [ref=e540] [cursor=pointer]:
+                    - /url: /index.php/vod/search/actor/%E5%90%B4%E5%90%AF%E5%8D%8E.html
+                  - link "朱敏瀚" [ref=e541] [cursor=pointer]:
+                    - /url: /index.php/vod/search/actor/%E6%9C%B1%E6%95%8F%E7%80%9A.html
+                  - link "赖慰玲" [ref=e542] [cursor=pointer]:
+                    - /url: /index.php/vod/search/actor/%E8%B5%96%E6%85%B0%E7%8E%B2.html
+                - generic [ref=e543]: 人类的欲望，能驱使我们超越自我，然而，当欲望失控，过度贪图金钱与权势、追求不属于自己的爱，非分之想被无限放大，稍不留神，便会陷入道德矛盾的深渊，犯下种种“非分之罪”……新界东重案组接连调查数起案件，包
+            - link "非份之罪" [ref=e545] [cursor=pointer]:
+              - /url: /index.php/vod/detail/id/9596.html
+            - generic [ref=e546]: 更新至03集
+          - generic [ref=e547]:
+            - generic [ref=e548]:
+              - generic:
+                - link "" [ref=e549] [cursor=pointer]:
+                  - /url: /index.php/vod/detail/id/9563.html
+                  - generic [ref=e550]: 
+                - img "问心2" [ref=e551]
+              - generic [ref=e552]:
+                - generic [ref=e553]: "2026"
+                - generic [ref=e554]: 多多剧集
+                - generic [ref=e555]: 大陆
+              - generic [ref=e556]:
+                - link "问心2" [ref=e558] [cursor=pointer]:
+                  - /url: /index.php/vod/detail/id/9563.html
+                - generic [ref=e559]:
+                  - link "赵又廷" [ref=e560] [cursor=pointer]:
+                    - /url: /index.php/vod/search/actor/%E8%B5%B5%E5%8F%88%E5%BB%B7.html
+                  - link "毛晓彤" [ref=e561] [cursor=pointer]:
+                    - /url: /index.php/vod/search/actor/%E6%AF%9B%E6%99%93%E5%BD%A4.html
+                  - link "金世佳" [ref=e562] [cursor=pointer]:
+                    - /url: /index.php/vod/search/actor/%E9%87%91%E4%B8%96%E4%BD%B3.html
+                - generic [ref=e563]: 两年后，周筱风援黔归来与林逸、方筱然会合，三人小分队再度并肩作战，但也面对全新挑战。周筱风自身执着奋进且严守医疗原则，机缘之下被破格提拔为东立医院史上最年轻的心内科执行主任。职位的晋升，让他看到了更多
+            - link "问心2" [ref=e565] [cursor=pointer]:
+              - /url: /index.php/vod/detail/id/9563.html
+            - generic [ref=e566]: 更新至30集
+          - generic [ref=e567]:
+            - generic [ref=e568]:
+              - generic:
+                - link "" [ref=e569] [cursor=pointer]:
+                  - /url: /index.php/vod/detail/id/9570.html
+                  - generic [ref=e570]: 
+                - img "云秀行" [ref=e571]
+              - generic [ref=e572]:
+                - generic [ref=e573]: "2026"
+                - generic [ref=e574]: 多多剧集
+                - generic [ref=e575]: 大陆
+              - generic [ref=e576]:
+                - link "云秀行" [ref=e578] [cursor=pointer]:
+                  - /url: /index.php/vod/detail/id/9570.html
+                - generic [ref=e579]:
+                  - link "李一桐" [ref=e580] [cursor=pointer]:
+                    - /url: /index.php/vod/search/actor/%E6%9D%8E%E4%B8%80%E6%A1%90.html
+                  - link "曾舜晞" [ref=e581] [cursor=pointer]:
+                    - /url: /index.php/vod/search/actor/%E6%9B%BE%E8%88%9C%E6%99%9E.html
+                  - link "邓为" [ref=e582] [cursor=pointer]:
+                    - /url: /index.php/vod/search/actor/%E9%82%93%E4%B8%BA.html
+                - generic [ref=e583]: 在传说中的九城，名门穷小姐范云和白切黑城主齐峥从彼此试探到相互信任，二人一路披荆斩棘为民谋利，最终收获友谊与爱情；范云也助齐峥平天下破陈规，解决九城危机，携手为民打造繁荣九城。
+            - link "云秀行" [ref=e585] [cursor=pointer]:
+              - /url: /index.php/vod/detail/id/9570.html
+            - generic [ref=e586]: 更新至25集
+          - generic [ref=e587]:
+            - generic [ref=e588]:
+              - generic:
+                - link "" [ref=e589] [cursor=pointer]:
+                  - /url: /index.php/vod/detail/id/9588.html
+                  - generic [ref=e590]: 
+                - img "千香" [ref=e591]
+              - generic [ref=e592]:
+                - generic [ref=e593]: "2026"
+                - generic [ref=e594]: 多多剧集
+                - generic [ref=e595]: 大陆
+              - generic [ref=e596]:
+                - link "千香" [ref=e598] [cursor=pointer]:
+                  - /url: /index.php/vod/detail/id/9588.html
+                - generic [ref=e599]:
+                  - link "宋威龙" [ref=e600] [cursor=pointer]:
+                    - /url: /index.php/vod/search/actor/%E5%AE%8B%E5%A8%81%E9%BE%99.html
+                  - link "鞠婧祎" [ref=e601] [cursor=pointer]:
+                    - /url: /index.php/vod/search/actor/%E9%9E%A0%E5%A9%A7%E7%A5%8E.html
+                  - link "叶盛佳" [ref=e602] [cursor=pointer]:
+                    - /url: /index.php/vod/search/actor/%E5%8F%B6%E7%9B%9B%E4%BD%B3.html
+                - generic [ref=e603]: 该剧改编自十四郎的小说《千香百媚》。海陨至，建木现，得建木之实者，可御万物，仙、妖、魔三族为之陷入血战... 百年后，雷修远为救相依为命的大哥，有意接近青丘孤女小棒槌，因缘际会下两人一同进入雏凤书院修
+            - link "千香" [ref=e605] [cursor=pointer]:
+              - /url: /index.php/vod/detail/id/9588.html
+            - generic [ref=e606]: 更新至12集
+          - generic [ref=e607]:
+            - generic [ref=e608]:
+              - generic:
+                - link "" [ref=e609] [cursor=pointer]:
+                  - /url: /index.php/vod/detail/id/9578.html
+                  - generic [ref=e610]: 
+                - img "种墨园" [ref=e611]
+              - generic [ref=e612]:
+                - generic [ref=e613]: "2026"
+                - generic [ref=e614]: 多多剧集
+                - generic [ref=e615]: 大陆
+              - generic [ref=e616]:
+                - link "种墨园" [ref=e618] [cursor=pointer]:
+                  - /url: /index.php/vod/detail/id/9578.html
+                - generic [ref=e619]:
+                  - link "郑业成" [ref=e620] [cursor=pointer]:
+                    - /url: /index.php/vod/search/actor/%E9%83%91%E4%B8%9A%E6%88%90.html
+                  - link "张月" [ref=e621] [cursor=pointer]:
+                    - /url: /index.php/vod/search/actor/%E5%BC%A0%E6%9C%88.html
+                  - link "马少骅" [ref=e622] [cursor=pointer]:
+                    - /url: /index.php/vod/search/actor/%E9%A9%AC%E5%B0%91%E9%AA%85.html
+                - generic [ref=e623]: 在北京工作的林依然，因母亲患病，选择回乡后考公到桃花镇，在经发办任职。林依然看到以千年宣家为代表的传统宣纸产业艰难求存，为了拯救传统宣纸产业，她通过开发宣纸笔记本业务、去北京拉宣纸壁纸订单、操办文房四
+            - link "种墨园" [ref=e625] [cursor=pointer]:
+              - /url: /index.php/vod/detail/id/9578.html
+            - generic [ref=e626]: 更新至10集
+          - generic [ref=e627]:
+            - generic [ref=e628]:
+              - generic:
+                - link "" [ref=e629] [cursor=pointer]:
+                  - /url: /index.php/vod/detail/id/9550.html
+                  - generic [ref=e630]: 
+                - img "爱情有烟火" [ref=e631]
+              - generic [ref=e632]:
+                - generic [ref=e633]: "2026"
+                - generic [ref=e634]: 多多剧集
+                - generic [ref=e635]: 大陆
+              - generic [ref=e636]:
+                - link "爱情有烟火" [ref=e638] [cursor=pointer]:
+                  - /url: /index.php/vod/detail/id/9550.html
+                - generic [ref=e639]:
+                  - link "檀健次" [ref=e640] [cursor=pointer]:
+                    - /url: /index.php/vod/search/actor/%E6%AA%80%E5%81%A5%E6%AC%A1.html
+                  - link "王楚然" [ref=e641] [cursor=pointer]:
+                    - /url: /index.php/vod/search/actor/%E7%8E%8B%E6%A5%9A%E7%84%B6.html
+                  - link "李乃文" [ref=e642] [cursor=pointer]:
+                    - /url: /index.php/vod/search/actor/%E6%9D%8E%E4%B9%83%E6%96%87.html
+                - generic [ref=e643]: 投行精英李亦非（檀健次 饰）因投资失利，意外与身陷失恋失业双重困境的沪漂女孩钱菲（王楚然 饰）合租，并在职场再度相遇，两个落魄的灵魂在烟火相伴中磕磕碰碰，最终甜蜜奔赴。剧集从生活磨合切入，细致描绘了这
+            - link "爱情有烟火" [ref=e645] [cursor=pointer]:
+              - /url: /index.php/vod/detail/id/9550.html
+            - generic [ref=e646]: 全36集
+          - generic [ref=e647]:
+            - generic [ref=e648]:
+              - generic:
+                - link "" [ref=e649] [cursor=pointer]:
+                  - /url: /index.php/vod/detail/id/9552.html
+                  - generic [ref=e650]: 
+                - img "炽夏" [ref=e651]
+              - generic [ref=e652]:
+                - generic [ref=e653]: "2026"
+                - generic [ref=e654]: 多多剧集
+                - generic [ref=e655]: 大陆
+              - generic [ref=e656]:
+                - link "炽夏" [ref=e658] [cursor=pointer]:
+                  - /url: /index.php/vod/detail/id/9552.html
+                - generic [ref=e659]:
+                  - link "包上恩" [ref=e660] [cursor=pointer]:
+                    - /url: /index.php/vod/search/actor/%E5%8C%85%E4%B8%8A%E6%81%A9.html
+                  - link "周柯宇" [ref=e661] [cursor=pointer]:
+                    - /url: /index.php/vod/search/actor/%E5%91%A8%E6%9F%AF%E5%AE%87.html
+                  - link "赵英博" [ref=e662] [cursor=pointer]:
+                    - /url: /index.php/vod/search/actor/%E8%B5%B5%E8%8B%B1%E5%8D%9A.html
+                - generic [ref=e663]: 该剧改编自甜醋鱼的小说《坠落》。看似外表乖巧实则敢爱敢恨的学霸周挽（包上恩饰），在高三那年夏天意外与叛逆不羁、抵抗家族束缚的陆氏太子爷陆西骁（周柯宇饰）产生联系。两人在谎言与真诚中碰撞纠缠，揭开各自的
+            - link "炽夏" [ref=e665] [cursor=pointer]:
+              - /url: /index.php/vod/detail/id/9552.html
+            - generic [ref=e666]: 全29集
+          - generic [ref=e667]:
+            - generic [ref=e668]:
+              - generic:
+                - link "" [ref=e669] [cursor=pointer]:
+                  - /url: /index.php/vod/detail/id/9586.html
+                  - generic [ref=e670]: 
+                - img "幻世" [ref=e671]
+              - generic [ref=e672]:
+                - generic [ref=e673]: "2026"
+                - generic [ref=e674]: 多多剧集
+                - generic [ref=e675]: 大陆
+              - generic [ref=e676]:
+                - link "幻世" [ref=e678] [cursor=pointer]:
+                  - /url: /index.php/vod/detail/id/9586.html
+                - generic [ref=e679]:
+                  - link "郎月婷" [ref=e680] [cursor=pointer]:
+                    - /url: /index.php/vod/search/actor/%E9%83%8E%E6%9C%88%E5%A9%B7.html
+                  - link "张天阳" [ref=e681] [cursor=pointer]:
+                    - /url: /index.php/vod/search/actor/%E5%BC%A0%E5%A4%A9%E9%98%B3.html
+                  - link "李卿" [ref=e682] [cursor=pointer]:
+                    - /url: /index.php/vod/search/actor/%E6%9D%8E%E5%8D%BF.html
+                - generic [ref=e683]: 2046年的未来都市叠城，元界科技发布乐园系统，架构师叶西借此跻身权力核心。数字伦理顾问陈顾远怀疑元界数据造假，与寻找失踪父亲的大学生池程结盟，三人共同揭开乐园系统背后的秘密。
+            - link "幻世" [ref=e685] [cursor=pointer]:
+              - /url: /index.php/vod/detail/id/9586.html
+            - generic [ref=e686]: 更新至07集
+          - generic [ref=e687]:
+            - generic [ref=e688]:
+              - generic:
+                - link "" [ref=e689] [cursor=pointer]:
+                  - /url: /index.php/vod/detail/id/9525.html
+                  - generic [ref=e690]: 
+                - img "莫离" [ref=e691]
+              - generic [ref=e692]:
+                - generic [ref=e693]: "2026"
+                - generic [ref=e694]: 多多剧集
+                - generic [ref=e695]: 内地
+              - generic [ref=e696]:
+                - link "莫离" [ref=e698] [cursor=pointer]:
+                  - /url: /index.php/vod/detail/id/9525.html
+                - generic [ref=e699]:
+                  - link "白鹿" [ref=e700] [cursor=pointer]:
+                    - /url: /index.php/vod/search/actor/%E7%99%BD%E9%B9%BF.html
+                  - link "丞磊" [ref=e701] [cursor=pointer]:
+                    - /url: /index.php/vod/search/actor/%E4%B8%9E%E7%A3%8A.html
+                  - link "蔡正杰" [ref=e702] [cursor=pointer]:
+                    - /url: /index.php/vod/search/actor/%E8%94%A1%E6%AD%A3%E6%9D%B0.html
+                - generic [ref=e703]: 叶府的长女叶璃（白鹿 饰），嫁去破败的定王府，和双腿残疾的定王墨修尧成亲，而在叶璃出嫁当日，黎王墨景黎与叶府次女叶莹也于同日成亲。叶璃作为离山后人，曾被封在山中八年，婚后她表面无事，实则暗中谋划，将当
+            - link "莫离" [ref=e705] [cursor=pointer]:
+              - /url: /index.php/vod/detail/id/9525.html
+            - generic [ref=e706]: 全40集
+          - generic [ref=e707]:
+            - generic [ref=e708]:
+              - generic:
+                - link "" [ref=e709] [cursor=pointer]:
+                  - /url: /index.php/vod/detail/id/9582.html
+                  - generic [ref=e710]: 
+                - img "昨夜将至" [ref=e711]
+              - generic [ref=e712]:
+                - generic [ref=e713]: "2026"
+                - generic [ref=e714]: 多多剧集
+                - generic [ref=e715]: 大陆
+              - generic [ref=e716]:
+                - link "昨夜将至" [ref=e718] [cursor=pointer]:
+                  - /url: /index.php/vod/detail/id/9582.html
+                - generic [ref=e719]:
+                  - link "佟大为" [ref=e720] [cursor=pointer]:
+                    - /url: /index.php/vod/search/actor/%E4%BD%9F%E5%A4%A7%E4%B8%BA.html
+                  - link "王佳佳" [ref=e721] [cursor=pointer]:
+                    - /url: /index.php/vod/search/actor/%E7%8E%8B%E4%BD%B3%E4%BD%B3.html
+                  - link "马苏" [ref=e722] [cursor=pointer]:
+                    - /url: /index.php/vod/search/actor/%E9%A9%AC%E8%8B%8F.html
+                - generic [ref=e723]: 韩栋与妻子林美月经营小面馆因慈善举动成为网红店，林美月被推上热搜，平静的生活被一场饭局打破，韩栋收到一条关于二十年前的匿名短信，林美月重逢十年前的老友阿妹。此后夫妻二人各自的秘密被闯入平静生活的旧人们
+            - link "昨夜将至" [ref=e725] [cursor=pointer]:
+              - /url: /index.php/vod/detail/id/9582.html
+            - generic [ref=e726]: 全12集
+          - generic [ref=e727]:
+            - generic [ref=e728]:
+              - generic:
+                - link "" [ref=e729] [cursor=pointer]:
+                  - /url: /index.php/vod/detail/id/9539.html
+                  - generic [ref=e730]: 
+                - img "南部档案" [ref=e731]
+              - generic [ref=e732]:
+                - generic [ref=e733]: "2026"
+                - generic [ref=e734]: 多多剧集
+                - generic [ref=e735]: 内地
+              - generic [ref=e736]:
+                - link "南部档案" [ref=e738] [cursor=pointer]:
+                  - /url: /index.php/vod/detail/id/9539.html
+                - generic [ref=e739]:
+                  - link "张新成" [ref=e740] [cursor=pointer]:
+                    - /url: /index.php/vod/search/actor/%E5%BC%A0%E6%96%B0%E6%88%90.html
+                  - link "丁禹兮" [ref=e741] [cursor=pointer]:
+                    - /url: /index.php/vod/search/actor/%E4%B8%81%E7%A6%B9%E5%85%AE.html
+                  - link "姜珮瑶" [ref=e742] [cursor=pointer]:
+                    - /url: /index.php/vod/search/actor/%E5%A7%9C%E7%8F%AE%E7%91%B6.html
+                - generic [ref=e743]: 民国初年，南洋海上发生“水鬼望乡”离奇命案，张家外派调查神秘事务的南部档案馆坐办张海盐、张海虾二人搭档亲往调查，却意外卷入了一个用于猎杀海外张家人的绝命死局。张海虾以自己的死谋局求解，送张海盐上了“南
+            - link "南部档案" [ref=e745] [cursor=pointer]:
+              - /url: /index.php/vod/detail/id/9539.html
+            - generic [ref=e746]: 全33集
+          - generic [ref=e747]:
+            - generic [ref=e748]:
+              - generic:
+                - link "" [ref=e749] [cursor=pointer]:
+                  - /url: /index.php/vod/detail/id/9575.html
+                  - generic [ref=e750]: 
+                - img "达顿牧场" [ref=e751]
+              - generic [ref=e752]:
+                - generic [ref=e753]: "2026"
+                - generic [ref=e754]: 多多剧集
+                - generic [ref=e755]: 美国
+              - generic [ref=e756]:
+                - link "达顿牧场" [ref=e758] [cursor=pointer]:
+                  - /url: /index.php/vod/detail/id/9575.html
+                - generic [ref=e759]:
+                  - link "凯利·蕾莉" [ref=e760] [cursor=pointer]:
+                    - /url: /index.php/vod/search/actor/%E5%87%AF%E5%88%A9%C2%B7%E8%95%BE%E8%8E%89.html
+                  - link "科尔·豪瑟" [ref=e761] [cursor=pointer]:
+                    - /url: /index.php/vod/search/actor/%E7%A7%91%E5%B0%94%C2%B7%E8%B1%AA%E7%91%9F.html
+                  - link "艾德·哈里斯" [ref=e762] [cursor=pointer]:
+                    - /url: /index.php/vod/search/actor/%E8%89%BE%E5%BE%B7%C2%B7%E5%93%88%E9%87%8C%E6%96%AF.html
+                - generic [ref=e763]: 抛开《黄石》时期经历的阴影，Beth和Rip努力共筑未来，但他们遭遇了残酷的新现实，以及一家不择手段、只为保住自己帝国的无情敌对牧场。在南得克萨斯州，血脉之深远胜于一切，宽恕转瞬即逝，而生存的代价，或
+            - link "达顿牧场" [ref=e765] [cursor=pointer]:
+              - /url: /index.php/vod/detail/id/9575.html
+            - generic [ref=e766]: 更新至07集
+          - text:    
+      - generic [ref=e767]:
+        - generic [ref=e768]:
+          - heading " 动漫" [level=2] [ref=e769]:
+            - generic [ref=e770]: 
+            - text: 动漫
+          - link "更多动漫 " [ref=e771] [cursor=pointer]:
+            - /url: /index.php/vod/type/id/4.html
+            - text: 更多动漫
+            - generic [ref=e772]: 
+        - generic [ref=e774]:
+          - generic [ref=e775]:
+            - generic [ref=e776]:
+              - generic:
+                - link "" [ref=e777] [cursor=pointer]:
+                  - /url: /index.php/vod/detail/id/9413.html
+                  - generic [ref=e778]: 
+                - img "盘龙" [ref=e779]
+              - generic [ref=e780]:
+                - generic [ref=e781]: "2026"
+                - generic [ref=e782]: 动漫
+                - generic [ref=e783]: 国产
+              - generic [ref=e784]:
+                - link "盘龙" [ref=e786] [cursor=pointer]:
+                  - /url: /index.php/vod/detail/id/9413.html
+                - link "未知" [ref=e788] [cursor=pointer]:
+                  - /url: /index.php/vod/search/actor/%E6%9C%AA%E7%9F%A5.html
+                - generic [ref=e789]: 玉兰大陆，一个充满神奇生物与绚丽魔法的魔幻世界。一天，乌山镇的没落贵族少年林雷·巴鲁克，踏入布满灰尘的祖屋当中，无意中得到一枚看似普通的戒指——盘龙戒指，从此他的人生发生了转变。在戒灵德林·柯沃特的帮
+            - link "盘龙" [ref=e791] [cursor=pointer]:
+              - /url: /index.php/vod/detail/id/9413.html
+            - generic [ref=e792]: 更新至12集
+          - generic [ref=e793]:
+            - generic [ref=e794]:
+              - generic:
+                - link "" [ref=e795] [cursor=pointer]:
+                  - /url: /index.php/vod/detail/id/9583.html
+                  - generic [ref=e796]: 
+                - img "斩神之凡尘神域 第二季" [ref=e797]
+              - generic [ref=e798]:
+                - generic [ref=e799]: "2026"
+                - generic [ref=e800]: 动漫
+                - generic [ref=e801]: 国产
+              - generic [ref=e802]:
+                - link "斩神之凡尘神域 第二季" [ref=e804] [cursor=pointer]:
+                  - /url: /index.php/vod/detail/id/9583.html
+                - generic [ref=e805]:
+                  - link "沈青竹" [ref=e806] [cursor=pointer]:
+                    - /url: /index.php/vod/search/actor/%E6%B2%88%E9%9D%92%E7%AB%B9.html
+                  - link "安卿鱼" [ref=e807] [cursor=pointer]:
+                    - /url: /index.php/vod/search/actor/%E5%AE%89%E5%8D%BF%E9%B1%BC.html
+                  - link "曹渊" [ref=e808] [cursor=pointer]:
+                    - /url: /index.php/vod/search/actor/%E6%9B%B9%E6%B8%8A.html
+                - generic [ref=e809]: 沧南危机解决后，林七夜完成津南山为期一年的守夜人集训考核，成为了正式的守夜人后，重回136小队，与伙伴再度开启一场与古神教会的崭新较量……新的西方邪神亮相，人类天花板齐聚沧南，一场巨大的灾难风暴正悄然
+            - link "斩神之凡尘神域 第二季" [ref=e811] [cursor=pointer]:
+              - /url: /index.php/vod/detail/id/9583.html
+            - generic [ref=e812]: 更新至04集
+          - generic [ref=e813]:
+            - generic [ref=e814]:
+              - generic:
+                - link "" [ref=e815] [cursor=pointer]:
+                  - /url: /index.php/vod/detail/id/36.html
+                  - generic [ref=e816]: 
+                - img "都市古仙医" [ref=e817]
+              - generic [ref=e818]:
+                - generic [ref=e819]: "2024"
+                - generic [ref=e820]: 动漫
+                - generic [ref=e821]: 国产
+              - generic [ref=e822]:
+                - link "都市古仙医" [ref=e824] [cursor=pointer]:
+                  - /url: /index.php/vod/detail/id/36.html
+                - generic [ref=e825]:
+                  - link "冷调" [ref=e826] [cursor=pointer]:
+                    - /url: /index.php/vod/search/actor/%E5%86%B7%E8%B0%83.html
+                  - link:
+                    - /url: /index.php/vod/search.html
+                  - link:
+                    - /url: /index.php/vod/search.html
+                - generic [ref=e827]: 大三学生叶不凡，为了给母亲筹集医药费碰瓷，不料遇到不按套路出牌的女司机，被撞之后的叶不凡无意中穿越到幻境，获得了古医门的传承，从此精通医术、修炼功法，获得无数美女青睐。
+            - link "都市古仙医" [ref=e829] [cursor=pointer]:
+              - /url: /index.php/vod/detail/id/36.html
+            - generic [ref=e830]: 更新至189集
+          - generic [ref=e831]:
+            - generic [ref=e832]:
+              - generic:
+                - link "" [ref=e833] [cursor=pointer]:
+                  - /url: /index.php/vod/detail/id/9432.html
+                  - generic [ref=e834]: 
+                - img "穿越时空成仙帝·系统迟到八万年" [ref=e835]
+              - generic [ref=e836]:
+                - generic [ref=e837]: "2026"
+                - generic [ref=e838]: 动漫
+                - generic [ref=e839]: 国产
+              - generic [ref=e840]:
+                - link "穿越时空成仙帝·系统迟到八万年" [ref=e842] [cursor=pointer]:
+                  - /url: /index.php/vod/detail/id/9432.html
+                - generic [ref=e843]:
+                  - link "柏南玉" [ref=e844] [cursor=pointer]:
+                    - /url: /index.php/vod/search/actor/%E6%9F%8F%E5%8D%97%E7%8E%89.html
+                  - link "麋鹿" [ref=e845] [cursor=pointer]:
+                    - /url: /index.php/vod/search/actor/%E9%BA%8B%E9%B9%BF.html
+                  - link "缚鸢" [ref=e846] [cursor=pointer]:
+                    - /url: /index.php/vod/search/actor/%E7%BC%9A%E9%B8%A2.html
+                - generic [ref=e847]: 仙帝赵英雄苦修数千年，卡在仙帝境无法破碎虚空。八万年未激活的最强修真系统突然上线，首个任务竟是抽八万年前欺辱他的气运之子张三屁股九九八十一下，奖励为破境关键 “鸿蒙道韵”。赵英雄回归青云宗，发现张三已
+            - link "穿越时空成仙帝·系统迟到八万年" [ref=e849] [cursor=pointer]:
+              - /url: /index.php/vod/detail/id/9432.html
+            - generic [ref=e850]: 更新至22集
+          - generic [ref=e851]:
+            - generic [ref=e852]:
+              - generic:
+                - link "" [ref=e853] [cursor=pointer]:
+                  - /url: /index.php/vod/detail/id/77.html
+                  - generic [ref=e854]: 
+                - img "师兄啊师兄" [ref=e855]
+              - generic [ref=e856]:
+                - generic [ref=e857]: "2024"
+                - generic [ref=e858]: 动漫
+                - generic [ref=e859]: 大陆
+              - generic [ref=e860]:
+                - link "师兄啊师兄" [ref=e862] [cursor=pointer]:
+                  - /url: /index.php/vod/detail/id/77.html
+                - generic [ref=e863]:
+                  - link "杨超然" [ref=e864] [cursor=pointer]:
+                    - /url: /index.php/vod/search/actor/%E6%9D%A8%E8%B6%85%E7%84%B6.html
+                  - link "张若瑜" [ref=e865] [cursor=pointer]:
+                    - /url: /index.php/vod/search/actor/%E5%BC%A0%E8%8B%A5%E7%91%9C.html
+                  - link "陈瑜瑾" [ref=e866] [cursor=pointer]:
+                    - /url: /index.php/vod/search/actor/%E9%99%88%E7%91%9C%E7%91%BE.html
+                - generic [ref=e867]: 身患绝症的年轻人李长寿，意外重生在封神大战之前的上古时代，成了一个炼气士。为了修得长生不老且能在残酷的洪荒安身立命，他低调行事，凡事谋而后动，从不轻易步入危险之中，藏底牌，修遁术，炼丹毒，直到有一天，他的师傅突然给他收了个师妹回来，本想低调修行的李长寿被卷入了一场场冒险。不动稳如老狗，一动石破天惊，动后悄声走人，在打败邪恶敌人的同时，结交志同道合的朋友，实现自己的人生价值。
+            - link "师兄啊师兄" [ref=e869] [cursor=pointer]:
+              - /url: /index.php/vod/detail/id/77.html
+            - generic [ref=e870]: 更新至148集
+          - generic [ref=e871]:
+            - generic [ref=e872]:
+              - generic:
+                - link "" [ref=e873] [cursor=pointer]:
+                  - /url: /index.php/vod/detail/id/9309.html
+                  - generic [ref=e874]: 
+                - img "搜神记动漫" [ref=e875]
+              - generic [ref=e876]:
+                - generic [ref=e877]: "2026"
+                - generic [ref=e878]: 动漫
+                - generic [ref=e879]: 国产
+              - generic [ref=e880]:
+                - link "搜神记动漫" [ref=e882] [cursor=pointer]:
+                  - /url: /index.php/vod/detail/id/9309.html
+                - generic [ref=e883]:
+                  - link "苏尚卿" [ref=e884] [cursor=pointer]:
+                    - /url: /index.php/vod/search/actor/%E8%8B%8F%E5%B0%9A%E5%8D%BF.html
+                  - link "史泽鲲" [ref=e885] [cursor=pointer]:
+                    - /url: /index.php/vod/search/actor/%E5%8F%B2%E6%B3%BD%E9%B2%B2.html
+                  - link "张惠霖" [ref=e886] [cursor=pointer]:
+                    - /url: /index.php/vod/search/actor/%E5%BC%A0%E6%83%A0%E9%9C%96.html
+                - generic [ref=e887]: 故事发生在炎帝、黄帝所在的蛮荒时代。正值群雄逐鹿中原之际，天下公认的领袖——神农帝去世，金、木、水、火、土各族群雄皆蠢蠢欲动。波涛暗涌的时代中，少年拓拔野横空出世，在机缘巧合下得到了神农帝临终传承，开
+            - link "搜神记动漫" [ref=e889] [cursor=pointer]:
+              - /url: /index.php/vod/detail/id/9309.html
+            - generic [ref=e890]: 更新至17集
+          - generic [ref=e891]:
+            - generic [ref=e892]:
+              - generic:
+                - link "" [ref=e893] [cursor=pointer]:
+                  - /url: /index.php/vod/detail/id/9554.html
+                  - generic [ref=e894]: 
+                - img "云深不知梦 特别篇·逐冥之役" [ref=e895]
+              - generic [ref=e896]:
+                - generic [ref=e897]: "2026"
+                - generic [ref=e898]: 动漫
+                - generic [ref=e899]: 国产
+              - generic [ref=e900]:
+                - link "云深不知梦 特别篇·逐冥之役" [ref=e902] [cursor=pointer]:
+                  - /url: /index.php/vod/detail/id/9554.html
+                - link "未知" [ref=e904] [cursor=pointer]:
+                  - /url: /index.php/vod/search/actor/%E6%9C%AA%E7%9F%A5.html
+                - generic [ref=e905]: 上古末世，辉华族少女曦和自惨痛的族地叛乱中出逃，脱离穹冥魔族掌控踏上寻找屠魔神剑之路，掀起六军之战。
+            - link "云深不知梦 特别篇·逐冥之役" [ref=e907] [cursor=pointer]:
+              - /url: /index.php/vod/detail/id/9554.html
+            - generic [ref=e908]: 更新至04集
+          - generic [ref=e909]:
+            - generic [ref=e910]:
+              - generic:
+                - link "" [ref=e911] [cursor=pointer]:
+                  - /url: /index.php/vod/detail/id/95.html
+                  - generic [ref=e912]: 
+                - img "遮天" [ref=e913]
+              - generic [ref=e914]:
+                - generic [ref=e915]: "2012"
+                - generic [ref=e916]: 动漫
+                - generic [ref=e917]: 中国大陆
+              - generic [ref=e918]:
+                - link "遮天" [ref=e920] [cursor=pointer]:
+                  - /url: /index.php/vod/detail/id/95.html
+                - generic [ref=e921]:
+                  - link "徐翔" [ref=e922] [cursor=pointer]:
+                    - /url: /index.php/vod/search/actor/%E5%BE%90%E7%BF%94.html
+                  - link "赵乾景" [ref=e923] [cursor=pointer]:
+                    - /url: /index.php/vod/search/actor/%E8%B5%B5%E4%B9%BE%E6%99%AF.html
+                  - link "吴磊" [ref=e924] [cursor=pointer]:
+                    - /url: /index.php/vod/search/actor/%E5%90%B4%E7%A3%8A.html
+                - generic [ref=e925]: 动画改编自起点白金作者辰东遮天三部曲的第一部——遮天。冰冷与黑暗并存的宇宙深处，九具庞大的龙尸拉着一口青铜古棺，亘古长存。这是太空探测器在枯寂的宇宙中捕捉到的一幅极其震撼的画面。九龙拉棺，究竟是回到了上古，还是来到了星空的彼岸
+            - link "遮天" [ref=e927] [cursor=pointer]:
+              - /url: /index.php/vod/detail/id/95.html
+            - generic [ref=e928]: 更新至169集
+          - generic [ref=e929]:
+            - generic [ref=e930]:
+              - generic:
+                - link "" [ref=e931] [cursor=pointer]:
+                  - /url: /index.php/vod/detail/id/109.html
+                  - generic [ref=e932]: 
+                - img "武神主宰" [ref=e933]
+              - generic [ref=e934]:
+                - generic [ref=e935]: "2020"
+                - generic [ref=e936]: 动漫
+                - generic [ref=e937]: 大陆
+              - generic [ref=e938]:
+                - link "武神主宰" [ref=e940] [cursor=pointer]:
+                  - /url: /index.php/vod/detail/id/109.html
+                - generic [ref=e941]:
+                  - link "许子尧" [ref=e942] [cursor=pointer]:
+                    - /url: /index.php/vod/search/actor/%E8%AE%B8%E5%AD%90%E5%B0%A7.html
+                  - link "唐泽宗" [ref=e943] [cursor=pointer]:
+                    - /url: /index.php/vod/search/actor/%E5%94%90%E6%B3%BD%E5%AE%97.html
+                  - link "陈帅" [ref=e944] [cursor=pointer]:
+                    - /url: /index.php/vod/search/actor/%E9%99%88%E5%B8%85.html
+                - generic [ref=e945]: 主角秦尘本是武域中最顶尖的天才强者，却遭歹人暗算，陨落大陆禁地死亡峡谷。必死无疑的秦尘，却意外触发神秘古剑的力量……三百年后，天武大陆偏僻之地，一位同名少年意外继承了秦尘的意志。作为大齐国军神定武王的
+            - link "武神主宰" [ref=e947] [cursor=pointer]:
+              - /url: /index.php/vod/detail/id/109.html
+            - generic [ref=e948]: 更新至669集
+          - generic [ref=e949]:
+            - generic [ref=e950]:
+              - generic:
+                - link "" [ref=e951] [cursor=pointer]:
+                  - /url: /index.php/vod/detail/id/53.html
+                  - generic [ref=e952]: 
+                - img "绝世战魂" [ref=e953]
+              - generic [ref=e954]:
+                - generic [ref=e955]: "2024"
+                - generic [ref=e956]: 动漫
+                - generic [ref=e957]: 国产
+              - generic [ref=e958]:
+                - link "绝世战魂" [ref=e960] [cursor=pointer]:
+                  - /url: /index.php/vod/detail/id/53.html
+                - generic [ref=e961]:
+                  - link "曹云图" [ref=e962] [cursor=pointer]:
+                    - /url: /index.php/vod/search/actor/%E6%9B%B9%E4%BA%91%E5%9B%BE.html
+                  - link:
+                    - /url: /index.php/vod/search.html
+                  - link:
+                    - /url: /index.php/vod/search.html
+                - generic [ref=e963]: 四大宗门之首的玄灵宗，多年来第一次来临水城选拔弟子，方秦两家围绕这一个将决定二者命运的契机，展开明争暗斗。最终，秦南依靠潜心修炼、绝佳天资以及奇遇所得的战神之魂，在使者萧轻雪的公正判罚下，成功扭转颓势
+            - link "绝世战魂" [ref=e965] [cursor=pointer]:
+              - /url: /index.php/vod/detail/id/53.html
+            - generic [ref=e966]: 更新至184集
+          - generic [ref=e967]:
+            - generic [ref=e968]:
+              - generic:
+                - link "" [ref=e969] [cursor=pointer]:
+                  - /url: /index.php/vod/detail/id/47.html
+                  - generic [ref=e970]: 
+                - img "炼气十万年" [ref=e971]
+              - generic [ref=e972]:
+                - generic [ref=e973]: "2023"
+                - generic [ref=e974]: 动漫
+                - generic [ref=e975]: 中国大陆
+              - generic [ref=e976]:
+                - link "炼气十万年" [ref=e978] [cursor=pointer]:
+                  - /url: /index.php/vod/detail/id/47.html
+                - generic [ref=e979]:
+                  - link "袁铭喆" [ref=e980] [cursor=pointer]:
+                    - /url: /index.php/vod/search/actor/%E8%A2%81%E9%93%AD%E5%96%86.html
+                  - link "朱蓉蓉" [ref=e981] [cursor=pointer]:
+                    - /url: /index.php/vod/search/actor/%E6%9C%B1%E8%93%89%E8%93%89.html
+                  - link "夜渡于野" [ref=e982] [cursor=pointer]:
+                    - /url: /index.php/vod/search/actor/%E5%A4%9C%E6%B8%A1%E4%BA%8E%E9%87%8E.html
+                - generic [ref=e983]: 十万年前，天岚宗叱咤修真界，宗内弟子皆是天骄，所向披靡。唯独开山弟子徐阳一直是炼气期，为突破修为早日飞升，徐阳闭关万年。谁知出关时，修真界已经没落，天岚宗也只剩三五弟子，眼见就要灭宗，徐阳击退强敌，誓要带领天岚宗重回巅峰！随着天岚宗势力扩大，徐阳修为停滞的真相也一步步的揭开，万年间，一个贯穿人、魔、仙三界的隐秘也展现在众人面前！究竟是一念成神，还是一念成魔？世界的生死就在徐阳的股掌之间！
+            - link "炼气十万年" [ref=e985] [cursor=pointer]:
+              - /url: /index.php/vod/detail/id/47.html
+            - generic [ref=e986]: 更新至353集
+          - generic [ref=e987]:
+            - generic [ref=e988]:
+              - generic:
+                - link "" [ref=e989] [cursor=pointer]:
+                  - /url: /index.php/vod/detail/id/8866.html
+                  - generic [ref=e990]: 
+                - img "为喵人生" [ref=e991]
+              - generic [ref=e992]:
+                - generic [ref=e993]: "2025"
+                - generic [ref=e994]: 动漫
+                - generic [ref=e995]: 国产
+              - generic [ref=e996]:
+                - link "为喵人生" [ref=e998] [cursor=pointer]:
+                  - /url: /index.php/vod/detail/id/8866.html
+                - generic [ref=e999]:
+                  - link "张杰" [ref=e1000] [cursor=pointer]:
+                    - /url: /index.php/vod/search/actor/%E5%BC%A0%E6%9D%B0.html
+                  - link "李诗萌" [ref=e1001] [cursor=pointer]:
+                    - /url: /index.php/vod/search/actor/%E6%9D%8E%E8%AF%97%E8%90%8C.html
+                  - link "邱秋" [ref=e1002] [cursor=pointer]:
+                    - /url: /index.php/vod/search/actor/%E9%82%B1%E7%A7%8B.html
+                - generic [ref=e1003]: 初入职场的女职员纪苗苗遭朋友陷害，命悬一线之际竟变成了一只猫，还被自己的老板陆承泽收养！为期一百天的奇妙“猫生”就此展开......
+            - link "为喵人生" [ref=e1005] [cursor=pointer]:
+              - /url: /index.php/vod/detail/id/8866.html
+            - generic [ref=e1006]: 全36集
+          - text:    
+      - generic [ref=e1007]:
+        - generic [ref=e1008]:
+          - heading " 短剧" [level=2] [ref=e1009]:
+            - generic [ref=e1010]: 
+            - text: 短剧
+          - link "更多短剧 " [ref=e1011] [cursor=pointer]:
+            - /url: /index.php/vod/type/id/5.html
+            - text: 更多短剧
+            - generic [ref=e1012]: 
+        - generic [ref=e1014]:
+          - generic [ref=e1015]:
+            - generic [ref=e1016]:
+              - generic:
+                - link "" [ref=e1017] [cursor=pointer]:
+                  - /url: /index.php/vod/detail/id/9602.html
+                  - generic [ref=e1018]: 
+                - img "黄飞鸿之巫蛊邪灵" [ref=e1019]
+              - generic [ref=e1020]:
+                - generic [ref=e1021]: "2026"
+                - generic [ref=e1022]: 短剧
+                - generic [ref=e1023]: 大陆
+              - generic [ref=e1024]:
+                - link "黄飞鸿之巫蛊邪灵" [ref=e1026] [cursor=pointer]:
+                  - /url: /index.php/vod/detail/id/9602.html
+                - generic [ref=e1027]:
+                  - link "莫十三" [ref=e1028] [cursor=pointer]:
+                    - /url: /index.php/vod/search/actor/%E8%8E%AB%E5%8D%81%E4%B8%89.html
+                  - link "黄飞鸿" [ref=e1029] [cursor=pointer]:
+                    - /url: /index.php/vod/search/actor/%E9%BB%84%E9%A3%9E%E9%B8%BF.html
+                - generic [ref=e1030]: 清末民初，佛山武学宗师黄飞鸿因噩梦预感女记者莫十三遇险，携弟子前往古云村寻人。村中蜈蚣教借蛊术胁迫村民献祭孩童，莫十三探查真相时被擒，身中噬魂蛊。黄飞鸿闯祭坛救人，因不忍伤及被蛊惑的村民反中蛊毒，幸得
+            - link "黄飞鸿之巫蛊邪灵" [ref=e1032] [cursor=pointer]:
+              - /url: /index.php/vod/detail/id/9602.html
+            - generic [ref=e1033]: 全16集
+          - generic [ref=e1034]:
+            - generic [ref=e1035]:
+              - generic:
+                - link "" [ref=e1036] [cursor=pointer]:
+                  - /url: /index.php/vod/detail/id/9594.html
+                  - generic [ref=e1037]: 
+                - img "底色之重来" [ref=e1038]
+              - generic [ref=e1039]:
+                - generic [ref=e1040]: "2026"
+                - generic [ref=e1041]: 短剧
+                - generic [ref=e1042]: 大陆
+              - generic [ref=e1043]:
+                - link "底色之重来" [ref=e1045] [cursor=pointer]:
+                  - /url: /index.php/vod/detail/id/9594.html
+                - generic [ref=e1046]:
+                  - link "袁梓铭" [ref=e1047] [cursor=pointer]:
+                    - /url: /index.php/vod/search/actor/%E8%A2%81%E6%A2%93%E9%93%AD.html
+                  - link "卢熹" [ref=e1048] [cursor=pointer]:
+                    - /url: /index.php/vod/search/actor/%E5%8D%A2%E7%86%B9.html
+                - generic [ref=e1049]: 苏婉整容成季小雪的模样，携手闺蜜夏晚晴，展开了对顾家的复仇，最终二人如愿以偿，将顾家两位少爷困入情感和法律的牢笼。
+            - link "底色之重来" [ref=e1051] [cursor=pointer]:
+              - /url: /index.php/vod/detail/id/9594.html
+            - generic [ref=e1052]: 更新至16集
+          - generic [ref=e1053]:
+            - generic [ref=e1054]:
+              - generic:
+                - link "" [ref=e1055] [cursor=pointer]:
+                  - /url: /index.php/vod/detail/id/9589.html
+                  - generic [ref=e1056]: 
+                - img "风口之上" [ref=e1057]
+              - generic [ref=e1058]:
+                - generic [ref=e1059]: "2026"
+                - generic [ref=e1060]: 短剧
+                - generic [ref=e1061]: 大陆
+              - generic [ref=e1062]:
+                - link "风口之上" [ref=e1064] [cursor=pointer]:
+                  - /url: /index.php/vod/detail/id/9589.html
+                - generic [ref=e1065]:
+                  - link "李磊" [ref=e1066] [cursor=pointer]:
+                    - /url: /index.php/vod/search/actor/%E6%9D%8E%E7%A3%8A.html
+                  - link "童飞" [ref=e1067] [cursor=pointer]:
+                    - /url: /index.php/vod/search/actor/%E7%AB%A5%E9%A3%9E.html
+                  - link "冷巴" [ref=e1068] [cursor=pointer]:
+                    - /url: /index.php/vod/search/actor/%E5%86%B7%E5%B7%B4.html
+                - generic [ref=e1069]: 在祖国蓬勃发展的大时代中，萧一凡（李磊 饰）从初出茅庐的职场新人，凭借自己不懈的努力和敏锐的市场触觉，击败了竞争对手，迅速成长为地产行业的佼佼者。但萧一凡不满足于此，他引领团队积极转型，实现企业品牌的
+            - link "风口之上" [ref=e1071] [cursor=pointer]:
+              - /url: /index.php/vod/detail/id/9589.html
+            - generic [ref=e1072]: 更新至10集
+          - generic [ref=e1073]:
+            - generic [ref=e1074]:
+              - generic:
+                - link "" [ref=e1075] [cursor=pointer]:
+                  - /url: /index.php/vod/detail/id/9585.html
+                  - generic [ref=e1076]: 
+                - img "大吉中介" [ref=e1077]
+              - generic [ref=e1078]:
+                - generic [ref=e1079]: "2026"
+                - generic [ref=e1080]: 短剧
+                - generic [ref=e1081]: 大陆
+              - generic [ref=e1082]:
+                - link "大吉中介" [ref=e1084] [cursor=pointer]:
+                  - /url: /index.php/vod/detail/id/9585.html
+                - generic [ref=e1085]:
+                  - link "刘昊宇" [ref=e1086] [cursor=pointer]:
+                    - /url: /index.php/vod/search/actor/%E5%88%98%E6%98%8A%E5%AE%87.html
+                  - link "曾宥臻" [ref=e1087] [cursor=pointer]:
+                    - /url: /index.php/vod/search/actor/%E6%9B%BE%E5%AE%A5%E8%87%BB.html
+                  - link "陈东阳" [ref=e1088] [cursor=pointer]:
+                    - /url: /index.php/vod/search/actor/%E9%99%88%E4%B8%9C%E9%98%B3.html
+                - generic [ref=e1089]: 刑释少年林佑（刘昊宇 饰）凭借八字过硬误入“大吉中介”，成为凶宅试睡员，他联手“异瞳”少女许柳柳（曾宥臻 饰），破解一桩桩执念迷局。看似诡异的 &quot;闹鬼&quot; 事件，实则暗藏人性的惊天反
+            - link "大吉中介" [ref=e1091] [cursor=pointer]:
+              - /url: /index.php/vod/detail/id/9585.html
+            - generic [ref=e1092]: 全24集
+          - generic [ref=e1093]:
+            - generic [ref=e1094]:
+              - generic:
+                - link "" [ref=e1095] [cursor=pointer]:
+                  - /url: /index.php/vod/detail/id/9601.html
+                  - generic [ref=e1096]: 
+                - img "千古镜鉴·北漠篇" [ref=e1097]
+              - generic [ref=e1098]:
+                - generic [ref=e1099]: "2026"
+                - generic [ref=e1100]: 短剧
+                - generic [ref=e1101]: 大陆
+              - generic [ref=e1102]:
+                - link "千古镜鉴·北漠篇" [ref=e1104] [cursor=pointer]:
+                  - /url: /index.php/vod/detail/id/9601.html
+                - generic [ref=e1105]:
+                  - link "沈文远" [ref=e1106] [cursor=pointer]:
+                    - /url: /index.php/vod/search/actor/%E6%B2%88%E6%96%87%E8%BF%9C.html
+                  - link "顾山河" [ref=e1107] [cursor=pointer]:
+                    - /url: /index.php/vod/search/actor/%E9%A1%BE%E5%B1%B1%E6%B2%B3.html
+                - generic [ref=e1108]: 故事以大晟北境战事为背景，苍狼王八万铁骑来犯，顾山河领五千步兵迎敌，深陷绝境。老将铁向权袖手旁观，监军王挥月暗中通敌，构陷将士，按原结局，顾山河所部全军覆没，家族蒙难。太史令沈文远因鸣冤获罪，临刑时借
+            - link "千古镜鉴·北漠篇" [ref=e1110] [cursor=pointer]:
+              - /url: /index.php/vod/detail/id/9601.html
+            - generic [ref=e1111]: 全13集
+          - generic [ref=e1112]:
+            - generic [ref=e1113]:
+              - generic:
+                - link "" [ref=e1114] [cursor=pointer]:
+                  - /url: /index.php/vod/detail/id/9577.html
+                  - generic [ref=e1115]: 
+                - img "照殿花开" [ref=e1116]
+              - generic [ref=e1117]:
+                - generic [ref=e1118]: "2026"
+                - generic [ref=e1119]: 短剧
+                - generic [ref=e1120]: 大陆
+              - generic [ref=e1121]:
+                - link "照殿花开" [ref=e1123] [cursor=pointer]:
+                  - /url: /index.php/vod/detail/id/9577.html
+                - generic [ref=e1124]:
+                  - link "戚砚笛" [ref=e1125] [cursor=pointer]:
+                    - /url: /index.php/vod/search/actor/%E6%88%9A%E7%A0%9A%E7%AC%9B.html
+                  - link "肖凯中" [ref=e1126] [cursor=pointer]:
+                    - /url: /index.php/vod/search/actor/%E8%82%96%E5%87%AF%E4%B8%AD.html
+                  - link "俐乐" [ref=e1127] [cursor=pointer]:
+                    - /url: /index.php/vod/search/actor/%E4%BF%90%E4%B9%90.html
+                - generic [ref=e1128]: 召族圣女姜玉葵，自幼囚笼求生，惊闻姐姐惨死，携司命之力复仇。九千岁丰烨将她掳至身边，二人从试探到相爱，联手对抗暴君毒后。不料姐姐未死，竟是幕后黑手，多年筹谋只为夺权。双生迷局揭晓，爱恨终抵宿命，共赴照
+            - link "照殿花开" [ref=e1130] [cursor=pointer]:
+              - /url: /index.php/vod/detail/id/9577.html
+            - generic [ref=e1131]: 更新至19集
+          - generic [ref=e1132]:
+            - generic [ref=e1133]:
+              - generic:
+                - link "" [ref=e1134] [cursor=pointer]:
+                  - /url: /index.php/vod/detail/id/9600.html
+                  - generic [ref=e1135]: 
+                - img "浣纱录" [ref=e1136]
+              - generic [ref=e1137]:
+                - generic [ref=e1138]: "2026"
+                - generic [ref=e1139]: 短剧
+                - generic [ref=e1140]: 大陆
+              - generic [ref=e1141]:
+                - link "浣纱录" [ref=e1143] [cursor=pointer]:
+                  - /url: /index.php/vod/detail/id/9600.html
+                - generic [ref=e1144]:
+                  - link "蒙恩" [ref=e1145] [cursor=pointer]:
+                    - /url: /index.php/vod/search/actor/%E8%92%99%E6%81%A9.html
+                  - link "胡丹丹" [ref=e1146] [cursor=pointer]:
+                    - /url: /index.php/vod/search/actor/%E8%83%A1%E4%B8%B9%E4%B8%B9.html
+                - generic [ref=e1147]: 现代医学博士李云河穿越成周家赘婿，成为周家复兴御贡“香云纱”的唯一希望。他凭借现代知识与商业奇谋，对抗权贵情敌陆奇峰的刁难封锁，更以“霓裳盛会”轰动朝野，助香云纱重夺贡品殊荣。在协助皇帝赵云卓粉碎宁王
+            - link "浣纱录" [ref=e1149] [cursor=pointer]:
+              - /url: /index.php/vod/detail/id/9600.html
+            - generic [ref=e1150]: 更新至08集
+          - generic [ref=e1151]:
+            - generic [ref=e1152]:
+              - generic:
+                - link "" [ref=e1153] [cursor=pointer]:
+                  - /url: /index.php/vod/detail/id/9584.html
+                  - generic [ref=e1154]: 
+                - img "帝师长安" [ref=e1155]
+              - generic [ref=e1156]:
+                - generic [ref=e1157]: "2026"
+                - generic [ref=e1158]: 短剧
+                - generic [ref=e1159]: 大陆
+              - generic [ref=e1160]:
+                - link "帝师长安" [ref=e1162] [cursor=pointer]:
+                  - /url: /index.php/vod/detail/id/9584.html
+                - generic [ref=e1163]:
+                  - link "刘智扬" [ref=e1164] [cursor=pointer]:
+                    - /url: /index.php/vod/search/actor/%E5%88%98%E6%99%BA%E6%89%AC.html
+                  - link "马赫" [ref=e1165] [cursor=pointer]:
+                    - /url: /index.php/vod/search/actor/%E9%A9%AC%E8%B5%AB.html
+                  - link "李梓嘉" [ref=e1166] [cursor=pointer]:
+                    - /url: /index.php/vod/search/actor/%E6%9D%8E%E6%A2%93%E5%98%89.html
+                - generic [ref=e1167]: 讲述了现代理工天才洛长安穿越到乱世后，从小小的县令开局，带着一群老弱妇孺，靠着现代手段一步一步经营好九章，通过情节的展开，观众们可以期待看到洛长安是如何靠着丰富的知识与谋虑，闯荡京城，最终成为一代帝师
+            - link "帝师长安" [ref=e1169] [cursor=pointer]:
+              - /url: /index.php/vod/detail/id/9584.html
+            - generic [ref=e1170]: 更新至18集
+          - generic [ref=e1171]:
+            - generic [ref=e1172]:
+              - generic:
+                - link "" [ref=e1173] [cursor=pointer]:
+                  - /url: /index.php/vod/detail/id/9579.html
+                  - generic [ref=e1174]: 
+                - img "长安女子鉴" [ref=e1175]
+              - generic [ref=e1176]:
+                - generic [ref=e1177]: "2026"
+                - generic [ref=e1178]: 短剧
+                - generic [ref=e1179]: 大陆
+              - generic [ref=e1180]:
+                - link "长安女子鉴" [ref=e1182] [cursor=pointer]:
+                  - /url: /index.php/vod/detail/id/9579.html
+                - generic [ref=e1183]:
+                  - link "朱丽岚" [ref=e1184] [cursor=pointer]:
+                    - /url: /index.php/vod/search/actor/%E6%9C%B1%E4%B8%BD%E5%B2%9A.html
+                  - link "张景昀" [ref=e1185] [cursor=pointer]:
+                    - /url: /index.php/vod/search/actor/%E5%BC%A0%E6%99%AF%E6%98%80.html
+                - generic [ref=e1186]: 商女殷歆悦、舞姬林燕歌、官眷苏懿于绝望中相识相伴，在长安城创办首家针对女性病症的妇科医馆，三人跨越阶级壁垒，共同打破命运枷锁，克服多重困难，最终实现独立自强、财富自由，赢得精彩人生。
+            - link "长安女子鉴" [ref=e1188] [cursor=pointer]:
+              - /url: /index.php/vod/detail/id/9579.html
+            - generic [ref=e1189]: 更新至20集
+          - generic [ref=e1190]:
+            - generic [ref=e1191]:
+              - generic:
+                - link "" [ref=e1192] [cursor=pointer]:
+                  - /url: /index.php/vod/detail/id/9590.html
+                  - generic [ref=e1193]: 
+                - img "谜案拼图" [ref=e1194]
+              - generic [ref=e1195]:
+                - generic [ref=e1196]: "2026"
+                - generic [ref=e1197]: 短剧
+                - generic [ref=e1198]: 大陆
+              - generic [ref=e1199]:
+                - link "谜案拼图" [ref=e1201] [cursor=pointer]:
+                  - /url: /index.php/vod/detail/id/9590.html
+                - generic [ref=e1202]:
+                  - link "金贤正" [ref=e1203] [cursor=pointer]:
+                    - /url: /index.php/vod/search/actor/%E9%87%91%E8%B4%A4%E6%AD%A3.html
+                  - link "袁梓铭" [ref=e1204] [cursor=pointer]:
+                    - /url: /index.php/vod/search/actor/%E8%A2%81%E6%A2%93%E9%93%AD.html
+                  - link "曹子涵" [ref=e1205] [cursor=pointer]:
+                    - /url: /index.php/vod/search/actor/%E6%9B%B9%E5%AD%90%E6%B6%B5.html
+                - generic [ref=e1206]: 重案队副队长李恺阳（金贤正 饰）联手冤家徒弟江瀚（袁梓铭 饰），侦破连环性虐案和离奇裸尸案。未料，坠楼案又发，被击毙的“红手套”诡异复活，并接连制造惨案。一个隐藏了多年的谜案在师徒二人的舍命付出下，拼
+            - link "谜案拼图" [ref=e1208] [cursor=pointer]:
+              - /url: /index.php/vod/detail/id/9590.html
+            - generic [ref=e1209]: 更新至12集
+          - generic [ref=e1210]:
+            - generic [ref=e1211]:
+              - generic:
+                - link "" [ref=e1212] [cursor=pointer]:
+                  - /url: /index.php/vod/detail/id/9557.html
+                  - generic [ref=e1213]: 
+                - img "心间错" [ref=e1214]
+              - generic [ref=e1215]:
+                - generic [ref=e1216]: "2026"
+                - generic [ref=e1217]: 短剧
+                - generic [ref=e1218]: 大陆
+              - generic [ref=e1219]:
+                - link "心间错" [ref=e1221] [cursor=pointer]:
+                  - /url: /index.php/vod/detail/id/9557.html
+                - generic [ref=e1222]:
+                  - link "朱正廷" [ref=e1223] [cursor=pointer]:
+                    - /url: /index.php/vod/search/actor/%E6%9C%B1%E6%AD%A3%E5%BB%B7.html
+                  - link "哈妮克孜" [ref=e1224] [cursor=pointer]:
+                    - /url: /index.php/vod/search/actor/%E5%93%88%E5%A6%AE%E5%85%8B%E5%AD%9C.html
+                  - link "李嘉诺" [ref=e1225] [cursor=pointer]:
+                    - /url: /index.php/vod/search/actor/%E6%9D%8E%E5%98%89%E8%AF%BA.html
+                - generic [ref=e1226]: 以心为引，因你而来；爱恨起落，皆由心生。一段人妖牵绊，百年错付纠缠。一心分为两半，等我来到你身边。
+            - link "心间错" [ref=e1228] [cursor=pointer]:
+              - /url: /index.php/vod/detail/id/9557.html
+            - generic [ref=e1229]: 全22集
+          - generic [ref=e1230]:
+            - generic [ref=e1231]:
+              - generic:
+                - link "" [ref=e1232] [cursor=pointer]:
+                  - /url: /index.php/vod/detail/id/9591.html
+                  - generic [ref=e1233]: 
+                - img "江云镇谜案" [ref=e1234]
+              - generic [ref=e1235]:
+                - generic [ref=e1236]: "2026"
+                - generic [ref=e1237]: 短剧
+                - generic [ref=e1238]: 大陆
+              - generic [ref=e1239]:
+                - link "江云镇谜案" [ref=e1241] [cursor=pointer]:
+                  - /url: /index.php/vod/detail/id/9591.html
+                - generic [ref=e1242]:
+                  - link "巩天阔" [ref=e1243] [cursor=pointer]:
+                    - /url: /index.php/vod/search/actor/%E5%B7%A9%E5%A4%A9%E9%98%94.html
+                  - link "徐子琁" [ref=e1244] [cursor=pointer]:
+                    - /url: /index.php/vod/search/actor/%E5%BE%90%E5%AD%90%E7%90%81.html
+                  - link "王亦宸" [ref=e1245] [cursor=pointer]:
+                    - /url: /index.php/vod/search/actor/%E7%8E%8B%E4%BA%A6%E5%AE%B8.html
+                - generic [ref=e1246]: 民国江云镇豆腐老板诡异惨死，小女孩撞见亡母坐红衣花轿现身。落魄侦探奉命查案，意外发现本该葬身猪笼的大太太死而复生，伪装出马仙复仇，顺带揪出豪门鸦片走私黑幕。
+            - link "江云镇谜案" [ref=e1248] [cursor=pointer]:
+              - /url: /index.php/vod/detail/id/9591.html
+            - generic [ref=e1249]: 全24集
+          - text:    
+      - generic [ref=e1250]:
+        - generic [ref=e1251]:
+          - heading " 综艺" [level=2] [ref=e1252]:
+            - generic [ref=e1253]: 
+            - text: 综艺
+          - link "更多综艺 " [ref=e1254] [cursor=pointer]:
+            - /url: /index.php/vod/type/id/3.html
+            - text: 更多综艺
+            - generic [ref=e1255]: 
+        - generic [ref=e1257]:
+          - generic [ref=e1258]:
+            - generic [ref=e1259]:
+              - generic:
+                - link "" [ref=e1260] [cursor=pointer]:
+                  - /url: /index.php/vod/detail/id/8647.html
+                  - generic [ref=e1261]: 
+                - img "2025香港小姐竞选决赛" [ref=e1262]
+              - generic [ref=e1263]:
+                - generic [ref=e1264]: "2025"
+                - generic [ref=e1265]: 综艺
+                - generic [ref=e1266]: 港台
+              - generic [ref=e1267]:
+                - link "2025香港小姐竞选决赛" [ref=e1269] [cursor=pointer]:
+                  - /url: /index.php/vod/detail/id/8647.html
+                - generic [ref=e1270]:
+                  - link "李尹嫣" [ref=e1271] [cursor=pointer]:
+                    - /url: /index.php/vod/search/actor/%E6%9D%8E%E5%B0%B9%E5%AB%A3.html
+                  - link "甘咏宁" [ref=e1272] [cursor=pointer]:
+                    - /url: /index.php/vod/search/actor/%E7%94%98%E5%92%8F%E5%AE%81.html
+                  - link "蔡华英" [ref=e1273] [cursor=pointer]:
+                    - /url: /index.php/vod/search/actor/%E8%94%A1%E5%8D%8E%E8%8B%B1.html
+                - generic [ref=e1274]: 《2025香港小姐竞选决赛》是中国香港2025年播出的节目，由李尹嫣、甘咏宁、蔡华英、莫凡、曾阅遥、朱文慧、施宇琪、岳凡荻、陈咏诗、文雅仪、梁倩萱、庄静璟、袁文静、何咏多等出演。
+            - link "2025香港小姐竞选决赛" [ref=e1276] [cursor=pointer]:
+              - /url: /index.php/vod/detail/id/8647.html
+            - generic [ref=e1277]: HD高清
+          - generic [ref=e1278]:
+            - generic [ref=e1279]:
+              - generic:
+                - link "" [ref=e1280] [cursor=pointer]:
+                  - /url: /index.php/vod/detail/id/8635.html
+                  - generic [ref=e1281]: 
+                - img "王牌对王牌 第九季" [ref=e1282]
+              - generic [ref=e1283]:
+                - generic [ref=e1284]: "2025"
+                - generic [ref=e1285]: 综艺
+                - generic [ref=e1286]: 内地
+              - generic [ref=e1287]:
+                - link "王牌对王牌 第九季" [ref=e1289] [cursor=pointer]:
+                  - /url: /index.php/vod/detail/id/8635.html
+                - generic [ref=e1290]:
+                  - link "唐国强" [ref=e1291] [cursor=pointer]:
+                    - /url: /index.php/vod/search/actor/%E5%94%90%E5%9B%BD%E5%BC%BA.html
+                  - link "关晓彤" [ref=e1292] [cursor=pointer]:
+                    - /url: /index.php/vod/search/actor/%E5%85%B3%E6%99%93%E5%BD%A4.html
+                  - link "宋亚轩" [ref=e1293] [cursor=pointer]:
+                    - /url: /index.php/vod/search/actor/%E5%AE%8B%E4%BA%9A%E8%BD%A9.html
+                - generic [ref=e1294]: 新朋老友已就位，这场欢笑盛宴等你入席！
+            - link "王牌对王牌 第九季" [ref=e1296] [cursor=pointer]:
+              - /url: /index.php/vod/detail/id/8635.html
+            - generic [ref=e1297]: 更新至0830期
+          - generic [ref=e1298]:
+            - generic [ref=e1299]:
+              - generic:
+                - link "" [ref=e1300] [cursor=pointer]:
+                  - /url: /index.php/vod/detail/id/8562.html
+                  - generic [ref=e1301]: 
+                - img "一见你就笑 2025" [ref=e1302]
+              - generic [ref=e1303]:
+                - generic [ref=e1304]: "2025"
+                - generic [ref=e1305]: 综艺
+                - generic [ref=e1306]: 内地
+              - generic [ref=e1307]:
+                - link "一见你就笑 2025" [ref=e1309] [cursor=pointer]:
+                  - /url: /index.php/vod/detail/id/8562.html
+                - generic [ref=e1310]:
+                  - link "马东" [ref=e1311] [cursor=pointer]:
+                    - /url: /index.php/vod/search/actor/%E9%A9%AC%E4%B8%9C.html
+                  - link "李诞" [ref=e1312] [cursor=pointer]:
+                    - /url: /index.php/vod/search/actor/%E6%9D%8E%E8%AF%9E.html
+                  - link "杨迪" [ref=e1313] [cursor=pointer]:
+                    - /url: /index.php/vod/search/actor/%E6%9D%A8%E8%BF%AA.html
+                - generic [ref=e1314]: 由李诞、杨迪、徐志胜与其他MC团组成新一届的“超开心见笑生”，每期飞行嘉宾根据嘉宾属性以不同身份进入节目，如插班生、隔壁校友、代课老师等。通过TALKING、主题游戏互动、盲盒舞台等综艺环节来进行单期
+            - link "一见你就笑 2025" [ref=e1316] [cursor=pointer]:
+              - /url: /index.php/vod/detail/id/8562.html
+            - generic [ref=e1317]: 更新至0828期
+          - generic [ref=e1318]:
+            - generic [ref=e1319]:
+              - generic:
+                - link "" [ref=e1320] [cursor=pointer]:
+                  - /url: /index.php/vod/detail/id/8581.html
+                  - generic [ref=e1321]: 
+                - img "姐姐当家" [ref=e1322]
+              - generic [ref=e1323]:
+                - generic [ref=e1324]: "2025"
+                - generic [ref=e1325]: 综艺
+                - generic [ref=e1326]: 内地
+              - generic [ref=e1327]:
+                - link "姐姐当家" [ref=e1329] [cursor=pointer]:
+                  - /url: /index.php/vod/detail/id/8581.html
+                - generic [ref=e1330]:
+                  - link "谢娜" [ref=e1331] [cursor=pointer]:
+                    - /url: /index.php/vod/search/actor/%E8%B0%A2%E5%A8%9C.html
+                  - link "董璇" [ref=e1332] [cursor=pointer]:
+                    - /url: /index.php/vod/search/actor/%E8%91%A3%E7%92%87.html
+                  - link "王琳" [ref=e1333] [cursor=pointer]:
+                    - /url: /index.php/vod/search/actor/%E7%8E%8B%E7%90%B3.html
+                - generic [ref=e1334]: 国内第一档熟龄女性观察节目，以不同生活状态下当代独立女性们的生活为样本，探讨和女性相关的“选择”、“情感”、“家庭”等社会议题。
+            - link "姐姐当家" [ref=e1336] [cursor=pointer]:
+              - /url: /index.php/vod/detail/id/8581.html
+            - generic [ref=e1337]: 更新至0828期
+          - generic [ref=e1338]:
+            - generic [ref=e1339]:
+              - generic:
+                - link "" [ref=e1340] [cursor=pointer]:
+                  - /url: /index.php/vod/detail/id/8580.html
+                  - generic [ref=e1341]: 
+                - img "森林进化论2025" [ref=e1342]
+              - generic [ref=e1343]:
+                - generic [ref=e1344]: "2025"
+                - generic [ref=e1345]: 综艺
+                - generic [ref=e1346]: 内地
+              - generic [ref=e1347]:
+                - link "森林进化论2025" [ref=e1349] [cursor=pointer]:
+                  - /url: /index.php/vod/detail/id/8580.html
+                - link "未知" [ref=e1351] [cursor=pointer]:
+                  - /url: /index.php/vod/search/actor/%E6%9C%AA%E7%9F%A5.html
+                - generic [ref=e1352]: 《森林进化论2025》是一档沉浸式脑力策略博弈竞技综艺。各界优秀青年齐聚于“森林”之中，通过多维竞技体系，在相互制衡的规则之下，将丛林法则的残酷性与策略性推向极致，完成一场场专属于智者间的公平对决。
+            - link "森林进化论2025" [ref=e1354] [cursor=pointer]:
+              - /url: /index.php/vod/detail/id/8580.html
+            - generic [ref=e1355]: 更新至0828期
+          - generic [ref=e1356]:
+            - generic [ref=e1357]:
+              - generic:
+                - link "" [ref=e1358] [cursor=pointer]:
+                  - /url: /index.php/vod/detail/id/8579.html
+                  - generic [ref=e1359]: 
+                - img "中餐厅·非洲创业季" [ref=e1360]
+              - generic [ref=e1361]:
+                - generic [ref=e1362]: "2025"
+                - generic [ref=e1363]: 综艺
+                - generic [ref=e1364]: 内地
+              - generic [ref=e1365]:
+                - link "中餐厅·非洲创业季" [ref=e1367] [cursor=pointer]:
+                  - /url: /index.php/vod/detail/id/8579.html
+                - link "未知" [ref=e1369] [cursor=pointer]:
+                  - /url: /index.php/vod/search/actor/%E6%9C%AA%E7%9F%A5.html
+                - generic [ref=e1370]: 《中餐厅·非洲创业季》是一档青春合伙人经营体验综N代节目。本季节目将前往“摩洛哥”进行录制，并将以“调研、经营、挑战”三个阶段的餐厅“真创业”为内容核心展开“非比寻常”的经营之路。
+            - link "中餐厅·非洲创业季" [ref=e1372] [cursor=pointer]:
+              - /url: /index.php/vod/detail/id/8579.html
+            - generic [ref=e1373]: 更新至0828期
+          - generic [ref=e1374]:
+            - generic [ref=e1375]:
+              - generic:
+                - link "" [ref=e1376] [cursor=pointer]:
+                  - /url: /index.php/vod/detail/id/8565.html
+                  - generic [ref=e1377]: 
+                - img "假期中的她们" [ref=e1378]
+              - generic [ref=e1379]:
+                - generic [ref=e1380]: "2025"
+                - generic [ref=e1381]: 综艺
+              - generic [ref=e1382]:
+                - link "假期中的她们" [ref=e1384] [cursor=pointer]:
+                  - /url: /index.php/vod/detail/id/8565.html
+                - generic [ref=e1385]:
+                  - link "李艺彤" [ref=e1386] [cursor=pointer]:
+                    - /url: /index.php/vod/search/actor/%E6%9D%8E%E8%89%BA%E5%BD%A4.html
+                  - link "黄英" [ref=e1387] [cursor=pointer]:
+                    - /url: /index.php/vod/search/actor/%E9%BB%84%E8%8B%B1.html
+                  - link "陈德容" [ref=e1388] [cursor=pointer]:
+                    - /url: /index.php/vod/search/actor/%E9%99%88%E5%BE%B7%E5%AE%B9.html
+                - generic [ref=e1389]: 15位高能量的姐姐们，将前往四个中国小城，通过搜寻城市撕拉片中隐藏的线索，解锁各个小城的独特主题玩法。过程中，姐姐们不仅会向观众全方位展现小城文化特色，更会以一种轻松愉悦的方式，讲述她们在假期中的精彩
+            - link "假期中的她们" [ref=e1391] [cursor=pointer]:
+              - /url: /index.php/vod/detail/id/8565.html
+            - generic [ref=e1392]: 更新至0828期
+          - generic [ref=e1393]:
+            - generic [ref=e1394]:
+              - generic:
+                - link "" [ref=e1395] [cursor=pointer]:
+                  - /url: /index.php/vod/detail/id/8568.html
+                  - generic [ref=e1396]: 
+                - img "花儿与少年·同心季" [ref=e1397]
+              - generic [ref=e1398]:
+                - generic [ref=e1399]: "2025"
+                - generic [ref=e1400]: 综艺
+                - generic [ref=e1401]: 内地
+              - generic [ref=e1402]:
+                - link "花儿与少年·同心季" [ref=e1404] [cursor=pointer]:
+                  - /url: /index.php/vod/detail/id/8568.html
+                - generic [ref=e1405]:
+                  - link "那英" [ref=e1406] [cursor=pointer]:
+                    - /url: /index.php/vod/search/actor/%E9%82%A3%E8%8B%B1.html
+                  - link "陈数" [ref=e1407] [cursor=pointer]:
+                    - /url: /index.php/vod/search/actor/%E9%99%88%E6%95%B0.html
+                  - link "马思纯" [ref=e1408] [cursor=pointer]:
+                    - /url: /index.php/vod/search/actor/%E9%A9%AC%E6%80%9D%E7%BA%AF.html
+                - generic [ref=e1409]: 全方位记录花少团在共建“一带一路”合作项目、中外民间交流、中企海外发展等多维场景下的真实体验，生动诠释“同舟共济·同心协力”的时代主题，呈现中国与世界共建共享、命运与共的青春故事。
+            - link "花儿与少年·同心季" [ref=e1411] [cursor=pointer]:
+              - /url: /index.php/vod/detail/id/8568.html
+            - generic [ref=e1412]: 更新至0828期
+          - generic [ref=e1413]:
+            - generic [ref=e1414]:
+              - generic:
+                - link "" [ref=e1415] [cursor=pointer]:
+                  - /url: /index.php/vod/detail/id/8594.html
+                  - generic [ref=e1416]: 
+                - img "你好星期六" [ref=e1417]
+              - generic [ref=e1418]:
+                - generic [ref=e1419]: "2025"
+                - generic [ref=e1420]: 综艺
+                - generic [ref=e1421]: 内地
+              - generic [ref=e1422]:
+                - link "你好星期六" [ref=e1424] [cursor=pointer]:
+                  - /url: /index.php/vod/detail/id/8594.html
+                - generic [ref=e1425]:
+                  - link "何炅" [ref=e1426] [cursor=pointer]:
+                    - /url: /index.php/vod/search/actor/%E4%BD%95%E7%82%85.html
+                  - link "檀健次" [ref=e1427] [cursor=pointer]:
+                    - /url: /index.php/vod/search/actor/%E6%AA%80%E5%81%A5%E6%AC%A1.html
+                  - link "李雪琴" [ref=e1428] [cursor=pointer]:
+                    - /url: /index.php/vod/search/actor/%E6%9D%8E%E9%9B%AA%E7%90%B4.html
+                - generic [ref=e1429]: 节目重点围绕艺人艺能的全面深度挖掘、流光溢彩的精品表演秀的创意呈现、最具热点的社会性话题输出等方面进行设计。何炅、冯禧担任主持人，檀健次、李雪琴、秦霄贤、王鹤棣、蔡文静、赵小棠、黄明昊等担任阶段性常驻
+            - link "你好星期六" [ref=e1431] [cursor=pointer]:
+              - /url: /index.php/vod/detail/id/8594.html
+            - generic [ref=e1432]: 更新至0828期
+          - generic [ref=e1433]:
+            - generic [ref=e1434]:
+              - generic:
+                - link "" [ref=e1435] [cursor=pointer]:
+                  - /url: /index.php/vod/detail/id/8578.html
+                  - generic [ref=e1436]: 
+                - img "披荆斩棘2025" [ref=e1437]
+              - generic [ref=e1438]:
+                - generic [ref=e1439]: "2025"
+                - generic [ref=e1440]: 综艺
+                - generic [ref=e1441]: 内地
+              - generic [ref=e1442]:
+                - link "披荆斩棘2025" [ref=e1444] [cursor=pointer]:
+                  - /url: /index.php/vod/detail/id/8578.html
+                - generic [ref=e1445]:
+                  - link "张晋" [ref=e1446] [cursor=pointer]:
+                    - /url: /index.php/vod/search/actor/%E5%BC%A0%E6%99%8B.html
+                  - link "李承铉" [ref=e1447] [cursor=pointer]:
+                    - /url: /index.php/vod/search/actor/%E6%9D%8E%E6%89%BF%E9%93%89.html
+                  - link "胡夏" [ref=e1448] [cursor=pointer]:
+                    - /url: /index.php/vod/search/actor/%E8%83%A1%E5%A4%8F.html
+                - generic [ref=e1449]: 《披荆斩棘2025》是由芒果TV自制的一档男性全景音乐竞演综艺。节目邀请28位嘉宾，共7支队伍，决出荣耀战队，诞生披荆斩棘滚烫家族最强团体。通过跨越代际的舞台竞演与文化交融，诠释新时代男性“逆水行舟，
+            - link "披荆斩棘2025" [ref=e1451] [cursor=pointer]:
+              - /url: /index.php/vod/detail/id/8578.html
+            - generic [ref=e1452]: 更新至0828期
+          - generic [ref=e1453]:
+            - generic [ref=e1454]:
+              - generic:
+                - link "" [ref=e1455] [cursor=pointer]:
+                  - /url: /index.php/vod/detail/id/8564.html
+                  - generic [ref=e1456]: 
+                - img "地球超新鲜" [ref=e1457]
+              - generic [ref=e1458]:
+                - generic [ref=e1459]: "2025"
+                - generic [ref=e1460]: 综艺
+                - generic [ref=e1461]: 内地
+              - generic [ref=e1462]:
+                - link "地球超新鲜" [ref=e1464] [cursor=pointer]:
+                  - /url: /index.php/vod/detail/id/8564.html
+                - generic [ref=e1465]:
+                  - link "孙红雷" [ref=e1466] [cursor=pointer]:
+                    - /url: /index.php/vod/search/actor/%E5%AD%99%E7%BA%A2%E9%9B%B7.html
+                  - link "李乃文" [ref=e1467] [cursor=pointer]:
+                    - /url: /index.php/vod/search/actor/%E6%9D%8E%E4%B9%83%E6%96%87.html
+                  - link "陈赫" [ref=e1468] [cursor=pointer]:
+                    - /url: /index.php/vod/search/actor/%E9%99%88%E8%B5%AB.html
+                - generic [ref=e1469]: 地球团从中国出发，感受北纬40度的烟火气，通过游戏任务解锁国内外各地新鲜的景、新鲜的食、新鲜的人、新鲜的文化，传递中国特色文化的温度，碰撞融贯中西古今的崭新精神力量。
+            - link "地球超新鲜" [ref=e1471] [cursor=pointer]:
+              - /url: /index.php/vod/detail/id/8564.html
+            - generic [ref=e1472]: 更新至0828期
+          - generic [ref=e1473]:
+            - generic [ref=e1474]:
+              - generic:
+                - link "" [ref=e1475] [cursor=pointer]:
+                  - /url: /index.php/vod/detail/id/8563.html
+                  - generic [ref=e1476]: 
+                - img "密室大逃脱7 大神版" [ref=e1477]
+              - generic [ref=e1478]:
+                - generic [ref=e1479]: "2025"
+                - generic [ref=e1480]: 综艺
+                - generic [ref=e1481]: 内地
+              - generic [ref=e1482]:
+                - link "密室大逃脱7 大神版" [ref=e1484] [cursor=pointer]:
+                  - /url: /index.php/vod/detail/id/8563.html
+                - generic [ref=e1485]:
+                  - link "火树" [ref=e1486] [cursor=pointer]:
+                    - /url: /index.php/vod/search/actor/%E7%81%AB%E6%A0%91.html
+                  - link "文韬" [ref=e1487] [cursor=pointer]:
+                    - /url: /index.php/vod/search/actor/%E6%96%87%E9%9F%AC.html
+                  - link "齐思钧" [ref=e1488] [cursor=pointer]:
+                    - /url: /index.php/vod/search/actor/%E9%BD%90%E6%80%9D%E9%92%A7.html
+                - generic [ref=e1489]: 《密室大逃脱7 大神版》是芒果TV超大型密室逃脱真人秀《密室大逃脱》的官方定制衍生节目。节目邀请大神玩家进入全封闭的未知密室，根据线索进行推理解密，开启全新空间，还原故事背景，直至全员逃脱。
+            - link "密室大逃脱7 大神版" [ref=e1491] [cursor=pointer]:
+              - /url: /index.php/vod/detail/id/8563.html
+            - generic [ref=e1492]: 更新至0828期
+          - text:    
+      - generic [ref=e1493]:
+        - generic [ref=e1494]:
+          - heading " 纪录" [level=2] [ref=e1495]:
+            - generic [ref=e1496]: 
+            - text: 纪录
+          - link "更多纪录 " [ref=e1497] [cursor=pointer]:
+            - /url: /index.php/vod/type/id/20.html
+            - text: 更多纪录
+            - generic [ref=e1498]: 
+        - generic [ref=e1500]:
+          - generic [ref=e1501]:
+            - generic [ref=e1502]:
+              - generic:
+                - link "" [ref=e1503] [cursor=pointer]:
+                  - /url: /index.php/vod/detail/id/8909.html
+                  - generic [ref=e1504]: 
+                - img "三星堆里有个村" [ref=e1505]
+              - generic [ref=e1506]:
+                - generic [ref=e1507]: "2025"
+                - generic [ref=e1508]: 纪录
+                - generic [ref=e1509]: 大陆
+              - generic [ref=e1510]:
+                - link "三星堆里有个村" [ref=e1512] [cursor=pointer]:
+                  - /url: /index.php/vod/detail/id/8909.html
+                - generic [ref=e1513]:
+                  - link "黄品沅" [ref=e1514] [cursor=pointer]:
+                    - /url: /index.php/vod/search/actor/%E9%BB%84%E5%93%81%E6%B2%85.html
+                  - link "杨迪" [ref=e1515] [cursor=pointer]:
+                    - /url: /index.php/vod/search/actor/%E6%9D%A8%E8%BF%AA.html
+                  - link "赵海燕" [ref=e1516] [cursor=pointer]:
+                    - /url: /index.php/vod/search/actor/%E8%B5%B5%E6%B5%B7%E7%87%95.html
+                - generic [ref=e1517]: 《三星堆里有个村》由宁夏局选送，黄河出版传媒集团、广汉市委宣传部出品，10分钟*8集，取景地为四川省广汉市三星堆遗址保护区，讲述了游戏玩家孙雯为寻找突然断更的游戏的作者“金乌”来到三星堆“星湾村”携手
+            - link "三星堆里有个村" [ref=e1519] [cursor=pointer]:
+              - /url: /index.php/vod/detail/id/8909.html
+            - generic [ref=e1520]: 全8集
+          - generic [ref=e1521]:
+            - generic [ref=e1522]:
+              - generic:
+                - link "" [ref=e1523] [cursor=pointer]:
+                  - /url: /index.php/vod/detail/id/8113.html
+                  - generic [ref=e1524]: 
+                - img "今年二十二" [ref=e1525]
+              - generic [ref=e1526]:
+                - generic [ref=e1527]: "2024"
+                - generic [ref=e1528]: 纪录
+                - generic [ref=e1529]: 大陆
+              - generic [ref=e1530]:
+                - link "今年二十二" [ref=e1532] [cursor=pointer]:
+                  - /url: /index.php/vod/detail/id/8113.html
+                - generic [ref=e1533]:
+                  - link "徐必成" [ref=e1534] [cursor=pointer]:
+                    - /url: /index.php/vod/search/actor/%E5%BE%90%E5%BF%85%E6%88%90.html
+                  - link "罗思源" [ref=e1535] [cursor=pointer]:
+                    - /url: /index.php/vod/search/actor/%E7%BD%97%E6%80%9D%E6%BA%90.html
+                  - link "林恒" [ref=e1536] [cursor=pointer]:
+                    - /url: /index.php/vod/search/actor/%E6%9E%97%E6%81%92.html
+                - generic [ref=e1537]: 本片以“电竞入亚”为背景，揭秘亚运电竞首金诞生幕后故事，是中国首部亚运电竞夺金纪录电影。影片讲述22位王者荣耀职业电竞选手接到征召，平均年龄恰好22岁的他们进入训练营参加选拔，而最终只有6个人可以脱颖
+            - link "今年二十二" [ref=e1539] [cursor=pointer]:
+              - /url: /index.php/vod/detail/id/8113.html
+            - generic [ref=e1540]: HD高清
+          - generic [ref=e1541]:
+            - generic [ref=e1542]:
+              - generic:
+                - link "" [ref=e1543] [cursor=pointer]:
+                  - /url: /index.php/vod/detail/id/41.html
+                  - generic [ref=e1544]: 
+                - img "一路前行 第二季" [ref=e1545]
+              - generic [ref=e1546]:
+                - generic [ref=e1547]: "2025"
+                - generic [ref=e1548]: 纪录
+                - generic [ref=e1549]: 内地
+              - generic [ref=e1550]:
+                - link "一路前行 第二季" [ref=e1552] [cursor=pointer]:
+                  - /url: /index.php/vod/detail/id/41.html
+                - generic [ref=e1553]:
+                  - link "胡歌" [ref=e1554] [cursor=pointer]:
+                    - /url: /index.php/vod/search/actor/%E8%83%A1%E6%AD%8C.html
+                  - link "刘涛" [ref=e1555] [cursor=pointer]:
+                    - /url: /index.php/vod/search/actor/%E5%88%98%E6%B6%9B.html
+                  - link "陈龙" [ref=e1556] [cursor=pointer]:
+                    - /url: /index.php/vod/search/actor/%E9%99%88%E9%BE%99.html
+                - generic [ref=e1557]: 上海广播电视台大型环保公益纪实节目、上海文化发展基金会市重大文艺创作资助项目《一路前行》第二季于1月4日起每周六晚20点档在东方卫视播出。胡歌、刘涛、陈龙携手刘诗诗、袁弘、林一、王昱珩、胡冰卿，在“科
+            - link "一路前行 第二季" [ref=e1559] [cursor=pointer]:
+              - /url: /index.php/vod/detail/id/41.html
+            - generic [ref=e1560]: 已完结
+          - generic [ref=e1561]:
+            - generic [ref=e1562]:
+              - generic:
+                - link "" [ref=e1563] [cursor=pointer]:
+                  - /url: /index.php/vod/detail/id/8000.html
+                  - generic [ref=e1564]: 
+                - img "黑鹰坠落：死里逃生" [ref=e1565]
+              - generic [ref=e1566]:
+                - generic [ref=e1567]: "2025"
+                - generic [ref=e1568]: 纪录
+                - generic [ref=e1569]: 美国
+              - generic [ref=e1570]:
+                - link "黑鹰坠落：死里逃生" [ref=e1572] [cursor=pointer]:
+                  - /url: /index.php/vod/detail/id/8000.html
+                - link "未知" [ref=e1574] [cursor=pointer]:
+                  - /url: /index.php/vod/search/actor/%E6%9C%AA%E7%9F%A5.html
+                - generic [ref=e1575]: 《黑鹰坠落：死里逃生》(2025)是一部纪录片，于2025年2月10日首播。该片聚焦于1993年10月3日，美国陆军游骑兵和三角洲特种部队在摩加迪沙执行任务，试图抓捕效忠于将军穆罕默德·法拉·艾迪德的
+            - link "黑鹰坠落：死里逃生" [ref=e1577] [cursor=pointer]:
+              - /url: /index.php/vod/detail/id/8000.html
+            - generic [ref=e1578]: 已完结
+          - generic [ref=e1579]:
+            - generic [ref=e1580]:
+              - generic:
+                - link "" [ref=e1581] [cursor=pointer]:
+                  - /url: /index.php/vod/detail/id/118.html
+                  - generic [ref=e1582]: 
+                - img "风味人间第二季" [ref=e1583]
+              - generic [ref=e1584]:
+                - generic [ref=e1585]: "2020"
+                - generic [ref=e1586]: 纪录
+                - generic [ref=e1587]: 大陆
+              - generic [ref=e1588]:
+                - link "风味人间第二季" [ref=e1590] [cursor=pointer]:
+                  - /url: /index.php/vod/detail/id/118.html
+                - link "李立宏" [ref=e1592] [cursor=pointer]:
+                  - /url: /index.php/vod/search/actor/%E6%9D%8E%E7%AB%8B%E5%AE%8F.html
+                - generic [ref=e1593]: 因为地理环境、文明历程和物产丰厚程度不尽相同，人们对食物的处理时而天差地别，时而异曲同工。不约而同的选择，造就世界的丰富多彩和殊途同归。 《风味人间》第2季，共8集，从全世界的角度出发，在特色鲜明的
+            - link "风味人间第二季" [ref=e1595] [cursor=pointer]:
+              - /url: /index.php/vod/detail/id/118.html
+            - generic [ref=e1596]: 4K
+          - generic [ref=e1597]:
+            - generic [ref=e1598]:
+              - generic:
+                - link "" [ref=e1599] [cursor=pointer]:
+                  - /url: /index.php/vod/detail/id/173.html
+                  - generic [ref=e1600]: 
+                - img "亚洲" [ref=e1601]
+              - generic [ref=e1602]:
+                - generic [ref=e1603]: "2024"
+                - generic [ref=e1604]: 纪录
+                - generic [ref=e1605]: 英国
+              - generic [ref=e1606]:
+                - link "亚洲" [ref=e1608] [cursor=pointer]:
+                  - /url: /index.php/vod/detail/id/173.html
+                - link "未知" [ref=e1610] [cursor=pointer]:
+                  - /url: /index.php/vod/search/actor/%E6%9C%AA%E7%9F%A5.html
+                - generic [ref=e1611]: 大卫·爱登堡爵士倾情呈现了《亚洲》这部七集系列片，本片将带领观众深入这片全球面积最大的大陆，发掘令人惊叹的野生动物和自然奇观。这一系列节目展现了地球上这个非凡大陆的每个角落，亚洲摄人心魄的美景及其丰富
+            - link "亚洲" [ref=e1613] [cursor=pointer]:
+              - /url: /index.php/vod/detail/id/173.html
+            - generic [ref=e1614]: 4K双语
+          - generic [ref=e1615]:
+            - generic [ref=e1616]:
+              - generic:
+                - link "" [ref=e1617] [cursor=pointer]:
+                  - /url: /index.php/vod/detail/id/7381.html
+                  - generic [ref=e1618]: 
+                - img "地球之声" [ref=e1619]
+              - generic [ref=e1620]:
+                - generic [ref=e1621]: "2024"
+                - generic [ref=e1622]: 纪录
+                - generic [ref=e1623]: 美国
+              - generic [ref=e1624]:
+                - link "地球之声" [ref=e1626] [cursor=pointer]:
+                  - /url: /index.php/vod/detail/id/7381.html
+                - link "汤姆·希德勒斯顿" [ref=e1628] [cursor=pointer]:
+                  - /url: /index.php/vod/search/actor/%E6%B1%A4%E5%A7%86%C2%B7%E5%B8%8C%E5%BE%B7%E5%8B%92%E6%96%AF%E9%A1%BF.html
+                - generic [ref=e1629]: Immersiveaudiorevealstheunexpected,unfamiliaranduntoldwaysinwhichanimalscommunicatearoundtheworld.Na
+            - link "地球之声" [ref=e1631] [cursor=pointer]:
+              - /url: /index.php/vod/detail/id/7381.html
+            - generic [ref=e1632]: 已完结
+          - generic [ref=e1633]:
+            - generic [ref=e1634]:
+              - generic:
+                - link "" [ref=e1635] [cursor=pointer]:
+                  - /url: /index.php/vod/detail/id/7414.html
+                  - generic [ref=e1636]: 
+                - img "中国考古大会" [ref=e1637]
+              - generic [ref=e1638]:
+                - generic [ref=e1639]: "2021"
+                - generic [ref=e1640]: 纪录
+                - generic [ref=e1641]: 中国大陆
+              - generic [ref=e1642]:
+                - link "中国考古大会" [ref=e1644] [cursor=pointer]:
+                  - /url: /index.php/vod/detail/id/7414.html
+                - link "王端端" [ref=e1646] [cursor=pointer]:
+                  - /url: /index.php/vod/search/actor/%E7%8E%8B%E7%AB%AF%E7%AB%AF.html
+                - generic [ref=e1647]: 《中国考古大会》是由中央广播电视总台联合国家文物局、中国社会科学院共同制作的考古空间探秘类文化节目，由王端端主持。该节目围绕中国考古学百年历程中的重大考古发现、文化遗存、遗址文物等，将考古发掘研究与史
+            - link "中国考古大会" [ref=e1649] [cursor=pointer]:
+              - /url: /index.php/vod/detail/id/7414.html
+            - generic [ref=e1650]: 已完结
+          - generic [ref=e1651]:
+            - generic [ref=e1652]:
+              - generic:
+                - link "" [ref=e1653] [cursor=pointer]:
+                  - /url: /index.php/vod/detail/id/7416.html
+                  - generic [ref=e1654]: 
+                - img "典籍里的中国 第二季" [ref=e1655]
+              - generic [ref=e1656]:
+                - generic [ref=e1657]: "2022"
+                - generic [ref=e1658]: 纪录
+                - generic [ref=e1659]: 中国大陆
+              - generic [ref=e1660]:
+                - link "典籍里的中国 第二季" [ref=e1662] [cursor=pointer]:
+                  - /url: /index.php/vod/detail/id/7416.html
+                - generic [ref=e1663]:
+                  - link "撒贝宁" [ref=e1664] [cursor=pointer]:
+                    - /url: /index.php/vod/search/actor/%E6%92%92%E8%B4%9D%E5%AE%81.html
+                  - link "王嘉宁" [ref=e1665] [cursor=pointer]:
+                    - /url: /index.php/vod/search/actor/%E7%8E%8B%E5%98%89%E5%AE%81.html
+                  - link "郭秋成" [ref=e1666] [cursor=pointer]:
+                    - /url: /index.php/vod/search/actor/%E9%83%AD%E7%A7%8B%E6%88%90.html
+                - generic [ref=e1667]: 节目第二季将精选《永乐大典》《汉书》《礼记》《诗经》《越绝书》《文心雕龙》《齐民要术》《水经注》《说文解字》《茶经》等经典典籍，延续第一季“文化访谈+戏剧+影视化”的表达方式，在叙事方法、表达手段及舞
+            - link "典籍里的中国 第二季" [ref=e1669] [cursor=pointer]:
+              - /url: /index.php/vod/detail/id/7416.html
+            - generic [ref=e1670]: 已完结
+          - generic [ref=e1671]:
+            - generic [ref=e1672]:
+              - generic:
+                - link "" [ref=e1673] [cursor=pointer]:
+                  - /url: /index.php/vod/detail/id/7417.html
+                  - generic [ref=e1674]: 
+                - img "典籍里的中国" [ref=e1675]
+              - generic [ref=e1676]:
+                - generic [ref=e1677]: "2021"
+                - generic [ref=e1678]: 纪录
+                - generic [ref=e1679]: 中国大陆
+              - generic [ref=e1680]:
+                - link "典籍里的中国" [ref=e1682] [cursor=pointer]:
+                  - /url: /index.php/vod/detail/id/7417.html
+                - generic [ref=e1683]:
+                  - link "撒贝宁" [ref=e1684] [cursor=pointer]:
+                    - /url: /index.php/vod/search/actor/%E6%92%92%E8%B4%9D%E5%AE%81.html
+                  - link "倪大红" [ref=e1685] [cursor=pointer]:
+                    - /url: /index.php/vod/search/actor/%E5%80%AA%E5%A4%A7%E7%BA%A2.html
+                  - link "吴樾" [ref=e1686] [cursor=pointer]:
+                    - /url: /index.php/vod/search/actor/%E5%90%B4%E6%A8%BE.html
+                - generic [ref=e1687]: 该节目是由中央广播电视总台央视综合频道联合央视创造传媒、中国国家话剧院全新原创的大型文化节目。节目聚焦优秀中华文化典籍，通过时空对话的创新形式，以“戏剧+影视+文化访谈”的表现方法，讲述典籍在五千年历
+            - link "典籍里的中国" [ref=e1689] [cursor=pointer]:
+              - /url: /index.php/vod/detail/id/7417.html
+            - generic [ref=e1690]: 已完结
+          - generic [ref=e1691]:
+            - generic [ref=e1692]:
+              - generic:
+                - link "" [ref=e1693] [cursor=pointer]:
+                  - /url: /index.php/vod/detail/id/7052.html
+                  - generic [ref=e1694]: 
+                - img "香港小姐竞选1973-2023合集" [ref=e1695]
+              - generic [ref=e1696]:
+                - generic [ref=e1697]: "2023"
+                - generic [ref=e1698]: 纪录
+                - generic [ref=e1699]: 中国香港
+              - generic [ref=e1700]:
+                - link "香港小姐竞选1973-2023合集" [ref=e1702] [cursor=pointer]:
+                  - /url: /index.php/vod/detail/id/7052.html
+                - link "郭珮文" [ref=e1704] [cursor=pointer]:
+                  - /url: /index.php/vod/search/actor/%E9%83%AD%E7%8F%AE%E6%96%87.html
+                - generic [ref=e1705]: 香港TVB今日宣布，《2023香港小姐竞选决赛》将于8月27日隆重举行。经过多轮甄选及《2023香港小姐竞选终极面试》严格考验及专业评审团的评选后，17位候选佳丽顺利晋级正式入围，将角逐本年度香港小姐
+            - link "香港小姐竞选1973-2023合集" [ref=e1707] [cursor=pointer]:
+              - /url: /index.php/vod/detail/id/7052.html
+            - generic [ref=e1708]: 已完结
+          - generic [ref=e1709]:
+            - generic [ref=e1710]:
+              - generic:
+                - link "" [ref=e1711] [cursor=pointer]:
+                  - /url: /index.php/vod/detail/id/6806.html
+                  - generic [ref=e1712]: 
+                - img "长江之恋" [ref=e1713]
+              - generic [ref=e1714]:
+                - generic [ref=e1715]: "2019"
+                - generic [ref=e1716]: 纪录
+                - generic [ref=e1717]: 中国大陆
+              - generic [ref=e1718]:
+                - link "长江之恋" [ref=e1720] [cursor=pointer]:
+                  - /url: /index.php/vod/detail/id/6806.html
+                - link "内详" [ref=e1722] [cursor=pointer]:
+                  - /url: /index.php/vod/search/actor/%E5%86%85%E8%AF%A6.html
+                - generic [ref=e1723]: 追溯人类漫长的足迹，不同的大陆上，一个又一个文明的发生与崛起，无一不是在大江大河边枝开叶漫。长江，世界上最伟大的河流之一，全长6380多公里，流域面积达180万平方公里，约占中国陆地总面积的五分之一，
+            - link "长江之恋" [ref=e1725] [cursor=pointer]:
+              - /url: /index.php/vod/detail/id/6806.html
+            - generic [ref=e1726]: 已完结
+          - text:    
+  - generic [ref=e1728]:
+    - heading "友情链接：" [level=2] [ref=e1729]
+    - link "风向标导航" [ref=e1730] [cursor=pointer]:
+      - /url: https://yydsys.cc
+    - link "多多主页" [ref=e1731] [cursor=pointer]:
+      - /url: https://yydsys.top
+    - link "QQ频道" [ref=e1732] [cursor=pointer]:
+      - /url: https://pd.qq.com/s/9yddv06pe
+    - link "私密圈子" [ref=e1733] [cursor=pointer]:
+      - /url: https://pc.fenchuan8.com/#/share?tzId=81842&dtId=8692108&yqm=FUPT5
+    - link "TG频道" [ref=e1734] [cursor=pointer]:
+      - /url: https://t.me/ucquark
+  - contentinfo [ref=e1735]:
+    - paragraph [ref=e1736]:
+      - text: 推荐接口
+      - text: 王二小
+      - text: 潇洒
+      - text: 道长
+      - text: PG
+      - text: OK
+      - text: 网盘
+    - paragraph [ref=e1743]: 本站所有内容均来自互联网分享站点所提供的公开引用资源，未提供资源上传、存储服务。
+  - generic [ref=e1744]:
+    - generic "求片留言" [ref=e1745]:
+      - link "" [ref=e1746] [cursor=pointer]:
+        - /url: /index.php/gbook/index.html
+        - generic [ref=e1747]: 
+    - text: 
+  - text: 

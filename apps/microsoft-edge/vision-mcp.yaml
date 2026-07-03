@@ -1,0 +1,141 @@
+version: "0.1"
+app:
+  id: microsoft-edge
+  name: Microsoft Edge
+  platform: windows
+  launch_hint: attach_after_launch
+visual_box:
+  id: microsoft-edge-capsule
+  mode: same_session_virtual_display
+  platform: windows
+  display:
+    width_px: 1280
+    height_px: 800
+    scale: 1
+    dpi_x: 96
+    dpi_y: 96
+    refresh_rate_hz: 60
+  coordinate_space: normalized_client_rect
+  contract:
+    require_same_display: true
+    require_client_size_px: [1280, 800]
+    tolerate_client_size_delta_px: 2
+    warn_client_size_delta_px: 40
+    require_unminimized: true
+    require_foreground_for_input: true
+    validate_before_each_action: true
+  fallbacks: []
+regions: []
+states:
+  [
+    {
+        id: extensions_page2,
+        description: Edge extensions page with developer mode,
+        kind: page,
+        anchors: [{type: visual_hash, hash: "0000000088000000", min_similarity: 0.82}],
+        match_policy: any_anchor,
+        controls:
+          [
+            {
+                kind: control,
+                id: ctrl,
+                role: tab,
+                label: 标签页栏,
+                action_types: [click],
+                locator_priority:
+                  [
+                    {type: accessibility, name: 标签页栏, role: AXTab},
+                    {type: ocr_text, text: 标签页栏, match: contains, min_confidence: 0.8},
+                    {type: bbox_norm, value: [0.00125, 0, 0.9125, 0.0430672268907563]}
+                  ],
+                visual: {bbox_norm: [0.00125, 0, 0.9125, 0.0430672268907563], center_norm: [0.45749999999999996, 0.02153361344537815]},
+                risk_level: safe,
+                approval_required: false
+              },
+            {
+                kind: control,
+                id: view_7,
+                role: button,
+                label: 关闭,
+                description: view_7,
+                action_types: [click],
+                locator_priority:
+                  [
+                    {type: accessibility, automation_id: view_7},
+                    {type: ocr_text, text: 关闭, match: contains, min_confidence: 0.8},
+                    {type: bbox_norm, value: [0.97125, 0, 0.02875, 0.04201680672268908]}
+                  ],
+                visual: {bbox_norm: [0.97125, 0, 0.02875, 0.04201680672268908], center_norm: [0.985625, 0.02100840336134454]},
+                risk_level: requires_confirmation,
+                approval_required: true
+              },
+            {
+                kind: control,
+                id: view_4,
+                role: button,
+                label: 还原,
+                description: view_4,
+                action_types: [click],
+                locator_priority:
+                  [
+                    {type: accessibility, automation_id: view_4},
+                    {type: ocr_text, text: 还原, match: contains, min_confidence: 0.8},
+                    {type: bbox_norm, value: [0.9425, 0, 0.02875, 0.04201680672268908]}
+                  ],
+                visual: {bbox_norm: [0.9425, 0, 0.02875, 0.04201680672268908], center_norm: [0.956875, 0.02100840336134454]},
+                risk_level: safe,
+                approval_required: false
+              },
+            {
+                kind: control,
+                id: view_2,
+                role: button,
+                label: 最小化,
+                description: view_2,
+                action_types: [click],
+                locator_priority:
+                  [
+                    {type: accessibility, automation_id: view_2},
+                    {type: ocr_text, text: 最小化, match: contains, min_confidence: 0.8},
+                    {type: bbox_norm, value: [0.91375, 0, 0.02875, 0.04201680672268908]}
+                  ],
+                visual: {bbox_norm: [0.91375, 0, 0.02875, 0.04201680672268908], center_norm: [0.928125, 0.02100840336134454]},
+                risk_level: safe,
+                approval_required: false
+              }
+          ],
+        inherit_regions: [],
+        variants: []
+      }
+  ]
+transitions: []
+workflows: []
+repair_policy:
+  max_auto_repair_level: 3
+  geometry:
+    tolerate_client_size_delta_px: 2
+    tolerate_origin_change: true
+    require_same_dpi: true
+  state:
+    min_anchor_score: 0.86
+    min_ocr_similarity: 0.88
+    min_visual_similarity: 0.82
+  control_relocation:
+    confidence_threshold: 0.92
+    max_bbox_shift_norm: 0.08
+  destructive_actions:
+    auto_repair_before_action: false
+    require_user_confirmation: true
+safety_policy:
+  forbidden_action_categories: [payment, destructive, external_communication, permission_change, captcha]
+  require_approval_for_risk_levels: [requires_confirmation, destructive]
+  redaction_patterns: []
+  allow_cloud_vlm: false
+  audit_log_retention_days: 30
+input_lease_policy:
+  default_lease_ms: 5000
+  break_on_user_input: true
+  break_hotkey: Esc Esc
+  require_revalidate_after_break: true
+metadata:
+  tags: []

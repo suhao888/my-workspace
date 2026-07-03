@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>审计AI助手</title>
+  <link rel="stylesheet" href="taskpane.css">
+</head>
+<body>
+  <!-- Header -->
+  <header class="header">
+    <div class="header-left">
+      <h1 class="header-title">审计AI助手</h1>
+      <span class="status-dot" id="statusDot"></span>
+    </div>
+    <div class="header-actions">
+      <button class="btn-icon" id="btnSettings" title="设置" aria-label="设置">&#9881;</button>
+    </div>
+  </header>
+
+  <!-- Data Context Bar -->
+  <div class="data-bar" id="dataBar">
+    <span class="data-bar-label">选区:</span>
+    <span class="data-bar-info" id="dataInfo">未读取</span>
+    <button class="btn btn-sm" id="btnReadSelection">读取</button>
+    <button class="btn btn-sm" id="btnClearData">清除</button>
+  </div>
+
+  <!-- Chat Area -->
+  <div class="chat-area" id="chatArea">
+    <div class="welcome" id="welcome">
+      <div class="welcome-icon">&#9776;</div>
+      <h2>审计AI助手</h2>
+      <p class="welcome-text">选中 Excel 数据后点击"读取"，即可与 AI 对话分析。</p>
+      <div class="welcome-tips">
+        <div class="tip">选中数据 → 点击"读取" → 输入问题</div>
+        <div class="tip">支持: 数据分析、异常检测、对账处理</div>
+        <div class="tip">AI 回复可直接写入表格</div>
+      </div>
+    </div>
+    <div class="messages" id="messages"></div>
+  </div>
+
+  <!-- Connection Warning -->
+  <div class="connection-warning hidden" id="connWarning">
+    <span>&#9888;</span> 无法连接到 AI 服务，请确保服务已启动
+    <button class="btn-link" id="btnRetry">重试</button>
+  </div>
+
+  <!-- Input Area -->
+  <div class="input-area">
+    <div class="input-wrapper">
+      <textarea class="input-box" id="inputBox" rows="2" placeholder="输入问题... (Enter 发送, Shift+Enter 换行)"></textarea>
+      <button class="btn-send" id="btnSend" disabled aria-label="发送">&#10148;</button>
+    </div>
+    <div class="input-tools">
+      <button class="btn btn-sm btn-outline" id="btnWrite">写入表格</button>
+      <button class="btn btn-sm btn-outline" id="btnClear">清空对话</button>
+      <span class="model-badge" id="modelBadge">deepseek-v4-pro</span>
+    </div>
+  </div>
+
+  <!-- Settings Panel -->
+  <div class="settings-panel hidden" id="settingsPanel">
+    <div class="settings-header">
+      <h3>设置</h3>
+      <button class="btn-icon" id="btnCloseSettings">&#10005;</button>
+    </div>
+    <div class="settings-body">
+      <div class="form-group">
+        <label>AI 模型</label>
+        <select id="modelSelect">
+          <option value="deepseek-v4-pro">DeepSeek Pro</option>
+          <option value="deepseek-v4-flash">DeepSeek Flash</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>服务地址</label>
+        <input type="text" id="serverUrl" value="http://localhost:3000">
+        <span class="form-hint">本地服务地址，无需修改</span>
+      </div>
+      <div class="form-group">
+        <label>系统提示词</label>
+        <textarea id="systemPrompt" rows="6">你是资深审计师，精通数据分析、异常检测和对账处理。分析数据时，直接给出结论和具体数字，不空泛。数据以表格形式呈现时，逐行解释异常值。回答简洁、专业、可操作。</textarea>
+      </div>
+      <button class="btn btn-primary" id="btnSaveSettings">保存设置</button>
+    </div>
+  </div>
+
+  <!-- Office.js -->
+  <script src="https://appsforoffice.microsoft.com/lib/1/hosted/office.js"></script>
+  <script src="taskpane.js"></script>
+</body>
+</html>

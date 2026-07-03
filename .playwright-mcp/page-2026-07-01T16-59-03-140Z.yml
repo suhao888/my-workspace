@@ -1,0 +1,37 @@
+- generic [ref=e1]:
+  - generic [ref=e2]:
+    - link [ref=e4] [cursor=pointer]:
+      - /url: /
+    - link "登录" [ref=e6] [cursor=pointer]:
+      - /url: /account.php?action=login
+  - generic [ref=e8]:
+    - generic [ref=e9]: FreeBox_1.7.1_win_免安装版.zip
+    - generic [ref=e10]:
+      - table [ref=e12]:
+        - rowgroup [ref=e13]:
+          - row "文件大小：78.4 M 上传时间：2026-03-27 分享用户：15** 运行系统：压缩文件 文件描述：" [ref=e14]:
+            - cell "文件大小：78.4 M 上传时间：2026-03-27 分享用户：15** 运行系统：压缩文件 文件描述：" [ref=e15]:
+              - text: 文件大小：78.4 M
+              - text: 上传时间：2026-03-27
+              - text: 分享用户：15**
+              - text: 运行系统：压缩文件
+              - text: 文件描述：
+            - cell [ref=e16]
+            - cell [ref=e17]
+      - iframe [active] [ref=e21]:
+        - generic [ref=f1e3]:
+          - link "电信下载" [ref=f1e5] [cursor=pointer]:
+            - /url: https://developer3.lanrar.com/file/?CG4CPA08ATAEDQoyU2ZWOgQ7VGwHHlMjBWdXNFJMVjhVLVNbDWFSKAdmVCwAZQVbByoEaF9uUw4K6FHSUYBXswimAtwNuAH2BNcKu1OOVt8EcFQrBzFTIQUkVzdSZ1Y7VTBTWw05UmIHbFQwAGwFNAdtBDBfMlNpCj9RblErVzAIewJoDWgBZwRgCmlTMVZjBGZUYgd+UyEFcldsUjxWZ1VnUzINf1I2B2JULQBmBTMHcgQ1XzhTYQo6UTNRa1dkCDoCNw1kATAEYwpsUz5WZARrVDMHYVNmBTBXYVJvVm9VM1M2DWFSMgdpVGYAYgVlB2sEL196UzgKfVFxUXhXJQhtAicNOQExBG8KaFMxVmcEbFRnB2BTZwUkVyVSZ1Y6VTBTYg1tUjcHZlQ6AGYFPQdvBDdfMFNoCj5ReVEjV3AIbgI5DScBaARjCmtTP1ZlBGdUYAdvU2IFOldiUihWIlUlU3MNbVI3B2ZUNQBgBTIHbQQ0XzFTZwo+UXFReFc/CHgCaA1iAWUEYApyUz5WbgRwVGAHbFNkBSxXY1I2VnlVc1NgDT9ScQc/VF0ANwVvB2AEMV8uU3cKeVEuUX1XMwhXAiANMQFoBGI=
+          - link "联通下载" [ref=f1e7] [cursor=pointer]:
+            - /url: https://developer3.lanrar.com/file/?CG4CPA08ATAEDQoyU2ZWOgQ7VGwHHlMjBWdXNFJMVjhVLVNbDWFSKAdmVCwAZQVbByoEaF9uUw4K6FHSUYBXswimAtwNuAH2BNcKu1OOVt8EcFQrBzFTIQUkVzdSZ1Y7VTBTWw05UmIHbFQwAGwFNAdtBDBfMlNpCj9RblErVzAIewJoDWgBZwRgCmlTMVZjBGZUYgd+UyEFcldsUjxWZ1VnUzINf1I2B2JULQBmBTMHcgQ1XzhTYQo6UTNRa1dkCDoCNw1kATAEYwpsUz5WZARrVDMHYVNmBTBXYVJvVm9VM1M2DWFSMgdpVGYAYgVlB2sEL196UzgKfVFxUXhXJQhtAicNOQExBG8KaFMxVmcEbFRnB2BTZwUkVyVSZ1Y6VTBTYg1tUjcHZlQ6AGYFPQdvBDdfMFNoCj5ReVEjV3AIbgI5DScBaARjCmtTP1ZlBGdUYAdvU2IFOldiUihWIlUlU3MNbVI3B2ZUNQBgBTIHbQQ0XzFTZwo+UXFReFc/CHgCaA1iAWUEYApyUz5WbgRwVGAHbFNkBSxXY1I2VnlVc1NgDT9ScQc/VF0ANwVvB2AEMV8uU3cKeVEuUX1XMwhXAiANMQFoBGI=
+          - link "普通下载" [active] [ref=f1e9] [cursor=pointer]:
+            - /url: https://developer3.lanrar.com/file/?CG4CPA08ATAEDQoyU2ZWOgQ7VGwHHlMjBWdXNFJMVjhVLVNbDWFSKAdmVCwAZQVbByoEaF9uUw4K6FHSUYBXswimAtwNuAH2BNcKu1OOVt8EcFQrBzFTIQUkVzdSZ1Y7VTBTWw05UmIHbFQwAGwFNAdtBDBfMlNpCj9RblErVzAIewJoDWgBZwRgCmlTMVZjBGZUYgd+UyEFcldsUjxWZ1VnUzINf1I2B2JULQBmBTMHcgQ1XzhTYQo6UTNRa1dkCDoCNw1kATAEYwpsUz5WZARrVDMHYVNmBTBXYVJvVm9VM1M2DWFSMgdpVGYAYgVlB2sEL196UzgKfVFxUXhXJQhtAicNOQExBG8KaFMxVmcEbFRnB2BTZwUkVyVSZ1Y6VTBTYg1tUjcHZlQ6AGYFPQdvBDdfMFNoCj5ReVEjV3AIbgI5DScBaARjCmtTP1ZlBGdUYAdvU2IFOldiUihWIlUlU3MNbVI3B2ZUNQBgBTIHbQQ0XzFTZwo+UXFReFc/CHgCaA1iAWUEYApyUz5WbgRwVGAHbFNkBSxXY1I2VnlVc1NgDT9ScQc/VF0ANwVvB2AEMV8uU3cKeVEuUX1XMwhXAiANMQFoBGI=&toolsdown
+  - generic [ref=e22]:
+    - generic [ref=e24]: 反诈提示：刷单兼职，冒充公检法，共享手机屏幕，裸聊敲诈，赌博等都是诈骗，请立即举报
+    - generic [ref=e25]:
+      - generic [ref=e26]:
+        - text: 版权声明：不得利用云存储发布，存储，淫秽，诈骗等违法信息。
+        - link "侵权/违法投诉" [ref=e27] [cursor=pointer]:
+          - /url: /q/jb/?f=280012829&report=1
+        - text: 或者投诉邮箱：ta@lanzou.com
+      - text: © 2026 Lanzou A

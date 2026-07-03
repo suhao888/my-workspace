@@ -1,0 +1,82 @@
+- generic [ref=e2]:
+  - banner [ref=e3]:
+    - generic [ref=e4]: LIBVIO
+    - generic [ref=e5]:
+      - text: 按
+      - generic [ref=e6]: Ctrl + D
+      - text: 收藏本页 · 防止失联
+  - generic [ref=e7]:
+    - generic [ref=e8]:
+      - img [ref=e10]
+      - generic [ref=e12]:
+        - generic [ref=e13]
+        - generic [ref=e15]: 大多数访问失败是由 DNS 污染导致的，换用公共 DNS 可立即修复，无需任何工具。推荐使用以下服务器：
+    - generic [ref=e16]:
+      - generic [ref=e17] [cursor=pointer]:
+        - generic [ref=e18]: Google DNS
+        - code [ref=e19]: 8.8.8.8
+        - generic [ref=e20]: 点击复制
+      - generic [ref=e21] [cursor=pointer]:
+        - generic [ref=e22]: Google 备用
+        - code [ref=e23]: 8.8.4.4
+        - generic [ref=e24]: 点击复制
+      - generic [ref=e25] [cursor=pointer]:
+        - generic [ref=e26]: Cloudflare DNS
+        - code [ref=e27]: 1.1.1.1
+        - generic [ref=e28]: 点击复制
+    - generic [ref=e29] [cursor=pointer]:
+      - img [ref=e30]
+      - text: 查看各设备修改教程
+  - generic [ref=e32]:
+    - generic [ref=e33]:
+      - generic [ref=e34]: 发布渠道
+      - button "检测状态" [ref=e35] [cursor=pointer]
+    - generic [ref=e36]:
+      - generic [ref=e37]:
+        - generic [ref=e38]
+        - generic [ref=e43]
+      - link "libviofabu.com 发布页 A" [ref=e47] [cursor=pointer]:
+        - /url: https://libviofabu.com
+        - generic [ref=e48]
+      - link "libvio.app 永久发布页（推荐）" [ref=e52] [cursor=pointer]:
+        - /url: https://libvio.app
+        - generic [ref=e53]
+      - link "libfabu.com 发布页 C" [ref=e57] [cursor=pointer]:
+        - /url: https://libfabu.com
+        - generic [ref=e58]
+  - generic [ref=e62]:
+    - generic [ref=e63]:
+      - generic [ref=e64]: 可用网址
+      - button "检测状态" [ref=e65] [cursor=pointer]
+    - generic [ref=e66]:
+      - link "libvio.host 备用线路 01" [ref=e67] [cursor=pointer]:
+        - /url: https://libvio.host
+        - generic [ref=e68]
+      - link "libvio.mov 备用线路 02" [ref=e72] [cursor=pointer]:
+        - /url: https://www.libvio.mov
+        - generic [ref=e73]
+      - link "libvios.com 备用线路 03" [ref=e77] [cursor=pointer]:
+        - /url: https://www.libvios.com
+        - generic [ref=e78]
+      - link "libhd.com 备用线路 04" [ref=e82] [cursor=pointer]:
+        - /url: https://www.libhd.com
+        - generic [ref=e83]
+      - link "libviobd.com 备用线路 05" [ref=e87] [cursor=pointer]:
+        - /url: https://libviobd.com
+        - generic [ref=e88]
+  - generic [ref=e92]:
+    - generic [ref=e94]: 服务与支持
+    - generic [ref=e95]:
+      - generic [ref=e96]:
+        - generic [ref=e97]: 官方联系邮箱
+        - generic [ref=e98]
+      - generic [ref=e100]:
+        - generic [ref=e101]: 其它问题
+        - generic [ref=e102]
+      - generic [ref=e104]:
+        - generic [ref=e105]: 投屏说明
+        - generic [ref=e106]: 点击夸克网盘资源链接，转存并下载后即可投屏，也可使用夸克 TV 端。注意：部分 AI 翻译视频仅提供网盘转存观看。
+      - generic [ref=e107]:
+        - generic [ref=e108]: 推荐浏览器
+        - generic [ref=e110]
+  - contentinfo [ref=e116]: © 2019–2026 LIBVIO · All Rights Reserved

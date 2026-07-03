@@ -1,0 +1,28 @@
+- main [ref=e2]:
+  - heading [level=1]
+  - paragraph [ref=e3]: 密码是 低调影视 的拼音缩写（4个小写字母）
+  - generic [ref=e4]:
+    - generic [ref=e5]: 访问密码
+    - textbox "访问密码" [ref=e6]
+    - generic [ref=e7]:
+      - generic [ref=e11]:
+        - generic [ref=e12]:
+          - img [ref=e13]
+          - checkbox "验证中..."
+        - generic [ref=e16] [cursor=pointer]: 验证中...
+        - img [ref=e18]:
+          - img [ref=e19]
+      - generic [ref=e24]:
+        - text: Company
+        - textbox [ref=e25]
+      - generic [ref=e26]:
+        - generic [ref=e27]: 图形验证码
+        - paragraph [ref=e28]:
+          - generic [ref=e29]: 请依次点击：
+          - img "点选提示" [ref=e30]
+        - generic [ref=e31]:
+          - img "中文点选验证码" [ref=e32] [cursor=pointer]
+          - generic:
+            - button "重选" [disabled] [ref=e33]
+            - button "重新生成验证码" [ref=e34] [cursor=pointer]: ↻
+    - button "验证中" [disabled] [ref=e35]

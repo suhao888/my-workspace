@@ -1,0 +1,728 @@
+- generic [ref=e4]:
+  - generic [ref=e5]:
+    - banner [ref=e6]:
+      - generic [ref=e8]:
+        - list [ref=e9]:
+          - listitem [ref=e10]:
+            - link "" [ref=e11] [cursor=pointer]:
+              - /url: javascript:;
+              - generic [ref=e12]: 
+            - text: 
+          - listitem [ref=e13]:
+            - link "" [ref=e14] [cursor=pointer]:
+              - /url: javascript:;
+              - generic [ref=e15]: 
+          - listitem [ref=e16]:
+            - link "" [ref=e17] [cursor=pointer]:
+              - /url: javascript:;
+              - generic [ref=e18]: 
+          - listitem [ref=e19]:
+            - link "" [ref=e20] [cursor=pointer]:
+              - /url: /gbook.html
+              - generic [ref=e21]: 
+          - listitem [ref=e22]:
+            - link "关于" [ref=e23] [cursor=pointer]:
+              - /url: /rootnetwork/fabu.php
+        - link [ref=e25] [cursor=pointer]:
+          - /url: /
+        - list [ref=e26]:
+          - listitem [ref=e27]:
+            - link "首页" [ref=e28] [cursor=pointer]:
+              - /url: /
+          - listitem [ref=e29]:
+            - link "电影" [ref=e30] [cursor=pointer]:
+              - /url: /type/1.html
+          - listitem [ref=e31]:
+            - link "剧集" [ref=e32] [cursor=pointer]:
+              - /url: /type/2.html
+          - listitem [ref=e33]:
+            - link "番剧" [ref=e34] [cursor=pointer]:
+              - /url: /type/4.html
+          - listitem [ref=e35]:
+            - link "日韩" [ref=e36] [cursor=pointer]:
+              - /url: /type/15.html
+          - listitem [ref=e37]:
+            - link "欧美" [ref=e38] [cursor=pointer]:
+              - /url: /type/16.html
+    - generic [ref=e39]:
+      - generic [ref=e40]:
+        - img [ref=e41]
+        - generic [ref=e42]:
+          - text: 💾 请速转存资源
+          - text: 网盘分享随时可能停止
+      - generic [ref=e43]:
+        - heading [level=3]
+      - generic [ref=e44]:
+        - generic [ref=e45]:
+          - generic [ref=e46]: ⚠️
+          - generic [ref=e47]: 当前网址随时失效，请截图保存发布页或邮箱，获取最新地址！
+        - paragraph [ref=e48]:
+          - text: 网站随时失效请记住📌 永久地址：
+          - link "libvio.app" [ref=e49] [cursor=pointer]:
+            - /url: https://www.libvio.app
+          - text: （实时更新）
+        - paragraph [ref=e50]: 网址失效或资源问题可邮件反馈： help@libvio.com
+        - generic [ref=e51]:
+          - generic [ref=e52]: 推荐浏览器：
+          - link "Chrome" [ref=e53] [cursor=pointer]:
+            - /url: //www.google.cn/chrome/
+          - link "Firefox" [ref=e54] [cursor=pointer]:
+            - /url: //www.mozilla.org/zh-CN/firefox/
+          - link "X" [ref=e55] [cursor=pointer]:
+            - /url: //www.xbext.com/
+          - link "Via" [ref=e56] [cursor=pointer]:
+            - /url: //viayoo.com/zh-cn/
+          - link "狐猴" [ref=e57] [cursor=pointer]:
+            - /url: //lemurbrowser.com/
+        - generic [ref=e58]:
+          - img [ref=e59]
+          - link [ref=e60] [cursor=pointer]:
+            - /url: /fCuxIdNBxrxWfsLXknT333333/
+            - img [ref=e61]
+          - link [ref=e62] [cursor=pointer]:
+            - /url: /fCuxIdNBxrxWfsLXknT222222/
+            - img [ref=e63]
+          - link [ref=e64] [cursor=pointer]:
+            - /url: /fCuxIdNBxrxWfsLXknT111111/
+            - img [ref=e65]
+      - generic [ref=e67] [cursor=pointer]: 务必记住哦
+    - generic [ref=e68]:
+      - generic [ref=e70]:
+        - link [ref=e71] [cursor=pointer]:
+          - /url: javascript:void(0)
+          - img [ref=e72]
+        - generic [ref=e73]: 广告
+        - generic [ref=e74]: 关闭
+      - generic [ref=e75]:
+        - list [ref=e76]:
+          - listitem [ref=e77]:
+            - generic [ref=e78]:
+              - link "已完结 0.0" [ref=e79] [cursor=pointer]:
+                - /url: /detail/714893542.html
+                - generic [ref=e80]: 已完结
+                - generic [ref=e81]: "0.0"
+              - heading "福尔摩斯小姐3" [level=4] [ref=e83]:
+                - link "福尔摩斯小姐3" [ref=e84] [cursor=pointer]:
+                  - /url: /detail/714893542.html
+          - listitem [ref=e85]:
+            - generic [ref=e86]:
+              - link "第08集/周三更新 7.4" [ref=e87] [cursor=pointer]:
+                - /url: /detail/714893473.html
+                - generic [ref=e88]: 第08集/周三更新
+                - generic [ref=e89]: "7.4"
+              - heading "极致欢愉保障" [level=4] [ref=e91]:
+                - link "极致欢愉保障" [ref=e92] [cursor=pointer]:
+                  - /url: /detail/714893473.html
+          - listitem [ref=e93]:
+            - generic [ref=e94]:
+              - link "第03集/周三更 0.0" [ref=e95] [cursor=pointer]:
+                - /url: /detail/714893541.html
+                - generic [ref=e96]: 第03集/周三更
+                - generic [ref=e97]: "0.0"
+              - heading "X战警97 第二季" [level=4] [ref=e99]:
+                - link "X战警97 第二季" [ref=e100] [cursor=pointer]:
+                  - /url: /detail/714893541.html
+          - listitem [ref=e101]:
+            - generic [ref=e102]:
+              - link "已完结 6.6" [ref=e103] [cursor=pointer]:
+                - /url: /detail/714893540.html
+                - generic [ref=e104]: 已完结
+                - generic [ref=e105]: "6.6"
+              - heading "穿普拉达的女王2" [level=4] [ref=e107]:
+                - link "穿普拉达的女王2" [ref=e108] [cursor=pointer]:
+                  - /url: /detail/714893540.html
+          - listitem [ref=e109]:
+            - generic [ref=e110]:
+              - link "已完结 7.7" [ref=e111] [cursor=pointer]:
+                - /url: /detail/714893539.html
+                - generic [ref=e112]: 已完结
+                - generic [ref=e113]: "7.7"
+              - heading "痴迷" [level=4] [ref=e115]:
+                - link "痴迷" [ref=e116] [cursor=pointer]:
+                  - /url: /detail/714893539.html
+          - listitem [ref=e117]:
+            - generic [ref=e118]:
+              - link "第04集/周一二更 0.0" [ref=e119] [cursor=pointer]:
+                - /url: /detail/714893522.html
+                - generic [ref=e120]: 第04集/周一二更
+                - generic [ref=e121]: "0.0"
+              - heading "明天也要上班！" [level=4] [ref=e123]:
+                - link "明天也要上班！" [ref=e124] [cursor=pointer]:
+                  - /url: /detail/714893522.html
+          - listitem [ref=e125]:
+            - generic [ref=e126]:
+              - link "第10集/周一二更 6.7" [ref=e127] [cursor=pointer]:
+                - /url: /detail/714893486.html
+                - generic [ref=e128]: 第10集/周一二更
+                - generic [ref=e129]: "6.7"
+              - heading "医到孤岛爱上你" [level=4] [ref=e131]:
+                - link "医到孤岛爱上你" [ref=e132] [cursor=pointer]:
+                  - /url: /detail/714893486.html
+          - listitem [ref=e133]:
+            - generic [ref=e134]:
+              - link "第13集/已完结 7.0" [ref=e135] [cursor=pointer]:
+                - /url: /detail/714893348.html
+                - generic [ref=e136]: 第13集/已完结
+                - generic [ref=e137]: "7.0"
+              - heading "婚姻剧毒" [level=4] [ref=e139]:
+                - link "婚姻剧毒" [ref=e140] [cursor=pointer]:
+                  - /url: /detail/714893348.html
+          - listitem [ref=e141]:
+            - generic [ref=e142]:
+              - link "第12集/已完结 0.0" [ref=e143] [cursor=pointer]:
+                - /url: /detail/714893369.html
+                - generic [ref=e144]: 第12集/已完结
+                - generic [ref=e145]: "0.0"
+              - heading "想结束这场“我爱你”的游戏" [level=4] [ref=e147]:
+                - link "想结束这场“我爱你”的游戏" [ref=e148] [cursor=pointer]:
+                  - /url: /detail/714893369.html
+          - listitem [ref=e149]:
+            - generic [ref=e150]:
+              - link "第230集/周一晚更新 6.8" [ref=e151] [cursor=pointer]:
+                - /url: /detail/7876.html
+                - generic [ref=e152]: 第230集/周一晚更新
+                - generic [ref=e153]: "6.8"
+              - heading "吞噬星空" [level=4] [ref=e155]:
+                - link "吞噬星空" [ref=e156] [cursor=pointer]:
+                  - /url: /detail/7876.html
+          - listitem [ref=e157]:
+            - generic [ref=e158]:
+              - link "第147集/周日晚更新 7.9" [ref=e159] [cursor=pointer]:
+                - /url: /detail/714890513.html
+                - generic [ref=e160]: 第147集/周日晚更新
+                - generic [ref=e161]: "7.9"
+              - heading "仙逆" [level=4] [ref=e163]:
+                - link "仙逆" [ref=e164] [cursor=pointer]:
+                  - /url: /detail/714890513.html
+          - listitem [ref=e165]:
+            - generic [ref=e166]:
+              - link "已完结 7.5" [ref=e167] [cursor=pointer]:
+                - /url: /detail/714893523.html
+                - generic [ref=e168]: 已完结
+                - generic [ref=e169]: "7.5"
+              - heading "绵羊侦探团" [level=4] [ref=e171]:
+                - link "绵羊侦探团" [ref=e172] [cursor=pointer]:
+                  - /url: /detail/714893523.html
+        - generic [ref=e173]:
+          - link "更多 " [ref=e174] [cursor=pointer]:
+            - /url: /show/1-----------.html
+            - text: 更多
+            - generic [ref=e175]: 
+          - heading " 电影" [level=3] [ref=e176]:
+            - link " 电影" [ref=e177] [cursor=pointer]:
+              - /url: /show/1-----------.html
+              - generic [ref=e178]: 
+              - text: 电影
+          - paragraph [ref=e179]:
+            - link "动作" [ref=e180] [cursor=pointer]:
+              - /url: /show/6-----------.html
+            - link "喜剧" [ref=e181] [cursor=pointer]:
+              - /url: /show/7-----------.html
+            - link "爱情" [ref=e182] [cursor=pointer]:
+              - /url: /show/8-----------.html
+            - link "科幻" [ref=e183] [cursor=pointer]:
+              - /url: /show/9-----------.html
+            - link "恐怖" [ref=e184] [cursor=pointer]:
+              - /url: /show/10-----------.html
+            - link "剧情" [ref=e185] [cursor=pointer]:
+              - /url: /show/11-----------.html
+            - link "战争" [ref=e186] [cursor=pointer]:
+              - /url: /show/12-----------.html
+            - link "动画" [ref=e187] [cursor=pointer]:
+              - /url: /show/23-----------.html
+        - list [ref=e188]:
+          - listitem [ref=e189]:
+            - generic [ref=e190]:
+              - link "已完结 0.0" [ref=e191] [cursor=pointer]:
+                - /url: /detail/714893542.html
+                - generic [ref=e192]: 已完结
+                - generic [ref=e193]: "0.0"
+              - heading "福尔摩斯小姐3" [level=4] [ref=e195]:
+                - link "福尔摩斯小姐3" [ref=e196] [cursor=pointer]:
+                  - /url: /detail/714893542.html
+          - listitem [ref=e197]:
+            - generic [ref=e198]:
+              - link "已完结 6.6" [ref=e199] [cursor=pointer]:
+                - /url: /detail/714893540.html
+                - generic [ref=e200]: 已完结
+                - generic [ref=e201]: "6.6"
+              - heading "穿普拉达的女王2" [level=4] [ref=e203]:
+                - link "穿普拉达的女王2" [ref=e204] [cursor=pointer]:
+                  - /url: /detail/714893540.html
+          - listitem [ref=e205]:
+            - generic [ref=e206]:
+              - link "已完结 7.7" [ref=e207] [cursor=pointer]:
+                - /url: /detail/714893539.html
+                - generic [ref=e208]: 已完结
+                - generic [ref=e209]: "7.7"
+              - heading "痴迷" [level=4] [ref=e211]:
+                - link "痴迷" [ref=e212] [cursor=pointer]:
+                  - /url: /detail/714893539.html
+          - listitem [ref=e213]:
+            - generic [ref=e214]:
+              - link "已完结 7.5" [ref=e215] [cursor=pointer]:
+                - /url: /detail/714893523.html
+                - generic [ref=e216]: 已完结
+                - generic [ref=e217]: "7.5"
+              - heading "绵羊侦探团" [level=4] [ref=e219]:
+                - link "绵羊侦探团" [ref=e220] [cursor=pointer]:
+                  - /url: /detail/714893523.html
+          - listitem [ref=e221]:
+            - generic [ref=e222]:
+              - link "已完结 7.4" [ref=e223] [cursor=pointer]:
+                - /url: /detail/714893529.html
+                - generic [ref=e224]: 已完结
+                - generic [ref=e225]: "7.4"
+              - heading "河狸变身计划" [level=4] [ref=e227]:
+                - link "河狸变身计划" [ref=e228] [cursor=pointer]:
+                  - /url: /detail/714893529.html
+          - listitem [ref=e229]:
+            - generic [ref=e230]:
+              - link "已完结 6.7" [ref=e231] [cursor=pointer]:
+                - /url: /detail/714893525.html
+                - generic [ref=e232]: 已完结
+                - generic [ref=e233]: "6.7"
+              - heading "调音师" [level=4] [ref=e235]:
+                - link "调音师" [ref=e236] [cursor=pointer]:
+                  - /url: /detail/714893525.html
+          - listitem [ref=e237]:
+            - generic [ref=e238]:
+              - link "已完结 0.0" [ref=e239] [cursor=pointer]:
+                - /url: /detail/714893516.html
+                - generic [ref=e240]: 已完结
+                - generic [ref=e241]: "0.0"
+              - heading "人夫总动员" [level=4] [ref=e243]:
+                - link "人夫总动员" [ref=e244] [cursor=pointer]:
+                  - /url: /detail/714893516.html
+          - listitem [ref=e245]:
+            - generic [ref=e246]:
+              - link "已完结 0.0" [ref=e247] [cursor=pointer]:
+                - /url: /detail/714893517.html
+                - generic [ref=e248]: 已完结
+                - generic [ref=e249]: "0.0"
+              - heading "真爱留声" [level=4] [ref=e251]:
+                - link "真爱留声" [ref=e252] [cursor=pointer]:
+                  - /url: /detail/714893517.html
+          - listitem [ref=e253]:
+            - generic [ref=e254]:
+              - link "已完结 0.0" [ref=e255] [cursor=pointer]:
+                - /url: /detail/714893513.html
+                - generic [ref=e256]: 已完结
+                - generic [ref=e257]: "0.0"
+              - heading "你的错误：伦敦版" [level=4] [ref=e259]:
+                - link "你的错误：伦敦版" [ref=e260] [cursor=pointer]:
+                  - /url: /detail/714893513.html
+          - listitem [ref=e261]:
+            - generic [ref=e262]:
+              - link "已完结 6.1" [ref=e263] [cursor=pointer]:
+                - /url: /detail/714893512.html
+                - generic [ref=e264]: 已完结
+                - generic [ref=e265]: "6.1"
+              - heading "如月车站Re" [level=4] [ref=e267]:
+                - link "如月车站Re" [ref=e268] [cursor=pointer]:
+                  - /url: /detail/714893512.html
+          - listitem [ref=e269]:
+            - generic [ref=e270]:
+              - link "已完结 8.2" [ref=e271] [cursor=pointer]:
+                - /url: /detail/714893511.html
+                - generic [ref=e272]: 已完结
+                - generic [ref=e273]: "8.2"
+              - heading "诺曼底72小时" [level=4] [ref=e275]:
+                - link "诺曼底72小时" [ref=e276] [cursor=pointer]:
+                  - /url: /detail/714893511.html
+          - listitem [ref=e277]:
+            - generic [ref=e278]:
+              - link "已完结 5.6" [ref=e279] [cursor=pointer]:
+                - /url: /detail/714893510.html
+                - generic [ref=e280]: 已完结
+                - generic [ref=e281]: "5.6"
+              - heading "深水" [level=4] [ref=e283]:
+                - link "深水" [ref=e284] [cursor=pointer]:
+                  - /url: /detail/714893510.html
+        - generic [ref=e285]:
+          - link "更多 " [ref=e286] [cursor=pointer]:
+            - /url: /show/2-----------.html
+            - text: 更多
+            - generic [ref=e287]: 
+          - heading " 剧集" [level=3] [ref=e288]:
+            - link " 剧集" [ref=e289] [cursor=pointer]:
+              - /url: /show/2-----------.html
+              - generic [ref=e290]: 
+              - text: 剧集
+          - paragraph [ref=e291]:
+            - link "国剧" [ref=e292] [cursor=pointer]:
+              - /url: /show/13-----------.html
+            - link "港台" [ref=e293] [cursor=pointer]:
+              - /url: /show/14-----------.html
+            - link "日韩" [ref=e294] [cursor=pointer]:
+              - /url: /show/15-----------.html
+            - link "欧美" [ref=e295] [cursor=pointer]:
+              - /url: /show/16-----------.html
+            - link "纪录片" [ref=e296] [cursor=pointer]:
+              - /url: /show/21-----------.html
+            - link "泰国剧" [ref=e297] [cursor=pointer]:
+              - /url: /show/24-----------.html
+        - list [ref=e298]:
+          - listitem [ref=e299]:
+            - generic [ref=e300]:
+              - link "第08集/周三更新 7.4" [ref=e301] [cursor=pointer]:
+                - /url: /detail/714893473.html
+                - generic [ref=e302]: 第08集/周三更新
+                - generic [ref=e303]: "7.4"
+              - heading "极致欢愉保障" [level=4] [ref=e305]:
+                - link "极致欢愉保障" [ref=e306] [cursor=pointer]:
+                  - /url: /detail/714893473.html
+          - listitem [ref=e307]:
+            - generic [ref=e308]:
+              - link "第04集/周一二更 0.0" [ref=e309] [cursor=pointer]:
+                - /url: /detail/714893522.html
+                - generic [ref=e310]: 第04集/周一二更
+                - generic [ref=e311]: "0.0"
+              - heading "明天也要上班！" [level=4] [ref=e313]:
+                - link "明天也要上班！" [ref=e314] [cursor=pointer]:
+                  - /url: /detail/714893522.html
+          - listitem [ref=e315]:
+            - generic [ref=e316]:
+              - link "第10集/周一二更 6.7" [ref=e317] [cursor=pointer]:
+                - /url: /detail/714893486.html
+                - generic [ref=e318]: 第10集/周一二更
+                - generic [ref=e319]: "6.7"
+              - heading "医到孤岛爱上你" [level=4] [ref=e321]:
+                - link "医到孤岛爱上你" [ref=e322] [cursor=pointer]:
+                  - /url: /detail/714893486.html
+          - listitem [ref=e323]:
+            - generic [ref=e324]:
+              - link "第02集/周一更 8.5" [ref=e325] [cursor=pointer]:
+                - /url: /detail/714893521.html
+                - generic [ref=e326]: 第02集/周一更
+                - generic [ref=e327]: "8.5"
+              - heading "龙之家族 第三季" [level=4] [ref=e329]:
+                - link "龙之家族 第三季" [ref=e330] [cursor=pointer]:
+                  - /url: /detail/714893521.html
+          - listitem [ref=e331]:
+            - generic [ref=e332]:
+              - link "第11集/已完结 7.1" [ref=e333] [cursor=pointer]:
+                - /url: /detail/714893401.html
+                - generic [ref=e334]: 第11集/已完结
+                - generic [ref=e335]: "7.1"
+              - heading "银河的一票" [level=4] [ref=e337]:
+                - link "银河的一票" [ref=e338] [cursor=pointer]:
+                  - /url: /detail/714893401.html
+          - listitem [ref=e339]:
+            - generic [ref=e340]:
+              - link "已完结 8.1" [ref=e341] [cursor=pointer]:
+                - /url: /detail/714893538.html
+                - generic [ref=e342]: 已完结
+                - generic [ref=e343]: "8.1"
+              - heading "马洛谋杀俱乐部 第三季" [level=4] [ref=e345]:
+                - link "马洛谋杀俱乐部 第三季" [ref=e346] [cursor=pointer]:
+                  - /url: /detail/714893538.html
+          - listitem [ref=e347]:
+            - generic [ref=e348]:
+              - link "已完结 7.3" [ref=e349] [cursor=pointer]:
+                - /url: /detail/714893537.html
+                - generic [ref=e350]: 已完结
+                - generic [ref=e351]: "7.3"
+              - heading "马洛谋杀俱乐部 第二季" [level=4] [ref=e353]:
+                - link "马洛谋杀俱乐部 第二季" [ref=e354] [cursor=pointer]:
+                  - /url: /detail/714893537.html
+          - listitem [ref=e355]:
+            - generic [ref=e356]:
+              - link "已完结 8.2" [ref=e357] [cursor=pointer]:
+                - /url: /detail/714893536.html
+                - generic [ref=e358]: 已完结
+                - generic [ref=e359]: "8.2"
+              - heading "马洛谋杀俱乐部 第一季" [level=4] [ref=e361]:
+                - link "马洛谋杀俱乐部 第一季" [ref=e362] [cursor=pointer]:
+                  - /url: /detail/714893536.html
+          - listitem [ref=e363]:
+            - generic [ref=e364]:
+              - link "第10集/周六日更 7.2" [ref=e365] [cursor=pointer]:
+                - /url: /detail/714893484.html
+                - generic [ref=e366]: 第10集/周六日更
+                - generic [ref=e367]: "7.2"
+              - heading "新进职员姜会长" [level=4] [ref=e369]:
+                - link "新进职员姜会长" [ref=e370] [cursor=pointer]:
+                  - /url: /detail/714893484.html
+          - listitem [ref=e371]:
+            - generic [ref=e372]:
+              - link "第10集/已完结 6.7" [ref=e373] [cursor=pointer]:
+                - /url: /detail/714893382.html
+                - generic [ref=e374]: 第10集/已完结
+                - generic [ref=e375]: "6.7"
+              - heading "梦魇绝镇 第四季" [level=4] [ref=e377]:
+                - link "梦魇绝镇 第四季" [ref=e378] [cursor=pointer]:
+                  - /url: /detail/714893382.html
+          - listitem [ref=e379]:
+            - generic [ref=e380]:
+              - link "第02集/周五六更 0.0" [ref=e381] [cursor=pointer]:
+                - /url: /detail/714893528.html
+                - generic [ref=e382]: 第02集/周五六更
+                - generic [ref=e383]: "0.0"
+              - heading "金特务：本色回归" [level=4] [ref=e385]:
+                - link "金特务：本色回归" [ref=e386] [cursor=pointer]:
+                  - /url: /detail/714893528.html
+          - listitem [ref=e387]:
+            - generic [ref=e388]:
+              - link "已完结 0.0" [ref=e389] [cursor=pointer]:
+                - /url: /detail/714893527.html
+                - generic [ref=e390]: 已完结
+                - generic [ref=e391]: "0.0"
+              - heading "熊家餐馆 第五季" [level=4] [ref=e393]:
+                - link "熊家餐馆 第五季" [ref=e394] [cursor=pointer]:
+                  - /url: /detail/714893527.html
+        - generic [ref=e395]:
+          - link "更多 " [ref=e396] [cursor=pointer]:
+            - /url: /show/4-----------.html
+            - text: 更多
+            - generic [ref=e397]: 
+          - heading " 番剧" [level=3] [ref=e398]:
+            - link " 番剧" [ref=e399] [cursor=pointer]:
+              - /url: /show/4-----------.html
+              - generic [ref=e400]: 
+              - text: 番剧
+          - paragraph
+        - list [ref=e401]:
+          - listitem [ref=e402]:
+            - generic [ref=e403]:
+              - link "第03集/周三更 0.0" [ref=e404] [cursor=pointer]:
+                - /url: /detail/714893541.html
+                - generic [ref=e405]: 第03集/周三更
+                - generic [ref=e406]: "0.0"
+              - heading "X战警97 第二季" [level=4] [ref=e408]:
+                - link "X战警97 第二季" [ref=e409] [cursor=pointer]:
+                  - /url: /detail/714893541.html
+          - listitem [ref=e410]:
+            - generic [ref=e411]:
+              - link "第13集/已完结 7.0" [ref=e412] [cursor=pointer]:
+                - /url: /detail/714893348.html
+                - generic [ref=e413]: 第13集/已完结
+                - generic [ref=e414]: "7.0"
+              - heading "婚姻剧毒" [level=4] [ref=e416]:
+                - link "婚姻剧毒" [ref=e417] [cursor=pointer]:
+                  - /url: /detail/714893348.html
+          - listitem [ref=e418]:
+            - generic [ref=e419]:
+              - link "第12集/已完结 0.0" [ref=e420] [cursor=pointer]:
+                - /url: /detail/714893369.html
+                - generic [ref=e421]: 第12集/已完结
+                - generic [ref=e422]: "0.0"
+              - heading "想结束这场“我爱你”的游戏" [level=4] [ref=e424]:
+                - link "想结束这场“我爱你”的游戏" [ref=e425] [cursor=pointer]:
+                  - /url: /detail/714893369.html
+          - listitem [ref=e426]:
+            - generic [ref=e427]:
+              - link "第230集/周一晚更新 6.8" [ref=e428] [cursor=pointer]:
+                - /url: /detail/7876.html
+                - generic [ref=e429]: 第230集/周一晚更新
+                - generic [ref=e430]: "6.8"
+              - heading "吞噬星空" [level=4] [ref=e432]:
+                - link "吞噬星空" [ref=e433] [cursor=pointer]:
+                  - /url: /detail/7876.html
+          - listitem [ref=e434]:
+            - generic [ref=e435]:
+              - link "第147集/周日晚更新 7.9" [ref=e436] [cursor=pointer]:
+                - /url: /detail/714890513.html
+                - generic [ref=e437]: 第147集/周日晚更新
+                - generic [ref=e438]: "7.9"
+              - heading "仙逆" [level=4] [ref=e440]:
+                - link "仙逆" [ref=e441] [cursor=pointer]:
+                  - /url: /detail/714890513.html
+          - listitem [ref=e442]:
+            - generic [ref=e443]:
+              - link "第1168集/周日更新 9.5" [ref=e444] [cursor=pointer]:
+                - /url: /detail/6024.html
+                - generic [ref=e445]: 第1168集/周日更新
+                - generic [ref=e446]: "9.5"
+              - heading "海贼王" [level=4] [ref=e448]:
+                - link "海贼王" [ref=e449] [cursor=pointer]:
+                  - /url: /detail/6024.html
+          - listitem [ref=e450]:
+            - generic [ref=e451]:
+              - link "第06集/周一更新 9.1" [ref=e452] [cursor=pointer]:
+                - /url: /detail/714893469.html
+                - generic [ref=e453]: 第06集/周一更新
+                - generic [ref=e454]: "9.1"
+              - heading "瑞克和莫蒂 第九季" [level=4] [ref=e456]:
+                - link "瑞克和莫蒂 第九季" [ref=e457] [cursor=pointer]:
+                  - /url: /detail/714893469.html
+          - listitem [ref=e458]:
+            - generic [ref=e459]:
+              - link "第13集/周一更 6.4" [ref=e460] [cursor=pointer]:
+                - /url: /detail/714893345.html
+                - generic [ref=e461]: 第13集/周一更
+                - generic [ref=e462]: "6.4"
+              - heading "欺诈游戏" [level=4] [ref=e464]:
+                - link "欺诈游戏" [ref=e465] [cursor=pointer]:
+                  - /url: /detail/714893345.html
+          - listitem [ref=e466]:
+            - generic [ref=e467]:
+              - link "第13集/已完结 7.5" [ref=e468] [cursor=pointer]:
+                - /url: /detail/714893341.html
+                - generic [ref=e469]: 第13集/已完结
+                - generic [ref=e470]: "7.5"
+              - heading "摩绪" [level=4] [ref=e472]:
+                - link "摩绪" [ref=e473] [cursor=pointer]:
+                  - /url: /detail/714893341.html
+          - listitem [ref=e474]:
+            - generic [ref=e475]:
+              - link "第13集/已完结 9.3" [ref=e476] [cursor=pointer]:
+                - /url: /detail/714893340.html
+                - generic [ref=e477]: 第13集/已完结
+                - generic [ref=e478]: "9.3"
+              - heading "钻石王牌 第四季" [level=4] [ref=e480]:
+                - link "钻石王牌 第四季" [ref=e481] [cursor=pointer]:
+                  - /url: /detail/714893340.html
+          - listitem [ref=e482]:
+            - generic [ref=e483]:
+              - link "第12集/已完结 7.2" [ref=e484] [cursor=pointer]:
+                - /url: /detail/714893376.html
+                - generic [ref=e485]: 第12集/已完结
+                - generic [ref=e486]: "7.2"
+              - heading "杖与剑的魔剑谭 第二季" [level=4] [ref=e488]:
+                - link "杖与剑的魔剑谭 第二季" [ref=e489] [cursor=pointer]:
+                  - /url: /detail/714893376.html
+          - listitem [ref=e490]:
+            - generic [ref=e491]:
+              - link "第14集/已完结 0.0" [ref=e492] [cursor=pointer]:
+                - /url: /detail/714893307.html
+                - generic [ref=e493]: 第14集/已完结
+                - generic [ref=e494]: "0.0"
+              - heading "春夏秋冬代行者 春之舞" [level=4] [ref=e496]:
+                - link "春夏秋冬代行者 春之舞" [ref=e497] [cursor=pointer]:
+                  - /url: /detail/714893307.html
+        - generic [ref=e498]:
+          - link "更多 " [ref=e499] [cursor=pointer]:
+            - /url: /show/3-----------.html
+            - text: 更多
+            - generic [ref=e500]: 
+          - heading " 综艺" [level=3] [ref=e501]:
+            - link " 综艺" [ref=e502] [cursor=pointer]:
+              - /url: /show/3-----------.html
+              - generic [ref=e503]: 
+              - text: 综艺
+          - paragraph
+        - list [ref=e504]:
+          - listitem [ref=e505]:
+            - generic [ref=e506]:
+              - link "已完结 8.7" [ref=e507] [cursor=pointer]:
+                - /url: /detail/714893509.html
+                - generic [ref=e508]: 已完结
+                - generic [ref=e509]: "8.7"
+              - heading "小镇魔发师" [level=4] [ref=e511]:
+                - link "小镇魔发师" [ref=e512] [cursor=pointer]:
+                  - /url: /detail/714893509.html
+          - listitem [ref=e513]:
+            - generic [ref=e514]:
+              - link "第10集/已完结 7.6" [ref=e515] [cursor=pointer]:
+                - /url: /detail/714893475.html
+                - generic [ref=e516]: 第10集/已完结
+                - generic [ref=e517]: "7.6"
+              - heading "刘在锡的民宿法则！" [level=4] [ref=e519]:
+                - link "刘在锡的民宿法则！" [ref=e520] [cursor=pointer]:
+                  - /url: /detail/714893475.html
+          - listitem [ref=e521]:
+            - generic [ref=e522]:
+              - link "第05集/周四更 8.4" [ref=e523] [cursor=pointer]:
+                - /url: /detail/714893474.html
+                - generic [ref=e524]: 第05集/周四更
+                - generic [ref=e525]: "8.4"
+              - heading "旧基洞朋友们" [level=4] [ref=e527]:
+                - link "旧基洞朋友们" [ref=e528] [cursor=pointer]:
+                  - /url: /detail/714893474.html
+          - listitem [ref=e529]:
+            - generic [ref=e530]:
+              - link "已完结 8.7" [ref=e531] [cursor=pointer]:
+                - /url: /detail/714893532.html
+                - generic [ref=e532]: 已完结
+                - generic [ref=e533]: "8.7"
+              - heading "孝利家民宿 第一季" [level=4] [ref=e535]:
+                - link "孝利家民宿 第一季" [ref=e536] [cursor=pointer]:
+                  - /url: /detail/714893532.html
+          - listitem [ref=e537]:
+            - generic [ref=e538]:
+              - link "已完结 8.1" [ref=e539] [cursor=pointer]:
+                - /url: /detail/714893533.html
+                - generic [ref=e540]: 已完结
+                - generic [ref=e541]: "8.1"
+              - heading "孝利家民宿 第二季" [level=4] [ref=e543]:
+                - link "孝利家民宿 第二季" [ref=e544] [cursor=pointer]:
+                  - /url: /detail/714893533.html
+          - listitem [ref=e545]:
+            - generic [ref=e546]:
+              - link "第10集/已完结 7.8" [ref=e547] [cursor=pointer]:
+                - /url: /detail/714893226.html
+                - generic [ref=e548]: 第10集/已完结
+                - generic [ref=e549]: "7.8"
+              - heading "天机试炼场" [level=4] [ref=e551]:
+                - link "天机试炼场" [ref=e552] [cursor=pointer]:
+                  - /url: /detail/714893226.html
+          - listitem [ref=e553]:
+            - generic [ref=e554]:
+              - link "特效双语/包含歌词 9.6" [ref=e555] [cursor=pointer]:
+                - /url: /detail/714893081.html
+                - generic [ref=e556]: 特效双语/包含歌词
+                - generic [ref=e557]: "9.6"
+              - heading "泰勒·斯威夫特：时代巡回演唱会终场秀" [level=4] [ref=e559]:
+                - link "泰勒·斯威夫特：时代巡回演唱会终场秀" [ref=e560] [cursor=pointer]:
+                  - /url: /detail/714893081.html
+          - listitem [ref=e561]:
+            - generic [ref=e562]:
+              - link "已完结 0.0" [ref=e563] [cursor=pointer]:
+                - /url: /detail/714893238.html
+                - generic [ref=e564]: 已完结
+                - generic [ref=e565]: "0.0"
+              - heading "怪奇谜案限时破 第二季" [level=4] [ref=e567]:
+                - link "怪奇谜案限时破 第二季" [ref=e568] [cursor=pointer]:
+                  - /url: /detail/714893238.html
+          - listitem [ref=e569]:
+            - generic [ref=e570]:
+              - link "第12集/已完结 8.1" [ref=e571] [cursor=pointer]:
+                - /url: /detail/714893171.html
+                - generic [ref=e572]: 第12集/已完结
+                - generic [ref=e573]: "8.1"
+              - heading "单身即地狱 第五季" [level=4] [ref=e575]:
+                - link "单身即地狱 第五季" [ref=e576] [cursor=pointer]:
+                  - /url: /detail/714893171.html
+          - listitem [ref=e577]:
+            - generic [ref=e578]:
+              - link "第13集/已完结 8.3" [ref=e579] [cursor=pointer]:
+                - /url: /detail/714893144.html
+                - generic [ref=e580]: 第13集/已完结
+                - generic [ref=e581]: "8.3"
+              - heading "黑白厨师：料理阶级战争 第二季" [level=4] [ref=e583]:
+                - link "黑白厨师：料理阶级战争 第二季" [ref=e584] [cursor=pointer]:
+                  - /url: /detail/714893144.html
+          - listitem [ref=e585]:
+            - generic [ref=e586]:
+              - link "第20集/已完结 7.9" [ref=e587] [cursor=pointer]:
+                - /url: /detail/714892875.html
+                - generic [ref=e588]: 第20集/已完结
+                - generic [ref=e589]: "7.9"
+              - heading "换乘恋爱 第四季" [level=4] [ref=e591]:
+                - link "换乘恋爱 第四季" [ref=e592] [cursor=pointer]:
+                  - /url: /detail/714892875.html
+          - listitem [ref=e593]:
+            - generic [ref=e594]:
+              - link "第12集/已完结 5.7" [ref=e595] [cursor=pointer]:
+                - /url: /detail/714892519.html
+                - generic [ref=e596]: 第12集/已完结
+                - generic [ref=e597]: "5.7"
+              - heading "魔鬼的计谋2" [level=4] [ref=e599]:
+                - link "魔鬼的计谋2" [ref=e600] [cursor=pointer]:
+                  - /url: /detail/714892519.html
+        - list
+  - contentinfo [ref=e603]:
+    - generic [ref=e604]:
+      - generic [ref=e606]:
+        - link "当前网址随时可能失效，请点击进入永久发布页收藏保存 →" [ref=e607] [cursor=pointer]:
+          - /url: https://ifabu.vip/
+          - generic [ref=e609]: 当前网址随时可能失效，请点击进入永久发布页收藏保存
+          - generic [ref=e610]: →
+        - generic [ref=e611]:
+          - paragraph [ref=e612]:
+            - text: 若本站收录的内容无意冒犯了贵司，请联系我们：
+            - link "help@libvio.com" [ref=e613] [cursor=pointer]:
+              - /url: mailto:help@libvio.com
+          - paragraph [ref=e614]: 确认后，我们会立即删除。
+      - generic [ref=e615]: © 2026 LIBVIO · 仅供学习交流

@@ -1,0 +1,5 @@
+# AI漫剧管线依赖
+openai>=1.0.0          # DeepSeek API 调用
+edge-tts>=6.0.0       # 免费中文配音
+Pillow>=10.0.0        # PIL 图片处理（demo 后端使用）
+requests>=2.28.0      # HTTP 请求（SiliconFlow 等后端使用）

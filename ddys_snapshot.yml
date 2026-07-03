@@ -1,0 +1,11 @@
+- main [ref=e2]:
+  - heading [level=1]
+  - paragraph [ref=e3]: 密码是 低调影视 的拼音缩写（4个小写字母）
+  - generic [ref=e4]:
+    - generic [ref=e5]: 访问密码
+    - textbox "访问密码" [ref=e6]
+    - generic [ref=e7]:
+      - generic [ref=e11]
+      - generic [ref=e24]
+      - generic [ref=e26]
+    - button "进入" [ref=e37] [cursor=pointer]

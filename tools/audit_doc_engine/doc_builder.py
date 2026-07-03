@@ -1,27 +1,21 @@
 """
-专业文档排版构建器 — DocBuilder
-================================
-基于 python-docx 封装，提供面向中文商务文档的专业排版能力。
-
-设计参考:
-  - gertalot/docx-skill (GitHub) — 品牌化文档构建模式
-  - python-docx-template (elapouya) — Jinja2 模板引擎
-  - 中国会计准则 CAS — 财务报表披露规范
+DocBuilder — 简洁文档排版引擎
+=============================
+基于 python-docx 封装，输出符合日常排版习惯的中文文档。
 
 功能:
   - 封面页（标题/副标题/日期/密级）
-  - 页眉/页脚（页码、公司名称）
+  - 页眉/页脚（页码、第X页共Y页）
   - 目录域（Word 中按 Ctrl+A → F9 更新）
   - 样式体系（多级标题/正文/列表）
-  - 表格美化（深色表头、交替行色、列宽控制）
+  - 标准表格（浅色表头、列宽控制）
   - 键值对表、提示框、签名块
   - 中英文字体自动设置（宋体+Times New Roman）
+  - 所有文字默认黑色，版面简洁
 
 用法:
     builder = DocBuilder()
     builder.setup_page().setup_styles()
-    builder.add_cover("文档标题", "公司名称", "2026年7月")
-    builder.setup_header("页眉文本").setup_footer(left="公司", right="page_number")
     builder.add_heading_1("第一章")
     builder.add_body("正文内容...")
     builder.add_table(headers=["列1","列2"], rows=[["a","b"]])
@@ -41,18 +35,11 @@ from docx.oxml import OxmlElement, parse_xml
 from docx.oxml.ns import nsdecls, qn
 
 # ============================================================
-# 默认配色
+# 配色 — 全部黑色，保持简洁
 # ============================================================
-COLOR_PRIMARY = "#1B3A5C"  # 深蓝 — 标题/表头
-COLOR_ACCENT = "#C41E3A"  # 暗红 — 强调/警示
-COLOR_BODY = "#333333"  # 深灰 — 正文
-COLOR_LIGHT_BG = "#F5F7FA"  # 浅灰 — 表头背景/标签
-COLOR_BORDER = "#D0D5DD"  # 边框线
-COLOR_TABLE_ALT = "#F8F9FB"  # 表格交替行
-COLOR_WHITE = "#FFFFFF"
-COLOR_GRAY_TEXT = "#666666"
-COLOR_LIGHT_LINE = "#CCCCCC"
-COLOR_HINT = "#999999"
+COLOR_BLACK = "#000000"
+COLOR_LIGHT_BG = "#F2F2F2"  # 浅灰 — 表头背景
+COLOR_BORDER = "#BFBFBF"  # 边框线
 
 # ============================================================
 # 默认字体
@@ -105,7 +92,7 @@ def _add_field(para, field_code: str):
         if typ == "separate":
             r2 = para.add_run("1")
             r2.font.size = Pt(9)
-            r2.font.color.rgb = _hex_to_rgb(COLOR_GRAY_TEXT)
+            r2.font.color.rgb = _hex_to_rgb(COLOR_BLACK)
     instr = OxmlElement("w:instrText")
     instr.set(qn("xml:space"), "preserve")
     instr.text = f" {field_code} "
@@ -205,7 +192,7 @@ class DocBuilder:
         n = styles["Normal"]
         n.font.name = FONT_EN
         n.font.size = Pt(body_size)
-        n.font.color.rgb = _hex_to_rgb(COLOR_BODY)
+        n.font.color.rgb = _hex_to_rgb(COLOR_BLACK)
         rPr = n.element.get_or_add_rPr()
         rf = OxmlElement("w:rFonts")
         rf.set(qn("w:eastAsia"), FONT_CN_BODY)
@@ -226,7 +213,7 @@ class DocBuilder:
             st.font.name = FONT_EN
             st.font.size = Pt(sz)
             st.font.bold = True
-            st.font.color.rgb = _hex_to_rgb(COLOR_PRIMARY)
+            st.font.color.rgb = _hex_to_rgb(COLOR_BLACK)
             rp = st.element.get_or_add_rPr()
             rf = OxmlElement("w:rFonts")
             rf.set(qn("w:eastAsia"), FONT_CN_HEADING)
@@ -240,7 +227,7 @@ class DocBuilder:
 
         # 正文样式（首行缩进）
         bst = styles.add_style(self._style_body, 1)
-        _set_run_font(bst.font, FONT_CN_BODY, FONT_EN, body_size, color_hex=COLOR_BODY)
+        _set_run_font(bst.font, FONT_CN_BODY, FONT_EN, body_size, color_hex=COLOR_BLACK)
         bpf = bst.paragraph_format
         bpf.first_line_indent = Pt(body_size * 2)
         bpf.line_spacing_rule = WD_LINE_SPACING.MULTIPLE
@@ -283,7 +270,7 @@ class DocBuilder:
                 FONT_CN_BODY,
                 FONT_EN,
                 11,
-                color_hex=COLOR_ACCENT,
+                color_hex=COLOR_BLACK,
             )
             p.paragraph_format.space_after = Pt(80)
         else:
@@ -298,15 +285,9 @@ class DocBuilder:
                 FONT_CN_HEADING,
                 FONT_EN,
                 18,
-                color_hex=COLOR_PRIMARY,
+                color_hex=COLOR_BLACK,
             )
-            p.paragraph_format.space_after = Pt(6)
-
-        # 装饰线
-        p = self.doc.add_paragraph()
-        p.alignment = WD_ALIGN_PARAGRAPH.CENTER
-        _set_para_border(p, "bottom", 8, COLOR_PRIMARY)
-        p.paragraph_format.space_after = Pt(20)
+            p.paragraph_format.space_after = Pt(60)
 
         # 主标题
         p = self.doc.add_paragraph()
@@ -315,23 +296,17 @@ class DocBuilder:
             p.add_run(title),
             FONT_CN_HEADING,
             FONT_EN,
-            26,
+            22,
             bold=True,
-            color_hex=COLOR_PRIMARY,
+            color_hex=COLOR_BLACK,
         )
-        p.paragraph_format.space_after = Pt(12)
-
-        # 副装饰线
-        p = self.doc.add_paragraph()
-        p.alignment = WD_ALIGN_PARAGRAPH.CENTER
-        _set_para_border(p, "bottom", 4, COLOR_LIGHT_LINE)
         p.paragraph_format.space_after = Pt(60)
 
         if date_text:
             p = self.doc.add_paragraph()
             p.alignment = WD_ALIGN_PARAGRAPH.CENTER
             _set_run_font(
-                p.add_run(date_text), FONT_CN_BODY, FONT_EN, 14, color_hex=COLOR_BODY
+                p.add_run(date_text), FONT_CN_BODY, FONT_EN, 14, color_hex=COLOR_BLACK
             )
 
         self.doc.add_page_break()
@@ -349,10 +324,10 @@ class DocBuilder:
             FONT_EN,
             16,
             bold=True,
-            color_hex=COLOR_PRIMARY,
+            color_hex=COLOR_BLACK,
         )
         p.paragraph_format.space_after = Pt(20)
-        _set_para_border(p, "bottom", 4, COLOR_PRIMARY)
+        _set_para_border(p, "bottom", 4, COLOR_BLACK)
 
         pt = self.doc.add_paragraph()
         _add_field(pt, f'TOC \\o "1-{levels}" \\h \\z \\u')
@@ -363,7 +338,7 @@ class DocBuilder:
             FONT_CN_BODY,
             FONT_EN,
             9,
-            color_hex=COLOR_HINT,
+            color_hex=COLOR_BLACK,
         )
         ph.paragraph_format.space_before = Pt(6)
 
@@ -383,10 +358,10 @@ class DocBuilder:
         p = header.add_paragraph()
         if text:
             _set_run_font(
-                p.add_run(text), FONT_CN_BODY, FONT_EN, 9, color_hex=COLOR_GRAY_TEXT
+                p.add_run(text), FONT_CN_BODY, FONT_EN, 9, color_hex=COLOR_BLACK
             )
         p.alignment = WD_ALIGN_PARAGRAPH.RIGHT
-        _set_para_border(p, "bottom", 4, COLOR_LIGHT_LINE)
+        _set_para_border(p, "bottom", 4, COLOR_BORDER)
         return self
 
     def setup_footer(self, left: str = "", right: str = "page_number"):
@@ -409,7 +384,7 @@ class DocBuilder:
 
         if left:
             _set_run_font(
-                p.add_run(left), FONT_CN_BODY, FONT_EN, 9, color_hex=COLOR_GRAY_TEXT
+                p.add_run(left), FONT_CN_BODY, FONT_EN, 9, color_hex=COLOR_BLACK
             )
         r = p.add_run()
         r.add_tab()
@@ -419,14 +394,14 @@ class DocBuilder:
         elif right == "page_x_of_y":
             _add_field(p, "PAGE")
             rr = p.add_run(" / ")
-            _set_run_font(rr, FONT_EN, FONT_EN, 9, color_hex=COLOR_GRAY_TEXT)
+            _set_run_font(rr, FONT_EN, FONT_EN, 9, color_hex=COLOR_BLACK)
             _add_field(p, "NUMPAGES")
         else:
             _set_run_font(
-                p.add_run(right), FONT_CN_BODY, FONT_EN, 9, color_hex=COLOR_GRAY_TEXT
+                p.add_run(right), FONT_CN_BODY, FONT_EN, 9, color_hex=COLOR_BLACK
             )
 
-        _set_para_border(p, "top", 4, COLOR_LIGHT_LINE)
+        _set_para_border(p, "top", 4, COLOR_BORDER)
         return self
 
     # ── 内容元素 ────────────────────────────────────────────────
@@ -440,7 +415,7 @@ class DocBuilder:
             FONT_EN,
             16,
             bold=True,
-            color_hex=COLOR_PRIMARY,
+            color_hex=COLOR_BLACK,
         )
         return self
 
@@ -453,7 +428,7 @@ class DocBuilder:
             FONT_EN,
             14,
             bold=True,
-            color_hex=COLOR_PRIMARY,
+            color_hex=COLOR_BLACK,
         )
         return self
 
@@ -466,7 +441,7 @@ class DocBuilder:
             FONT_EN,
             12,
             bold=True,
-            color_hex=COLOR_PRIMARY,
+            color_hex=COLOR_BLACK,
         )
         return self
 
@@ -475,7 +450,7 @@ class DocBuilder:
         if not text:
             return self
         p = self.doc.add_paragraph(style=self._style_body)
-        _set_run_font(p.add_run(text), FONT_CN_BODY, FONT_EN, 12, color_hex=COLOR_BODY)
+        _set_run_font(p.add_run(text), FONT_CN_BODY, FONT_EN, 12, color_hex=COLOR_BLACK)
         return self
 
     def add_body_no_indent(self, text: str):
@@ -483,7 +458,7 @@ class DocBuilder:
         if not text:
             return self
         p = self.doc.add_paragraph()
-        _set_run_font(p.add_run(text), FONT_CN_BODY, FONT_EN, 12, color_hex=COLOR_BODY)
+        _set_run_font(p.add_run(text), FONT_CN_BODY, FONT_EN, 12, color_hex=COLOR_BLACK)
         p.paragraph_format.line_spacing_rule = WD_LINE_SPACING.MULTIPLE
         p.paragraph_format.line_spacing = 1.5
         return self
@@ -492,7 +467,7 @@ class DocBuilder:
         """列表项"""
         style = "List Bullet" if level == 0 else "List Bullet 2"
         p = self.doc.add_paragraph(style=style)
-        _set_run_font(p.add_run(text), FONT_CN_BODY, FONT_EN, 12, color_hex=COLOR_BODY)
+        _set_run_font(p.add_run(text), FONT_CN_BODY, FONT_EN, 12, color_hex=COLOR_BLACK)
         return self
 
     def add_space(self, pt: float = 12):
@@ -508,17 +483,15 @@ class DocBuilder:
         return self
 
     def add_note_box(self, text: str):
-        """带边框的提示框"""
+        """带灰色边框的提示段落。"""
         p = self.doc.add_paragraph()
         p.paragraph_format.left_indent = Cm(0.5)
         p.paragraph_format.right_indent = Cm(0.5)
         p.paragraph_format.space_before = Pt(8)
         p.paragraph_format.space_after = Pt(8)
-        _set_para_border(p, "top", 6, COLOR_ACCENT)
-        _set_para_border(p, "bottom", 6, COLOR_ACCENT)
-        _set_run_font(
-            p.add_run(text), FONT_CN_BODY, FONT_EN, 11, color_hex=COLOR_ACCENT
-        )
+        _set_para_border(p, "top", 4, COLOR_BORDER)
+        _set_para_border(p, "bottom", 4, COLOR_BORDER)
+        _set_run_font(p.add_run(text), FONT_CN_BODY, FONT_EN, 12, color_hex=COLOR_BLACK)
         return self
 
     def add_signature(self, items: List[Tuple[str, str]]):
@@ -531,7 +504,7 @@ class DocBuilder:
                 FONT_CN_BODY,
                 FONT_EN,
                 12,
-                color_hex=COLOR_BODY,
+                color_hex=COLOR_BLACK,
             )
             if i < len(items) - 1:
                 p.add_run("\n")
@@ -547,7 +520,7 @@ class DocBuilder:
         col_widths: Optional[List[float]] = None,
         caption: str = "",
     ):
-        """创建专业表格（深色表头 + 交替行色）。
+        """创建标准表格（浅灰表头 + 黑色文字）。
 
         Args:
             headers: 表头
@@ -563,7 +536,7 @@ class DocBuilder:
                 FONT_EN,
                 11,
                 bold=True,
-                color_hex=COLOR_BODY,
+                color_hex=COLOR_BLACK,
             )
             p.paragraph_format.space_after = Pt(4)
 
@@ -573,7 +546,7 @@ class DocBuilder:
         table.alignment = WD_TABLE_ALIGNMENT.CENTER
         table.autofit = True
 
-        # 表头
+        # 表头（浅灰背景 + 黑色加粗文字）
         for j, h in enumerate(headers):
             c = table.rows[0].cells[j]
             c.text = ""
@@ -585,12 +558,12 @@ class DocBuilder:
                 FONT_EN,
                 10.5,
                 bold=True,
-                color_hex=COLOR_WHITE,
+                color_hex=COLOR_BLACK,
             )
-            _set_cell_shading(c, COLOR_PRIMARY)
+            _set_cell_shading(c, COLOR_LIGHT_BG)
             c.vertical_alignment = WD_ALIGN_VERTICAL.CENTER
 
-        # 数据行
+        # 数据行（纯黑色文字，无交替色）
         for i, row in enumerate(rows):
             for j, val in enumerate(row):
                 c = table.rows[i + 1].cells[j]
@@ -605,10 +578,8 @@ class DocBuilder:
                     FONT_CN_BODY,
                     FONT_EN,
                     10.5,
-                    color_hex=COLOR_BODY,
+                    color_hex=COLOR_BLACK,
                 )
-                if i % 2 == 1:
-                    _set_cell_shading(c, COLOR_TABLE_ALT)
 
         # 列宽
         if col_widths and len(col_widths) == ncols:
@@ -635,7 +606,7 @@ class DocBuilder:
                 FONT_EN,
                 10.5,
                 bold=True,
-                color_hex=COLOR_PRIMARY,
+                color_hex=COLOR_BLACK,
             )
             ck.width = Cm(label_width)
             cv = table.rows[i].cells[1]
@@ -645,7 +616,7 @@ class DocBuilder:
                 FONT_CN_BODY,
                 FONT_EN,
                 10.5,
-                color_hex=COLOR_BODY,
+                color_hex=COLOR_BLACK,
             )
         self.add_space(6)
         return self

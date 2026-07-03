@@ -1,0 +1,301 @@
+version: "0.1"
+app:
+  id: apple-music
+  name: Apple Music
+  platform: macos
+  launch_hint: attach_after_launch
+  description: |
+    v3：使用 Region + ControlCollection 架构。
+    - sidebar / playbar 抽出为 region，跨 state 复用
+    - 搜索结果 4x2 卡片用 collection 单条声明，按 [N] 寻址
+    - 与 v2-flat 比：行数 508 → ~200，重复消除
+visual_box:
+  id: apple-music-capsule
+  mode: real_window
+  platform: macos
+  display:
+    width_px: 1280
+    height_px: 800
+    scale: 2.0
+    dpi_x: 144
+    dpi_y: 144
+    refresh_rate_hz: 60
+  target_window:
+    bundle_id: com.apple.Music
+    title_regex: ".+"
+  coordinate_space: normalized_client_rect
+  contract:
+    require_same_display: true
+    require_client_size_px: [1280, 800]
+    tolerate_client_size_delta_px: 12
+    require_unminimized: true
+    require_foreground_for_input: true
+    validate_before_each_action: true
+  fallbacks:
+    - existing_display
+
+# ============ Regions：跨 state 共享的 UI 区域 ============
+regions:
+  - id: sidebar
+    description: 左侧导航栏，所有 state 共享。click 命中靠 icon 区 x=0.04 比文字区更稳。
+    bbox_norm: [0, 0, 0.17, 1]
+    controls:
+      - id: search
+        role: button
+        label: 侧栏「搜索」
+        action_types: [click]
+        locator_priority: [{ type: bbox_norm, value: [0.02, 0.07, 0.04, 0.03] }]
+        visual: { bbox_norm: [0.02, 0.07, 0.04, 0.03], center_norm: [0.04, 0.085] }
+      - id: home
+        role: button
+        label: 侧栏「主页」
+        action_types: [click]
+        locator_priority: [{ type: bbox_norm, value: [0.02, 0.105, 0.04, 0.03] }]
+        visual: { center_norm: [0.04, 0.12] }
+      - id: discover
+        role: button
+        label: 侧栏「新发现」
+        action_types: [click]
+        locator_priority: [{ type: bbox_norm, value: [0.02, 0.145, 0.04, 0.03] }]
+        visual: { center_norm: [0.04, 0.16] }
+      - id: radio
+        role: button
+        label: 侧栏「广播」
+        action_types: [click]
+        locator_priority: [{ type: bbox_norm, value: [0.02, 0.185, 0.04, 0.03] }]
+        visual: { center_norm: [0.04, 0.20] }
+      - id: recent_added
+        role: button
+        label: 侧栏「最近添加」
+        action_types: [click]
+        locator_priority: [{ type: bbox_norm, value: [0.02, 0.255, 0.04, 0.03] }]
+        visual: { center_norm: [0.04, 0.27] }
+      - id: artists
+        role: button
+        label: 侧栏「艺人」
+        action_types: [click]
+        locator_priority: [{ type: bbox_norm, value: [0.02, 0.295, 0.04, 0.03] }]
+        visual: { center_norm: [0.04, 0.31] }
+      - id: albums
+        role: button
+        label: 侧栏「专辑」
+        action_types: [click]
+        locator_priority: [{ type: bbox_norm, value: [0.02, 0.335, 0.04, 0.03] }]
+        visual: { center_norm: [0.04, 0.35] }
+      - id: songs
+        role: button
+        label: 侧栏「歌曲」
+        action_types: [click]
+        locator_priority: [{ type: bbox_norm, value: [0.02, 0.375, 0.04, 0.03] }]
+        visual: { center_norm: [0.04, 0.39] }
+
+  - id: playbar
+    description: 底部播放栏，所有 state 共享。小按钮 click 易 miss，优先用键盘 action_types=[key, click]。
+    bbox_norm: [0.17, 0.91, 0.6, 0.09]
+    controls:
+      - id: play_pause
+        role: button
+        label: 播放/暂停
+        action_types: [click, key]
+        locator_priority: [{ type: bbox_norm, value: [0.27, 0.925, 0.02, 0.03] }]
+        visual: { center_norm: [0.28, 0.94] }
+        notes: 中央大按钮，click 稳定；快捷键 space 等价
+      - id: prev
+        role: button
+        label: 上一首
+        action_types: [key, click]
+        locator_priority: [{ type: bbox_norm, value: [0.234, 0.929, 0.018, 0.022] }]
+        visual: { center_norm: [0.245, 0.94] }
+        notes: 小按钮，建议用 cmd+left
+      - id: next
+        role: button
+        label: 下一首
+        action_types: [key, click]
+        locator_priority: [{ type: bbox_norm, value: [0.302, 0.929, 0.018, 0.022] }]
+        visual: { center_norm: [0.315, 0.94] }
+        notes: 小按钮，建议用 cmd+right
+      - id: shuffle
+        role: button
+        label: 随机播放
+        action_types: [click]
+        locator_priority: [{ type: bbox_norm, value: [0.2, 0.929, 0.02, 0.022] }]
+        visual: { center_norm: [0.21, 0.94] }
+      - id: repeat
+        role: button
+        label: 循环
+        action_types: [click]
+        locator_priority: [{ type: bbox_norm, value: [0.34, 0.929, 0.02, 0.022] }]
+        visual: { center_norm: [0.35, 0.94] }
+
+  - id: search_bar
+    description: 顶部搜索栏，仅在 sidebar.search 激活后存在
+    bbox_norm: [0.32, 0.0, 0.32, 0.06]
+    controls:
+      - id: input
+        role: textbox
+        label: 搜索文本框
+        action_types: [type, click]
+        locator_priority: [{ type: bbox_norm, value: [0.32, 0.01, 0.32, 0.04] }]
+        visual: { center_norm: [0.48, 0.03] }
+      - id: clear
+        role: button
+        label: 清除「×」
+        action_types: [click]
+        locator_priority: [{ type: bbox_norm, value: [0.61, 0.022, 0.02, 0.02] }]
+        visual: { center_norm: [0.62, 0.03] }
+
+# ============ States ============
+states:
+  - id: music.app
+    description: 通用 Music 状态。state detection 弱（dHash 区分不开各 sub-view），用单 state 装承。
+    kind: page
+    anchors:
+      - type: window_title
+        pattern: ".+"
+    match_policy: any_anchor
+    inherit_regions: [sidebar, playbar, search_bar]
+    controls:
+      # 搜索结果区：4x2 卡片，用 collection 单条声明
+      - kind: collection
+        id: result_card
+        role: button
+        label: 「最佳结果」区卡片（双击播放歌曲卡 / 单击进入艺人专辑卡）
+        action_types: [click, double_click]
+        locator_priority: [{ type: bbox_norm, value: [0.195, 0.135, 0.13, 0.087] }]
+        enumeration:
+          layout: grid
+          rows: 2
+          cols: 4
+          cell_bbox_norm: [0.195, 0.135, 0.13, 0.087]
+          spacing_x: 0.145
+          spacing_y: 0.13
+        notes: |
+          按 music.app.result_card[0..7] 寻址。
+          行 0 (idx 0-3) 是第一行卡片；行 1 (idx 4-7) 是第二行。
+          双击歌曲卡片立即播放；艺人卡片要点头像或浮动 ▶（hover-only）。
+
+      # 主页"最近播放"卡片
+      - kind: collection
+        id: home_recent
+        role: button
+        label: 主页「最近播放」卡片
+        action_types: [click, double_click]
+        locator_priority: [{ type: bbox_norm, value: [0.195, 0.61, 0.14, 0.18] }]
+        enumeration:
+          layout: row
+          count: 4
+          cell_bbox_norm: [0.195, 0.61, 0.14, 0.18]
+          spacing_x: 0.15
+
+      # 键盘全局动作
+      - id: kbd_space
+        role: button
+        label: 空格切换播放/暂停
+        action_types: [key]
+        locator_priority: [{ type: bbox_norm, value: [0.5, 0.5, 0.01, 0.01] }]
+        visual: { center_norm: [0.5, 0.5] }
+      - id: kbd_search
+        role: button
+        label: Cmd+F 聚焦搜索
+        action_types: [key]
+        locator_priority: [{ type: bbox_norm, value: [0.5, 0.5, 0.01, 0.01] }]
+        visual: { center_norm: [0.5, 0.5] }
+
+transitions: []
+
+workflows:
+  - id: toggle_play
+    description: 用底部播放栏中央按钮 click 切换播放/暂停
+    steps:
+      - action_id: playbar.play_pause:click
+    timeout_ms: 5000
+
+  - id: next_track
+    description: 下一首（键盘）
+    steps:
+      - action_id: playbar.next:key
+        params: { combo: "cmd+right" }
+    timeout_ms: 5000
+
+  - id: prev_track
+    description: 上一首
+    steps:
+      - action_id: playbar.prev:key
+        params: { combo: "cmd+left" }
+    timeout_ms: 5000
+
+  - id: goto_home
+    steps: [{ action_id: sidebar.home }]
+    timeout_ms: 4000
+
+  - id: goto_songs
+    steps: [{ action_id: sidebar.songs }]
+    timeout_ms: 4000
+
+  - id: goto_artists
+    steps: [{ action_id: sidebar.artists }]
+    timeout_ms: 4000
+
+  - id: search_and_play_top_song
+    description: 搜索关键字 → 双击「最佳结果」区第 2 张（通常是歌）
+    inputs: [{ name: keyword, type: string }]
+    steps:
+      - action_id: sidebar.search
+      - action_id: search_bar.input
+        params: { text: "{{keyword}}", clear_first: true }
+      - action_id: music.app.kbd_space
+        params: { combo: return }
+      - action_id: music.app.result_card[1]:double_click
+        on_failure: ask_user
+    timeout_ms: 30000
+
+  - id: play_recent_first
+    description: 播主页"最近播放"第一张卡片
+    steps:
+      - action_id: sidebar.home
+      - action_id: music.app.home_recent[0]:click
+    timeout_ms: 10000
+
+repair_policy:
+  max_auto_repair_level: 3
+  geometry:
+    tolerate_client_size_delta_px: 12
+    tolerate_origin_change: true
+    require_same_dpi: true
+  state:
+    min_anchor_score: 0.5
+    min_ocr_similarity: 0.85
+    min_visual_similarity: 0.75
+  control_relocation:
+    confidence_threshold: 0.85
+    max_bbox_shift_norm: 0.15
+  destructive_actions:
+    auto_repair_before_action: false
+    require_user_confirmation: true
+
+safety_policy:
+  forbidden_action_categories:
+    - payment
+    - destructive
+    - external_communication
+    - permission_change
+    - captcha
+  require_approval_for_risk_levels:
+    - requires_confirmation
+    - destructive
+  redaction_patterns: []
+  allow_cloud_vlm: false
+  audit_log_retention_days: 14
+
+input_lease_policy:
+  default_lease_ms: 60000
+  break_on_user_input: true
+  break_hotkey: Esc Esc
+  require_revalidate_after_break: true
+
+metadata:
+  created_at: 2026-05-27T08:50:00.000Z
+  created_by: vision-mcp-v3-region-collection
+  tags: [apple-music, macos, region, collection]
+  notes: 同样的 Apple Music 功能集，用 region+collection 后 508 → ~200 行
+  builder_version: "0.3"

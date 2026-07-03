@@ -1,0 +1,107 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - generic [ref=e3]:
+      - link:
+        - /url: /
+    - link "登录" [ref=e5] [cursor=pointer]:
+      - /url: /account.php?action=login
+  - generic [ref=e14]:
+    - generic [ref=e15]:
+      - generic [ref=e16]: FreeBox_v1.7.1
+      - generic [ref=e17]:
+        - text: 03-27
+        - link "文件投诉" [ref=e18] [cursor=pointer]:
+          - /url: /q/jb/?f=13314273&l=b&report=2
+    - generic [ref=e19]:
+      - generic [ref=e20]: 文件名
+      - generic [ref=e21]: 大小
+      - generic [ref=e22]: 时间
+    - generic [ref=e23]:
+      - generic:
+        - generic [ref=e24]:
+          - img [ref=e25]
+          - link "FreeBox_1.7.1_win_免安装版.zip" [ref=e26] [cursor=pointer]:
+            - /url: /i6a6y3lom94j
+        - generic [ref=e27]: 78.4 M
+        - generic [ref=e28]: 2026-03-27
+      - generic:
+        - generic [ref=e29]:
+          - img [ref=e30]
+          - link "FreeBox_1.7.1_win_安装版.zip" [ref=e31] [cursor=pointer]:
+            - /url: /iJdzp3lolzej
+        - generic [ref=e32]: 79.3 M
+        - generic [ref=e33]: 2026-03-27
+      - generic:
+        - generic [ref=e34]:
+          - img [ref=e35]
+          - link "FreeBox_1.7.1_arm64.tar.gz" [ref=e36] [cursor=pointer]:
+            - /url: /iGDCT3lolmzc?webpage=CDlXN1o_aA2VSPVYyVzVSYQZkU2ZefQo6CzQGMABsBDQIOgBnXDJTNQYsBWI_c
+        - generic [ref=e37]: 82.5 M
+        - generic [ref=e38]: 2026-03-27
+      - generic:
+        - generic [ref=e39]:
+          - img [ref=e40]
+          - link "FreeBox_1.7.1_arm64.rpm" [ref=e41] [cursor=pointer]:
+            - /url: /iIZln3lolgpg?webpage=VWRUNFs_bB2EIZwVhA2Fcb1c1BjNUd1NjBzhWYFA8AzMAMQJtAG0ObAIoAGc_c
+        - generic [ref=e42]: 82.5 M
+        - generic [ref=e43]: 2026-03-27
+      - generic:
+        - generic [ref=e44]:
+          - img [ref=e45]
+          - link "FreeBox_1.7.1_arm64.dmg" [ref=e46] [cursor=pointer]:
+            - /url: /i4AAN3lolagb?webpage=VGVSMghtBWNUOwNnVzUAM1MxUmdQc1FhBzhTZQZqUmJXZlMxAWQOa1Z8VDM_c
+        - generic [ref=e47]: 80.7 M
+        - generic [ref=e48]: 2026-03-27
+      - generic:
+        - generic [ref=e49]:
+          - img [ref=e50]
+          - link "FreeBox_1.7.1_arm64.deb" [ref=e51] [cursor=pointer]:
+            - /url: /iNlej3lol5di?webpage=BjcBYVk8BWNRPgZiVjQFNlc1BzIFJgAwUG9abFwwW2sJOABkD2sHawAqBWI_c
+        - generic [ref=e52]: 78.6 M
+        - generic [ref=e53]: 2026-03-27
+      - generic:
+        - generic [ref=e54]:
+          - img [ref=e55]
+          - link "FreeBox_1.7.1_arm64.appimage" [ref=e56] [cursor=pointer]:
+            - /url: /iGPzi3lol0vg?webpage=ADEGZgpvUjQGaQpuA2EGNVAyAzZVdlFhUW5TZVY6ATECM1A1XjABY1J4BmE_c
+        - generic [ref=e57]: 81.9 M
+        - generic [ref=e58]: 2026-03-27
+      - generic:
+        - generic [ref=e59]:
+          - img [ref=e60]
+          - link "FreeBox_1.7.1_amd64.tar.gz" [ref=e61] [cursor=pointer]:
+            - /url: /iIDLX3lokwab?webpage=CThTM147BWMGaVM3B2VRYlo4V2IEJwU1AT5bbVE9BjYCM1QzWjBVMAYsBWI_c
+        - generic [ref=e62]: 82.8 M
+        - generic [ref=e63]: 2026-03-27
+      - generic:
+        - generic [ref=e64]:
+          - img [ref=e65]
+          - link "FreeBox_1.7.1_amd64.rpm" [ref=e66] [cursor=pointer]:
+            - /url: /iI5X03lokq0f?webpage=UmNbOwhtBGJVOlQwUDJdblU3VGFefVdnAT4EMgBsUGAAMAFuAGkDYgUvBGM_c
+        - generic [ref=e67]: 82.8 M
+        - generic [ref=e68]: 2026-03-27
+      - generic:
+        - generic [ref=e69]:
+          - img [ref=e70]
+          - link "FreeBox_1.7.1_amd64.dmg" [ref=e71] [cursor=pointer]:
+            - /url: /icN5b3lokj8b?webpage=U2IGZglsDmhWOQZiVjQFNgFjBDFUd1BgBDsDNVc7VmZSYgZnD2IDZgAqUzQ_c
+        - generic [ref=e72]: 81.9 M
+        - generic [ref=e73]: 2026-03-27
+      - generic:
+        - generic [ref=e74]:
+          - img [ref=e75]
+          - link "FreeBox_1.7.1_amd64.deb" [ref=e76] [cursor=pointer]:
+            - /url: /i3AcX3lokape?webpage=VWQFZV47AWcAbwBkAWNWZQBiVWACIQAwAD9bbVI_bBDQFNQJnDmpVNQctUDc_c
+        - generic [ref=e77]: 78.9 M
+        - generic [ref=e78]: 2026-03-27
+      - generic:
+        - generic [ref=e79]:
+          - img [ref=e80]
+          - link "FreeBox_1.7.1_amd64.appimage" [ref=e81] [cursor=pointer]:
+            - /url: /iJthV3lok4dg?webpage=BzZbO1s_bB2FWOQBkB2UAMwFjVGECIQo6AT4HMVQ4VmYJOQBnDmVSMActAGc_c
+        - generic [ref=e82]: 82.2 M
+        - generic [ref=e83]: 2026-03-27
+    - link "一键转存到我的网盘" [ref=e86] [cursor=pointer]:
+      - /url: https://api.ilanzou.com/unproved/pd/url?id=13314273&time=1782925054&token=1924abba5d55f7cf5b37e8f7d7768e1e&type=2
+      - generic [ref=e87]: 一键转存到我的网盘
+  - generic [ref=e13]: © 2026 Lanzou

@@ -1,0 +1,303 @@
+- generic [active] [ref=e1]:
+  - img
+  - img
+  - generic [ref=e1491]:
+    - generic [ref=e1492]:
+      - generic [ref=e1494]:
+        - img [ref=e1498]
+        - generic [ref=e1499]:
+          - generic "工时填报流程-苏浩-2026-06-29 - 发起节点" [ref=e1502]:
+            - paragraph [ref=e1503]: 工时填报流程-苏浩-2026-06-29 - 发起节点
+          - generic [ref=e1506]:
+            - generic "流程表单" [ref=e1507] [cursor=pointer]:
+              - generic [ref=e1509]: 流程表单
+            - generic "流程图" [ref=e1510] [cursor=pointer]:
+              - generic [ref=e1512]: 流程图
+            - generic "流程状态" [ref=e1513] [cursor=pointer]:
+              - generic [ref=e1515]: 流程状态
+            - generic "共享" [ref=e1516] [cursor=pointer]:
+              - generic [ref=e1518]: 共享
+      - generic [ref=e1521]:
+        - button "提交" [ref=e1522] [cursor=pointer]
+        - button "保存" [ref=e1523] [cursor=pointer]
+        - button "删除" [ref=e1524] [cursor=pointer]
+        - button "更多" [ref=e1526] [cursor=pointer]
+    - generic [ref=e1532]:
+      - table [ref=e1538]:
+        - rowgroup [ref=e1547]:
+          - row "工时填报流程" [ref=e1548]:
+            - cell "工时填报流程" [ref=e1549]
+          - row "公告" [ref=e1550]:
+            - cell [ref=e1551]
+            - cell "公告" [ref=e1552]:
+              - generic [ref=e1553]: 公告
+            - cell [ref=e1554]
+          - row [ref=e1555]:
+            - cell [ref=e1556]
+            - cell [ref=e1557]
+            - cell [ref=e1558]
+            - cell [ref=e1559]
+            - cell [ref=e1560]
+            - cell [ref=e1561]
+            - cell [ref=e1562]
+          - row "每季度最后 5 天常态化补填：第一季度 3月27日-31日，第二季度 6月26日-30日，第三季度 9月26日-30日，第四季度 12月27日-31日。" [ref=e1563]:
+            - cell [ref=e1564]
+            - cell "每季度最后 5 天常态化补填：第一季度 3月27日-31日，第二季度 6月26日-30日，第三季度 9月26日-30日，第四季度 12月27日-31日。" [ref=e1565]
+            - cell [ref=e1566]
+          - row [ref=e1567]:
+            - cell [ref=e1568]
+            - cell [ref=e1569]
+            - cell [ref=e1570]
+            - cell [ref=e1571]
+            - cell [ref=e1572]
+            - cell [ref=e1573]
+            - cell [ref=e1574]
+          - row "基本信息" [ref=e1575]:
+            - cell [ref=e1576]
+            - cell "基本信息" [ref=e1577]:
+              - generic [ref=e1578]: 基本信息
+            - cell [ref=e1579]
+          - row [ref=e1580]:
+            - cell [ref=e1581]
+            - cell [ref=e1582]
+            - cell [ref=e1583]
+            - cell [ref=e1584]
+            - cell [ref=e1585]
+            - cell [ref=e1586]
+            - cell [ref=e1587]
+          - row "标题 工时填报流程-苏浩-2026-06-29" [ref=e1588]:
+            - cell [ref=e1589]
+            - cell "标题" [ref=e1590]
+            - cell "工时填报流程-苏浩-2026-06-29" [ref=e1591]:
+              - generic [ref=e1594]:
+                - textbox "请输入标题" [ref=e1596]: 工时填报流程-苏浩-2026-06-29
+                - img [ref=e1599]
+            - cell [ref=e1600]
+          - row "登记人 苏浩 填报日期 2026-06-29" [ref=e1601]:
+            - cell [ref=e1602]
+            - cell "登记人" [ref=e1603]:
+              - generic [ref=e1605]: 登记人
+            - cell "苏浩" [ref=e1606]:
+              - generic [ref=e1611] [cursor=pointer]: 苏浩
+            - cell [ref=e1612]
+            - cell "填报日期" [ref=e1613]:
+              - generic [ref=e1615]: 填报日期
+            - cell "2026-06-29" [ref=e1616]:
+              - generic [ref=e1620]: 2026-06-29
+            - cell [ref=e1621]
+          - row "所属分部 02-北京分所 所属部门 02-审计一部" [ref=e1622]:
+            - cell [ref=e1623]
+            - cell "所属分部" [ref=e1624]:
+              - generic [ref=e1626]: 所属分部
+            - cell "02-北京分所" [ref=e1627]:
+              - generic [ref=e1630]:
+                - generic [ref=e1635]:
+                  - generic "02-北京分所" [ref=e1645]:
+                    - generic [ref=e1649]: 02-北京分所
+                  - textbox [ref=e1651]
+                  - img [ref=e1655] [cursor=pointer]
+                - img [ref=e1658]
+            - cell [ref=e1659]
+            - cell "所属部门" [ref=e1660]:
+              - generic [ref=e1662]: 所属部门
+            - cell "02-审计一部" [ref=e1663]:
+              - generic [ref=e1666]:
+                - generic [ref=e1671]:
+                  - generic "02-审计一部" [ref=e1681]:
+                    - generic [ref=e1685]: 02-审计一部
+                  - textbox [ref=e1687]
+                  - img [ref=e1691] [cursor=pointer]
+                - img [ref=e1694]
+            - cell [ref=e1695]
+          - row "人员类型 请选择人员类型" [ref=e1696]:
+            - cell [ref=e1697]
+            - cell "人员类型" [ref=e1698]:
+              - generic [ref=e1700]: 人员类型
+            - cell "请选择人员类型" [ref=e1701]:
+              - generic [ref=e1704]:
+                - generic [ref=e1708] [cursor=pointer]:
+                  - generic [ref=e1710]: 请选择人员类型
+                  - img [ref=e1714]
+                - img [ref=e1717]
+            - cell [ref=e1718]
+            - cell [ref=e1719]
+            - cell [ref=e1720]
+            - cell [ref=e1721]
+          - row "关联请假流程" [ref=e1722]:
+            - cell [ref=e1723]
+            - cell "关联请假流程" [ref=e1724]:
+              - generic [ref=e1726]: 关联请假流程
+            - cell [ref=e1727]:
+              - generic [ref=e1737]:
+                - textbox "请选择" [ref=e1738]
+                - img [ref=e1742] [cursor=pointer]
+            - cell [ref=e1743]
+          - row "工时信息" [ref=e1744]:
+            - cell [ref=e1745]
+            - cell "工时信息" [ref=e1746]:
+              - generic [ref=e1747]: 工时信息
+            - cell [ref=e1748]
+          - row [ref=e1749]:
+            - cell [ref=e1750]
+            - cell [ref=e1751]
+            - cell [ref=e1752]
+            - cell [ref=e1753]
+            - cell [ref=e1754]
+            - cell [ref=e1755]
+            - cell [ref=e1756]
+          - row "序号 日期 工时类型 工时（h） 工作内容 所内/所外 外勤所在省市 项目名称 客户名称 项目经理 工时超8小时原因 1 2026-06-29 请选择工时类型 8.0 项目审计工作 请选择所内/所外 河北省 / 保定市 清除 保定吉达建设--2025-12-31- 国家电网有限公司 张传宝 8.0" [ref=e1757]:
+            - cell [ref=e1758]
+            - cell "序号 日期 工时类型 工时（h） 工作内容 所内/所外 外勤所在省市 项目名称 客户名称 项目经理 工时超8小时原因 1 2026-06-29 请选择工时类型 8.0 项目审计工作 请选择所内/所外 河北省 / 保定市 清除 保定吉达建设--2025-12-31- 国家电网有限公司 张传宝 8.0" [ref=e1759]:
+              - generic [ref=e1764]:
+                - table [ref=e1766]:
+                  - rowgroup
+                  - rowgroup [ref=e1780]:
+                    - row [ref=e1781]:
+                      - cell [ref=e1782]
+                      - cell [ref=e1783]
+                      - cell [ref=e1784]
+                      - cell [ref=e1785]
+                      - cell [ref=e1786]
+                      - cell [ref=e1787]
+                      - cell [ref=e1788]
+                      - cell [ref=e1789]
+                      - cell [ref=e1790]
+                      - cell [ref=e1791]
+                      - cell [ref=e1792]
+                      - cell [ref=e1793]:
+                        - generic [ref=e1794]:
+                          - generic "添加" [ref=e1795] [cursor=pointer]:
+                            - img [ref=e1798]
+                          - generic "导出" [ref=e1799] [cursor=pointer]:
+                            - img [ref=e1802]
+                          - generic "最大化" [ref=e1803] [cursor=pointer]:
+                            - img [ref=e1806]
+                      - cell
+                      - cell
+                      - cell
+                      - cell
+                      - cell
+                - table [ref=e1808]:
+                  - rowgroup [ref=e1822]:
+                    - row "序号 日期 工时类型 工时（h） 工作内容 所内/所外 外勤所在省市 项目名称 客户名称 项目经理 工时超8小时原因" [ref=e1823]:
+                      - cell
+                      - cell [ref=e1824]:
+                        - checkbox [ref=e1828] [cursor=pointer]
+                      - cell "序号" [ref=e1830]
+                      - cell "日期" [ref=e1831]:
+                        - generic [ref=e1832]: 日期
+                      - cell "工时类型" [ref=e1833]:
+                        - generic [ref=e1834]: 工时类型
+                      - cell "工时（h）" [ref=e1835]:
+                        - generic [ref=e1836]: 工时（h）
+                      - cell "工作内容" [ref=e1837]:
+                        - generic [ref=e1838]: 工作内容
+                      - cell "所内/所外" [ref=e1839]:
+                        - generic [ref=e1840]: 所内/所外
+                      - cell "外勤所在省市" [ref=e1841]:
+                        - generic [ref=e1842]: 外勤所在省市
+                      - cell "项目名称" [ref=e1843]:
+                        - generic [ref=e1844]: 项目名称
+                      - cell "客户名称" [ref=e1845]:
+                        - generic [ref=e1846]: 客户名称
+                      - cell "项目经理" [ref=e1847]:
+                        - generic [ref=e1848]: 项目经理
+                      - cell "工时超8小时原因" [ref=e1849]:
+                        - generic [ref=e1850]: 工时超8小时原因
+                  - rowgroup [ref=e1851]:
+                    - row "1 2026-06-29 请选择工时类型 8.0 项目审计工作 请选择所内/所外 河北省 / 保定市 清除 保定吉达建设--2025-12-31- 国家电网有限公司 张传宝" [ref=e1852]:
+                      - cell
+                      - cell [ref=e1853]:
+                        - checkbox [ref=e1857] [cursor=pointer]
+                      - cell "1" [ref=e1859]
+                      - cell "2026-06-29" [ref=e1860]:
+                        - generic [ref=e1863]:
+                          - generic [ref=e1867] [cursor=pointer]:
+                            - textbox "年-月-日" [ref=e1868]: 2026-06-29
+                            - img [ref=e1871]
+                          - img [ref=e1874]
+                      - cell "请选择工时类型" [ref=e1875]:
+                        - generic [ref=e1878]:
+                          - generic [ref=e1882] [cursor=pointer]:
+                            - generic [ref=e1884]: 请选择工时类型
+                            - img [ref=e1888]
+                          - img [ref=e1891]
+                      - cell "8.0" [ref=e1892]:
+                        - generic [ref=e1895]:
+                          - textbox "请输入工时（h）" [ref=e1897]: "8.0"
+                          - img [ref=e1900]
+                      - cell "项目审计工作" [ref=e1901]:
+                        - generic [ref=e1904]:
+                          - textbox "请输入工作内容" [ref=e1906]: 项目审计工作
+                          - img [ref=e1909]
+                      - cell "请选择所内/所外" [ref=e1910]:
+                        - generic [ref=e1913]:
+                          - generic [ref=e1917] [cursor=pointer]:
+                            - generic [ref=e1919]: 请选择所内/所外
+                            - img [ref=e1923]
+                          - img [ref=e1926]
+                      - cell "河北省 / 保定市 清除" [ref=e1927]:
+                        - generic [ref=e1932] [cursor=pointer]:
+                          - generic [ref=e1934]: 河北省 / 保定市
+                          - generic "清除" [ref=e1935]:
+                            - img [ref=e1936]
+                          - img [ref=e1938]
+                      - cell "保定吉达建设--2025-12-31-" [ref=e1939]:
+                        - generic [ref=e1942]:
+                          - generic [ref=e1947]:
+                            - generic "保定吉达建设--2025-12-31-" [ref=e1957]:
+                              - generic [ref=e1961]: 保定吉达建设--2025-12-31-
+                            - textbox [ref=e1963]
+                            - img [ref=e1967] [cursor=pointer]
+                          - img [ref=e1970]
+                      - cell "国家电网有限公司" [ref=e1971]:
+                        - generic [ref=e1976] [cursor=pointer]: 国家电网有限公司
+                      - cell "张传宝" [ref=e1977]:
+                        - generic [ref=e1982] [cursor=pointer]: 张传宝
+                      - cell [ref=e1983]
+                    - row "8.0" [ref=e1987]:
+                      - cell
+                      - cell [ref=e1988]
+                      - cell [ref=e1989]
+                      - cell [ref=e1990]
+                      - cell [ref=e1991]
+                      - cell "8.0" [ref=e1992]:
+                        - generic [ref=e1994]: "8.0"
+                      - cell [ref=e1995]
+                      - cell [ref=e1996]
+                      - cell [ref=e1997]
+                      - cell [ref=e1998]
+                      - cell [ref=e1999]
+                      - cell [ref=e2000]
+                      - cell [ref=e2001]
+                      - cell
+                      - cell
+                      - cell
+                      - cell
+                      - cell
+            - cell [ref=e2010]
+          - row [ref=e2011]:
+            - cell [ref=e2012]
+            - cell [ref=e2013]
+            - cell [ref=e2014]
+            - cell [ref=e2015]
+            - cell [ref=e2016]
+            - cell [ref=e2017]
+            - cell [ref=e2018]
+      - generic [ref=e2023]:
+        - img [ref=e2025]
+        - text: 签字意见
+      - generic [ref=e2030]:
+        - generic [ref=e2032]:
+          - generic "流转意见" [ref=e2033] [cursor=pointer]:
+            - generic [ref=e2035]: 流转意见
+          - generic "与我相关" [ref=e2036] [cursor=pointer]:
+            - generic [ref=e2038]: 与我相关
+          - generic "查阅情况" [ref=e2039] [cursor=pointer]:
+            - generic [ref=e2041]: 查阅情况
+          - generic "操作日志" [ref=e2042] [cursor=pointer]:
+            - generic [ref=e2044]: 操作日志
+        - img [ref=e2048] [cursor=pointer]
+  - generic [ref=e2164]:
+    - img [ref=e2166]
+    - generic [ref=e2167]: 保存成功

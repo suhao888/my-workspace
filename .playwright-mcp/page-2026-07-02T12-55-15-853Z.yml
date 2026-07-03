@@ -1,0 +1,213 @@
+- generic [ref=e1]:
+  - generic [ref=e4]:
+    - generic [ref=e5]:
+      - generic [ref=e6]:
+        - link "Microsoft" [ref=e7] [cursor=pointer]:
+          - /url: https://www.microsoft.com
+          - img "Microsoft" [ref=e8]
+        - img [ref=e9]
+        - button "Edge 扩展" [ref=e11] [cursor=pointer]:
+          - heading "Edge 扩展" [level=1] [ref=e12]
+      - generic [ref=e13]:
+        - tablist [ref=e15]:
+          - tab "发现" [ref=e17] [cursor=pointer]:
+            - generic [ref=e18]:
+              - text: 发现
+              - link [ref=e19]:
+                - /url: /addons/Microsoft-Edge-Extensions-Home
+          - tab "扩展" [ref=e20] [cursor=pointer]:
+            - generic [ref=e21]:
+              - text: 扩展
+              - link [ref=e22]:
+                - /url: /addons/microsoft-edge-extensions
+          - tab "主题" [ref=e23] [cursor=pointer]:
+            - generic [ref=e24]:
+              - text: 主题
+              - link [ref=e25]:
+                - /url: /addons/microsoft-edge-themes
+        - search [ref=e28]:
+          - combobox "搜索扩展、主题等" [ref=e29]:
+            - generic [ref=e30]:
+              - img [ref=e32]
+              - searchbox "搜索扩展、主题等" [active] [ref=e34]
+    - generic [ref=e35]:
+      - button "登录" [ref=e38]:
+        - img [ref=e39]
+      - button "更多选项" [ref=e46]:
+        - img [ref=e47]
+  - contentinfo [ref=e102]:
+    - navigation "Footer Resource links" [ref=e104]:
+      - generic [ref=e105]:
+        - generic [ref=e106]:
+          - heading "新增内容" [level=2] [ref=e107]
+          - list [ref=e108]:
+            - listitem [ref=e109]:
+              - link "Surface Pro" [ref=e110] [cursor=pointer]:
+                - /url: https://www.microsoftstore.com.cn/surface/surface-pro
+            - listitem [ref=e111]:
+              - link "Surface Laptop" [ref=e112] [cursor=pointer]:
+                - /url: https://www.microsoftstore.com.cn/surface/surface-laptop
+            - listitem [ref=e113]:
+              - link "Surface Laptop Ultra" [ref=e114] [cursor=pointer]:
+                - /url: https://www.microsoft.com/zh-cn/surface/devices/surface-laptop-ultra?icid=DSM_Footer_WhatsNew_SurfaceLaptopUltra
+            - listitem [ref=e115]:
+              - link "适用于组织的 Copilot" [ref=e116] [cursor=pointer]:
+                - /url: https://www.microsoft.com/zh-cn/microsoft-copilot/organizations?icid=DSM_Footer_CopilotOrganizations
+            - listitem [ref=e117]:
+              - link "Microsoft 365" [ref=e118] [cursor=pointer]:
+                - /url: https://www.microsoft.com/zh-cn/microsoft-365
+            - listitem [ref=e119]:
+              - link "探索 Microsoft 产品" [ref=e120] [cursor=pointer]:
+                - /url: https://www.microsoft.com/zh-cn/microsoft-products-and-apps
+            - listitem [ref=e121]:
+              - link "Windows 11 应用程序" [ref=e122] [cursor=pointer]:
+                - /url: https://www.microsoft.com/zh-cn/windows/apps-for-windows?icid=DSM_Footer_WhatsNew_Windows11apps
+        - generic [ref=e123]:
+          - heading "Microsoft Store" [level=2] [ref=e124]
+          - list [ref=e125]:
+            - listitem [ref=e126]:
+              - link "帐户个人资料" [ref=e127] [cursor=pointer]:
+                - /url: https://account.microsoft.com/
+            - listitem [ref=e128]:
+              - link "下载中心" [ref=e129] [cursor=pointer]:
+                - /url: https://www.microsoft.com/zh-cn/download
+            - listitem [ref=e130]:
+              - link "订单跟踪" [ref=e131] [cursor=pointer]:
+                - /url: https://account.microsoft.com/orders
+        - generic [ref=e132]:
+          - heading "教育" [level=2] [ref=e133]
+          - list [ref=e134]:
+            - listitem [ref=e135]:
+              - link "Microsoft 教育版" [ref=e136] [cursor=pointer]:
+                - /url: https://www.microsoft.com/zh-cn/education
+            - listitem [ref=e137]:
+              - link "教育设备" [ref=e138] [cursor=pointer]:
+                - /url: https://www.microsoft.com/zh-cn/education/devices/overview
+            - listitem [ref=e139]:
+              - link "Microsoft Teams 教育版" [ref=e140] [cursor=pointer]:
+                - /url: https://www.microsoft.com/zh-cn/education/products/teams
+            - listitem [ref=e141]:
+              - link "Microsoft 365 教育版" [ref=e142] [cursor=pointer]:
+                - /url: https://www.microsoft.com/zh-cn/education/products/microsoft-365
+            - listitem [ref=e143]:
+              - link "Office 教育版" [ref=e144] [cursor=pointer]:
+                - /url: https://www.microsoft.com/zh-cn/education/products/office
+            - listitem [ref=e145]:
+              - link "教育工作者培训和开发" [ref=e146] [cursor=pointer]:
+                - /url: https://education.microsoft.com/
+            - listitem [ref=e147]:
+              - link "面向学生和家长的优惠" [ref=e148] [cursor=pointer]:
+                - /url: https://www.microsoft.com/en-us/store/b/education
+            - listitem [ref=e149]:
+              - link "面向学生的 Azure" [ref=e150] [cursor=pointer]:
+                - /url: https://azure.microsoft.com/zh-cn/free/students/
+      - generic [ref=e151]:
+        - generic [ref=e152]:
+          - heading "企业" [level=2] [ref=e153]
+          - list [ref=e154]:
+            - listitem [ref=e155]:
+              - link "Microsoft AI" [ref=e156] [cursor=pointer]:
+                - /url: https://www.microsoft.com/zh-cn/ai?icid=DSM_Footer_AI
+            - listitem [ref=e157]:
+              - link "Microsoft 安全" [ref=e158] [cursor=pointer]:
+                - /url: https://www.microsoft.com/zh-cn/security
+            - listitem [ref=e159]:
+              - link "Azure" [ref=e160] [cursor=pointer]:
+                - /url: https://azure.microsoft.com/zh-cn/
+            - listitem [ref=e161]:
+              - link "Dynamics 365" [ref=e162] [cursor=pointer]:
+                - /url: https://www.microsoft.com/zh-cn/dynamics-365
+            - listitem [ref=e163]:
+              - link "Microsoft 365" [ref=e164] [cursor=pointer]:
+                - /url: https://www.microsoft.com/zh-cn/microsoft-365/business
+            - listitem [ref=e165]:
+              - link "Microsoft Advertising" [ref=e166] [cursor=pointer]:
+                - /url: https://about.ads.microsoft.com/zh
+            - listitem [ref=e167]:
+              - link "Microsoft 365 Copilot" [ref=e168] [cursor=pointer]:
+                - /url: https://www.microsoft.com/zh-cn/microsoft-365-copilot?icid=DSM_Footer_Microsoft365Copilot
+            - listitem [ref=e169]:
+              - link "Microsoft Teams" [ref=e170] [cursor=pointer]:
+                - /url: https://www.microsoft.com/zh-cn/microsoft-teams/group-chat-software
+        - generic [ref=e171]:
+          - heading "开发人员与 IT" [level=2] [ref=e172]
+          - list [ref=e173]:
+            - listitem [ref=e174]:
+              - link "Microsoft 开发人员" [ref=e175] [cursor=pointer]:
+                - /url: https://developer.microsoft.com/zh-cn/
+            - listitem [ref=e176]:
+              - link "Microsoft Learn" [ref=e177] [cursor=pointer]:
+                - /url: https://learn.microsoft.com/
+            - listitem [ref=e178]:
+              - link "支持 AI 商城应用" [ref=e179] [cursor=pointer]:
+                - /url: https://www.microsoft.com/software-development-companies/offers-benefits/isv-success?icid=DSM_Footer_SupportAIMarketplace&ocid=cmm3atxvn98
+            - listitem [ref=e180]:
+              - link "Microsoft 技术社区" [ref=e181] [cursor=pointer]:
+                - /url: https://techcommunity.microsoft.com/
+            - listitem [ref=e182]:
+              - link "Microsoft Marketplace" [ref=e183] [cursor=pointer]:
+                - /url: https://marketplace.microsoft.com?icid=DSM_Footer_Marketplace&ocid=cmm3atxvn98
+            - listitem [ref=e184]:
+              - link "Microsoft Power Platform" [ref=e185] [cursor=pointer]:
+                - /url: https://www.microsoft.com/zh-cn/power-platform
+            - listitem [ref=e186]:
+              - link "软件公司" [ref=e187] [cursor=pointer]:
+                - /url: https://www.microsoft.com/software-development-companies?icid=DSM_Footer_SoftwareCompanies&ocid=cmm3atxvn98
+            - listitem [ref=e188]:
+              - link "Visual Studio" [ref=e189] [cursor=pointer]:
+                - /url: https://visualstudio.microsoft.com/
+        - generic [ref=e190]:
+          - heading "公司" [level=2] [ref=e191]
+          - list [ref=e192]:
+            - listitem [ref=e193]:
+              - link "招贤纳士" [ref=e194] [cursor=pointer]:
+                - /url: https://careers.microsoft.com/
+            - listitem [ref=e195]:
+              - link "关于 Microsoft" [ref=e196] [cursor=pointer]:
+                - /url: https://www.microsoft.com/about
+            - listitem [ref=e197]:
+              - link "公司新闻" [ref=e198] [cursor=pointer]:
+                - /url: https://news.microsoft.com/source/asia/region/china-zh-hans/?lang=zh-hans&icid=DSM_Footer_Company_CompanyNews
+            - listitem [ref=e199]:
+              - link "Microsoft 隐私" [ref=e200] [cursor=pointer]:
+                - /url: https://www.microsoft.com/zh-cn/privacy?icid=DSM_Footer_Company_Privacy
+            - listitem [ref=e201]:
+              - link "投资人" [ref=e202] [cursor=pointer]:
+                - /url: https://www.microsoft.com/investor/default.aspx
+    - generic [ref=e203]:
+      - generic [ref=e204]:
+        - generic [ref=e205]:
+          - generic [ref=e207]: 
+          - link "内容语言选择器。当前设置为 中文（中国）" [ref=e208] [cursor=pointer]:
+            - /url: "javascript: var event=new Event('localePicker');document.dispatchEvent(event);"
+            - text: 中文（中国）
+        - link "你的隐私选择选择退出图标 你的隐私选择" [ref=e210] [cursor=pointer]:
+          - /url: https://aka.ms/yourcaliforniaprivacychoices
+          - img "你的隐私选择选择退出图标" [ref=e211]
+          - generic [ref=e216]: 你的隐私选择
+        - link "消费者健康隐私" [ref=e217] [cursor=pointer]:
+          - /url: https://go.microsoft.com/fwlink/?linkid=2259814
+      - navigation "Microsoft 企业链接" [ref=e219]:
+        - list [ref=e220]:
+          - listitem [ref=e221]:
+            - link "开发人员仪表板" [ref=e222] [cursor=pointer]:
+              - /url: https://partner.microsoft.com/en-us/dashboard/microsoftedge/overview
+          - listitem [ref=e223]:
+            - link "发送反馈" [ref=e224] [cursor=pointer]:
+              - /url: "javascript: var event=new Event('sendFeedback');document.dispatchEvent(event);"
+          - listitem [ref=e225]:
+            - link "隐私声明" [ref=e226] [cursor=pointer]:
+              - /url: https://go.microsoft.com/fwlink/?LinkId=521839
+          - listitem [ref=e227]:
+            - link "Microsoft 服务协议" [ref=e228] [cursor=pointer]:
+              - /url: https://go.microsoft.com/fwlink/?LinkId=822631
+          - listitem [ref=e229]:
+            - link "销售条款" [ref=e230] [cursor=pointer]:
+              - /url: https://www.microsoft.com/storedocs/terms-of-sale?rtc=2
+          - listitem [ref=e231]:
+            - link "使用条款" [ref=e232] [cursor=pointer]:
+              - /url: https://www.microsoft.com/en-us/legal/intellectualproperty/copyright/default.aspx
+          - listitem [ref=e233]:
+            - link "商标" [ref=e234] [cursor=pointer]:
+              - /url: https://www.microsoft.com/trademarks
+          - listitem [ref=e235]: © Microsoft 2026

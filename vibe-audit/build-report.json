@@ -1,0 +1,77 @@
+{
+  "schemaVersion": "1",
+  "kind": "build",
+  "project": "E:\\Projects\\my-workspace\\vibe-audit",
+  "phase": "failed",
+  "status": "failed",
+  "currentStage": "assets",
+  "mode": "agent",
+  "selectedStage": "assets",
+  "success": false,
+  "code": "FFMPEG_MISSING",
+  "error": "ffprobe (part of FFmpeg) was not found on PATH. Narration-synced durations cannot be computed without it.",
+  "message": "ffprobe not found on PATH.",
+  "suggestion": "Install FFmpeg (macOS: `brew install ffmpeg`), then re-run the build.",
+  "recoverable": true,
+  "providerResolution": [
+    {
+      "kind": "narration",
+      "requested": "local",
+      "resolved": "kokoro",
+      "source": "storyboard",
+      "requiresKey": false,
+      "configured": true,
+      "retryWith": []
+    }
+  ],
+  "estimatedCostUsd": 0,
+  "costUsd": 0,
+  "beats": [],
+  "beatSummary": {
+    "total": 0,
+    "assetsReady": 0,
+    "compositionsReady": 0,
+    "needsAuthor": []
+  },
+  "jobs": [],
+  "sceneRepair": {
+    "ran": false,
+    "stage": null,
+    "status": "skipped",
+    "score": null,
+    "fixed": [],
+    "remainingIssues": [],
+    "retryWith": []
+  },
+  "stageReports": {
+    "assets": {
+      "status": "skipped",
+      "costUsd": 0,
+      "warnings": [],
+      "retryWith": []
+    },
+    "compose": {
+      "status": "skipped",
+      "costUsd": 0,
+      "warnings": [],
+      "retryWith": []
+    },
+    "sync": {
+      "status": "skipped",
+      "costUsd": 0,
+      "warnings": [],
+      "retryWith": []
+    },
+    "render": {
+      "status": "skipped",
+      "costUsd": 0,
+      "warnings": [],
+      "retryWith": []
+    }
+  },
+  "warnings": [],
+  "retryWith": [
+    "vibe build E:\\Projects\\my-workspace\\vibe-audit --stage sync --json"
+  ],
+  "totalLatencyMs": 31
+}

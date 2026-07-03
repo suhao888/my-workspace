@@ -26,27 +26,15 @@ from docx.enum.text import WD_ALIGN_PARAGRAPH
 from .doc_builder import (
     DocBuilder,
     _set_run_font,
-    _hex_to_rgb,
     _set_cell_shading,
     _set_para_border,
-    COLOR_PRIMARY,
-    COLOR_ACCENT,
-    COLOR_BODY,
-    COLOR_WHITE,
+    COLOR_BLACK,
     COLOR_LIGHT_BG,
-    COLOR_TABLE_ALT,
-    COLOR_GRAY_TEXT,
     COLOR_BORDER,
     FONT_CN_BODY,
     FONT_CN_HEADING,
     FONT_EN,
 )
-
-# ============================================================
-# 审计专用配色
-# ============================================================
-COLOR_OPINION_GREEN = "#1B7A3D"  # 无保留意见
-COLOR_OPINION_RED = "#C41E3A"  # 保留/否定/无法表示
 
 
 # ── 报告头 ──────────────────────────────────────────────────
@@ -67,7 +55,7 @@ def add_report_header(
         p = builder.doc.add_paragraph()
         p.alignment = WD_ALIGN_PARAGRAPH.RIGHT
         _set_run_font(
-            p.add_run(report_no), FONT_CN_BODY, FONT_EN, 11, color_hex=COLOR_GRAY_TEXT
+            p.add_run(report_no), FONT_CN_BODY, FONT_EN, 11, color_hex=COLOR_BLACK
         )
         p.paragraph_format.space_after = Pt(4)
 
@@ -78,7 +66,7 @@ def add_report_header(
             FONT_CN_BODY,
             FONT_EN,
             12,
-            color_hex=COLOR_BODY,
+            color_hex=COLOR_BLACK,
         )
         p.paragraph_format.space_before = Pt(12)
         p.paragraph_format.space_after = Pt(6)
@@ -91,7 +79,7 @@ def add_report_header(
             FONT_EN,
             16,
             bold=True,
-            color_hex=COLOR_PRIMARY,
+            color_hex=COLOR_BLACK,
         )
         p.paragraph_format.space_after = Pt(6)
         p.alignment = WD_ALIGN_PARAGRAPH.CENTER
@@ -100,7 +88,7 @@ def add_report_header(
         p = builder.doc.add_paragraph()
         p.alignment = WD_ALIGN_PARAGRAPH.CENTER
         _set_run_font(
-            p.add_run(date_text), FONT_CN_BODY, FONT_EN, 12, color_hex=COLOR_GRAY_TEXT
+            p.add_run(date_text), FONT_CN_BODY, FONT_EN, 12, color_hex=COLOR_BLACK
         )
         p.paragraph_format.space_after = Pt(12)
 
@@ -125,7 +113,6 @@ def add_audit_opinion(
     """
     builder.add_heading_1("一、审计意见")
 
-    color = COLOR_OPINION_GREEN if opinion_type == "无保留意见" else COLOR_OPINION_RED
     p = builder.doc.add_paragraph()
     _set_run_font(
         p.add_run(f"审计意见类型：{opinion_type}"),
@@ -133,7 +120,7 @@ def add_audit_opinion(
         FONT_EN,
         12,
         bold=True,
-        color_hex=color,
+        color_hex=COLOR_BLACK,
     )
     p.paragraph_format.space_after = Pt(8)
 
@@ -196,7 +183,7 @@ def add_finding(
         FONT_EN,
         12,
         bold=True,
-        color_hex=COLOR_ACCENT,
+        color_hex=COLOR_BLACK,
     )
     p.paragraph_format.space_before = Pt(12)
     p.paragraph_format.space_after = Pt(4)
@@ -210,7 +197,7 @@ def add_finding(
             FONT_EN,
             11,
             bold=True,
-            color_hex=COLOR_PRIMARY,
+            color_hex=COLOR_BLACK,
         )
         pa.paragraph_format.space_after = Pt(4)
 
@@ -225,7 +212,7 @@ def add_finding(
             FONT_CN_BODY,
             FONT_EN,
             11,
-            color_hex=COLOR_BODY,
+            color_hex=COLOR_BLACK,
         )
         pb.paragraph_format.space_after = Pt(2)
     # 影响
@@ -236,7 +223,7 @@ def add_finding(
             FONT_CN_BODY,
             FONT_EN,
             11,
-            color_hex=COLOR_BODY,
+            color_hex=COLOR_BLACK,
         )
         pc.paragraph_format.space_after = Pt(2)
     # 建议
@@ -247,7 +234,7 @@ def add_finding(
             FONT_CN_BODY,
             FONT_EN,
             11,
-            color_hex=COLOR_BODY,
+            color_hex=COLOR_BLACK,
         )
         pd.paragraph_format.space_after = Pt(4)
 
@@ -301,7 +288,7 @@ def add_recommendation(
         FONT_EN,
         12,
         bold=True,
-        color_hex=COLOR_PRIMARY,
+        color_hex=COLOR_BLACK,
     )
     p.paragraph_format.space_before = Pt(8)
     p.paragraph_format.space_after = Pt(4)
@@ -362,7 +349,7 @@ def add_audit_signature(
             FONT_CN_BODY,
             FONT_EN,
             12,
-            color_hex=COLOR_BODY,
+            color_hex=COLOR_BLACK,
         )
         p.paragraph_format.space_after = Pt(18)
 
@@ -374,7 +361,7 @@ def add_audit_signature(
             FONT_CN_BODY,
             FONT_EN,
             12,
-            color_hex=COLOR_BODY,
+            color_hex=COLOR_BLACK,
         )
         p.paragraph_format.space_before = Pt(12)
         p.paragraph_format.space_after = Pt(18)
@@ -386,7 +373,7 @@ def add_audit_signature(
             FONT_CN_BODY,
             FONT_EN,
             12,
-            color_hex=COLOR_BODY,
+            color_hex=COLOR_BLACK,
         )
         p.paragraph_format.space_after = Pt(18)
 
@@ -398,7 +385,7 @@ def add_audit_signature(
             FONT_CN_BODY,
             FONT_EN,
             12,
-            color_hex=COLOR_BODY,
+            color_hex=COLOR_BLACK,
         )
         ps.paragraph_format.space_before = Pt(24)
 

@@ -1,0 +1,62 @@
+---
+title: "30多岁转行做审计"
+duration: 37
+aspect: 9:16
+providers:
+  tts: local
+  image: local
+---
+
+# 30多岁转行做审计 — Storyboard
+
+Brief: 35秒励志短视频，面向考虑转行审计的中国职场人。核心信息：30多岁转行审计完全可行，审计行业需要成熟人才。深色背景+白色/金色文字，无露脸。
+
+## Beat hook — 开场
+
+```yaml
+duration: 7
+narration: "30多岁了，想转行做审计，还来得及吗？"
+backdrop: "media/bg_hook.png"
+motion: "文字从模糊到清晰，缓慢推进"
+voice: "media/tts_000.mp3"
+```
+
+## Beat proof — 为什么行
+
+```yaml
+duration: 8
+narration: "审计行业最缺的，恰恰是30岁以上有阅历的人。企业经验、沟通能力、职业判断，这些书本上学不到的东西，是你最大的优势。"
+backdrop: "media/bg_proof.png"
+motion: "关键句逐个入场，金色高亮"
+voice: "media/tts_001.mp3"
+```
+
+## Beat mechanism — 怎么做
+
+```yaml
+duration: 9
+narration: "内资八大会计师事务所，各有特色。有的强在国企审计，有的擅长上市公司。根据你的背景选对平台，起步就不一样。CPA是门槛，但30岁的学习能力和执行力，比20岁更强。"
+backdrop: "media/bg_mechanism.png"
+motion: "信息块从两侧滑入，层级展开"
+voice: "media/tts_002.mp3"
+```
+
+## Beat path — 发展路径
+
+```yaml
+duration: 7
+narration: "从审计员到项目经理，3-5年。从经理到高级经理，再5年。30岁入行，40岁正好做到高层。这条路，走得通。"
+backdrop: "media/bg_path.png"
+motion: "阶梯从下往上逐级亮起"
+voice: "media/tts_003.mp3"
+```
+
+## Beat close — 收尾
+
+```yaml
+duration: 6
+narration: "种一棵树最好的时间是十年前，其次是现在。"
+backdrop: "media/bg_close.png"
+motion: "文字缓慢缩小居中，定格"
+voice: "media/tts_004.mp3"
+```

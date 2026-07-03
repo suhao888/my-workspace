@@ -1,0 +1,51 @@
+- generic [ref=e7]:
+  - generic [ref=e8]:
+    - generic [ref=e9]:
+      - heading "扩展" [level=1] [ref=e12]
+      - search [ref=e13]:
+        - textbox "搜索已安装的扩展" [active] [ref=e18]
+      - generic [ref=e19]:
+        - navigation [ref=e20]:
+          - tree "扩展页面" [ref=e21]:
+            - treeitem "我的扩展" [selected] [ref=e22] [cursor=pointer]:
+              - generic "我的扩展" [ref=e23]:
+                - generic [ref=e24]:
+                  - img [ref=e26]
+                  - generic [ref=e28]: 我的扩展
+            - treeitem "键盘快捷方式" [ref=e29] [cursor=pointer]:
+              - generic "键盘快捷方式" [ref=e30]:
+                - generic [ref=e31]:
+                  - img [ref=e33]
+                  - generic [ref=e35]: 键盘快捷方式
+          - separator [ref=e36]
+          - link "获取 Microsoft Edge 扩展" [ref=e39] [cursor=pointer]:
+            - /url: https://microsoftedge.microsoft.com/addons?hl=zh-CN
+        - complementary [ref=e40]:
+          - separator [ref=e41]
+          - generic [ref=e42]:
+            - generic [ref=e43]: 开发人员模式
+            - checkbox "开发人员模式" [ref=e46] [cursor=pointer]
+    - separator [ref=e47]
+  - main "扩展" [ref=e49]:
+    - generic [ref=e50]:
+      - generic [ref=e51]:
+        - generic [ref=e52]:
+          - img [ref=e54]
+          - generic [ref=e56]:
+            - heading "使用扩展来个性化浏览器" [level=2] [ref=e57]
+            - paragraph [ref=e58]:
+              - text: 扩展程序是简单的工具，可自定义浏览器体验并提供更多控制。
+              - link "了解有关扩展的详细信息" [ref=e59] [cursor=pointer]:
+                - /url: https://go.microsoft.com/fwlink/?linkid=2072338&hl=zh-CN
+                - text: 了解更多信息
+        - region "已安装的扩展" [ref=e60]:
+          - heading "已安装的扩展" [level=2] [ref=e62]
+        - paragraph [ref=e63]: 你尚未安装任何扩展
+      - generic [ref=e65]:
+        - button "获取 Microsoft Edge 扩展" [ref=e67] [cursor=pointer]:
+          - generic [ref=e68]: 获取 Microsoft Edge 扩展
+        - paragraph [ref=e69]:
+          - text: 找不到正在查找的内容? 也可以从
+          - link "Chrome Web Store" [ref=e70] [cursor=pointer]:
+            - /url: https://chromewebstore.google.com/category/extensions?hl=zh-CN
+          - text: 获取扩展。

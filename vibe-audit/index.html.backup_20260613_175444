@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>30多岁转行做审计</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html, body { width: 1080px; height: 1920px; overflow: hidden; background: #000; }
+body { font-family: 'Inter', 'Noto Sans SC', sans-serif; }
+@font-face { font-family: 'Noto Sans SC'; src: local('Noto Sans SC'), local('Microsoft YaHei'), local('PingFang SC'); }
+
+.scene { position: absolute; top: 0; left: 0; width: 1080px; height: 1920px; opacity: 0; }
+
+.scene.active { opacity: 1; }
+
+.bg { position: absolute; top: 0; left: 0; width: 1080px; height: 1920px; object-fit: cover; }
+
+.overlay { position: absolute; top: 0; left: 0; width: 1080px; height: 1920px; background: linear-gradient(180deg, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.7) 100%); }
+
+.content { position: absolute; top: 0; left: 0; width: 1080px; height: 1920px; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 160px 120px; }
+
+.main-text { font-size: 72px; font-weight: 700; color: #fff; text-align: center; line-height: 1.6; letter-spacing: 4px; }
+
+.sub-text { font-size: 48px; font-weight: 400; color: rgba(255,255,255,0.85); text-align: center; line-height: 1.8; letter-spacing: 2px; max-width: 900px; }
+
+.highlight { color: #c9a84c; }
+
+/* Animations */
+@keyframes fadeInUp { from { opacity: 0; transform: translateY(120px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+@keyframes scaleIn { from { opacity: 0; transform: scale(0.8); } to { opacity: 1; transform: scale(1); } }
+@keyframes slideInRight { from { opacity: 0; transform: translateX(200px); } to { opacity: 1; transform: translateX(0); } }
+@keyframes slideInLeft { from { opacity: 0; transform: translateX(-200px); } to { opacity: 1; transform: translateX(0); } }
+@keyframes fadeOutDown { from { opacity: 1; transform: translateY(0); } to { opacity: 0; transform: translateY(80px); } }
+
+/* Scene-specific */
+.scene-0 .main-text { animation: fadeInUp 1.2s ease-out both; animation-delay: 0.3s; }
+
+.scene-1 .main-text { animation: fadeInUp 1s ease-out both; animation-delay: 0.3s; }
+.scene-1 .sub-text { animation: fadeInUp 1s ease-out both; animation-delay: 1.5s; }
+
+.scene-2 .main-text { animation: fadeInUp 1s ease-out both; animation-delay: 0.3s; }
+.scene-2 .sub-text { animation: fadeInUp 1s ease-out both; animation-delay: 2s; }
+
+.scene-3 .main-text { animation: fadeInUp 1s ease-out both; animation-delay: 0.3s; }
+.scene-3 .sub-text { animation: fadeInUp 1s ease-out both; animation-delay: 1.5s; }
+
+.scene-4 .main-text { animation: scaleIn 1.2s ease-out both; animation-delay: 0.3s; }
+.scene-4 .sub-text { animation: fadeInUp 1s ease-out both; animation-delay: 1.5s; }
+
+/* Title card */
+.title-card { margin-bottom: 60px; }
+.divider { width: 120px; height: 3px; background: #c9a84c; margin: 30px auto; }
+
+/* Staggered items */
+.item { opacity: 0; }
+.scene-1 .item-1 { animation: slideInLeft 0.8s ease-out both; animation-delay: 1.2s; }
+.scene-1 .item-2 { animation: slideInRight 0.8s ease-out both; animation-delay: 2.2s; }
+.scene-1 .item-3 { animation: slideInLeft 0.8s ease-out both; animation-delay: 3.2s; }
+
+.scene-2 .item-1 { animation: slideInLeft 0.8s ease-out both; animation-delay: 1.5s; }
+.scene-2 .item-2 { animation: slideInRight 0.8s ease-out both; animation-delay: 3s; }
+.scene-2 .item-3 { animation: slideInLeft 0.8s ease-out both; animation-delay: 4.5s; }
+
+.scene-3 .item-1 { animation: scaleIn 0.8s ease-out both; animation-delay: 1s; }
+.scene-3 .item-2 { animation: scaleIn 0.8s ease-out both; animation-delay: 2.5s; }
+.scene-3 .item-3 { animation: scaleIn 0.8s ease-out both; animation-delay: 4s; }
+</style>
+</head>
+<body>
+
+<!-- Scene 0: Hook -->
+<div class="scene scene-0" id="scene-0">
+  <img class="bg" src="media/bg_hook.png">
+  <div class="overlay"></div>
+  <div class="content">
+    <div class="main-text">30多岁了，想转行做审计<br>还来得及吗？</div>
+  </div>
+</div>
+
+<!-- Scene 1: Proof -->
+<div class="scene scene-1" id="scene-1">
+  <img class="bg" src="media/bg_proof.png">
+  <div class="overlay"></div>
+  <div class="content">
+    <div class="main-text title-card">审计行业最缺的<br>恰恰是<span class="highlight">30岁以上</span>有阅历的人</div>
+    <div class="sub-text item item-1">✦ 企业经验</div>
+    <div class="sub-text item item-2">✦ 沟通能力</div>
+    <div class="sub-text item item-3">✦ 职业判断</div>
+  </div>
+</div>
+
+<!-- Scene 2: Mechanism -->
+<div class="scene scene-2" id="scene-2">
+  <img class="bg" src="media/bg_mechanism.png">
+  <div class="overlay"></div>
+  <div class="content">
+    <div class="main-text title-card"><span class="highlight">内资八大</span> 各有特色</div>
+    <div class="sub-text item item-1" style="font-size:42px;">有的强在国企审计</div>
+    <div class="sub-text item item-2" style="font-size:42px;">有的擅长上市公司</div>
+    <div class="sub-text item item-3" style="font-size:42px;">选对平台，起步就不一样</div>
+  </div>
+</div>
+
+<!-- Scene 3: Path -->
+<div class="scene scene-3" id="scene-3">
+  <img class="bg" src="media/bg_path.png">
+  <div class="overlay"></div>
+  <div class="content">
+    <div class="main-text" style="font-size:64px;">30岁入行，<span class="highlight">40岁</span>正好做到高层</div>
+    <div class="sub-text item item-1">审计员 → 项目经理 3-5年</div>
+    <div class="sub-text item item-2">经理 → 高级经理 再5年</div>
+    <div class="sub-text item item-3">这条路，<span class="highlight">走得通</span></div>
+  </div>
+</div>
+
+<!-- Scene 4: Close -->
+<div class="scene scene-4" id="scene-4">
+  <img class="bg" src="media/bg_close.png">
+  <div class="overlay"></div>
+  <div class="content">
+    <div class="main-text" style="font-size:80px;">种一棵树<br>最好的时间是<span class="highlight">十年前</span></div>
+    <div class="divider"></div>
+    <div class="sub-text" style="font-size:56px; color:#c9a84c; font-weight:700;">其次是现在</div>
+  </div>
+</div>
+
+<script>
+// Audio tracks
+const ttsFiles = [
+  'media/tts_000.mp3',
+  'media/tts_001.mp3',
+  'media/tts_002.mp3',
+  'media/tts_003.mp3',
+  'media/tts_004.mp3'
+];
+
+// Scene durations (seconds) - match audio length
+const durations = [7, 8, 9, 7, 6];
+
+let currentScene = -1;
+let scenes = document.querySelectorAll('.scene');
+let audios = [];
+
+function preloadAudio() {
+  ttsFiles.forEach((file, i) => {
+    const a = new Audio(file);
+    a.preload = 'auto';
+    audios.push(a);
+  });
+}
+
+function playScene(index) {
+  if (currentScene >= 0) {
+    scenes[currentScene].classList.remove('active');
+    if (audios[currentScene]) {
+      audios[currentScene].pause();
+      audios[currentScene].currentTime = 0;
+    }
+  }
+  
+  if (index >= scenes.length) {
+    // BGM continues to fade out after last scene
+    return;
+  }
+  
+  currentScene = index;
+  scenes[index].classList.add('active');
+  
+  if (audios[index]) {
+    audios[index].play().catch(e => console.log('Audio play error:', e));
+  }
+  
+  // Schedule next scene
+  setTimeout(() => playScene(index + 1), durations[index] * 1000);
+}
+
+// BGM
+const bgm = new Audio('media/bgm.mp3');
+bgm.loop = false;
+bgm.volume = 0.15;
+
+preloadAudio();
+bgm.play().catch(e => console.log('BGM play error:', e));
+setTimeout(() => playScene(0), 500);
+</script>
+</body>
+</html>

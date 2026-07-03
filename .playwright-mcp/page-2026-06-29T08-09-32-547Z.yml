@@ -1,0 +1,366 @@
+- generic [ref=e1]:
+  - img
+  - img
+  - generic [ref=e9]:
+    - generic [ref=e10]:
+      - generic [ref=e12]:
+        - img [ref=e16]
+        - generic [ref=e17]:
+          - generic "工时填报流程-苏浩-2026-06-29 - 发起节点" [ref=e20]:
+            - paragraph [ref=e21]: 工时填报流程-苏浩-2026-06-29 - 发起节点
+          - generic [ref=e24]:
+            - generic "流程表单" [ref=e25] [cursor=pointer]:
+              - generic [ref=e27]: 流程表单
+            - generic "流程图" [ref=e28] [cursor=pointer]:
+              - generic [ref=e30]: 流程图
+      - generic [ref=e33]:
+        - button "提交" [ref=e34] [cursor=pointer]
+        - button "保存" [ref=e35] [cursor=pointer]
+        - button "更多" [ref=e37] [cursor=pointer]
+    - generic [ref=e43]:
+      - table [ref=e49]:
+        - rowgroup [ref=e58]:
+          - row "工时填报流程" [ref=e59]:
+            - cell "工时填报流程" [ref=e60]
+          - row "公告" [ref=e61]:
+            - cell [ref=e62]
+            - cell "公告" [ref=e63]:
+              - generic [ref=e64]: 公告
+            - cell [ref=e65]
+          - row [ref=e66]:
+            - cell [ref=e67]
+            - cell [ref=e68]
+            - cell [ref=e69]
+            - cell [ref=e70]
+            - cell [ref=e71]
+            - cell [ref=e72]
+            - cell [ref=e73]
+          - row "每季度最后 5 天常态化补填：第一季度 3月27日-31日，第二季度 6月26日-30日，第三季度 9月26日-30日，第四季度 12月27日-31日。" [ref=e74]:
+            - cell [ref=e75]
+            - cell "每季度最后 5 天常态化补填：第一季度 3月27日-31日，第二季度 6月26日-30日，第三季度 9月26日-30日，第四季度 12月27日-31日。" [ref=e76]
+            - cell [ref=e77]
+          - row [ref=e78]:
+            - cell [ref=e79]
+            - cell [ref=e80]
+            - cell [ref=e81]
+            - cell [ref=e82]
+            - cell [ref=e83]
+            - cell [ref=e84]
+            - cell [ref=e85]
+          - row "基本信息" [ref=e86]:
+            - cell [ref=e87]
+            - cell "基本信息" [ref=e88]:
+              - generic [ref=e89]: 基本信息
+            - cell [ref=e90]
+          - row [ref=e91]:
+            - cell [ref=e92]
+            - cell [ref=e93]
+            - cell [ref=e94]
+            - cell [ref=e95]
+            - cell [ref=e96]
+            - cell [ref=e97]
+            - cell [ref=e98]
+          - row "标题 工时填报流程-苏浩-2026-06-29" [ref=e99]:
+            - cell [ref=e100]
+            - cell "标题" [ref=e101]
+            - cell "工时填报流程-苏浩-2026-06-29" [ref=e102]:
+              - generic [ref=e105]:
+                - textbox "请输入标题" [ref=e107]: 工时填报流程-苏浩-2026-06-29
+                - img [ref=e110]
+            - cell [ref=e111]
+          - row "登记人 苏浩 填报日期 2026-06-29" [ref=e112]:
+            - cell [ref=e113]
+            - cell "登记人" [ref=e114]:
+              - generic [ref=e116]: 登记人
+            - cell "苏浩" [ref=e117]:
+              - generic [ref=e122] [cursor=pointer]: 苏浩
+            - cell [ref=e123]
+            - cell "填报日期" [ref=e124]:
+              - generic [ref=e126]: 填报日期
+            - cell "2026-06-29" [ref=e127]:
+              - generic [ref=e131]: 2026-06-29
+            - cell [ref=e132]
+          - row "所属分部 02-北京分所 所属部门 02-审计一部" [ref=e133]:
+            - cell [ref=e134]
+            - cell "所属分部" [ref=e135]:
+              - generic [ref=e137]: 所属分部
+            - cell "02-北京分所" [ref=e138]:
+              - generic [ref=e141]:
+                - generic [ref=e146]:
+                  - generic "02-北京分所" [ref=e156]:
+                    - generic [ref=e160]: 02-北京分所
+                  - textbox [ref=e162]
+                  - img [ref=e166] [cursor=pointer]
+                - img [ref=e169]
+            - cell [ref=e170]
+            - cell "所属部门" [ref=e171]:
+              - generic [ref=e173]: 所属部门
+            - cell "02-审计一部" [ref=e174]:
+              - generic [ref=e177]:
+                - generic [ref=e182]:
+                  - generic "02-审计一部" [ref=e192]:
+                    - generic [ref=e196]: 02-审计一部
+                  - textbox [ref=e198]
+                  - img [ref=e202] [cursor=pointer]
+                - img [ref=e205]
+            - cell [ref=e206]
+          - row "人员类型" [ref=e1019]:
+            - cell [ref=e208]
+            - cell "人员类型" [ref=e209]:
+              - generic [ref=e211]: 人员类型
+            - cell [ref=e1020]:
+              - img [ref=e228]
+            - cell [ref=e229]
+            - cell [ref=e230]
+            - cell [ref=e231]
+            - cell [ref=e232]
+          - row "关联请假流程" [ref=e233]:
+            - cell [ref=e234]
+            - cell "关联请假流程" [ref=e235]:
+              - generic [ref=e237]: 关联请假流程
+            - cell [ref=e238]:
+              - generic [ref=e248]:
+                - textbox "请选择" [ref=e249]
+                - img [ref=e253] [cursor=pointer]
+            - cell [ref=e254]
+          - row "工时信息" [ref=e255]:
+            - cell [ref=e256]
+            - cell "工时信息" [ref=e257]:
+              - generic [ref=e258]: 工时信息
+            - cell [ref=e259]
+          - row [ref=e260]:
+            - cell [ref=e261]
+            - cell [ref=e262]
+            - cell [ref=e263]
+            - cell [ref=e264]
+            - cell [ref=e265]
+            - cell [ref=e266]
+            - cell [ref=e267]
+          - row "序号 日期 工时类型 工时（h） 工作内容 所内/所外 外勤所在省市 项目名称 客户名称 项目经理 工时超8小时原因 1 2026-06-29 请选择工时类型 8.0 项目审计工作 请选择所内/所外 8.0" [ref=e617]:
+            - cell [ref=e269]
+            - cell "序号 日期 工时类型 工时（h） 工作内容 所内/所外 外勤所在省市 项目名称 客户名称 项目经理 工时超8小时原因 1 2026-06-29 请选择工时类型 8.0 项目审计工作 请选择所内/所外 8.0" [ref=e618]:
+              - generic [ref=e275]:
+                - table [ref=e277]:
+                  - rowgroup
+                  - rowgroup [ref=e291]:
+                    - row [ref=e292]:
+                      - cell [ref=e293]
+                      - cell [ref=e294]
+                      - cell [ref=e295]
+                      - cell [ref=e296]
+                      - cell [ref=e297]
+                      - cell [ref=e298]
+                      - cell [ref=e299]
+                      - cell [ref=e300]
+                      - cell [ref=e301]
+                      - cell [ref=e302]
+                      - cell [ref=e303]
+                      - cell [ref=e304]:
+                        - generic [ref=e305]:
+                          - generic "添加" [ref=e306] [cursor=pointer]:
+                            - img [ref=e309]
+                          - generic "导出" [ref=e310] [cursor=pointer]:
+                            - img [ref=e313]
+                          - generic "最大化" [ref=e314] [cursor=pointer]:
+                            - img [ref=e317]
+                      - cell
+                      - cell
+                      - cell
+                      - cell
+                      - cell
+                - table [ref=e319]:
+                  - rowgroup [ref=e333]:
+                    - row "序号 日期 工时类型 工时（h） 工作内容 所内/所外 外勤所在省市 项目名称 客户名称 项目经理 工时超8小时原因" [ref=e334]:
+                      - cell
+                      - cell [ref=e335]:
+                        - checkbox [ref=e339] [cursor=pointer]
+                      - cell "序号" [ref=e341]
+                      - cell "日期" [ref=e342]:
+                        - generic [ref=e343]: 日期
+                      - cell "工时类型" [ref=e344]:
+                        - generic [ref=e345]: 工时类型
+                      - cell "工时（h）" [ref=e346]:
+                        - generic [ref=e347]: 工时（h）
+                      - cell "工作内容" [ref=e348]:
+                        - generic [ref=e349]: 工作内容
+                      - cell "所内/所外" [ref=e350]:
+                        - generic [ref=e351]: 所内/所外
+                      - cell "外勤所在省市" [ref=e352]:
+                        - generic [ref=e353]: 外勤所在省市
+                      - cell "项目名称" [ref=e354]:
+                        - generic [ref=e355]: 项目名称
+                      - cell "客户名称" [ref=e356]:
+                        - generic [ref=e357]: 客户名称
+                      - cell "项目经理" [ref=e358]:
+                        - generic [ref=e359]: 项目经理
+                      - cell "工时超8小时原因" [ref=e360]:
+                        - generic [ref=e361]: 工时超8小时原因
+                  - rowgroup [ref=e362]:
+                    - row "1 2026-06-29 请选择工时类型 8.0 项目审计工作 请选择所内/所外" [ref=e619]:
+                      - cell:
+                        - generic [ref=e520]:
+                          - generic "删除" [ref=e521] [cursor=pointer]:
+                            - img [ref=e524]
+                          - generic "复制" [ref=e525] [cursor=pointer]:
+                            - img [ref=e528]
+                          - generic "插入" [ref=e529] [cursor=pointer]:
+                            - img [ref=e532]
+                          - generic "上移" [ref=e533] [cursor=pointer]:
+                            - img [ref=e536]
+                          - generic "下移" [ref=e537] [cursor=pointer]:
+                            - img [ref=e540]
+                      - cell [ref=e364]:
+                        - checkbox [ref=e368] [cursor=pointer]
+                      - cell "1" [ref=e370]
+                      - cell "2026-06-29" [ref=e541]:
+                        - generic [ref=e374]:
+                          - generic [ref=e378] [cursor=pointer]:
+                            - textbox "年-月-日" [ref=e379]: 2026-06-29
+                            - img [ref=e382]
+                          - img [ref=e385]
+                      - cell "请选择工时类型" [ref=e582]:
+                        - generic [ref=e389]:
+                          - generic [ref=e393] [cursor=pointer]:
+                            - generic [ref=e583]: 请选择工时类型
+                            - img [ref=e399]
+                          - img [ref=e402]
+                      - cell "8.0" [ref=e542]:
+                        - generic [ref=e406]:
+                          - textbox "请输入工时（h）" [ref=e408]: "8.0"
+                          - img [ref=e411]
+                      - cell "项目审计工作" [ref=e543]:
+                        - generic [ref=e415]:
+                          - textbox "请输入工作内容" [ref=e417]: 项目审计工作
+                          - img [ref=e420]
+                      - cell "请选择所内/所外" [ref=e620]:
+                        - generic [ref=e424]:
+                          - generic [ref=e428] [cursor=pointer]:
+                            - generic [ref=e621]: 请选择所内/所外
+                            - img [ref=e434]
+                          - img [ref=e437]
+                      - cell [ref=e438]:
+                        - generic [ref=e443] [cursor=pointer]:
+                          - textbox "请选择多个城市" [active] [ref=e445]
+                          - img [ref=e623]
+                      - cell [ref=e448]:
+                        - generic [ref=e451]:
+                          - generic [ref=e456]:
+                            - textbox "请选择" [ref=e457]
+                            - img [ref=e461] [cursor=pointer]
+                          - img [ref=e464]
+                      - cell [ref=e465]
+                      - cell [ref=e469]
+                      - cell [ref=e473]
+                    - row "8.0" [ref=e544]:
+                      - cell
+                      - cell [ref=e478]
+                      - cell [ref=e479]
+                      - cell [ref=e480]
+                      - cell [ref=e481]
+                      - cell "8.0" [ref=e545]:
+                        - generic [ref=e484]: "8.0"
+                      - cell [ref=e485]
+                      - cell [ref=e486]
+                      - cell [ref=e487]
+                      - cell [ref=e488]
+                      - cell [ref=e489]
+                      - cell [ref=e490]
+                      - cell [ref=e491]
+                      - cell
+                      - cell
+                      - cell
+                      - cell
+                      - cell
+            - cell [ref=e500]
+          - row [ref=e501]:
+            - cell [ref=e502]
+            - cell [ref=e503]
+            - cell [ref=e504]
+            - cell [ref=e505]
+            - cell [ref=e506]
+            - cell [ref=e507]
+            - cell [ref=e508]
+      - generic [ref=e513]:
+        - img [ref=e515]
+        - text: 签字意见
+  - generic [ref=e626]:
+    - generic [ref=e628]:
+      - generic [ref=e630]:
+        - generic "国家" [ref=e631] [cursor=pointer]:
+          - generic [ref=e633]: 国家
+        - generic "省份" [ref=e634] [cursor=pointer]:
+          - generic [ref=e636]: 省份
+        - generic "城市" [ref=e637] [cursor=pointer]:
+          - generic [ref=e639]: 城市
+      - generic [ref=e642] [cursor=pointer]:
+        - generic [ref=e643]: 行政区域
+        - img [ref=e646]
+    - generic [ref=e647]:
+      - generic [ref=e649]:
+        - generic [ref=e650]:
+          - generic "最近" [ref=e651] [cursor=pointer]:
+            - generic [ref=e653]: 最近
+          - generic "全部" [ref=e654] [cursor=pointer]:
+            - generic [ref=e656]: 全部
+          - generic "ABCDE" [ref=e657] [cursor=pointer]:
+            - generic [ref=e659]: ABCDE
+          - generic "FGHIJ" [ref=e660] [cursor=pointer]:
+            - generic [ref=e662]: FGHIJ
+          - generic "KLMNO" [ref=e663] [cursor=pointer]:
+            - generic [ref=e665]: KLMNO
+          - generic "PQRST" [ref=e666] [cursor=pointer]:
+            - generic [ref=e668]: PQRST
+          - generic "UVWXYZ" [ref=e669] [cursor=pointer]:
+            - generic [ref=e671]: UVWXYZ
+        - generic [ref=e675] [cursor=pointer]:
+          - generic "中国" [ref=e678]
+          - generic "英属维尔京群岛" [ref=e681]
+          - generic "中非共和国" [ref=e684]
+          - generic "智利" [ref=e687]
+          - generic "直布罗陀" [ref=e690]
+          - generic "乍得" [ref=e693]
+          - generic "泽西岛" [ref=e696]
+          - generic "赞比亚" [ref=e699]
+          - generic "越南" [ref=e702]
+          - generic "约旦" [ref=e705]
+          - generic "英属印度洋领地" [ref=e708]
+          - generic "英国" [ref=e711]
+          - generic "印度尼西亚" [ref=e714]
+          - generic "印度" [ref=e717]
+          - generic "意大利" [ref=e720]
+          - generic "以色列" [ref=e723]
+          - generic "伊朗" [ref=e726]
+          - generic "伊拉克" [ref=e729]
+          - generic "也门" [ref=e732]
+          - generic "亚美尼亚" [ref=e735]
+          - generic "牙买加" [ref=e738]
+          - generic "叙利亚" [ref=e741]
+          - generic "匈牙利" [ref=e744]
+          - generic "新西兰" [ref=e747]
+          - generic "新喀里多尼亚" [ref=e750]
+          - generic "新加坡" [ref=e753]
+          - generic "希腊" [ref=e756]
+          - generic "西班牙" [ref=e759]
+          - generic "乌兹别克斯坦" [ref=e762]
+          - generic "乌拉圭" [ref=e765]
+          - generic "乌克兰" [ref=e768]
+          - generic "乌干达" [ref=e771]
+          - generic "文莱" [ref=e774]
+          - generic "委内瑞拉" [ref=e777]
+          - generic "维尔京群岛，美属" [ref=e780]
+          - generic "危地马拉" [ref=e783]
+          - generic "瓦努阿图" [ref=e786]
+          - generic "瓦利斯和福图纳" [ref=e789]
+          - generic "托克劳" [ref=e792]
+          - generic "土库曼斯坦" [ref=e795]
+          - generic "土耳其" [ref=e798]
+          - generic "图瓦卢" [ref=e801]
+          - generic "突尼斯" [ref=e804]
+          - generic "特立尼达和多巴哥" [ref=e807]
+          - generic "特里斯坦达昆哈" [ref=e810]
+          - generic "特克斯和凯克特斯群岛" [ref=e813]
+          - generic "汤加" [ref=e816]
+          - generic "坦桑尼亚" [ref=e819]
+          - generic "泰国" [ref=e822]
+          - generic "塔吉克斯坦" [ref=e825]
+      - generic [ref=e1015]: 已选择 (0)

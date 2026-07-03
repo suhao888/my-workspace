@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=1080, height=1920" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body {
+      width: 1080px; height: 1920px;
+      overflow: hidden;
+      background: #0f141e;
+      font-family: "Noto Sans SC", sans-serif;
+    }
+    /* elements animated by GSAP start invisible */
+    .title-accent, .subtitle, .cta,
+    .slide-num, .slide-text, .slide-sub,
+    .end-title, .end-sub, .end-sub2 {
+      opacity: 0;
+    }
+
+    .slide {
+      position: absolute;
+      top: 0; left: 0;
+      width: 1080px; height: 1920px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 120px 80px;
+    }
+
+    /* accent bar */
+    .accent-bar {
+      position: absolute;
+      left: 0; top: 0;
+      width: 1080px; height: 8px;
+      background: linear-gradient(90deg, #0096ff, #00d4ff);
+    }
+    .accent-bar-bottom {
+      position: absolute;
+      left: 0; bottom: 0;
+      width: 1080px; height: 8px;
+      background: linear-gradient(90deg, #00d4ff, #0096ff);
+    }
+
+    /* === OPENING === */
+    #slide-opening .title {
+      font-size: 72px;
+      font-weight: 700;
+      color: #fff;
+      text-align: center;
+      line-height: 1.4;
+      margin-bottom: 40px;
+    }
+    #slide-opening .subtitle {
+      font-size: 32px;
+      color: #8899aa;
+      letter-spacing: 2px;
+    }
+    #slide-opening .cta {
+      position: absolute;
+      bottom: 160px;
+      font-size: 28px;
+      color: #0096ff;
+      letter-spacing: 4px;
+    }
+    #slide-opening .title-accent {
+      display: inline-block;
+      padding: 0 16px;
+      border-left: 4px solid #0096ff;
+      padding-left: 20px;
+    }
+
+    /* === CONTENT SLIDES === */
+    .content-slide .slide-num {
+      position: absolute;
+      top: 60px; right: 60px;
+      font-size: 24px;
+      color: #556677;
+    }
+    .content-slide .slide-text {
+      font-size: 52px;
+      font-weight: 600;
+      color: #fff;
+      text-align: center;
+      line-height: 1.6;
+      max-width: 900px;
+    }
+    .content-slide .slide-divider {
+      width: 120px; height: 3px;
+      background: #0096ff;
+      margin: 40px auto;
+    }
+    .content-slide .slide-sub {
+      font-size: 26px;
+      color: #667788;
+    }
+
+    /* === ENDING === */
+    #slide-ending .end-title {
+      font-size: 56px;
+      font-weight: 700;
+      color: #0096ff;
+      margin-bottom: 30px;
+      letter-spacing: 6px;
+    }
+    #slide-ending .end-sub {
+      font-size: 32px;
+      color: #ccc;
+      margin-bottom: 16px;
+    }
+    #slide-ending .end-sub2 {
+      font-size: 26px;
+      color: #667788;
+      letter-spacing: 2px;
+    }
+
+    /* === DECORATION === */
+    .dot-grid {
+      position: absolute;
+      right: 60px; top: 200px;
+      opacity: 0.08;
+      font-size: 0;
+    }
+    .dot-grid span {
+      display: inline-block;
+      width: 8px; height: 8px;
+      background: #0096ff;
+      border-radius: 50%;
+      margin: 6px;
+    }
+
+    .glow-dot {
+      position: absolute;
+      width: 300px; height: 300px;
+      border-radius: 50%;
+      filter: blur(120px);
+      opacity: 0.12;
+      pointer-events: none;
+    }
+    .glow-dot.tl { top: -80px; left: -80px; background: #0096ff; }
+    .glow-dot.br { bottom: -80px; right: -80px; background: #00d4ff; }
+
+    /* subtitle overlay - separate clip */
+    .subtitle-overlay {
+      position: absolute;
+      bottom: 280px;
+      left: 0;
+      width: 1080px;
+      text-align: center;
+      font-size: 28px;
+      color: #aabbcc;
+      padding: 16px 40px;
+      background: linear-gradient(transparent, rgba(0,0,0,0.6) 40%);
+    }
+  </style>
+</head>
+<body>
+  <div id="root" data-composition-id="root" data-width="1080" data-height="1920">
+
+    <!-- ============ OPENING SLIDE ============ -->
+    <div id="slide-opening" class="clip slide" data-start="0" data-duration="5" data-track-index="1">
+      <div class="accent-bar"></div>
+      <div class="glow-dot tl"></div>
+      <div class="glow-dot br"></div>
+      <div class="title">
+        <span class="title-accent">30多岁</span><br>
+        转行做审计<br>
+        还来得及吗？
+      </div>
+      <div class="subtitle">转行审计 · CPA · 14年财务经验</div>
+      <div class="cta">▼ 关注我，了解更多审计干货</div>
+      <div class="accent-bar-bottom"></div>
+    </div>
+
+    <!-- ============ SLIDE 1 ============ -->
+    <div id="slide-1" class="clip slide content-slide" data-start="5" data-duration="6" data-track-index="1">
+      <div class="accent-bar"></div>
+      <div class="glow-dot tl"></div>
+      <div class="slide-num">1 / 4</div>
+      <div class="slide-text">我就是30多岁转的行，<br>之前在中铁某局干了9年财务。</div>
+      <div class="slide-divider"></div>
+      <div class="slide-sub">从工程财务到审计咨询</div>
+    </div>
+
+    <!-- ============ SLIDE 2 ============ -->
+    <div id="slide-2" class="clip slide content-slide" data-start="11" data-duration="7" data-track-index="1">
+      <div class="accent-bar"></div>
+      <div class="glow-dot tl"></div>
+      <div class="slide-num">2 / 4</div>
+      <div class="slide-text">从零开始确实不容易，<br>拿着底薪从头学起，<br>啃底稿、翻准则。</div>
+      <div class="slide-divider"></div>
+      <div class="slide-sub">熬过适应期就是另一片天</div>
+    </div>
+
+    <!-- ============ SLIDE 3 ============ -->
+    <div id="slide-3" class="clip slide content-slide" data-start="18" data-duration="6" data-track-index="1">
+      <div class="accent-bar"></div>
+      <div class="glow-dot tl"></div>
+      <div class="slide-num">3 / 4</div>
+      <div class="slide-text">熬过来之后，<br>现在在内资某所做项目经理，<br>做央企审计。</div>
+      <div class="slide-divider"></div>
+      <div class="slide-sub">9年工程财务 + 审计 = 稀缺竞争力</div>
+    </div>
+
+    <!-- ============ SLIDE 4 ============ -->
+    <div id="slide-4" class="clip slide content-slide" data-start="24" data-duration="7" data-track-index="1">
+      <div class="accent-bar"></div>
+      <div class="glow-dot tl"></div>
+      <div class="slide-num">4 / 4</div>
+      <div class="slide-text">给想转行的人一个建议：<br>工程财务加审计，<br>这条赛道值得坚持。</div>
+      <div class="slide-divider"></div>
+      <div class="slide-sub">转行不是终点，是新的起点</div>
+    </div>
+
+    <!-- ============ ENDING SLIDE ============ -->
+    <div id="slide-ending" class="clip slide ending" data-start="31" data-duration="6" data-track-index="1">
+      <div class="accent-bar"></div>
+      <div class="accent-bar-bottom"></div>
+      <div class="glow-dot tl"></div>
+      <div class="glow-dot br"></div>
+      <div class="end-title">点赞 · 关注 · 转发</div>
+      <div class="end-sub">转行审计经验持续分享</div>
+      <div class="end-sub2">财务职场 | 审计实务 | 转行故事</div>
+    </div>
+
+    <!-- ============ AUDIO TRACK ============ -->
+    <audio class="clip" data-start="0"   data-duration="4.464" data-track-index="2" src="assets/tts_000.mp3" data-volume="1.0"></audio>
+    <audio class="clip" data-start="5"   data-duration="5.736" data-track-index="2" src="assets/tts_001.mp3" data-volume="1.0"></audio>
+    <audio class="clip" data-start="11"  data-duration="6.552" data-track-index="2" src="assets/tts_002.mp3" data-volume="1.0"></audio>
+    <audio class="clip" data-start="18"  data-duration="5.400" data-track-index="2" src="assets/tts_003.mp3" data-volume="1.0"></audio>
+    <audio class="clip" data-start="24"  data-duration="6.192" data-track-index="2" src="assets/tts_004.mp3" data-volume="1.0"></audio>
+
+    <!-- ============ BACKGROUND MUSIC ============ -->
+    <audio class="clip" data-start="0" data-duration="37" data-track-index="3" src="assets/bgm.mp3" data-volume="0.15" data-media-start="0"></audio>
+  </div>
+
+  <script>
+    window.__timelines = window.__timelines || {};
+    const tl = gsap.timeline({ paused: true });
+
+    // ---------- OPENING (0-5s) ----------
+    tl.fromTo("#slide-opening .title-accent",
+      { opacity: 0, x: -30 },
+      { opacity: 1, x: 0, duration: 0.6, ease: "power2.out" }, 0.2);
+    tl.from("#slide-opening .subtitle",
+      { opacity: 0, y: 15, duration: 0.5 }, 0.8);
+    tl.from("#slide-opening .cta",
+      { opacity: 0, y: 10, duration: 0.5 }, 2.0);
+
+    // ---------- SLIDE 1 (5-11s) ----------
+    tl.from("#slide-1 .slide-num",
+      { opacity: 0, x: 20, duration: 0.3 }, 5.0);
+    tl.from("#slide-1 .slide-text",
+      { opacity: 0, y: 40, duration: 0.6, ease: "power2.out" }, 5.3);
+    tl.from("#slide-1 .slide-divider",
+      { scaleX: 0, duration: 0.4, ease: "power2.out", transformOrigin: "center center" }, 5.8);
+    tl.from("#slide-1 .slide-sub",
+      { opacity: 0, y: 10, duration: 0.4 }, 6.2);
+
+    // ---------- SLIDE 2 (11-18s) ----------
+    tl.from("#slide-2 .slide-num",
+      { opacity: 0, x: 20, duration: 0.3 }, 11.0);
+    tl.from("#slide-2 .slide-text",
+      { opacity: 0, y: 40, duration: 0.6, ease: "power2.out" }, 11.3);
+    tl.from("#slide-2 .slide-divider",
+      { scaleX: 0, duration: 0.4, ease: "power2.out", transformOrigin: "center center" }, 11.8);
+    tl.from("#slide-2 .slide-sub",
+      { opacity: 0, y: 10, duration: 0.4 }, 12.2);
+
+    // ---------- SLIDE 3 (18-24s) ----------
+    tl.from("#slide-3 .slide-num",
+      { opacity: 0, x: 20, duration: 0.3 }, 18.0);
+    tl.from("#slide-3 .slide-text",
+      { opacity: 0, y: 40, duration: 0.6, ease: "power2.out" }, 18.3);
+    tl.from("#slide-3 .slide-divider",
+      { scaleX: 0, duration: 0.4, ease: "power2.out", transformOrigin: "center center" }, 18.8);
+    tl.from("#slide-3 .slide-sub",
+      { opacity: 0, y: 10, duration: 0.4 }, 19.2);
+
+    // ---------- SLIDE 4 (24-31s) ----------
+    tl.from("#slide-4 .slide-num",
+      { opacity: 0, x: 20, duration: 0.3 }, 24.0);
+    tl.from("#slide-4 .slide-text",
+      { opacity: 0, y: 40, duration: 0.6, ease: "power2.out" }, 24.3);
+    tl.from("#slide-4 .slide-divider",
+      { scaleX: 0, duration: 0.4, ease: "power2.out", transformOrigin: "center center" }, 24.8);
+    tl.from("#slide-4 .slide-sub",
+      { opacity: 0, y: 10, duration: 0.4 }, 25.2);
+
+    // ---------- ENDING (31-37s) ----------
+    tl.from("#slide-ending .end-title",
+      { opacity: 0, scale: 0.8, duration: 0.6, ease: "back.out(1.7)" }, 31.0);
+    tl.from("#slide-ending .end-sub",
+      { opacity: 0, y: 20, duration: 0.5 }, 31.8);
+    tl.from("#slide-ending .end-sub2",
+      { opacity: 0, y: 10, duration: 0.4 }, 32.5);
+
+    window.__timelines["root"] = tl;
+  </script>
+</body>
+</html>
