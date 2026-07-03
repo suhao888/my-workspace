@@ -1,0 +1,658 @@
+"""
+专业文档排版构建器 — DocBuilder
+================================
+基于 python-docx 封装，提供面向中文商务文档的专业排版能力。
+
+设计参考:
+  - gertalot/docx-skill (GitHub) — 品牌化文档构建模式
+  - python-docx-template (elapouya) — Jinja2 模板引擎
+  - 中国会计准则 CAS — 财务报表披露规范
+
+功能:
+  - 封面页（标题/副标题/日期/密级）
+  - 页眉/页脚（页码、公司名称）
+  - 目录域（Word 中按 Ctrl+A → F9 更新）
+  - 样式体系（多级标题/正文/列表）
+  - 表格美化（深色表头、交替行色、列宽控制）
+  - 键值对表、提示框、签名块
+  - 中英文字体自动设置（宋体+Times New Roman）
+
+用法:
+    builder = DocBuilder()
+    builder.setup_page().setup_styles()
+    builder.add_cover("文档标题", "公司名称", "2026年7月")
+    builder.setup_header("页眉文本").setup_footer(left="公司", right="page_number")
+    builder.add_heading_1("第一章")
+    builder.add_body("正文内容...")
+    builder.add_table(headers=["列1","列2"], rows=[["a","b"]])
+    builder.save("output.docx")
+"""
+
+from __future__ import annotations
+
+from pathlib import Path
+from typing import Optional, Dict, List, Tuple
+
+from docx import Document
+from docx.shared import Pt, Cm, RGBColor
+from docx.enum.text import WD_ALIGN_PARAGRAPH, WD_LINE_SPACING, WD_TAB_ALIGNMENT
+from docx.enum.table import WD_TABLE_ALIGNMENT, WD_ALIGN_VERTICAL
+from docx.oxml import OxmlElement, parse_xml
+from docx.oxml.ns import nsdecls, qn
+
+# ============================================================
+# 默认配色
+# ============================================================
+COLOR_PRIMARY = "#1B3A5C"  # 深蓝 — 标题/表头
+COLOR_ACCENT = "#C41E3A"  # 暗红 — 强调/警示
+COLOR_BODY = "#333333"  # 深灰 — 正文
+COLOR_LIGHT_BG = "#F5F7FA"  # 浅灰 — 表头背景/标签
+COLOR_BORDER = "#D0D5DD"  # 边框线
+COLOR_TABLE_ALT = "#F8F9FB"  # 表格交替行
+COLOR_WHITE = "#FFFFFF"
+COLOR_GRAY_TEXT = "#666666"
+COLOR_LIGHT_LINE = "#CCCCCC"
+COLOR_HINT = "#999999"
+
+# ============================================================
+# 默认字体
+# ============================================================
+FONT_CN_BODY = "宋体"  # 正文中文字体
+FONT_CN_HEADING = "黑体"  # 标题中文字体
+FONT_EN = "Times New Roman"  # 英文/数字字体
+
+# ============================================================
+# 页面尺寸
+# ============================================================
+PAGE_A4 = (Cm(21.0), Cm(29.7))
+
+# ============================================================
+# XML 工具函数
+# ============================================================
+
+
+def _hex_to_rgb(hex_str: str) -> RGBColor:
+    h = hex_str.lstrip("#")
+    return RGBColor(int(h[0:2], 16), int(h[2:4], 16), int(h[4:6], 16))
+
+
+def _set_cell_shading(cell, color_hex: str):
+    shading = OxmlElement("w:shd")
+    shading.set(qn("w:fill"), color_hex)
+    shading.set(qn("w:val"), "clear")
+    cell._tc.get_or_add_tcPr().append(shading)
+
+
+def _set_para_border(para, edge: str, sz: int = 4, color: str = COLOR_BORDER):
+    pPr = para._p.get_or_add_pPr()
+    pBdr = OxmlElement("w:pBdr")
+    el = OxmlElement(f"w:{edge}")
+    el.set(qn("w:val"), "single")
+    el.set(qn("w:sz"), str(sz))
+    el.set(qn("w:space"), "1")
+    el.set(qn("w:color"), color)
+    pBdr.append(el)
+    pPr.append(pBdr)
+
+
+def _add_field(para, field_code: str):
+    """插入 Word 域代码（PAGE / NUMPAGES / TOC 等）"""
+    for typ in ("begin", "separate", "end"):
+        r = para.add_run()
+        f = OxmlElement("w:fldChar")
+        f.set(qn("w:fldCharType"), typ)
+        r._r.append(f)
+        if typ == "separate":
+            r2 = para.add_run("1")
+            r2.font.size = Pt(9)
+            r2.font.color.rgb = _hex_to_rgb(COLOR_GRAY_TEXT)
+    instr = OxmlElement("w:instrText")
+    instr.set(qn("xml:space"), "preserve")
+    instr.text = f" {field_code} "
+    # insert instrText after begin
+    para.runs[0]._r.addnext(instr)
+
+
+def _set_run_font(
+    run_or_font,
+    cn_font: str = FONT_CN_BODY,
+    en_font: str = FONT_EN,
+    size: int = 12,
+    bold: bool = False,
+    color_hex: Optional[str] = None,
+):
+    """Set font on a Run or a style Font object.
+
+    同时支持 python-docx 的 Run（有 .font 属性）和 style Font（无 .font 但自身就是 Font）。
+    中文字体通过 rFonts.eastAsia 写入。
+    """
+    if hasattr(run_or_font, "font"):
+        run = run_or_font
+        run.font.name = en_font
+        run.font.size = Pt(size)
+        run.font.bold = bold
+        if color_hex:
+            run.font.color.rgb = _hex_to_rgb(color_hex)
+        rPr = run._element.get_or_add_rPr()
+    else:
+        f = run_or_font
+        f.name = en_font
+        f.size = Pt(size)
+        f.bold = bold
+        if color_hex:
+            f.color.rgb = _hex_to_rgb(color_hex)
+        rPr = f._element  # style Font._element 已经是 rPr
+    rFonts = rPr.find(qn("w:rFonts"))
+    if rFonts is None:
+        rFonts = OxmlElement("w:rFonts")
+        rPr.insert(0, rFonts)
+    rFonts.set(qn("w:eastAsia"), cn_font)
+    rFonts.set(qn("w:ascii"), en_font)
+    rFonts.set(qn("w:hAnsi"), en_font)
+
+
+def _remove_table_borders(table):
+    tblPr = table._tbl.tblPr
+    xml = (
+        f"<w:tblBorders {nsdecls('w')}>"
+        + "".join(
+            f'<w:{e} w:val="none" w:sz="0" w:space="0"/>'
+            for e in ("top", "left", "bottom", "right", "insideH", "insideV")
+        )
+        + "</w:tblBorders>"
+    )
+    tblPr.append(parse_xml(xml))
+
+
+# ============================================================
+# DocBuilder
+# ============================================================
+
+
+class DocBuilder:
+    """专业文档排版构建器。"""
+
+    def __init__(self):
+        self.doc = Document()
+        self._style_body = "_db_body"
+        self._style_h1 = "_db_h1"
+        self._style_h2 = "_db_h2"
+        self._style_h3 = "_db_h3"
+
+    # ── 页面设置 ────────────────────────────────────────────────
+
+    def setup_page(self, margins: Optional[Dict[str, float]] = None):
+        """设置 A4 页面和边距。"""
+        s = self.doc.sections[0]
+        s.page_width, s.page_height = PAGE_A4
+        m = margins or {"left": 3.0, "right": 2.5, "top": 2.54, "bottom": 2.54}
+        for k in ("left", "right", "top", "bottom"):
+            setattr(s, f"{k}_margin", Cm(m[k]))
+        return self
+
+    # ── 样式体系 ────────────────────────────────────────────────
+
+    def setup_styles(self, body_size: int = 12, line_spacing: float = 1.5):
+        """建立文档样式体系。
+
+        Args:
+            body_size: 正文字号（磅）
+            line_spacing: 行距倍数
+        """
+        styles = self.doc.styles
+
+        # Normal
+        n = styles["Normal"]
+        n.font.name = FONT_EN
+        n.font.size = Pt(body_size)
+        n.font.color.rgb = _hex_to_rgb(COLOR_BODY)
+        rPr = n.element.get_or_add_rPr()
+        rf = OxmlElement("w:rFonts")
+        rf.set(qn("w:eastAsia"), FONT_CN_BODY)
+        rPr.insert(0, rf)
+        pf = n.paragraph_format
+        pf.line_spacing_rule = WD_LINE_SPACING.MULTIPLE
+        pf.line_spacing = line_spacing
+        pf.space_after = Pt(0)
+        pf.space_before = Pt(0)
+
+        # 标题样式
+        for name, sz, bef, aft in [
+            (self._style_h1, 16, 24, 12),
+            (self._style_h2, 14, 18, 8),
+            (self._style_h3, 12, 12, 6),
+        ]:
+            st = styles.add_style(name, 1)
+            st.font.name = FONT_EN
+            st.font.size = Pt(sz)
+            st.font.bold = True
+            st.font.color.rgb = _hex_to_rgb(COLOR_PRIMARY)
+            rp = st.element.get_or_add_rPr()
+            rf = OxmlElement("w:rFonts")
+            rf.set(qn("w:eastAsia"), FONT_CN_HEADING)
+            rp.insert(0, rf)
+            ppf = st.paragraph_format
+            ppf.space_before = Pt(bef)
+            ppf.space_after = Pt(aft)
+            ppf.keep_with_next = True
+            ppf.line_spacing_rule = WD_LINE_SPACING.MULTIPLE
+            ppf.line_spacing = line_spacing
+
+        # 正文样式（首行缩进）
+        bst = styles.add_style(self._style_body, 1)
+        _set_run_font(bst.font, FONT_CN_BODY, FONT_EN, body_size, color_hex=COLOR_BODY)
+        bpf = bst.paragraph_format
+        bpf.first_line_indent = Pt(body_size * 2)
+        bpf.line_spacing_rule = WD_LINE_SPACING.MULTIPLE
+        bpf.line_spacing = line_spacing
+        bpf.space_after = Pt(2)
+
+        # 列表样式
+        for ln in ("List Bullet", "List Number"):
+            try:
+                ls = styles[ln]
+                _set_run_font(ls.font, FONT_CN_BODY, FONT_EN, body_size)
+                ls.paragraph_format.line_spacing = line_spacing
+            except KeyError:
+                pass
+
+        return self
+
+    # ── 封面页 ──────────────────────────────────────────────────
+
+    def add_cover(
+        self,
+        title: str,
+        subtitle: str = "",
+        date_text: str = "",
+        confidential: str = "",
+    ):
+        """生成封面页。
+
+        Args:
+            title: 文档主标题
+            subtitle: 副标题/公司名称
+            date_text: 日期
+            confidential: 密级（如 "内部资料"）
+        """
+        if confidential:
+            p = self.doc.add_paragraph()
+            p.alignment = WD_ALIGN_PARAGRAPH.RIGHT
+            _set_run_font(
+                p.add_run(confidential),
+                FONT_CN_BODY,
+                FONT_EN,
+                11,
+                color_hex=COLOR_ACCENT,
+            )
+            p.paragraph_format.space_after = Pt(80)
+        else:
+            p = self.doc.add_paragraph()
+            p.paragraph_format.space_after = Pt(100)
+
+        if subtitle:
+            p = self.doc.add_paragraph()
+            p.alignment = WD_ALIGN_PARAGRAPH.CENTER
+            _set_run_font(
+                p.add_run(subtitle),
+                FONT_CN_HEADING,
+                FONT_EN,
+                18,
+                color_hex=COLOR_PRIMARY,
+            )
+            p.paragraph_format.space_after = Pt(6)
+
+        # 装饰线
+        p = self.doc.add_paragraph()
+        p.alignment = WD_ALIGN_PARAGRAPH.CENTER
+        _set_para_border(p, "bottom", 8, COLOR_PRIMARY)
+        p.paragraph_format.space_after = Pt(20)
+
+        # 主标题
+        p = self.doc.add_paragraph()
+        p.alignment = WD_ALIGN_PARAGRAPH.CENTER
+        _set_run_font(
+            p.add_run(title),
+            FONT_CN_HEADING,
+            FONT_EN,
+            26,
+            bold=True,
+            color_hex=COLOR_PRIMARY,
+        )
+        p.paragraph_format.space_after = Pt(12)
+
+        # 副装饰线
+        p = self.doc.add_paragraph()
+        p.alignment = WD_ALIGN_PARAGRAPH.CENTER
+        _set_para_border(p, "bottom", 4, COLOR_LIGHT_LINE)
+        p.paragraph_format.space_after = Pt(60)
+
+        if date_text:
+            p = self.doc.add_paragraph()
+            p.alignment = WD_ALIGN_PARAGRAPH.CENTER
+            _set_run_font(
+                p.add_run(date_text), FONT_CN_BODY, FONT_EN, 14, color_hex=COLOR_BODY
+            )
+
+        self.doc.add_page_break()
+        return self
+
+    # ── 目录 ────────────────────────────────────────────────────
+
+    def add_toc(self, title: str = "目  录", levels: int = 3):
+        """插入目录域（在 Word 中按 Ctrl+A → F9 更新）。"""
+        p = self.doc.add_paragraph()
+        p.alignment = WD_ALIGN_PARAGRAPH.CENTER
+        _set_run_font(
+            p.add_run(title),
+            FONT_CN_HEADING,
+            FONT_EN,
+            16,
+            bold=True,
+            color_hex=COLOR_PRIMARY,
+        )
+        p.paragraph_format.space_after = Pt(20)
+        _set_para_border(p, "bottom", 4, COLOR_PRIMARY)
+
+        pt = self.doc.add_paragraph()
+        _add_field(pt, f'TOC \\o "1-{levels}" \\h \\z \\u')
+
+        ph = self.doc.add_paragraph()
+        _set_run_font(
+            ph.add_run("（在 Word 中按 Ctrl+A → F9 更新目录）"),
+            FONT_CN_BODY,
+            FONT_EN,
+            9,
+            color_hex=COLOR_HINT,
+        )
+        ph.paragraph_format.space_before = Pt(6)
+
+        self.doc.add_page_break()
+        return self
+
+    # ── 页眉页脚 ────────────────────────────────────────────────
+
+    def setup_header(self, text: str = ""):
+        """设置页眉（首页无页眉）"""
+        sec = self.doc.sections[0]
+        sec.different_first_page_header_footer = True
+        header = sec.header
+        header.is_linked_to_previous = False
+        for p in header.paragraphs:
+            p._p.getparent().remove(p._p)
+        p = header.add_paragraph()
+        if text:
+            _set_run_font(
+                p.add_run(text), FONT_CN_BODY, FONT_EN, 9, color_hex=COLOR_GRAY_TEXT
+            )
+        p.alignment = WD_ALIGN_PARAGRAPH.RIGHT
+        _set_para_border(p, "bottom", 4, COLOR_LIGHT_LINE)
+        return self
+
+    def setup_footer(self, left: str = "", right: str = "page_number"):
+        """设置页脚。
+
+        Args:
+            left: 左侧文本
+            right: "page_number"=页码 | "page_x_of_y"=第X页共Y页 | 自定义文本
+        """
+        sec = self.doc.sections[0]
+        sec.different_first_page_header_footer = True
+        footer = sec.footer
+        footer.is_linked_to_previous = False
+        for p in footer.paragraphs:
+            p._p.getparent().remove(p._p)
+
+        tw = sec.page_width - sec.left_margin - sec.right_margin
+        p = footer.add_paragraph()
+        p.paragraph_format.tab_stops.add_tab_stop(tw, WD_TAB_ALIGNMENT.RIGHT)
+
+        if left:
+            _set_run_font(
+                p.add_run(left), FONT_CN_BODY, FONT_EN, 9, color_hex=COLOR_GRAY_TEXT
+            )
+        r = p.add_run()
+        r.add_tab()
+
+        if right == "page_number":
+            _add_field(p, "PAGE")
+        elif right == "page_x_of_y":
+            _add_field(p, "PAGE")
+            rr = p.add_run(" / ")
+            _set_run_font(rr, FONT_EN, FONT_EN, 9, color_hex=COLOR_GRAY_TEXT)
+            _add_field(p, "NUMPAGES")
+        else:
+            _set_run_font(
+                p.add_run(right), FONT_CN_BODY, FONT_EN, 9, color_hex=COLOR_GRAY_TEXT
+            )
+
+        _set_para_border(p, "top", 4, COLOR_LIGHT_LINE)
+        return self
+
+    # ── 内容元素 ────────────────────────────────────────────────
+
+    def add_heading_1(self, text: str):
+        """一级标题"""
+        p = self.doc.add_paragraph(style=self._style_h1)
+        _set_run_font(
+            p.add_run(text),
+            FONT_CN_HEADING,
+            FONT_EN,
+            16,
+            bold=True,
+            color_hex=COLOR_PRIMARY,
+        )
+        return self
+
+    def add_heading_2(self, text: str):
+        """二级标题"""
+        p = self.doc.add_paragraph(style=self._style_h2)
+        _set_run_font(
+            p.add_run(text),
+            FONT_CN_HEADING,
+            FONT_EN,
+            14,
+            bold=True,
+            color_hex=COLOR_PRIMARY,
+        )
+        return self
+
+    def add_heading_3(self, text: str):
+        """三级标题"""
+        p = self.doc.add_paragraph(style=self._style_h3)
+        _set_run_font(
+            p.add_run(text),
+            FONT_CN_HEADING,
+            FONT_EN,
+            12,
+            bold=True,
+            color_hex=COLOR_PRIMARY,
+        )
+        return self
+
+    def add_body(self, text: str):
+        """正文段落（首行缩进）"""
+        if not text:
+            return self
+        p = self.doc.add_paragraph(style=self._style_body)
+        _set_run_font(p.add_run(text), FONT_CN_BODY, FONT_EN, 12, color_hex=COLOR_BODY)
+        return self
+
+    def add_body_no_indent(self, text: str):
+        """正文段落（无缩进）"""
+        if not text:
+            return self
+        p = self.doc.add_paragraph()
+        _set_run_font(p.add_run(text), FONT_CN_BODY, FONT_EN, 12, color_hex=COLOR_BODY)
+        p.paragraph_format.line_spacing_rule = WD_LINE_SPACING.MULTIPLE
+        p.paragraph_format.line_spacing = 1.5
+        return self
+
+    def add_list_item(self, text: str, level: int = 0):
+        """列表项"""
+        style = "List Bullet" if level == 0 else "List Bullet 2"
+        p = self.doc.add_paragraph(style=style)
+        _set_run_font(p.add_run(text), FONT_CN_BODY, FONT_EN, 12, color_hex=COLOR_BODY)
+        return self
+
+    def add_space(self, pt: float = 12):
+        """空行"""
+        p = self.doc.add_paragraph()
+        p.paragraph_format.space_after = Pt(pt)
+        _set_run_font(p.add_run(""), FONT_CN_BODY, FONT_EN, pt)
+        return self
+
+    def add_page_break(self):
+        """分页"""
+        self.doc.add_page_break()
+        return self
+
+    def add_note_box(self, text: str):
+        """带边框的提示框"""
+        p = self.doc.add_paragraph()
+        p.paragraph_format.left_indent = Cm(0.5)
+        p.paragraph_format.right_indent = Cm(0.5)
+        p.paragraph_format.space_before = Pt(8)
+        p.paragraph_format.space_after = Pt(8)
+        _set_para_border(p, "top", 6, COLOR_ACCENT)
+        _set_para_border(p, "bottom", 6, COLOR_ACCENT)
+        _set_run_font(
+            p.add_run(text), FONT_CN_BODY, FONT_EN, 11, color_hex=COLOR_ACCENT
+        )
+        return self
+
+    def add_signature(self, items: List[Tuple[str, str]]):
+        """签名块。items = [(标签, 值), ...]"""
+        p = self.doc.add_paragraph()
+        p.paragraph_format.space_before = Pt(36)
+        for i, (label, value) in enumerate(items):
+            _set_run_font(
+                p.add_run(f"{label}：{value}"),
+                FONT_CN_BODY,
+                FONT_EN,
+                12,
+                color_hex=COLOR_BODY,
+            )
+            if i < len(items) - 1:
+                p.add_run("\n")
+        p.paragraph_format.line_spacing = 2.0
+        return self
+
+    # ── 表格 ────────────────────────────────────────────────────
+
+    def add_table(
+        self,
+        headers: List[str],
+        rows: List[List],
+        col_widths: Optional[List[float]] = None,
+        caption: str = "",
+    ):
+        """创建专业表格（深色表头 + 交替行色）。
+
+        Args:
+            headers: 表头
+            rows: 数据行
+            col_widths: 列宽比例，如 [2,3,2]
+            caption: 表题
+        """
+        if caption:
+            p = self.doc.add_paragraph()
+            _set_run_font(
+                p.add_run(caption),
+                FONT_CN_HEADING,
+                FONT_EN,
+                11,
+                bold=True,
+                color_hex=COLOR_BODY,
+            )
+            p.paragraph_format.space_after = Pt(4)
+
+        ncols = len(headers)
+        table = self.doc.add_table(rows=len(rows) + 1, cols=ncols)
+        table.style = "Table Grid"
+        table.alignment = WD_TABLE_ALIGNMENT.CENTER
+        table.autofit = True
+
+        # 表头
+        for j, h in enumerate(headers):
+            c = table.rows[0].cells[j]
+            c.text = ""
+            cp = c.paragraphs[0]
+            cp.alignment = WD_ALIGN_PARAGRAPH.CENTER
+            _set_run_font(
+                cp.add_run(h),
+                FONT_CN_HEADING,
+                FONT_EN,
+                10.5,
+                bold=True,
+                color_hex=COLOR_WHITE,
+            )
+            _set_cell_shading(c, COLOR_PRIMARY)
+            c.vertical_alignment = WD_ALIGN_VERTICAL.CENTER
+
+        # 数据行
+        for i, row in enumerate(rows):
+            for j, val in enumerate(row):
+                c = table.rows[i + 1].cells[j]
+                c.text = ""
+                cp = c.paragraphs[0]
+                is_num = isinstance(val, (int, float))
+                cp.alignment = (
+                    WD_ALIGN_PARAGRAPH.CENTER if is_num else WD_ALIGN_PARAGRAPH.LEFT
+                )
+                _set_run_font(
+                    cp.add_run(str(val)),
+                    FONT_CN_BODY,
+                    FONT_EN,
+                    10.5,
+                    color_hex=COLOR_BODY,
+                )
+                if i % 2 == 1:
+                    _set_cell_shading(c, COLOR_TABLE_ALT)
+
+        # 列宽
+        if col_widths and len(col_widths) == ncols:
+            total = sum(col_widths)
+            for j, w in enumerate(col_widths):
+                for row in table.rows:
+                    row.cells[j].width = Cm(15.0 * w / total)
+
+        self.add_space(6)
+        return self
+
+    def add_kv_table(self, items: List[Tuple[str, str]], label_width: float = 3.5):
+        """键值对表格。"""
+        table = self.doc.add_table(rows=len(items), cols=2)
+        table.style = "Table Grid"
+        table.alignment = WD_TABLE_ALIGNMENT.LEFT
+        for i, (k, v) in enumerate(items):
+            ck = table.rows[i].cells[0]
+            ck.text = ""
+            _set_cell_shading(ck, COLOR_LIGHT_BG)
+            _set_run_font(
+                ck.paragraphs[0].add_run(k),
+                FONT_CN_HEADING,
+                FONT_EN,
+                10.5,
+                bold=True,
+                color_hex=COLOR_PRIMARY,
+            )
+            ck.width = Cm(label_width)
+            cv = table.rows[i].cells[1]
+            cv.text = ""
+            _set_run_font(
+                cv.paragraphs[0].add_run(str(v)),
+                FONT_CN_BODY,
+                FONT_EN,
+                10.5,
+                color_hex=COLOR_BODY,
+            )
+        self.add_space(6)
+        return self
+
+    # ── 保存 ────────────────────────────────────────────────────
+
+    def save(self, path: str):
+        """保存文档。"""
+        self.doc.save(str(path))
+        return self

@@ -66,3 +66,16 @@ output/
 # 日志
 *.log
 audit_trail_*.json
+
+# 工具运行时产物
+.playwright-cli/
+.workbuddy/
+screenshots/
+
+# 图片/截图（非项目资源）
+*.png
+*.jpg
+*.jpeg
+
+# 嵌套 Git 仓库（当作普通目录处理，不提交子模块）
+tools/audit_note_filler_v2/
