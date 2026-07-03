@@ -235,6 +235,19 @@ def _set_table_borders_black(table, sz: int = 4):
     tblPr.append(parse_xml(xml))
 
 
+def _disable_table_style_look(table):
+    """关闭 w:tblLook 的条件格式应用，防止样式覆盖显式单元格设置。"""
+    tblPr = table._tbl.tblPr
+    look = tblPr.find(qn("w:tblLook"))
+    if look is not None:
+        look.set(qn("w:firstRow"), "0")
+        look.set(qn("w:firstColumn"), "0")
+        look.set(qn("w:lastRow"), "0")
+        look.set(qn("w:lastColumn"), "0")
+        look.set(qn("w:noHBand"), "1")
+        look.set(qn("w:noVBand"), "1")
+
+
 def _set_table_width(table, width_cm: float):
     """设置表格整体宽度（dxa 单位）。
 
@@ -644,6 +657,7 @@ class DocBuilder:
         ncols = len(headers)
         table = self.doc.add_table(rows=len(rows) + 1, cols=ncols)
         table.style = "Table Grid"
+        _disable_table_style_look(table)
         table.alignment = WD_TABLE_ALIGNMENT.CENTER
         table.autofit = False
         _set_table_borders_black(table)
@@ -711,6 +725,7 @@ class DocBuilder:
         """
         table = self.doc.add_table(rows=len(items), cols=2)
         table.style = "Table Grid"
+        _disable_table_style_look(table)
         table.alignment = WD_TABLE_ALIGNMENT.CENTER
         table.autofit = False
         _set_table_borders_black(table)
