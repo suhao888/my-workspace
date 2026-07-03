@@ -79,15 +79,10 @@ def main():
     b.setup_page().setup_styles(body_size=11, line_spacing=1.35)
 
     # ══════════════════════════════════════
-    # 封面
+    # 文档标题（非审计报告类文档不用封面）
     # ══════════════════════════════════════
-    b.add_cover(
-        title="知识库标准文件更新报告",
-        subtitle="知识库标准文件 2026年7月 更新汇总",
-        date_text="2026年7月3日",
-        confidential="内部参考",
-    )
-    b.add_toc()
+    b.add_heading_1("知识库标准文件更新报告")
+    b.add_body_no_indent("编制日期：2026年7月3日")
 
     # ══════════════════════════════════════
     # 概述
@@ -139,7 +134,9 @@ def main():
                 ("文件大小", f"{info['size_kb']} KB"),
                 ("总行数", f"{info['line_count']} 行"),
                 ("最后修改", info["mtime"]),
-            ]
+            ],
+            label_width=3.0,
+            total_width=15.0,
         )
 
         b.add_heading_2("（一）内容结构")
@@ -147,10 +144,9 @@ def main():
         if sections:
             for sec in sections:
                 if sec["level"] == 1:
-                    # 一级标题作为段落
-                    b.add_body(sec["title"])
+                    b.add_body_no_indent(sec["title"])
                 elif sec["level"] == 2:
-                    b.add_list_item(sec["title"])
+                    b.add_body_no_indent(sec["title"])
         else:
             b.add_body("（无结构化章节信息）")
 
@@ -165,7 +161,7 @@ def main():
             for dl in desc_lines[:3]:
                 if dl.startswith("#"):
                     dl = dl.lstrip("# ").strip()
-                b.add_body(dl)
+                b.add_body_no_indent(dl)
 
     # ══════════════════════════════════════
     # 签名

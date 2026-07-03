@@ -612,12 +612,25 @@ class DocBuilder:
         self.add_space(6)
         return self
 
-    def add_kv_table(self, items: List[Tuple[str, str]], label_width: float = 3.5):
-        """键值对表格（全黑边框，标签列浅灰背景，内容居中）。"""
+    def add_kv_table(
+        self,
+        items: List[Tuple[str, str]],
+        label_width: float = 3.0,
+        total_width: float = 15.0,
+    ):
+        """键值对表格（全黑边框，标签列浅灰背景，内容居中）。
+
+        Args:
+            items: 键值对列表
+            label_width: 标签列宽（cm）
+            total_width: 表格总宽（cm），默认 15.0 以匹配 add_table 的总宽
+        """
         table = self.doc.add_table(rows=len(items), cols=2)
         table.style = "Table Grid"
         table.alignment = WD_TABLE_ALIGNMENT.CENTER
+        table.autofit = True
         _set_table_borders_black(table)
+        val_width = max(total_width - label_width, 1.0)
         for i, (k, v) in enumerate(items):
             ck = table.rows[i].cells[0]
             ck.text = ""
@@ -645,6 +658,7 @@ class DocBuilder:
                 color_hex=COLOR_BLACK,
             )
             cv.vertical_alignment = WD_ALIGN_VERTICAL.CENTER
+            cv.width = Cm(val_width)
         self.add_space(6)
         return self
 
