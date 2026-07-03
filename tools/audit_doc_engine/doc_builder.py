@@ -63,11 +63,72 @@ def _hex_to_rgb(hex_str: str) -> RGBColor:
     return RGBColor(int(h[0:2], 16), int(h[2:4], 16), int(h[4:6], 16))
 
 
+def _set_run_font_xml(
+    r, text, font_cn, font_en, size_pt, bold=False, color_hex=COLOR_BLACK
+):
+    """通过 XML 设置 run 的字体属性，避免 python-docx API 副作用。"""
+    rPr = OxmlElement("w:rPr")
+    # 字体
+    rFonts = OxmlElement("w:rFonts")
+    rFonts.set(qn("w:ascii"), font_en)
+    rFonts.set(qn("w:hAnsi"), font_en)
+    rFonts.set(qn("w:eastAsia"), font_cn)
+    rPr.append(rFonts)
+    # 字号（单位：half-point）
+    sz = OxmlElement("w:sz")
+    sz.set(qn("w:val"), str(int(size_pt * 2)))
+    rPr.append(sz)
+    szCs = OxmlElement("w:szCs")
+    szCs.set(qn("w:val"), str(int(size_pt * 2)))
+    rPr.append(szCs)
+    # 颜色
+    clr = OxmlElement("w:color")
+    clr.set(qn("w:val"), color_hex.lstrip("#"))
+    rPr.append(clr)
+    # 加粗
+    if bold:
+        b = OxmlElement("w:b")
+        rPr.append(b)
+    r.insert(0, rPr)
+    # 文字内容
+    t = OxmlElement("w:t")
+    t.set(qn("xml:space"), "preserve")
+    t.text = text
+    r.append(t)
+
+
 def _set_cell_shading(cell, color_hex: str):
+    tcPr = cell._tc.get_or_add_tcPr()
+    old = tcPr.find(qn("w:shd"))
+    if old is not None:
+        tcPr.remove(old)
     shading = OxmlElement("w:shd")
     shading.set(qn("w:fill"), color_hex)
     shading.set(qn("w:val"), "clear")
-    cell._tc.get_or_add_tcPr().append(shading)
+    tcPr.append(shading)
+
+
+def _set_cell_vcenter(cell):
+    """通过 XML 设置单元格上下居中，不受 python-docx API 缓存影响。"""
+    tcPr = cell._tc.get_or_add_tcPr()
+    old = tcPr.find(qn("w:vAlign"))
+    if old is not None:
+        tcPr.remove(old)
+    el = OxmlElement("w:vAlign")
+    el.set(qn("w:val"), "center")
+    tcPr.append(el)
+
+
+def _set_cell_center(cell):
+    """通过 XML 设置单元格文字左右居中。"""
+    p = cell.paragraphs[0]
+    pPr = p._p.get_or_add_pPr()
+    old = pPr.find(qn("w:jc"))
+    if old is not None:
+        pPr.remove(old)
+    jc = OxmlElement("w:jc")
+    jc.set(qn("w:val"), "center")
+    pPr.append(jc)
 
 
 def _set_para_border(para, edge: str, sz: int = 4, color: str = COLOR_BORDER):
@@ -587,37 +648,42 @@ class DocBuilder:
         table.autofit = False
         _set_table_borders_black(table)
 
-        # 表头（浅灰背景，黑色文字，居中）
+        # 表头（黑色文字，上下左右居中，无底纹保证颜色一致）
         for j, h in enumerate(headers):
             c = table.rows[0].cells[j]
-            c.text = ""
-            cp = c.paragraphs[0]
-            cp.alignment = WD_ALIGN_PARAGRAPH.CENTER
-            _set_run_font(
-                cp.add_run(h),
-                FONT_CN_BODY,
-                FONT_EN,
-                10.5,
-                color_hex=COLOR_BLACK,
-            )
-            _set_cell_shading(c, COLOR_LIGHT_BG)
-            c.vertical_alignment = WD_ALIGN_VERTICAL.CENTER
+            # 清空 cell 内容后直接 XML 操作，绕过 python-docx 缓存问题
+            tc = c._tc
+            for child in list(tc):
+                tag = child.tag.split("}")[-1]
+                if tag != "w:tcPr":
+                    tc.remove(child)
+            p = OxmlElement("w:p")
+            tc.append(p)
+            r = OxmlElement("w:r")
+            p.append(r)
+            # 设置文字
+            _set_run_font_xml(r, h, FONT_CN_BODY, FONT_EN, 10.5, color_hex=COLOR_BLACK)
+            _set_cell_vcenter(c)
+            _set_cell_center(c)
 
-        # 数据行（居中，上下居中，纯黑色）
+        # 数据行（居中，上下居中，纯黑色，无底纹）
         for i, row in enumerate(rows):
             for j, val in enumerate(row):
                 c = table.rows[i + 1].cells[j]
-                c.text = ""
-                cp = c.paragraphs[0]
-                cp.alignment = WD_ALIGN_PARAGRAPH.CENTER
-                _set_run_font(
-                    cp.add_run(str(val)),
-                    FONT_CN_BODY,
-                    FONT_EN,
-                    10.5,
-                    color_hex=COLOR_BLACK,
+                tc = c._tc
+                for child in list(tc):
+                    tag = child.tag.split("}")[-1]
+                    if tag != "w:tcPr":
+                        tc.remove(child)
+                p = OxmlElement("w:p")
+                tc.append(p)
+                r = OxmlElement("w:r")
+                p.append(r)
+                _set_run_font_xml(
+                    r, str(val), FONT_CN_BODY, FONT_EN, 10.5, color_hex=COLOR_BLACK
                 )
-                c.vertical_alignment = WD_ALIGN_VERTICAL.CENTER
+                _set_cell_vcenter(c)
+                _set_cell_center(c)
 
         # 列宽 + 固定总宽
         if col_widths and len(col_widths) == ncols:
@@ -651,31 +717,34 @@ class DocBuilder:
         val_width = max(total_width - label_width, 1.0)
         for i, (k, v) in enumerate(items):
             ck = table.rows[i].cells[0]
-            ck.text = ""
-            cpk = ck.paragraphs[0]
-            cpk.alignment = WD_ALIGN_PARAGRAPH.CENTER
-            _set_cell_shading(ck, COLOR_LIGHT_BG)
-            _set_run_font(
-                cpk.add_run(k),
-                FONT_CN_BODY,
-                FONT_EN,
-                10.5,
-                color_hex=COLOR_BLACK,
-            )
-            ck.vertical_alignment = WD_ALIGN_VERTICAL.CENTER
+            tc = ck._tc
+            for child in list(tc):
+                tag = child.tag.split("}")[-1]
+                if tag != "w:tcPr":
+                    tc.remove(child)
+            p = OxmlElement("w:p")
+            tc.append(p)
+            r = OxmlElement("w:r")
+            p.append(r)
+            _set_run_font_xml(r, k, FONT_CN_BODY, FONT_EN, 10.5, color_hex=COLOR_BLACK)
+            _set_cell_vcenter(ck)
+            _set_cell_center(ck)
             ck.width = Cm(label_width)
             cv = table.rows[i].cells[1]
-            cv.text = ""
-            cpv = cv.paragraphs[0]
-            cpv.alignment = WD_ALIGN_PARAGRAPH.CENTER
-            _set_run_font(
-                cpv.add_run(str(v)),
-                FONT_CN_BODY,
-                FONT_EN,
-                10.5,
-                color_hex=COLOR_BLACK,
+            tc2 = cv._tc
+            for child in list(tc2):
+                tag = child.tag.split("}")[-1]
+                if tag != "w:tcPr":
+                    tc2.remove(child)
+            p2 = OxmlElement("w:p")
+            tc2.append(p2)
+            r2 = OxmlElement("w:r")
+            p2.append(r2)
+            _set_run_font_xml(
+                r2, str(v), FONT_CN_BODY, FONT_EN, 10.5, color_hex=COLOR_BLACK
             )
-            cv.vertical_alignment = WD_ALIGN_VERTICAL.CENTER
+            _set_cell_vcenter(cv)
+            _set_cell_center(cv)
             cv.width = Cm(val_width)
         _set_table_width(table, total_width)
         self.add_space(6)
