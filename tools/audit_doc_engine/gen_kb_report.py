@@ -9,7 +9,7 @@
  输出: D:\\Users\\12844\\Desktop\\知识库标准文件更新报告_20260703.docx
 """
 
-import os, sys, re, datetime
+import os, sys, re, datetime, shutil, time
 from pathlib import Path
 
 _PROJECT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
@@ -25,6 +25,9 @@ FILES = [
     ("注册会计师法规（Comprehensive Laws）", "comprehensive-laws.md"),
 ]
 
+OUTPUT = r"D:\Users\12844\Desktop\知识库标准文件更新报告_20260703.docx"
+TEMP = r"C:\Users\12844\AppData\Local\Temp\__kb_report_temp.docx"
+
 # ── 文件解析 ──
 
 
@@ -35,32 +38,17 @@ def parse_md_sections(filepath: Path):
     with open(filepath, "r", encoding="utf-8") as f:
         lines = f.readlines()
     sections = []
-    current_h1 = None
-    current_h2 = None
-    h1_content = []
-    h2_content = []
     for line in lines:
         if line.startswith("## ") and not line.startswith("### "):
-            # 二级标题，紧跟在 h2 下
-            if current_h2:
-                h2_content.append(line.strip())
             title = line.strip("# \n")
             sections.append({"level": 2, "title": title, "lines": 1})
-            current_h2 = title
         elif line.startswith("# ") and not line.startswith("## "):
             title = line.strip("# \n")
             sections.append({"level": 1, "title": title, "lines": 1})
-            current_h1 = title
-            # 只保留 h1 下的前 3 段概要
-            h1_content = []
-        else:
-            if current_h1:
-                h1_content.append(line)
     return {"line_count": len(lines), "sections": sections}
 
 
 def get_file_info(filepath: Path):
-    """获取文件基本信息。"""
     if not filepath.exists():
         return {"size": 0, "mtime": "", "line_count": 0}
     stat = filepath.stat()
@@ -74,20 +62,17 @@ def get_file_info(filepath: Path):
 # ── 报告生成 ──
 
 
-def main():
+def generate(output_path: str):
     b = DocBuilder()
     b.setup_page().setup_styles(body_size=11, line_spacing=1.35)
 
-    # ══════════════════════════════════════
-    # 文档标题（非审计报告类文档不用封面）
-    # ══════════════════════════════════════
-    b.add_heading_1("知识库标准文件更新报告")
+    # 非审计报告——不加粗、无封面、无目录
+    bold = False
+
+    b.add_heading_1("知识库标准文件更新报告", bold=bold)
     b.add_body_no_indent("编制日期：2026年7月3日")
 
-    # ══════════════════════════════════════
-    # 概述
-    # ══════════════════════════════════════
-    b.add_heading_1("一、概述")
+    b.add_heading_1("一、概述", bold=bold)
     b.add_body(
         "本次更新涉及知识库标准文件目录下的三份核心标准文件，"
         "涵盖审计准则、企业会计准则解释和注册会计师法规三大领域。"
@@ -107,7 +92,6 @@ def main():
                 info.get("mtime", ""),
             ]
         )
-
     b.add_table(
         headers=["文件", "文件名", "大小", "篇幅", "更新日期"],
         rows=rows,
@@ -115,12 +99,10 @@ def main():
         caption="表：本次覆盖的标准文件",
     )
 
-    # ══════════════════════════════════════
     # 各文件详情
-    # ══════════════════════════════════════
     for idx, (label, fname) in enumerate(FILES, 1):
         sections_text = ("一", "二", "三")[idx - 1]
-        b.add_heading_1(f"{sections_text}、{label}")
+        b.add_heading_1(f"{sections_text}、{label}", bold=bold)
 
         filepath = KB_DIR / fname
         if not filepath.exists():
@@ -139,33 +121,27 @@ def main():
             total_width=15.0,
         )
 
-        b.add_heading_2("（一）内容结构")
+        b.add_heading_2("（一）内容结构", bold=bold)
         sections = info["sections"]
         if sections:
             for sec in sections:
-                if sec["level"] == 1:
-                    b.add_body_no_indent(sec["title"])
-                elif sec["level"] == 2:
-                    b.add_body_no_indent(sec["title"])
+                b.add_body_no_indent(sec["title"])
         else:
             b.add_body("（无结构化章节信息）")
 
-        # 读取文件前 5 行了解概要
         with open(filepath, "r", encoding="utf-8") as f:
             first_lines = [f.readline().strip() for _ in range(5)]
         desc_lines = [
-            l for l in first_lines if l and not l.startswith(">") and not l == "---"
+            l for l in first_lines if l and not l.startswith(">") and l != "---"
         ]
         if desc_lines:
-            b.add_heading_2("（二）文件说明")
+            b.add_heading_2("（二）文件说明", bold=bold)
             for dl in desc_lines[:3]:
                 if dl.startswith("#"):
                     dl = dl.lstrip("# ").strip()
                 b.add_body_no_indent(dl)
 
-    # ══════════════════════════════════════
     # 签名
-    # ══════════════════════════════════════
     b.add_space(30)
     b.add_signature(
         [
@@ -175,13 +151,30 @@ def main():
         ]
     )
 
-    # ══════════════════════════════════════
-    # 保存
-    # ══════════════════════════════════════
-    output = r"D:\Users\12844\Desktop\知识库标准文件更新报告_20260703.docx"
-    b.save(output)
-    size = os.path.getsize(output) / 1024
-    print(f"文档已生成: {output} ({size:.1f} KB)")
+    b.save(output_path)
+    size = os.path.getsize(output_path) / 1024
+    print(f"文档已生成: {output_path} ({size:.1f} KB)")
+
+
+def main():
+    # 先保存到临时路径（避免被占用文件的锁）
+    generate(TEMP)
+
+    # 尝试覆盖目标文件
+    for attempt in range(3):
+        try:
+            if os.path.exists(OUTPUT):
+                os.remove(OUTPUT)
+            shutil.copy2(TEMP, OUTPUT)
+            print(f"已覆盖: {OUTPUT}")
+            os.remove(TEMP)
+            return
+        except PermissionError:
+            print(f"尝试 {attempt + 1}/3: 目标文件被占用，等待 2 秒...")
+            time.sleep(2)
+
+    print(f"覆盖失败，临时文件保留在: {TEMP}")
+    print(f'请关闭 Word 中的文件后再执行: copy /y "{TEMP}" "{OUTPUT}"')
 
 
 if __name__ == "__main__":

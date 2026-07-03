@@ -174,6 +174,23 @@ def _set_table_borders_black(table, sz: int = 4):
     tblPr.append(parse_xml(xml))
 
 
+def _set_table_width(table, width_cm: float):
+    """设置表格整体宽度（dxa 单位）。
+
+    Args:
+        table: python-docx Table 对象
+        width_cm: 宽度（厘米）
+    """
+    tblPr = table._tbl.tblPr
+    # 移除旧的 tblW
+    old = tblPr.find(qn("w:tblW"))
+    if old is not None:
+        tblPr.remove(old)
+    dxa = int(width_cm * 567)  # 1cm ≈ 567 DXA
+    xml = f'<w:tblW {nsdecls("w")} w:w="{dxa}" w:type="dxa"/>'
+    tblPr.append(parse_xml(xml))
+
+
 # ============================================================
 # DocBuilder
 # ============================================================
@@ -429,7 +446,7 @@ class DocBuilder:
 
     # ── 内容元素 ────────────────────────────────────────────────
 
-    def add_heading_1(self, text: str):
+    def add_heading_1(self, text: str, bold: bool = True):
         """一级标题"""
         p = self.doc.add_paragraph(style=self._style_h1)
         _set_run_font(
@@ -437,12 +454,12 @@ class DocBuilder:
             FONT_CN_HEADING,
             FONT_EN,
             16,
-            bold=True,
+            bold=bold,
             color_hex=COLOR_BLACK,
         )
         return self
 
-    def add_heading_2(self, text: str):
+    def add_heading_2(self, text: str, bold: bool = True):
         """二级标题"""
         p = self.doc.add_paragraph(style=self._style_h2)
         _set_run_font(
@@ -450,12 +467,12 @@ class DocBuilder:
             FONT_CN_HEADING,
             FONT_EN,
             14,
-            bold=True,
+            bold=bold,
             color_hex=COLOR_BLACK,
         )
         return self
 
-    def add_heading_3(self, text: str):
+    def add_heading_3(self, text: str, bold: bool = True):
         """三级标题"""
         p = self.doc.add_paragraph(style=self._style_h3)
         _set_run_font(
@@ -463,7 +480,7 @@ class DocBuilder:
             FONT_CN_HEADING,
             FONT_EN,
             12,
-            bold=True,
+            bold=bold,
             color_hex=COLOR_BLACK,
         )
         return self
@@ -567,7 +584,7 @@ class DocBuilder:
         table = self.doc.add_table(rows=len(rows) + 1, cols=ncols)
         table.style = "Table Grid"
         table.alignment = WD_TABLE_ALIGNMENT.CENTER
-        table.autofit = True
+        table.autofit = False
         _set_table_borders_black(table)
 
         # 表头（浅灰背景，黑色文字，居中）
@@ -602,12 +619,13 @@ class DocBuilder:
                 )
                 c.vertical_alignment = WD_ALIGN_VERTICAL.CENTER
 
-        # 列宽
+        # 列宽 + 固定总宽
         if col_widths and len(col_widths) == ncols:
             total = sum(col_widths)
             for j, w in enumerate(col_widths):
                 for row in table.rows:
                     row.cells[j].width = Cm(15.0 * w / total)
+        _set_table_width(table, 15.0)
 
         self.add_space(6)
         return self
@@ -628,7 +646,7 @@ class DocBuilder:
         table = self.doc.add_table(rows=len(items), cols=2)
         table.style = "Table Grid"
         table.alignment = WD_TABLE_ALIGNMENT.CENTER
-        table.autofit = True
+        table.autofit = False
         _set_table_borders_black(table)
         val_width = max(total_width - label_width, 1.0)
         for i, (k, v) in enumerate(items):
@@ -659,6 +677,7 @@ class DocBuilder:
             )
             cv.vertical_alignment = WD_ALIGN_VERTICAL.CENTER
             cv.width = Cm(val_width)
+        _set_table_width(table, total_width)
         self.add_space(6)
         return self
 
