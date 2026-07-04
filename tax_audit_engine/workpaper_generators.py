@@ -6,107 +6,32 @@
 from pathlib import Path
 from typing import List, Optional
 from openpyxl import Workbook
-from openpyxl.styles import Font, PatternFill, Alignment, Border, Side
-from openpyxl.utils import get_column_letter
 
 from tax_audit_engine.models import EnterpriseInfo
-
-
-# ============================================================
-# 样式（复用 workpaper_generator.Styles 的配色方案）
-# ============================================================
-
-
-class _S:
-    """Excel样式常量"""
-
-    HEADER_FILL = PatternFill(
-        start_color="4472C4", end_color="4472C4", fill_type="solid"
-    )
-    HEADER_FONT = Font(name="微软雅黑", size=10, bold=True, color="FFFFFF")
-    TITLE_FONT = Font(name="微软雅黑", size=14, bold=True)
-    SUBTITLE_FONT = Font(name="微软雅黑", size=10, bold=True)
-    NORMAL_FONT = Font(name="微软雅黑", size=10)
-    BOLD_FONT = Font(name="微软雅黑", size=10, bold=True)
-    SMALL_FONT = Font(name="微软雅黑", size=9, color="666666")
-    RESULT_FONT = Font(name="微软雅黑", size=10, bold=True, color="C00000")
-
-    LIGHT_BLUE = PatternFill(
-        start_color="D6E4F0", end_color="D6E4F0", fill_type="solid"
-    )
-    LIGHT_GRAY = PatternFill(
-        start_color="F2F2F2", end_color="F2F2F2", fill_type="solid"
-    )
-    LIGHT_YELLOW = PatternFill(
-        start_color="FFF2CC", end_color="FFF2CC", fill_type="solid"
-    )
-    LIGHT_GREEN = PatternFill(
-        start_color="E2EFDA", end_color="E2EFDA", fill_type="solid"
-    )
-    WHITE_FILL = PatternFill(
-        start_color="FFFFFF", end_color="FFFFFF", fill_type="solid"
-    )
-
-    THIN = Border(
-        left=Side(style="thin"),
-        right=Side(style="thin"),
-        top=Side(style="thin"),
-        bottom=Side(style="thin"),
-    )
-    CENTER = Alignment(horizontal="center", vertical="center")
-    LEFT = Alignment(horizontal="left", vertical="center")
-    RIGHT = Alignment(horizontal="right", vertical="center")
-    WRAP = Alignment(wrap_text=True, vertical="top")
-
-    AMOUNT = "#,##0.00"
-    INT_FMT = "#,##0"
-    PCT_FMT = "0.00%"
-
-
-def _set_cols(ws, widths):
-    for i, w in enumerate(widths, 1):
-        ws.column_dimensions[get_column_letter(i)].width = w
-
-
-def _header_row(ws, row, headers):
-    for col, h in enumerate(headers, 1):
-        c = ws.cell(row=row, column=col, value=h)
-        c.font = _S.HEADER_FONT
-        c.fill = _S.HEADER_FILL
-        c.alignment = _S.CENTER
-        c.border = _S.THIN
-
-
-def _data_cell(ws, row, col, value, fmt=None, bold=False, fill=None):
-    c = ws.cell(row=row, column=col, value=value)
-    c.font = _S.BOLD_FONT if bold else _S.NORMAL_FONT
-    c.border = _S.THIN
-    if fill:
-        c.fill = fill
-    if fmt:
-        c.number_format = fmt
-    if isinstance(value, (int, float)):
-        c.alignment = _S.RIGHT
-    return c
-
-
-def _write_row(ws, row, values, fmt=None, bold=False, fill_=None):
-    for col, v in enumerate(values, 1):
-        _data_cell(ws, row, col, v, fmt=fmt, bold=bold, fill=fill_)
-
-
-def _cover_info(ws, start_row, info_items):
-    """写入封面信息行列表"""
-    r = start_row
-    for label, value in info_items:
-        ws.cell(row=r, column=2, value=label).font = _S.BOLD_FONT
-        ws.cell(row=r, column=3, value=value).font = _S.NORMAL_FONT
-        r += 1
-    return r
-
+from tax_audit_engine.excel_styles import (
+    F,
+    Fill,
+    B,
+    A,
+    NF,
+    set_cols,
+    header_row,
+    data_cell,
+    write_row,
+    write_row_ex,
+    cover_info,
+    merge_title,
+    section_row,
+    set_vcenter,
+    freeze_header,
+    auto_filter,
+    page_setup,
+    auto_width,
+    highlight_cells,
+)
 
 # ============================================================
-# RDGenerator
+# RDGenerator — 研发费用加计扣除工作底稿
 # ============================================================
 
 
@@ -133,12 +58,10 @@ class RDGenerator:
     def _cover(self):
         ws = self.wb.active
         ws.title = "封面"
-        _set_cols(ws, [3, 22, 35, 22, 3])
-        ws.merge_cells("B2:D2")
-        ws["B2"] = "研发费用加计扣除审核工作底稿"
-        ws["B2"].font = _S.TITLE_FONT
-        ws["B2"].alignment = _S.CENTER
-        _cover_info(
+        set_cols(ws, [3, 22, 40, 3])
+        page_setup(ws, landscape=False, fit_w=1)
+        merge_title(ws, 2, "研发费用加计扣除审核工作底稿", 3)
+        cover_info(
             ws,
             4,
             [
@@ -147,8 +70,8 @@ class RDGenerator:
                 ("所属行业", self.ent.industry or ""),
                 (
                     "审核年度",
-                    f"{getattr(self.ent, 'tax_year', '')}年度"
-                    if hasattr(self.ent, "tax_year")
+                    f"{self.ent.tax_year}年度"
+                    if hasattr(self.ent, "tax_year") and self.ent.tax_year
                     else "",
                 ),
                 ("加计扣除比例", "100%"),
@@ -156,32 +79,34 @@ class RDGenerator:
             ],
         )
         r = 12
-        ws.cell(row=r, column=2, value="汇总数据").font = _S.SUBTITLE_FONT
+        section_row(ws, r, "一、汇总数据", 3)
         r += 1
         for label, val in [
             ("账面研发费用合计", self.result.total_book),
             ("可加计扣除金额", self.result.qualifying_amount),
             ("加计扣除额", self.result.deduction_amount),
         ]:
-            ws.cell(row=r, column=2, value=label).font = _S.BOLD_FONT
+            ws.cell(row=r, column=2, value=label).font = F.BOLD
             c = ws.cell(row=r, column=3, value=val)
-            c.font = _S.NORMAL_FONT
-            c.number_format = _S.AMOUNT
+            c.font = F.NORMAL
+            c.number_format = NF.AMOUNT
+            c.border = B.THIN
+            ws.cell(row=r, column=2).border = B.THIN
             r += 1
         if self.result.has_other_limit_issue:
-            ws.cell(row=r, column=2, value="其他费用超限金额").font = _S.BOLD_FONT
+            ws.cell(row=r, column=2, value="其中：其他费用超限金额").font = F.BOLD
             c = ws.cell(row=r, column=3, value=self.result.other_limit_excess)
-            c.font = _S.RESULT_FONT
-            c.number_format = _S.AMOUNT
+            c.font = F.WARN
+            c.number_format = NF.AMOUNT
+            c.border = B.THIN
+            ws.cell(row=r, column=2).border = B.THIN
 
     def _project_detail(self):
         ws = self.wb.create_sheet("项目明细")
-        _set_cols(ws, [4, 8, 24, 12, 14, 14, 14, 14, 14, 14, 14])
-        ws.merge_cells("A1:J1")
-        ws["A1"] = "研发项目费用明细表"
-        ws["A1"].font = _S.TITLE_FONT
-        ws["A1"].alignment = _S.CENTER
-        _header_row(
+        set_cols(ws, [5, 8, 26, 12, 15, 15, 13, 13, 13, 13, 15])
+        page_setup(ws, landscape=True, fit_w=1)
+        merge_title(ws, 1, "研发项目费用明细表", 10)
+        header_row(
             ws,
             3,
             [
@@ -213,22 +138,17 @@ class RDGenerator:
                 proj.other_costs,
                 proj.total_book,
             ]
-            _write_row(
-                ws,
-                r,
-                vals,
-                fmt=_S.AMOUNT,
-                fill_=_S.WHITE_FILL if i % 2 else _S.LIGHT_GRAY,
-            )
-            # 前3列文字格式
-            for c in [1, 2, 3, 4]:
-                ws.cell(row=r, column=c).number_format = "@"
+            fill = Fill.ROW_EVEN if i % 2 == 0 else Fill.ROW_ODD
+            write_row(ws, r, vals, fmt=NF.AMOUNT, fill_=fill)
+            # 文字列用文本格式
+            for ci in [1, 2, 3, 4]:
+                ws.cell(row=r, column=ci).number_format = NF.TEXT
             r += 1
         # 合计行
         totals = [
             "",
             "",
-            "合计",
+            "合  计",
             "",
             sum(p.personnel_costs for p in self.result.projects),
             sum(p.direct_input for p in self.result.projects),
@@ -238,16 +158,17 @@ class RDGenerator:
             sum(p.other_costs for p in self.result.projects),
             sum(p.total_book for p in self.result.projects),
         ]
-        _write_row(ws, r, totals, fmt=_S.AMOUNT, bold=True, fill_=_S.LIGHT_BLUE)
+        write_row(ws, r, totals, fmt=NF.AMOUNT, bold=True, fill_=Fill.BLUE_LIGHT)
+        highlight_cells(ws, r, 11, Fill.BLUE_LIGHT, F.BOLD)
+        freeze_header(ws, 4)
+        auto_filter(ws, 3, 11)
 
     def _summary(self):
         ws = self.wb.create_sheet("3-01汇总表")
-        _set_cols(ws, [5, 30, 18, 18, 18])
-        ws.merge_cells("A1:D1")
-        ws["A1"] = "可加计扣除研发费用审核汇总表"
-        ws["A1"].font = _S.TITLE_FONT
-        ws["A1"].alignment = _S.CENTER
-        _header_row(ws, 3, ["行次", "项目", "账面金额", "可加计扣除金额", "差异"])
+        set_cols(ws, [5, 32, 18, 20, 18])
+        page_setup(ws, landscape=True, fit_w=1)
+        merge_title(ws, 1, "可加计扣除研发费用审核汇总表", 4)
+        header_row(ws, 3, ["行次", "项  目", "账面金额", "可加计扣除金额", "差  异"])
         rows = [
             ("一、人员人工费用", "personnel_costs"),
             ("二、直接投入费用", "direct_input"),
@@ -259,63 +180,100 @@ class RDGenerator:
         r = 4
         for label, attr in rows:
             book = sum(getattr(p, attr, 0) for p in self.result.projects)
-            _write_row(ws, r, [r - 3, label, book, book, 0], fmt=_S.AMOUNT)
+            qual = (
+                min(book, self.result.qualifying_amount)
+                if attr == "other_costs"
+                else book
+            )
+            write_row(ws, r, [r - 3, label, book, qual, qual - book], fmt=NF.AMOUNT)
             r += 1
         total_book = sum(p.total_book for p in self.result.projects)
-        _write_row(
+        write_row(
             ws,
             r,
             [
                 "",
-                "合计",
+                "合  计",
                 total_book,
                 self.result.qualifying_amount,
                 self.result.qualifying_amount - total_book,
             ],
-            fmt=_S.AMOUNT,
+            fmt=NF.AMOUNT,
             bold=True,
-            fill_=_S.LIGHT_YELLOW,
+            fill_=Fill.SUMMARY,
         )
+        highlight_cells(ws, r, 5, Fill.SUMMARY, F.BOLD)
         r += 2
-        ws.cell(row=r, column=2, value="加计扣除额").font = _S.BOLD_FONT
-        c = ws.cell(row=r, column=3, value=self.result.deduction_amount)
-        c.font = _S.RESULT_FONT
-        c.number_format = _S.AMOUNT
+        section_row(ws, r, "二、加计扣除计算", 4)
+        r += 1
+        for label, val in [
+            ("可加计扣除研发费用合计", self.result.qualifying_amount),
+            ("加计扣除比例", "100%"),
+            ("加计扣除额", self.result.deduction_amount),
+        ]:
+            ws.cell(row=r, column=2, value=label).font = F.BOLD
+            ws.cell(row=r, column=2).border = B.THIN
+            c = ws.cell(row=r, column=3, value=val)
+            if isinstance(val, (int, float)):
+                c.number_format = NF.AMOUNT
+            c.font = F.RESULT
+            c.border = B.THIN
+            r += 1
+        freeze_header(ws, 4)
 
     def _audit_check(self):
         ws = self.wb.create_sheet("3-02审核表")
-        _set_cols(ws, [5, 35, 18, 18])
-        ws.merge_cells("A1:C1")
-        ws["A1"] = "研发费用加计扣除优惠审核表"
-        ws["A1"].font = _S.TITLE_FONT
-        ws["A1"].alignment = _S.CENTER
-        _header_row(ws, 3, ["行次", "审核项目", "金额", "审核意见"])
+        set_cols(ws, [5, 38, 18, 18])
+        page_setup(ws, landscape=False, fit_w=1)
+        merge_title(ws, 1, "研发费用加计扣除优惠审核表", 3)
+        header_row(ws, 3, ["行次", "审核项目", "金  额", "审核意见"])
         rows = [
-            ("一、自主研发、合作研发、集中研发", self.result.qualifying_amount),
+            ("一、自主研发、合作研发、集中研发", self.result.qualifying_amount, True),
             (
                 "（一）人员人工费用",
                 sum(p.personnel_costs for p in self.result.projects),
+                False,
             ),
-            ("（二）直接投入费用", sum(p.direct_input for p in self.result.projects)),
-            ("（三）折旧费用", sum(p.depreciation for p in self.result.projects)),
-            ("（四）无形资产摊销", sum(p.amortization for p in self.result.projects)),
-            ("（五）设计费用", sum(p.design_trial for p in self.result.projects)),
-            ("（六）其他相关费用", sum(p.other_costs for p in self.result.projects)),
-            ("三、年度可加计扣除研发费用小计", self.result.qualifying_amount),
-            ("四、计入本年损益的加计扣除额", self.result.deduction_amount),
+            (
+                "（二）直接投入费用",
+                sum(p.direct_input for p in self.result.projects),
+                False,
+            ),
+            (
+                "（三）折旧费用",
+                sum(p.depreciation for p in self.result.projects),
+                False,
+            ),
+            (
+                "（四）无形资产摊销",
+                sum(p.amortization for p in self.result.projects),
+                False,
+            ),
+            (
+                "（五）设计费用",
+                sum(p.design_trial for p in self.result.projects),
+                False,
+            ),
+            (
+                "（六）其他相关费用",
+                sum(p.other_costs for p in self.result.projects),
+                False,
+            ),
+            ("三、年度可加计扣除研发费用小计", self.result.qualifying_amount, True),
+            ("四、计入本年损益的加计扣除额", self.result.deduction_amount, True),
         ]
         r = 4
-        for i, (label, val) in enumerate(rows, 1):
+        for i, (label, val, is_section) in enumerate(rows, 1):
             opinion = "通过" if val > 0 else ""
-            _write_row(ws, r, [i, label, val, opinion], fmt=_S.AMOUNT)
-            if i in (1, 8, 9):
-                for c in range(1, 5):
-                    ws.cell(row=r, column=c).fill = _S.LIGHT_BLUE
+            write_row(ws, r, [i, label, val, opinion], fmt=NF.AMOUNT)
+            if is_section:
+                highlight_cells(ws, r, 4, Fill.SECTION_BG, F.SECTION)
             r += 1
+        freeze_header(ws, 4)
 
 
 # ============================================================
-# FullTaxGenerator
+# FullTaxGenerator — 全税种核查底稿
 # ============================================================
 
 
@@ -340,12 +298,10 @@ class FullTaxGenerator:
     def _cover(self):
         ws = self.wb.active
         ws.title = "封面"
-        _set_cols(ws, [3, 22, 35, 3])
-        ws.merge_cells("B2:C2")
-        ws["B2"] = "全税种核查测算工作底稿"
-        ws["B2"].font = _S.TITLE_FONT
-        ws["B2"].alignment = _S.CENTER
-        _cover_info(
+        set_cols(ws, [3, 22, 40, 3])
+        page_setup(ws, landscape=False, fit_w=1)
+        merge_title(ws, 2, "全税种核查测算工作底稿", 3)
+        cover_info(
             ws,
             4,
             [
@@ -355,15 +311,36 @@ class FullTaxGenerator:
                 ("差异率阈值", "5%"),
             ],
         )
+        r = 10
+        section_row(ws, r, "一、核查结论", 3)
+        r += 1
+        high_risk = sum(
+            1
+            for item in self.result.item_details
+            if item.get("is_high_risk", abs(item.get("diff_rate", 0)) > 0.05)
+        )
+        ws.cell(row=r, column=2, value="高风险税种数").font = F.BOLD
+        ws.cell(row=r, column=2).border = B.THIN
+        c = ws.cell(row=r, column=3, value=high_risk)
+        c.font = F.WARN if high_risk > 0 else F.PASS
+        c.border = B.THIN
+        r += 1
+        ws.cell(row=r, column=2, value="核查结论").font = F.BOLD
+        ws.cell(row=r, column=2).border = B.THIN
+        c = ws.cell(
+            row=r,
+            column=3,
+            value="存在差异，需进一步核实" if high_risk > 0 else "无重大差异",
+        )
+        c.font = F.WARN if high_risk > 0 else F.PASS
+        c.border = B.THIN
 
     def _summary(self):
         ws = self.wb.create_sheet("2-01各税种汇总")
-        _set_cols(ws, [5, 20, 15, 18, 18, 18, 12, 8])
-        ws.merge_cells("A1:G1")
-        ws["A1"] = "各税种申报与认定对比表"
-        ws["A1"].font = _S.TITLE_FONT
-        ws["A1"].alignment = _S.CENTER
-        _header_row(
+        set_cols(ws, [5, 20, 15, 20, 20, 20, 13, 10])
+        page_setup(ws, landscape=True, fit_w=1)
+        merge_title(ws, 1, "各税种申报与认定对比表", 7)
+        header_row(
             ws,
             3,
             [
@@ -390,7 +367,12 @@ class FullTaxGenerator:
             total_act += item.get("actual_amount", 0)
             total_diff += diff
             risk_label = "!!高风险" if is_high else "正常"
-            _write_row(
+            fill = (
+                Fill.FAIL
+                if is_high
+                else (Fill.ROW_EVEN if i % 2 == 0 else Fill.ROW_ODD)
+            )
+            write_row(
                 ws,
                 r,
                 [
@@ -403,29 +385,30 @@ class FullTaxGenerator:
                     rate,
                     risk_label,
                 ],
-                fmt=_S.AMOUNT,
-                fill_=None if not is_high else _S.LIGHT_YELLOW,
+                fmt=NF.AMOUNT,
+                fill_=fill,
             )
-            # 差异率百分比格式
-            ws.cell(row=r, column=7).number_format = "0.00%"
+            ws.cell(row=r, column=3).number_format = NF.TEXT
+            ws.cell(row=r, column=7).number_format = NF.PCT
             r += 1
-        _write_row(
+        write_row(
             ws,
             r,
             ["", "合  计", "", total_dec, total_act, total_diff, "", ""],
-            fmt=_S.AMOUNT,
+            fmt=NF.AMOUNT,
             bold=True,
-            fill_=_S.LIGHT_BLUE,
+            fill_=Fill.BLUE_LIGHT,
         )
+        highlight_cells(ws, r, 8, Fill.BLUE_LIGHT, F.BOLD)
+        freeze_header(ws, 4)
+        auto_filter(ws, 3, 8)
 
     def _analysis(self):
         ws = self.wb.create_sheet("差异分析")
-        _set_cols(ws, [5, 20, 18, 18, 50])
-        ws.merge_cells("A1:D1")
-        ws["A1"] = "税种差异分析及审计建议"
-        ws["A1"].font = _S.TITLE_FONT
-        ws["A1"].alignment = _S.CENTER
-        _header_row(ws, 3, ["序号", "税种", "差异额", "差异率", "可能原因及建议"])
+        set_cols(ws, [5, 20, 18, 13, 55])
+        page_setup(ws, landscape=True, fit_w=1)
+        merge_title(ws, 1, "税种差异分析及审计建议", 4)
+        header_row(ws, 3, ["序号", "税种", "差异额", "差异率", "可能原因及建议"])
         r = 4
         for i, item in enumerate(self.result.item_details, 1):
             diff = item.get("difference", 0)
@@ -433,16 +416,27 @@ class FullTaxGenerator:
             if abs(diff) < 0.01:
                 continue
             reason = item.get("risk_reason", getattr(item, "risk_reason", ""))
-            _write_row(
-                ws, r, [i, item.get("tax_type", ""), diff, rate, reason], fmt=_S.AMOUNT
+            is_high = item.get("is_high_risk", abs(rate) > 0.05)
+            fill = Fill.FAIL if is_high else None
+            write_row(
+                ws,
+                r,
+                [i, item.get("tax_type", ""), diff, rate, reason],
+                fmt=NF.AMOUNT,
+                fill_=fill,
             )
-            ws.cell(row=r, column=4).number_format = "0.00%"
-            ws.cell(row=r, column=5).alignment = _S.WRAP
+            ws.cell(row=r, column=4).number_format = NF.PCT
+            ws.cell(row=r, column=5).alignment = A.WRAP
+            # 高风险行字体红色
+            if is_high:
+                data_cell(ws, r, 2, item.get("tax_type", ""), bold=True)
+            ws.row_dimensions[r].height = 36
             r += 1
+        freeze_header(ws, 4)
 
 
 # ============================================================
-# LossGenerator
+# LossGenerator — 财产损失税前扣除底稿
 # ============================================================
 
 
@@ -467,53 +461,85 @@ class LossGenerator:
     def _cover(self):
         ws = self.wb.active
         ws.title = "封面"
-        _set_cols(ws, [3, 25, 35, 3])
-        ws.merge_cells("B2:C2")
-        ws["B2"] = "企业资产损失税前扣除审核工作底稿"
-        ws["B2"].font = _S.TITLE_FONT
-        ws["B2"].alignment = _S.CENTER
+        set_cols(ws, [3, 25, 40, 3])
+        page_setup(ws, landscape=False, fit_w=1)
+        merge_title(ws, 2, "企业资产损失税前扣除审核工作底稿", 3)
         ent = self.loss_input.enterprise
-        _cover_info(
+        cover_info(
             ws,
             4,
             [
                 ("被审核单位名称", ent.name if ent else ""),
                 ("统一社会信用代码", ent.uscc if ent else ""),
+                (
+                    "审核年度",
+                    f"{getattr(ent, 'tax_year', '')}年度"
+                    if hasattr(ent, "tax_year")
+                    else "",
+                ),
                 ("审核依据", "国家税务总局公告2011年第25号"),
-                ("损失项数", str(self.result.item_count)),
-                ("申报损失合计", self.result.total_loss),
+                ("损失项数", f"{self.result.item_count} 项"),
             ],
         )
+        r = 11
+        section_row(ws, r, "一、审核汇总", 3)
+        r += 1
+        for label, val in [
+            ("可税前扣除损失", self.result.qualifying_loss),
+            ("不得扣除损失", self.result.disallowed_loss),
+            ("问题项数", len(self.result.issue_items)),
+        ]:
+            ws.cell(row=r, column=2, value=label).font = F.BOLD
+            ws.cell(row=r, column=2).border = B.THIN
+            c = ws.cell(row=r, column=3, value=val)
+            c.border = B.THIN
+            if isinstance(val, (int, float)):
+                c.number_format = NF.AMOUNT_INT
+            if label == "不得扣除损失" and val:
+                c.font = F.WARN
+            elif label == "问题项数" and val:
+                c.font = F.WARN
+            else:
+                c.font = F.NORMAL
+            r += 1
 
     def _summary(self):
         ws = self.wb.create_sheet("损失汇总")
-        _set_cols(ws, [5, 30, 18, 18, 18, 12])
-        ws.merge_cells("A1:E1")
-        ws["A1"] = "资产损失税前扣除审核汇总表"
-        ws["A1"].font = _S.TITLE_FONT
-        ws["A1"].alignment = _S.CENTER
-        _header_row(
-            ws, 3, ["序号", "项目", "账面净值", "可收回金额", "损失金额", "审核结论"]
+        set_cols(ws, [5, 6, 30, 18, 18, 18, 12])
+        page_setup(ws, landscape=True, fit_w=1)
+        merge_title(ws, 1, "资产损失税前扣除审核汇总表", 6)
+        header_row(
+            ws,
+            3,
+            ["序号", "编号", "项目", "账面净值", "可收回金额", "损失金额", "审核结论"],
         )
         r = 4
         for i, item in enumerate(self.result.item_results, 1):
             disallowed = item.get("disallowed", False)
             conclusion = "不得扣除" if disallowed else "可扣除"
-            fill_ = _S.LIGHT_YELLOW if disallowed else None
+            fill = (
+                Fill.FAIL
+                if disallowed
+                else (Fill.ROW_EVEN if i % 2 == 0 else Fill.ROW_ODD)
+            )
             vals = [
                 i,
+                item.get("loss_id", ""),
                 item.get("asset_name", f"损失{i}"),
                 item.get("book_value", 0),
                 item.get("recoverable", 0),
                 item.get("loss_amount", 0),
                 conclusion,
             ]
-            _write_row(ws, r, vals, fmt=_S.AMOUNT, fill_=fill_)
+            write_row(ws, r, vals, fmt=NF.AMOUNT, fill_=fill)
+            if disallowed:
+                data_cell(ws, r, 7, conclusion, bold=True)
             r += 1
-        _write_row(
+        write_row(
             ws,
             r,
             [
+                "",
                 "",
                 "合  计",
                 self.result.total_book_value,
@@ -521,29 +547,40 @@ class LossGenerator:
                 self.result.total_loss,
                 "",
             ],
-            fmt=_S.AMOUNT,
+            fmt=NF.AMOUNT,
             bold=True,
-            fill_=_S.LIGHT_BLUE,
+            fill_=Fill.BLUE_LIGHT,
         )
+        highlight_cells(ws, r, 7, Fill.BLUE_LIGHT, F.BOLD)
         r += 2
-        for label, val in [
-            ("可税前扣除损失", self.result.qualifying_loss),
-            ("不得扣除损失", self.result.disallowed_loss),
-        ]:
-            ws.cell(row=r, column=2, value=label).font = _S.BOLD_FONT
-            c = ws.cell(row=r, column=3, value=val)
-            c.font = _S.RESULT_FONT
-            c.number_format = _S.AMOUNT
+        section_row(ws, r, "二、分类汇总", 6)
+        r += 1
+        # 按类型分组合计
+        from collections import defaultdict
+
+        by_type = defaultdict(lambda: {"book": 0, "loss": 0})
+        for item in self.result.item_results:
+            cat = item.get("category", "其他")
+            by_type[cat]["book"] += item.get("book_value", 0)
+            by_type[cat]["loss"] += item.get("loss_amount", 0)
+        for cat, vals in sorted(by_type.items()):
+            write_row(
+                ws,
+                r,
+                ["", "", f"  {cat}", vals["book"], "", vals["loss"], ""],
+                fmt=NF.AMOUNT,
+                fill_=Fill.SUBHEADER,
+            )
             r += 1
+        freeze_header(ws, 4)
+        auto_filter(ws, 3, 7)
 
     def _detail(self):
         ws = self.wb.create_sheet("逐项审核")
-        _set_cols(ws, [5, 8, 20, 12, 14, 14, 14, 12, 12])
-        ws.merge_cells("A1:H1")
-        ws["A1"] = "资产损失逐项审核明细表"
-        ws["A1"].font = _S.TITLE_FONT
-        ws["A1"].alignment = _S.CENTER
-        _header_row(
+        set_cols(ws, [5, 8, 22, 13, 16, 16, 16, 10, 10])
+        page_setup(ws, landscape=True, fit_w=1)
+        merge_title(ws, 1, "资产损失逐项审核明细表", 8)
+        header_row(
             ws,
             3,
             [
@@ -560,7 +597,9 @@ class LossGenerator:
         )
         r = 4
         for i, item in enumerate(self.result.item_results, 1):
-            _write_row(
+            disallowed = item.get("disallowed", False)
+            fill = Fill.FAIL if disallowed else None
+            write_row(
                 ws,
                 r,
                 [
@@ -574,13 +613,16 @@ class LossGenerator:
                     item.get("approval_status", ""),
                     item.get("evidence_level", ""),
                 ],
-                fmt=_S.AMOUNT,
+                fmt=NF.AMOUNT,
+                fill_=fill,
             )
             r += 1
+        freeze_header(ws, 4)
+        auto_filter(ws, 3, 9)
 
 
 # ============================================================
-# HighTechGenerator
+# HighTechGenerator — 高新技术企业认定审核底稿
 # ============================================================
 
 
@@ -607,13 +649,11 @@ class HighTechGenerator:
     def _cover(self):
         ws = self.wb.active
         ws.title = "封面"
-        _set_cols(ws, [3, 22, 35, 3])
-        ws.merge_cells("B2:C2")
-        ws["B2"] = "高新技术企业认定审核工作底稿"
-        ws["B2"].font = _S.TITLE_FONT
-        ws["B2"].alignment = _S.CENTER
+        set_cols(ws, [3, 22, 40, 3])
+        page_setup(ws, landscape=False, fit_w=1)
+        merge_title(ws, 2, "高新技术企业认定审核工作底稿", 3)
         ent = self.ht_input.enterprise
-        _cover_info(
+        cover_info(
             ws,
             4,
             [
@@ -625,24 +665,54 @@ class HighTechGenerator:
                 ("审核结论", "通过" if self.result.passed else "不通过"),
             ],
         )
+        r = 12
+        section_row(ws, r, "一、门槛条件", 3)
+        r += 1
+        ent = self.ht_input.enterprise
+        checks = [
+            (
+                "研发费用占比(近3年)",
+                self.ht_input.rd_expense_3year_total / self.ht_input.income_3year_total
+                if self.ht_input.income_3year_total
+                else 0,
+                0.04,
+            ),
+            (
+                "科技人员占比",
+                self.ht_input.tech_staff / self.ht_input.total_staff
+                if self.ht_input.total_staff
+                else 0,
+                0.10,
+            ),
+            (
+                "高新产品收入占比(近1年)",
+                self.ht_input.hi_product_revenue / self.ht_input.income_last_year
+                if self.ht_input.income_last_year
+                else 0,
+                0.60,
+            ),
+        ]
+        for label, val, threshold in checks:
+            passed = val >= threshold
+            ws.cell(row=r, column=2, value=label).font = F.BOLD
+            ws.cell(row=r, column=2).border = B.THIN
+            c = ws.cell(row=r, column=3, value=f"{val:.2%} (要求≥{threshold:.0%})")
+            c.font = F.PASS if passed else F.WARN
+            c.border = B.THIN
+            r += 1
+        conclusion = "全部达标 ✓" if self.result.passed else "存在不达标项 ✗"
+        ws.cell(row=r, column=2, value="结论").font = F.BOLD
+        ws.cell(row=r, column=2).border = B.THIN
+        c = ws.cell(row=r, column=3, value=conclusion)
+        c.font = F.PASS if self.result.passed else F.WARN
+        c.border = B.THIN
 
     def _rd_audit(self):
         ws = self.wb.create_sheet("研发费用审定表")
-        _set_cols(ws, [5, 35, 18, 18, 18])
-        ws.merge_cells("A1:D1")
-        ws["A1"] = "研发费用审定表"
-        ws["A1"].font = _S.TITLE_FONT
-        ws["A1"].alignment = _S.CENTER
-        _header_row(ws, 3, ["序号", "项目", "金额", "占比", "达标"])
-        rows = [
-            ("最近一年研发费用", self.ht_input.rd_expense_last_year),
-            ("近3年研发费用总额", self.ht_input.rd_expense_3year_total),
-            ("近3年销售收入总额", self.ht_input.income_3year_total),
-            ("研发费用占比(3年)", None),
-            ("科技人员数", self.ht_input.tech_staff),
-            ("职工总数", self.ht_input.total_staff),
-            ("科技人员占比", None),
-        ]
+        set_cols(ws, [5, 35, 20, 20, 12])
+        page_setup(ws, landscape=True, fit_w=1)
+        merge_title(ws, 1, "研发费用审定表", 4)
+        header_row(ws, 3, ["序号", "项目", "金额", "占比", "达标"])
         rd_ratio = (
             self.ht_input.rd_expense_3year_total / self.ht_input.income_3year_total
             if self.ht_input.income_3year_total > 0
@@ -653,51 +723,46 @@ class HighTechGenerator:
             if self.ht_input.total_staff > 0
             else 0
         )
+        rows = [
+            ("最近一年研发费用", self.ht_input.rd_expense_last_year, None, None),
+            ("近3年研发费用总额", self.ht_input.rd_expense_3year_total, None, None),
+            ("近3年销售收入总额", self.ht_input.income_3year_total, None, None),
+            (
+                "研发费用占比(3年)",
+                rd_ratio,
+                NF.PCT,
+                "达标" if rd_ratio >= 0.04 else "不达标",
+            ),
+            ("科技人员数", self.ht_input.tech_staff, None, None),
+            ("职工总数", self.ht_input.total_staff, None, None),
+            (
+                "科技人员占比",
+                tech_ratio,
+                NF.PCT,
+                "达标" if tech_ratio >= 0.10 else "不达标",
+            ),
+        ]
         r = 4
-        for i, (label, val) in enumerate(rows, 1):
-            if label == "研发费用占比(3年)":
-                _write_row(
-                    ws,
-                    r,
-                    [
-                        i,
-                        label,
-                        rd_ratio,
-                        rd_ratio,
-                        "达标" if rd_ratio >= 0.04 else "不达标",
-                    ],
-                    fmt=_S.PCT_FMT,
-                )
-                ws.cell(row=r, column=3).number_format = _S.AMOUNT
-            elif label == "科技人员占比":
-                _write_row(
-                    ws,
-                    r,
-                    [
-                        i,
-                        label,
-                        tech_ratio,
-                        tech_ratio,
-                        "达标" if tech_ratio >= 0.10 else "不达标",
-                    ],
-                    fmt=_S.PCT_FMT,
-                )
-                ws.cell(row=r, column=3).number_format = _S.AMOUNT
+        for i, (label, val, fmt, status) in enumerate(rows, 1):
+            if fmt == NF.PCT:
+                write_row(ws, r, [i, label, val, val, status or ""], fmt=fmt)
             else:
-                _write_row(ws, r, [i, label, val, "", ""], fmt=_S.AMOUNT)
-            if i in (4, 7):
-                for c in range(1, 6):
-                    ws.cell(row=r, column=c).fill = _S.LIGHT_BLUE
+                write_row(ws, r, [i, label, val, "", status or ""], fmt=NF.AMOUNT)
+            if status:
+                passed = status == "达标"
+                highlight_cells(ws, r, 5, Fill.PASS if passed else Fill.FAIL)
+                ws.cell(row=r, column=2).font = F.BOLD
+            elif i in (3, 6):
+                highlight_cells(ws, r, 5, Fill.SECTION_BG)
             r += 1
+        freeze_header(ws, 4)
 
     def _income_audit(self):
         ws = self.wb.create_sheet("收入审定表")
-        _set_cols(ws, [5, 30, 18, 18, 18])
-        ws.merge_cells("A1:D1")
-        ws["A1"] = "高新技术产品（服务）收入审定表"
-        ws["A1"].font = _S.TITLE_FONT
-        ws["A1"].alignment = _S.CENTER
-        _header_row(ws, 3, ["序号", "项目", "金额", "占比", "判定"])
+        set_cols(ws, [5, 32, 20, 20, 12])
+        page_setup(ws, landscape=True, fit_w=1)
+        merge_title(ws, 1, "高新技术产品（服务）收入审定表", 4)
+        header_row(ws, 3, ["序号", "项目", "金额", "占比", "判定"])
         hi_ratio = (
             self.ht_input.hi_product_revenue / self.ht_input.income_last_year
             if self.ht_input.income_last_year > 0
@@ -709,41 +774,43 @@ class HighTechGenerator:
             else 0
         )
         items = [
-            ("高新收入（最近一年）", self.ht_input.hi_product_revenue, ""),
-            ("总收入（最近一年）", self.ht_input.income_last_year, ""),
+            ("高新收入（最近一年）", self.ht_input.hi_product_revenue, None, ""),
+            ("总收入（最近一年）", self.ht_input.income_last_year, None, ""),
             (
                 "高新收入占比（最近一年）",
                 hi_ratio,
+                NF.PCT,
                 "达标" if hi_ratio >= 0.60 else "不达标",
             ),
-            ("高新收入（近3年）", self.ht_input.hi_product_revenue_3year, ""),
-            ("总收入（近3年）", self.ht_input.total_revenue_3year, ""),
+            ("高新收入（近3年）", self.ht_input.hi_product_revenue_3year, None, ""),
+            ("总收入（近3年）", self.ht_input.total_revenue_3year, None, ""),
             (
                 "高新收入占比（近3年）",
                 hi_ratio_3,
+                NF.PCT,
                 "达标" if hi_ratio_3 >= 0.60 else "不达标",
             ),
         ]
         r = 4
-        for i, (label, val, status) in enumerate(items, 1):
-            _write_row(ws, r, [i, label, val, "", status], fmt=_S.AMOUNT)
-            if "占比" in label:
-                ws.cell(row=r, column=3).number_format = _S.PCT_FMT
-                fill_ = _S.LIGHT_GREEN if status == "达标" else _S.LIGHT_YELLOW
-                for c in range(1, 6):
-                    ws.cell(row=r, column=c).fill = fill_
+        for i, (label, val, fmt, status) in enumerate(items, 1):
+            if fmt == NF.PCT:
+                write_row(ws, r, [i, label, val, val, status], fmt=fmt)
+            else:
+                write_row(ws, r, [i, label, val, "", ""], fmt=NF.AMOUNT)
+            if status:
+                passed = status == "达标"
+                highlight_cells(ws, r, 5, Fill.PASS if passed else Fill.FAIL)
+                ws.cell(row=r, column=2).font = F.BOLD
             r += 1
+        freeze_header(ws, 4)
 
     def _structure(self):
         ws = self.wb.create_sheet("研发费用结构明细")
-        _set_cols(ws, [5, 30, 18, 18, 18])
-        ws.merge_cells("A1:D1")
-        ws["A1"] = "研发费用结构明细表"
-        ws["A1"].font = _S.TITLE_FONT
-        ws["A1"].alignment = _S.CENTER
-        _header_row(ws, 3, ["序号", "费用类别", "金额", "占研发费用比例", "备注"])
+        set_cols(ws, [5, 30, 18, 22, 18])
+        page_setup(ws, landscape=True, fit_w=1)
+        merge_title(ws, 1, "研发费用结构明细表", 4)
+        header_row(ws, 3, ["序号", "费用类别", "金额", "占研发费用比例", "备注"])
         total = self.ht_input.rd_expense_3year_total
-        # 从输入数据中分解各类费用（用等比例估算，实际应有明细数据）
         items_data = [
             ("人员人工费用", total * 0.35),
             ("直接投入费用", total * 0.30),
@@ -755,27 +822,27 @@ class HighTechGenerator:
         r = 4
         for i, (label, val) in enumerate(items_data, 1):
             ratio = val / total if total > 0 else 0
-            _write_row(ws, r, [i, label, val, ratio, ""], fmt=_S.AMOUNT)
-            ws.cell(row=r, column=4).number_format = _S.PCT_FMT
+            write_row(ws, r, [i, label, val, ratio, ""], fmt=NF.AMOUNT)
+            ws.cell(row=r, column=4).number_format = NF.PCT
             r += 1
-        _write_row(
+        write_row(
             ws,
             r,
             ["", "合  计", total, 1.0, ""],
-            fmt=_S.AMOUNT,
+            fmt=NF.AMOUNT,
             bold=True,
-            fill_=_S.LIGHT_BLUE,
+            fill_=Fill.BLUE_LIGHT,
         )
-        ws.cell(row=r, column=4).number_format = _S.PCT_FMT
+        ws.cell(row=r, column=4).number_format = NF.PCT
+        highlight_cells(ws, r, 5, Fill.BLUE_LIGHT, F.BOLD)
+        freeze_header(ws, 4)
 
     def _score(self):
         ws = self.wb.create_sheet("评分表")
-        _set_cols(ws, [5, 28, 15, 15, 15, 40])
-        ws.merge_cells("A1:E1")
-        ws["A1"] = "高新技术企业认定评分表"
-        ws["A1"].font = _S.TITLE_FONT
-        ws["A1"].alignment = _S.CENTER
-        _header_row(ws, 3, ["序号", "评分项", "得分", "满分", "通过线", "评分说明"])
+        set_cols(ws, [5, 28, 15, 12, 12, 45])
+        page_setup(ws, landscape=True, fit_w=1)
+        merge_title(ws, 1, "高新技术企业认定评分表", 5)
+        header_row(ws, 3, ["序号", "评分项", "得分", "满分", "通过线", "评分说明"])
         scores = [
             (
                 1,
@@ -812,28 +879,31 @@ class HighTechGenerator:
         ]
         r = 4
         for i, (sn, name, score, full, line, note) in enumerate(scores, 1):
-            _write_row(ws, r, [sn, name, score, full, line, note], fmt=_S.INT_FMT)
-            ws.cell(row=r, column=3).number_format = "0.0"
-            ws.cell(row=r, column=6).alignment = _S.WRAP
-            if score >= line:
-                for c in range(1, 7):
-                    ws.cell(row=r, column=c).fill = _S.LIGHT_GREEN
-            else:
-                for c in range(1, 7):
-                    ws.cell(row=r, column=c).fill = _S.LIGHT_YELLOW
+            write_row(ws, r, [sn, name, score, full, line, note], fmt=NF.SCORE)
+            ws.cell(row=r, column=3).number_format = NF.SCORE
+            ws.cell(row=r, column=6).alignment = A.WRAP
+            passed = score >= line
+            highlight_cells(ws, r, 6, Fill.PASS if passed else Fill.FAIL)
+            ws.cell(row=r, column=2).font = F.BOLD
             r += 1
         r += 1
-        _write_row(
+        section_row(ws, r, "二、综合评价", 5)
+        r += 1
+        write_row(
             ws,
             r,
             ["", "总  分", self.result.total_score, 100.0, 71.0, ""],
-            fmt=_S.INT_FMT,
+            fmt=NF.SCORE,
             bold=True,
-            fill_=_S.LIGHT_BLUE,
+            fill_=Fill.BLUE_LIGHT,
         )
-        ws.cell(row=r, column=3).number_format = "0.0"
+        ws.cell(row=r, column=3).number_format = NF.SCORE
+        highlight_cells(ws, r, 6, Fill.BLUE_LIGHT, F.BOLD)
         r += 1
-        conclusion = "通过 ✅" if self.result.passed else "不通过 ❌"
-        ws.cell(row=r, column=2, value="审核结论").font = _S.BOLD_FONT
+        conclusion = "通过" if self.result.passed else "不通过"
+        ws.cell(row=r, column=2, value="审核结论").font = F.LABEL
+        ws.cell(row=r, column=2).border = B.THIN
         c = ws.cell(row=r, column=3, value=conclusion)
-        c.font = _S.RESULT_FONT
+        c.font = F.PASS if self.result.passed else F.WARN
+        c.border = B.THIN
+        freeze_header(ws, 4)
