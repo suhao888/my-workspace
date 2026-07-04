@@ -76,7 +76,10 @@ class TaxCalculator:
             RuleCat.INCOME,
             RuleCat.DEDUCTION,
             RuleCat.ASSET,
+            RuleCat.SPECIAL,
+            RuleCat.OVERSEAS,
             RuleCat.TAX_INCENTIVE,
+            RuleCat.PAYMENT,
         ]
         all_adjustments = []
         for cat in categories:

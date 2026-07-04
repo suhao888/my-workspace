@@ -32,6 +32,7 @@ class AdjustmentCategory(str, Enum):
     SPECIAL = "特殊事项"
     OVERSEAS = "境外税收"
     TAX_INCENTIVE = "税收优惠"
+    PAYMENT = "缴纳情况"
     OTHER = "其他"
 
 

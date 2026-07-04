@@ -134,7 +134,7 @@ def build_sample_data() -> dict:
     }
 
 
-def run_demo():
+def run_demo(output_path: str = None):
     """
     执行完整演示流程：
     1. 构建示例数据
@@ -182,12 +182,13 @@ def run_demo():
             print(f"  [{adj.category.value}] {adj.item_name:<18} {inc_str} {dec_str}")
 
     # 4. 生成底稿
-    output_path = Path("D:/Users/12844/Desktop/税审底稿_示例.xlsx")
+    if not output_path:
+        output_path = str(Path("D:/Users/12844/Desktop/税审底稿_示例.xlsx"))
     print(f"\n>> 生成工作底稿 → {output_path}")
 
     gen = WorkpaperGenerator(result)
     gen.set_assets(data["assets"])
-    gen.generate(str(output_path))
+    gen.generate(output_path)
 
     print(f"\n{'=' * 60}")
     print(f"完成！底稿已保存至: {output_path}")

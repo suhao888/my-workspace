@@ -118,13 +118,33 @@ class WorkpaperGenerator:
                 "资产类纳税调整项目",
             )
 
-        # 6. 税收优惠明细表
+        # 6. 特殊事项明细表
+        if self._has_adjustments(AdjustmentCategory.SPECIAL):
+            self._create_adjustment_sheet(
+                "3-04 特殊事项调整明细表",
+                AdjustmentCategory.SPECIAL,
+                "特殊事项调整项目",
+            )
+
+        # 7. 境外税收明细表
+        if self._has_adjustments(AdjustmentCategory.OVERSEAS):
+            self._create_adjustment_sheet(
+                "4 境外税收调整明细表", AdjustmentCategory.OVERSEAS, "境外税收调整项目"
+            )
+
+        # 8. 税收优惠明细表
         if self._has_adjustments(AdjustmentCategory.TAX_INCENTIVE):
             self._create_adjustment_sheet(
                 "5 税收优惠明细表", AdjustmentCategory.TAX_INCENTIVE, "税收优惠明细项目"
             )
 
-        # 7. 资产折旧测算表（如有资产数据）
+        # 9. 缴纳情况明细表
+        if self._has_adjustments(AdjustmentCategory.PAYMENT):
+            self._create_adjustment_sheet(
+                "6 缴纳情况明细表", AdjustmentCategory.PAYMENT, "缴纳情况调整项目"
+            )
+
+        # 10. 资产折旧测算表（如有资产数据）
         if (
             self.result.enterprise
             and hasattr(self.result, "_assets")
@@ -479,7 +499,10 @@ class WorkpaperGenerator:
             (AdjustmentCategory.INCOME, "一、收入类调整项目"),
             (AdjustmentCategory.DEDUCTION, "二、扣除类调整项目"),
             (AdjustmentCategory.ASSET, "三、资产类调整项目"),
-            (AdjustmentCategory.TAX_INCENTIVE, "四、税收优惠调整项目"),
+            (AdjustmentCategory.SPECIAL, "四、特殊事项调整项目"),
+            (AdjustmentCategory.OVERSEAS, "五、境外税收调整项目"),
+            (AdjustmentCategory.TAX_INCENTIVE, "六、税收优惠调整项目"),
+            (AdjustmentCategory.PAYMENT, "七、缴纳情况调整项目"),
         ]
 
         row = 4

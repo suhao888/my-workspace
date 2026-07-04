@@ -847,6 +847,487 @@ def rule_504_小型微利企业减免(ctx: RuleContext) -> Optional[TaxAdjustmen
 
 
 # ============================================================
+# 特殊事项纳税调整规则（3-04~3-06系列）
+# ============================================================
+
+
+def rule_30401_企业重组特殊性(ctx: RuleContext) -> Optional[TaxAdjustment]:
+    """
+    企业重组特殊性税务处理
+    企业所得税法实施条例第75条：特殊性税务处理暂不确认损益
+    """
+    book = ctx.get("企业重组损益-账面", 0)
+    if abs(book) < 0.01:
+        return None
+    return TaxAdjustment(
+        item_name="企业重组特殊性税务处理",
+        category=AdjustmentCategory.SPECIAL,
+        book_amount=book,
+        tax_base=0,
+        increase=max0(-book),
+        decrease=max0(book),
+        tax_law_ref="企业所得税法实施条例第75条",
+        calculation=f"账面确认重组损益{book}，特殊性税务处理暂不确认，"
+        f"{'调减' if book > 0 else '调增'}{abs(book)}",
+    )
+
+
+def rule_30402_企业重组一般性(ctx: RuleContext) -> Optional[TaxAdjustment]:
+    """
+    企业重组一般性税务处理
+    企业所得税法实施条例第75条：按公允价值确认损益
+    """
+    book = ctx.get("企业重组损益-账面", 0)
+    tax = ctx.get("企业重组损益-公允价值", book)
+    diff = tax - book
+    if abs(diff) < 0.01:
+        return None
+    return TaxAdjustment(
+        item_name="企业重组一般性税务处理",
+        category=AdjustmentCategory.SPECIAL,
+        book_amount=book,
+        tax_base=tax,
+        increase=max0(-diff),
+        decrease=max0(diff),
+        tax_law_ref="企业所得税法实施条例第75条",
+        calculation=f"账面{book} - 公允价值{tax} = {diff}，一般性税务处理",
+    )
+
+
+def rule_305_政策性搬迁(ctx: RuleContext) -> Optional[TaxAdjustment]:
+    """
+    政策性搬迁
+    国家税务总局公告2012年第40号：搬迁收入扣除搬迁支出后的余额计入应纳税所得额
+    """
+    book = ctx.get("政策性搬迁净额-账面", 0)
+    relocation_income = ctx.get("政策性搬迁收入", 0)
+    relocation_expense = ctx.get("政策性搬迁支出", 0)
+    tax_net = relocation_income - relocation_expense
+    diff = tax_net - book
+    if abs(diff) < 0.01:
+        return None
+    return TaxAdjustment(
+        item_name="政策性搬迁",
+        category=AdjustmentCategory.SPECIAL,
+        book_amount=book,
+        tax_base=tax_net,
+        increase=max0(-diff),
+        decrease=max0(diff),
+        tax_law_ref="国家税务总局公告2012年第40号",
+        calculation=f"搬迁收入{relocation_income} - 搬迁支出{relocation_expense} = {tax_net}，"
+        f"账面{book}，差异{diff}",
+    )
+
+
+def rule_30601_新收入准则差异(ctx: RuleContext) -> Optional[TaxAdjustment]:
+    """
+    新收入准则与税法收入确认时点差异
+    企业所得税法实施条例第9条：权责发生制原则
+    """
+    book = ctx.get("新收入准则-账面确认收入", 0)
+    tax = ctx.get("新收入准则-税收确认收入", book)
+    diff = tax - book
+    if abs(diff) < 0.01:
+        return None
+    return TaxAdjustment(
+        item_name="新收入准则与税法差异",
+        category=AdjustmentCategory.SPECIAL,
+        book_amount=book,
+        tax_base=tax,
+        increase=max0(-diff),
+        decrease=max0(diff),
+        tax_law_ref="企业所得税法实施条例第9条",
+        calculation=f"账面{book} - 税收{tax} = {diff}（收入确认时点差异）",
+    )
+
+
+def rule_30602_其他特殊调整(ctx: RuleContext) -> Optional[TaxAdjustment]:
+    """
+    其他特殊纳税调整（兜底项）
+    企业所得税法第6章：特别纳税调整
+    """
+    book = ctx.get("其他特殊调整-账面", 0)
+    tax = ctx.get("其他特殊调整-税收金额", 0)
+    diff = tax - book
+    if abs(diff) < 0.01:
+        return None
+    return TaxAdjustment(
+        item_name="其他特殊纳税调整",
+        category=AdjustmentCategory.SPECIAL,
+        book_amount=book,
+        tax_base=tax,
+        increase=max0(-diff),
+        decrease=max0(diff),
+        tax_law_ref="企业所得税法第6章",
+        calculation=f"其他特殊调整差异{diff}",
+    )
+
+
+# ============================================================
+# 境外税收纳税调整规则（4系列）
+# ============================================================
+
+
+def rule_401_境外所得纳税调整(ctx: RuleContext) -> Optional[TaxAdjustment]:
+    """
+    境外所得纳税调整
+    企业所得税法第17条：境外税前所得并入境内应纳税所得额
+    """
+    book = ctx.get("境外所得-账面金额", 0)
+    tax = ctx.get("境外所得-税前所得", book)
+    diff = tax - book
+    if abs(diff) < 0.01:
+        return None
+    return TaxAdjustment(
+        item_name="境外所得纳税调整",
+        category=AdjustmentCategory.OVERSEAS,
+        book_amount=book,
+        tax_base=tax,
+        increase=max0(-diff),
+        decrease=max0(diff),
+        tax_law_ref="企业所得税法第17条",
+        calculation=f"境外税前所得{tax} - 账面{book} = {diff}",
+    )
+
+
+def rule_402_境外所得抵免(ctx: RuleContext) -> Optional[TaxAdjustment]:
+    """
+    境外所得抵免（限额抵免法）
+    企业所得税法第23条：境外已缴税款不超过抵免限额部分可抵免
+    """
+    overseas_income = ctx.get("境外所得-应纳税所得额", 0)
+    foreign_tax_paid = ctx.get("境外所得-已缴税款", 0)
+    domestic_tax_rate = ctx.get("境外所得-境内税率", 0.25)
+    credit_limit = overseas_income * domestic_tax_rate
+    actual_credit = min(foreign_tax_paid, credit_limit)
+    if actual_credit <= 0:
+        return None
+    return TaxAdjustment(
+        item_name="境外所得抵免",
+        category=AdjustmentCategory.OVERSEAS,
+        book_amount=foreign_tax_paid,
+        tax_base=actual_credit,
+        increase=0,
+        decrease=actual_credit,
+        tax_law_ref="企业所得税法第23条",
+        calculation=f"境外应纳税所得额{overseas_income}×税率{domestic_tax_rate * 100:.0f}%"
+        f"=限额{credit_limit}，已缴{foreign_tax_paid}，实际抵免{actual_credit}",
+    )
+
+
+def rule_403_境外亏损弥补(ctx: RuleContext) -> Optional[TaxAdjustment]:
+    """
+    境外亏损不得抵减境内盈利
+    企业所得税法第17条：境外亏损不得抵减境内应纳税所得额
+    """
+    overseas_loss = ctx.get("境外所得-亏损金额", 0)
+    if overseas_loss >= 0:
+        return None
+    # 境外亏损为负数，全额调增
+    increase = abs(overseas_loss)
+    return TaxAdjustment(
+        item_name="境外亏损弥补",
+        category=AdjustmentCategory.OVERSEAS,
+        book_amount=overseas_loss,
+        tax_base=0,
+        increase=increase,
+        decrease=0,
+        tax_law_ref="企业所得税法第17条",
+        calculation=f"境外亏损{overseas_loss}不得抵减境内盈利，全额调增{increase}",
+    )
+
+
+# ============================================================
+# 税收优惠补充规则（5系列）
+# ============================================================
+
+
+def rule_504_资源综合利用减计收入(ctx: RuleContext) -> Optional[TaxAdjustment]:
+    """
+    资源综合利用减计收入
+    财税[2008]47号：资源综合利用产品收入减按90%计入收入总额
+    """
+    income = ctx.get("资源综合利用收入", 0)
+    if income <= 0:
+        return None
+    reduction = income * 0.1
+    return TaxAdjustment(
+        item_name="资源综合利用减计收入",
+        category=AdjustmentCategory.TAX_INCENTIVE,
+        book_amount=income,
+        tax_base=income * 0.9,
+        increase=0,
+        decrease=reduction,
+        tax_law_ref="财税[2008]47号",
+        calculation=f"资源综合利用收入{income}×10%={reduction} 减计调减",
+    )
+
+
+def rule_505_所得减免(ctx: RuleContext) -> Optional[TaxAdjustment]:
+    """
+    所得减免
+    企业所得税法第27条：农林牧渔/基础设施/环保节能项目所得可免征或减征
+    """
+    book = ctx.get("减免所得-账面金额", 0)
+    tax_exempt = ctx.get("减免所得-免税金额", 0)
+    if tax_exempt <= 0:
+        return None
+    return TaxAdjustment(
+        item_name="所得减免",
+        category=AdjustmentCategory.TAX_INCENTIVE,
+        book_amount=book,
+        tax_base=book - tax_exempt,
+        increase=0,
+        decrease=tax_exempt,
+        tax_law_ref="企业所得税法第27条",
+        calculation=f"免税所得{tax_exempt}调减",
+    )
+
+
+def rule_506_抵扣应纳税所得额(ctx: RuleContext) -> Optional[TaxAdjustment]:
+    """
+    抵扣应纳税所得额（创投企业）
+    国税发[2009]87号：创业投资企业投资额70%抵扣应纳税所得额
+    """
+    investment = ctx.get("创投企业投资额", 0)
+    if investment <= 0:
+        return None
+    deduction = investment * 0.7
+    return TaxAdjustment(
+        item_name="创投企业投资额抵扣",
+        category=AdjustmentCategory.TAX_INCENTIVE,
+        book_amount=0,
+        tax_base=-deduction,
+        increase=0,
+        decrease=deduction,
+        tax_law_ref="国税发[2009]87号",
+        calculation=f"创投投资额{investment}×70%={deduction} 抵扣应纳税所得额",
+    )
+
+
+def rule_507_税额抵免(ctx: RuleContext) -> Optional[TaxAdjustment]:
+    """
+    专用设备投资额税额抵免
+    企业所得税法第34条：环保/节能/安全生产专用设备投资额10%抵免税额
+    """
+    equipment_investment = ctx.get("专用设备投资额", 0)
+    if equipment_investment <= 0:
+        return None
+    tax_credit = equipment_investment * 0.1
+    return TaxAdjustment(
+        item_name="专用设备投资额税额抵免",
+        category=AdjustmentCategory.TAX_INCENTIVE,
+        book_amount=0,
+        tax_base=-tax_credit,
+        increase=0,
+        decrease=tax_credit,
+        tax_law_ref="企业所得税法第34条",
+        calculation=f"专用设备投资额{equipment_investment}×10%={tax_credit} 抵免应纳税额",
+    )
+
+
+def rule_508_软件集成电路优惠(ctx: RuleContext) -> Optional[TaxAdjustment]:
+    """
+    软件和集成电路产业所得税优惠
+    财税[2020]45号：两免三减半/十年免税
+    """
+    book = ctx.get("软件集成电路-账面利润", 0)
+    exempt_amount = ctx.get("软件集成电路-免税利润", 0)
+    half_amount = ctx.get("软件集成电路-减半利润", 0)
+    reduction = exempt_amount + half_amount * 0.5
+    if reduction <= 0:
+        return None
+    return TaxAdjustment(
+        item_name="软件集成电路产业优惠",
+        category=AdjustmentCategory.TAX_INCENTIVE,
+        book_amount=book,
+        tax_base=book - reduction,
+        increase=0,
+        decrease=reduction,
+        tax_law_ref="财税[2020]45号",
+        calculation=f"免税利润{exempt_amount}+减半利润{half_amount}×50%={reduction} 调减",
+    )
+
+
+# ============================================================
+# 缴纳情况纳税调整规则（6系列）
+# ============================================================
+
+
+def rule_601_所得税预缴(ctx: RuleContext) -> Optional[TaxAdjustment]:
+    """
+    所得税预缴差异
+    企业所得税法第54条：分月或分季预缴，年终汇算清缴
+    """
+    actual_prepaid = ctx.get("所得税-实际预缴额", 0)
+    estimated_prepaid = ctx.get("所得税-应预缴额", 0)
+    diff = estimated_prepaid - actual_prepaid
+    if abs(diff) < 0.01:
+        return None
+    return TaxAdjustment(
+        item_name="所得税预缴差异",
+        category=AdjustmentCategory.PAYMENT,
+        book_amount=actual_prepaid,
+        tax_base=estimated_prepaid,
+        increase=max0(-diff),
+        decrease=max0(diff),
+        tax_law_ref="企业所得税法第54条",
+        calculation=f"应预缴{estimated_prepaid} - 实际预缴{actual_prepaid} = {diff}",
+    )
+
+
+def rule_602_汇总纳税分摊(ctx: RuleContext) -> Optional[TaxAdjustment]:
+    """
+    汇总纳税总分支机构分摊
+    国家税务总局公告2012年第57号：总机构分摊比例
+    """
+    total_tax = ctx.get("汇总纳税-应纳税额", 0)
+    head_office_ratio = ctx.get("汇总纳税-总机构分摊比例", 0.5)
+    branch_ratio = ctx.get("汇总纳税-分支机构分摊比例", 0.5)
+    head_portion = total_tax * head_office_ratio
+    branch_portion = total_tax * branch_ratio
+    if total_tax <= 0:
+        return None
+    return TaxAdjustment(
+        item_name="汇总纳税分摊",
+        category=AdjustmentCategory.PAYMENT,
+        book_amount=total_tax,
+        tax_base=head_portion,
+        increase=0,
+        decrease=0,
+        tax_law_ref="国家税务总局公告2012年第57号",
+        calculation=f"应纳税额{total_tax}×总机构{head_office_ratio}={head_portion}，"
+        f"分支机构{branch_ratio}={branch_portion}",
+    )
+
+
+# ============================================================
+# 扣除类补充规则（3-02系列）
+# ============================================================
+
+
+def rule_30216_手续费及佣金(ctx: RuleContext) -> Optional[TaxAdjustment]:
+    """
+    手续费及佣金支出
+    财税[2009]29号：按服务协议或合同确认收入5%（一般企业）限额
+    """
+    book = ctx.get("手续费及佣金支出", 0)
+    revenue = ctx.tb.revenue_total
+    industry_rate = ctx.get("手续费及佣金-扣除比例", 0.05)
+    limit = revenue * industry_rate
+    tax_allowed = min(book, limit)
+    increase = max0(book - limit)
+    if increase < 0.01:
+        return None
+    return TaxAdjustment(
+        item_name="手续费及佣金支出",
+        category=AdjustmentCategory.DEDUCTION,
+        book_amount=book,
+        tax_base=tax_allowed,
+        increase=increase,
+        decrease=0,
+        tax_law_ref="财税[2009]29号",
+        calculation=f"收入{revenue}×{industry_rate * 100:.0f}%={limit}，账面{book}，超支{increase}",
+    )
+
+
+def rule_30217_党组织工作经费(ctx: RuleContext) -> Optional[TaxAdjustment]:
+    """
+    党组织工作经费
+    组通字[2017]38号：不超过工资薪金总额1%的部分据实扣除
+    """
+    wages = ctx.get("工资薪金", 0)
+    book = ctx.get("党组织工作经费", 0)
+    limit = wages * 0.01
+    tax_allowed = min(book, limit)
+    increase = max0(book - limit)
+    if increase < 0.01:
+        return None
+    return TaxAdjustment(
+        item_name="党组织工作经费",
+        category=AdjustmentCategory.DEDUCTION,
+        book_amount=book,
+        tax_base=tax_allowed,
+        increase=increase,
+        decrease=0,
+        tax_law_ref="组通字[2017]38号",
+        calculation=f"工资{wages}×1%={limit}，账面{book}，超支{increase}",
+    )
+
+
+def rule_30218_劳动保护支出(ctx: RuleContext) -> Optional[TaxAdjustment]:
+    """
+    劳动保护支出
+    企业所得税法实施条例第48条：合理劳动保护支出准予扣除
+    """
+    book = ctx.get("劳动保护支出", 0)
+    unreasonable = ctx.get("劳动保护支出-不合理部分", 0)
+    tax_allowed = book - unreasonable
+    increase = unreasonable
+    if increase < 0.01:
+        return None
+    return TaxAdjustment(
+        item_name="劳动保护支出",
+        category=AdjustmentCategory.DEDUCTION,
+        book_amount=book,
+        tax_base=tax_allowed,
+        increase=increase,
+        decrease=0,
+        tax_law_ref="企业所得税法实施条例第48条",
+        calculation=f"账面{book}，扣除不合理部分{unreasonable}，调增{increase}",
+    )
+
+
+# ============================================================
+# 资产类补充规则（3-03系列）
+# ============================================================
+
+
+def rule_30306_生产性生物资产折旧(ctx: RuleContext) -> Optional[TaxAdjustment]:
+    """
+    生产性生物资产折旧
+    企业所得税法实施条例第62条：林木类10年/畜产类3年
+    """
+    book = ctx.get("生产性生物资产折旧-账面", 0)
+    tax = ctx.get("生产性生物资产折旧-税收", book)
+    diff = tax - book
+    if abs(diff) < 0.01 and book <= 0:
+        return None
+    return TaxAdjustment(
+        item_name="生产性生物资产折旧",
+        category=AdjustmentCategory.ASSET,
+        book_amount=book,
+        tax_base=tax,
+        increase=max0(-diff),
+        decrease=max0(diff),
+        tax_law_ref="企业所得税法实施条例第62条",
+        calculation=f"会计折旧{book}，税收折旧{tax}，差异{diff}",
+    )
+
+
+def rule_30307_油气资产折耗(ctx: RuleContext) -> Optional[TaxAdjustment]:
+    """
+    油气资产折耗
+    财税[2009]135号：油气资产折耗按税法规定计算
+    """
+    book = ctx.get("油气资产折耗-账面", 0)
+    tax = ctx.get("油气资产折耗-税收", book)
+    diff = tax - book
+    if abs(diff) < 0.01 and book <= 0:
+        return None
+    return TaxAdjustment(
+        item_name="油气资产折耗",
+        category=AdjustmentCategory.ASSET,
+        book_amount=book,
+        tax_base=tax,
+        increase=max0(-diff),
+        decrease=max0(diff),
+        tax_law_ref="财税[2009]135号",
+        calculation=f"会计折耗{book}，税收折耗{tax}，差异{diff}",
+    )
+
+
+# ============================================================
 # 规则注册表
 # ============================================================
 
@@ -1032,6 +1513,30 @@ DEDUCTION_RULES = [
         description="与取得收入无关的支出不得扣除",
         func=rule_30215_与取得收入无关支出,
     ),
+    TaxRule(
+        id="3-02-16",
+        name="手续费及佣金支出",
+        category=AdjustmentCategory.DEDUCTION,
+        tax_law_ref="财税[2009]29号",
+        description="不超过服务收入5%（一般企业）",
+        func=rule_30216_手续费及佣金,
+    ),
+    TaxRule(
+        id="3-02-17",
+        name="党组织工作经费",
+        category=AdjustmentCategory.DEDUCTION,
+        tax_law_ref="组通字[2017]38号",
+        description="不超过工资薪金1%",
+        func=rule_30217_党组织工作经费,
+    ),
+    TaxRule(
+        id="3-02-18",
+        name="劳动保护支出",
+        category=AdjustmentCategory.DEDUCTION,
+        tax_law_ref="企业所得税法实施条例第48条",
+        description="合理劳动保护支出准予扣除",
+        func=rule_30218_劳动保护支出,
+    ),
 ]
 
 # 资产类规则
@@ -1076,6 +1581,22 @@ ASSET_RULES = [
         description="按规定确认的资产损失可扣除",
         func=rule_30305_资产损失,
     ),
+    TaxRule(
+        id="3-03-06",
+        name="生产性生物资产折旧",
+        category=AdjustmentCategory.ASSET,
+        tax_law_ref="企业所得税法实施条例第62条",
+        description="林木10年/畜产3年",
+        func=rule_30306_生产性生物资产折旧,
+    ),
+    TaxRule(
+        id="3-03-07",
+        name="油气资产折耗",
+        category=AdjustmentCategory.ASSET,
+        tax_law_ref="财税[2009]135号",
+        description="油气资产折耗按规定计算",
+        func=rule_30307_油气资产折耗,
+    ),
 ]
 
 # 税收优惠规则
@@ -1104,11 +1625,149 @@ TAX_INCENTIVE_RULES = [
         description="国债利息收入免税",
         func=rule_503_国债利息收入,
     ),
+    TaxRule(
+        id="5-02-01",
+        name="资源综合利用减计收入",
+        category=AdjustmentCategory.TAX_INCENTIVE,
+        tax_law_ref="财税[2008]47号",
+        description="资源综合利用收入减按90%计入",
+        func=rule_504_资源综合利用减计收入,
+    ),
+    TaxRule(
+        id="5-02-02",
+        name="所得减免",
+        category=AdjustmentCategory.TAX_INCENTIVE,
+        tax_law_ref="企业所得税法第27条",
+        description="农林牧渔/基础设施/环保节能项目所得减免",
+        func=rule_505_所得减免,
+    ),
+    TaxRule(
+        id="5-02-03",
+        name="抵扣应纳税所得额",
+        category=AdjustmentCategory.TAX_INCENTIVE,
+        tax_law_ref="国税发[2009]87号",
+        description="创投企业投资额70%抵扣",
+        func=rule_506_抵扣应纳税所得额,
+    ),
+    TaxRule(
+        id="5-02-04",
+        name="专用设备投资额税额抵免",
+        category=AdjustmentCategory.TAX_INCENTIVE,
+        tax_law_ref="企业所得税法第34条",
+        description="环保/节能/安全生产专用设备投资额10%抵免",
+        func=rule_507_税额抵免,
+    ),
+    TaxRule(
+        id="5-02-05",
+        name="软件集成电路产业优惠",
+        category=AdjustmentCategory.TAX_INCENTIVE,
+        tax_law_ref="财税[2020]45号",
+        description="两免三减半等优惠",
+        func=rule_508_软件集成电路优惠,
+    ),
+]
+
+# 特殊事项规则
+SPECIAL_RULES = [
+    TaxRule(
+        id="3-04-01",
+        name="企业重组特殊性税务处理",
+        category=AdjustmentCategory.SPECIAL,
+        tax_law_ref="企业所得税法实施条例第75条",
+        description="特殊性税务处理暂不确认损益",
+        func=rule_30401_企业重组特殊性,
+    ),
+    TaxRule(
+        id="3-04-02",
+        name="企业重组一般性税务处理",
+        category=AdjustmentCategory.SPECIAL,
+        tax_law_ref="企业所得税法实施条例第75条",
+        description="按公允价值确认损益",
+        func=rule_30402_企业重组一般性,
+    ),
+    TaxRule(
+        id="3-05-01",
+        name="政策性搬迁",
+        category=AdjustmentCategory.SPECIAL,
+        tax_law_ref="国家税务总局公告2012年第40号",
+        description="搬迁收入扣除支出后余额计入应纳税所得额",
+        func=rule_305_政策性搬迁,
+    ),
+    TaxRule(
+        id="3-06-01",
+        name="新收入准则与税法差异",
+        category=AdjustmentCategory.SPECIAL,
+        tax_law_ref="企业所得税法实施条例第9条",
+        description="新收入准则与税法收入确认时点差异",
+        func=rule_30601_新收入准则差异,
+    ),
+    TaxRule(
+        id="3-06-02",
+        name="其他特殊纳税调整",
+        category=AdjustmentCategory.SPECIAL,
+        tax_law_ref="企业所得税法第6章",
+        description="特别纳税调整兜底项",
+        func=rule_30602_其他特殊调整,
+    ),
+]
+
+# 境外税收规则
+OVERSEAS_RULES = [
+    TaxRule(
+        id="4-01-01",
+        name="境外所得纳税调整",
+        category=AdjustmentCategory.OVERSEAS,
+        tax_law_ref="企业所得税法第17条",
+        description="境外税前所得并入境内应纳税所得额",
+        func=rule_401_境外所得纳税调整,
+    ),
+    TaxRule(
+        id="4-02-01",
+        name="境外所得抵免",
+        category=AdjustmentCategory.OVERSEAS,
+        tax_law_ref="企业所得税法第23条",
+        description="境外已缴税款限额抵免",
+        func=rule_402_境外所得抵免,
+    ),
+    TaxRule(
+        id="4-03-01",
+        name="境外亏损弥补",
+        category=AdjustmentCategory.OVERSEAS,
+        tax_law_ref="企业所得税法第17条",
+        description="境外亏损不得抵减境内盈利",
+        func=rule_403_境外亏损弥补,
+    ),
+]
+
+# 缴纳情况规则
+PAYMENT_RULES = [
+    TaxRule(
+        id="6-01-01",
+        name="所得税预缴差异",
+        category=AdjustmentCategory.PAYMENT,
+        tax_law_ref="企业所得税法第54条",
+        description="实际预缴与应预缴差异",
+        func=rule_601_所得税预缴,
+    ),
+    TaxRule(
+        id="6-02-01",
+        name="汇总纳税分摊",
+        category=AdjustmentCategory.PAYMENT,
+        tax_law_ref="国家税务总局公告2012年第57号",
+        description="总分支机构分摊比例",
+        func=rule_602_汇总纳税分摊,
+    ),
 ]
 
 # 全部规则
 ALL_RULES: List[TaxRule] = (
-    INCOME_RULES + DEDUCTION_RULES + ASSET_RULES + TAX_INCENTIVE_RULES
+    INCOME_RULES
+    + DEDUCTION_RULES
+    + ASSET_RULES
+    + TAX_INCENTIVE_RULES
+    + SPECIAL_RULES
+    + OVERSEAS_RULES
+    + PAYMENT_RULES
 )
 
 # 规则索引
@@ -1118,4 +1777,7 @@ RULES_BY_CATEGORY = {
     AdjustmentCategory.DEDUCTION: DEDUCTION_RULES,
     AdjustmentCategory.ASSET: ASSET_RULES,
     AdjustmentCategory.TAX_INCENTIVE: TAX_INCENTIVE_RULES,
+    AdjustmentCategory.SPECIAL: SPECIAL_RULES,
+    AdjustmentCategory.OVERSEAS: OVERSEAS_RULES,
+    AdjustmentCategory.PAYMENT: PAYMENT_RULES,
 }
