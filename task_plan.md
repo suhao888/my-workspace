@@ -1,42 +1,56 @@
-# 审计底稿填充引擎 v2.0 — CPA 逻辑层改造
+# 税审底稿自动填充引擎 — 任务计划
 
 ## 目标
-将现有机械填充引擎升级为具备 CPA 判断能力的智能引擎
+基于规则理解，构建税审计算引擎+底稿生成器。不硬解原有模板，而是再造一套结构化底稿。
+
+## 范围
+第一期：企业所得税汇缴（1-1 独立纳税企业）
+
+## 架构
+```
+输入数据 → 规则引擎(50+条税法规则) → 计算结果 → 底稿生成器 → 结构化Excel
+```
 
 ## 阶段
 
-### Phase 1: 差异分类与审计判断（当前）
-- **DiffClassifier** — 逐科目比较底稿值 vs 决算值，按类型分类
-  - 一致: 无需处理
-  - 正常更新: 底稿旧数据→决算新数据, 记录delta
-  - 潜在审计差异: 差异超阈值(如>重要性水平), 标记红色
-  - 期初勾稽问题: 上期审定数 ≠ 本期期初数
-- **重要性阈值配置**: 整体重要性(如总资产0.5%) + 特定科目阈值
+### Phase 1: 数据模型 ✅
+- 定义输入结构：TB、资产台账、薪酬明细、研发项目等
+- 文件：`tax_audit_engine/models.py`
 
-### Phase 2: 交叉勾稽验证
-- **CrossValidator**: 填充后自动验证
-  - 审定表合计行 = 子项加总(data_only)
-  - 审定表 vs 明细表 一致
-  - 资产负债表BS + 利润表PL 跨表勾稽
-  - 期初数 = 上期审定数
+### Phase 2: 规则引擎核心
+- 实现50+条纳税调整规则
+- 按税法公式计算：账载→税收→调增/调减
+- 文件：`tax_audit_engine/rules.py`
 
-### Phase 3: 审计调整预留
-- **AdjustmentManager**:
-  - 未审列(E/P) ← 决算值 (client books)
-  - 审定列(K/S) ← 保持原有值或=未审值(无调整时)
-  - 调整列(7-10) 永不覆盖
-  - 报表数行更新为决算值
-  - 差异数行 = 审定数 - 报表数 (自动计算)
+### Phase 3: 计算器
+- 规则编排、依赖解析、批量执行
+- 文件：`tax_audit_engine/calculator.py`
 
-### Phase 4: 审计轨迹
-- **AuditTrail**:
-  - 每步变更记录: 科目/位置/旧值/新值/类型
-  - 填充后生成差异报告(控制台+CSV)
-  - 每次运行保存审计日志
+### Phase 4: 底稿生成器
+- 按底稿逻辑生成结构化Excel
+- 审定表、纳税调整表、测算表、汇总表
+- 文件：`tax_audit_engine/workpaper_generator.py`
 
-## 决策记录
+### Phase 5: 集成与测试
+- 示例数据、端到端运行
+- 文件：`tax_audit_engine/main.py`
 
-1. 保留现有列映射(SD_COLUMNS/PL_COLUMNS)及formula保护
-2. DiffClassifier 在写入前执行, 不影响现有写入逻辑
-3. CrossValidator 在写入后执行, 独立验证不修改数据
-4. 审计轨迹存入单独JSON文件, 不与底稿混存
+## 状态
+Phase 1: 完成 ✅
+Phase 2: 完成 ✅（25条规则覆盖收入/扣除/资产/优惠四大类）
+Phase 3: 完成 ✅
+Phase 4: 完成 ✅（9张sheet：封面/利润表审定/收入调整/扣除调整/资产调整/优惠/折旧测算/汇总/税额计算）
+Phase 5: 完成 ✅
+
+## 产出物
+| 文件 | 说明 |
+|------|------|
+| `tax_audit_engine/models.py` | 输入/输出数据模型（EnterpriseInfo, TrialBalance, AssetItem, TaxAdjustment, CalculationResult） |
+| `tax_audit_engine/rules.py` | 25条纳税调整规则，按税法公式计算（RuleContext + TaxRule体系） |
+| `tax_audit_engine/calculator.py` | 计算引擎：规则编排→应纳税所得额→税额计算（含小型微利/高新税率） |
+| `tax_audit_engine/workpaper_generator.py` | 底稿生成器：openpyxl输出结构化Excel，无合并单元格 |
+| `tax_audit_engine/main.py` | 入口+示例数据（制造业企业，9张底稿表） |
+
+## 验证结果
+- 示例数据计算通过：会计利润720万→应纳税所得额535.8万→高新税率15%→应纳80.37万
+- 底稿已生成至桌面：`D:\Users\12844\Desktop\税审底稿_示例.xlsx`（9张sheet）
