@@ -662,9 +662,10 @@ class DocBuilder:
         table.autofit = False
         _set_table_borders_black(table)
 
-        # 表头（黑色文字，上下左右居中，无底纹保证颜色一致）
+        # 表头（黑色文字，上下左右居中，浅灰底色 #F2F2F2）
         for j, h in enumerate(headers):
             c = table.rows[0].cells[j]
+            _set_cell_shading(c, COLOR_LIGHT_BG)
             # 清空 cell 内容后直接 XML 操作，绕过 python-docx 缓存问题
             tc = c._tc
             for child in list(tc):
