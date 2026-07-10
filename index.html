@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AgentTemplate — Claude Code AI 代理商业版</title>
+<style>
+:root {
+  --bg: #f5f5f7;
+  --card: #ffffff;
+  --text: #1d1d1f;
+  --secondary: #6e6e73;
+  --accent: #007aff;
+  --accent-hover: #0056cc;
+  --border: #e8e8ed;
+  --success: #34c759;
+  --radius: 16px;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: -apple-system, "PingFang SC", "Microsoft YaHei", "Helvetica Neue", sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+.container { max-width: 840px; margin: 0 auto; padding: 0 24px; }
+
+/* ── Header ── */
+header {
+  text-align: center;
+  padding: 80px 0 48px;
+}
+header .badge {
+  display: inline-block;
+  background: #e8f0fe;
+  color: var(--accent);
+  font-size: 0.8em;
+  font-weight: 600;
+  padding: 4px 14px;
+  border-radius: 20px;
+  margin-bottom: 16px;
+  letter-spacing: 0.3px;
+}
+header h1 {
+  font-size: 2.8em;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+  margin-bottom: 12px;
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+header p {
+  color: var(--secondary);
+  font-size: 1.15em;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+/* ── Cards ── */
+.card {
+  background: var(--card);
+  border-radius: var(--radius);
+  padding: 36px;
+  margin-bottom: 20px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04);
+  transition: box-shadow 0.2s;
+}
+.card:hover {
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08), 0 2px 4px rgba(0,0,0,0.04);
+}
+.card h2 {
+  font-size: 1.25em;
+  font-weight: 600;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.card h2::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--border);
+  margin-left: 12px;
+}
+
+/* ── Features Grid ── */
+.features-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px 24px;
+}
+.features-grid li {
+  list-style: none;
+  padding: 8px 0 8px 24px;
+  position: relative;
+  font-size: 0.95em;
+  color: #333;
+}
+.features-grid li::before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  color: var(--success);
+  font-weight: 700;
+}
+
+/* ── Pricing ── */
+.price-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+.price-card {
+  text-align: center;
+  padding: 28px 24px;
+  border-radius: 14px;
+  border: 2px solid var(--border);
+  transition: border-color 0.2s, transform 0.2s;
+}
+.price-card:hover {
+  transform: translateY(-2px);
+}
+.price-card.featured {
+  border-color: var(--accent);
+  background: linear-gradient(135deg, #f0f7ff 0%, #e8f0fe 100%);
+  position: relative;
+}
+.price-card.featured::before {
+  content: "推荐";
+  position: absolute;
+  top: -10px;
+  right: 20px;
+  background: var(--accent);
+  color: #fff;
+  font-size: 0.75em;
+  font-weight: 600;
+  padding: 2px 12px;
+  border-radius: 10px;
+}
+.price-card h3 {
+  font-size: 1.2em;
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+.price-card .price {
+  font-size: 2.4em;
+  font-weight: 700;
+  color: var(--accent);
+  margin: 12px 0;
+}
+.price-card .price small {
+  font-size: 0.35em;
+  color: var(--secondary);
+  font-weight: 400;
+}
+.price-card ul {
+  text-align: left;
+  margin: 16px 0 0;
+}
+.price-card ul li {
+  list-style: none;
+  padding: 6px 0 6px 20px;
+  position: relative;
+  font-size: 0.9em;
+  color: #444;
+}
+.price-card ul li::before {
+  content: "•";
+  position: absolute;
+  left: 0;
+  color: var(--accent);
+  font-weight: 700;
+}
+
+/* ── Download Section ── */
+.download-info {
+  background: #f0f7ff;
+  border: 1px solid #d4e6ff;
+  border-radius: 10px;
+  padding: 16px 20px;
+  margin-bottom: 20px;
+  font-size: 0.9em;
+  color: #004080;
+}
+.download-info code {
+  background: #fff;
+  border: 1px solid #d4e6ff;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 0.9em;
+}
+
+/* ── QR Section ── */
+.qr-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.qr-code {
+  text-align: center;
+}
+.qr-code img {
+  width: 200px;
+  height: 200px;
+  border-radius: 12px;
+  border: 2px solid var(--border);
+  padding: 8px;
+  background: #fff;
+}
+.qr-code p {
+  margin-top: 8px;
+  font-weight: 600;
+  font-size: 0.95em;
+}
+.qr-instructions {
+  text-align: left;
+  font-size: 0.95em;
+}
+.qr-instructions li {
+  margin: 10px 0;
+  list-style: none;
+  padding-left: 24px;
+  position: relative;
+}
+.qr-instructions li::before {
+  content: "→";
+  position: absolute;
+  left: 0;
+  color: var(--accent);
+  font-weight: 700;
+}
+.note {
+  color: #d32f2f;
+  font-size: 0.9em;
+  margin-top: 16px;
+  text-align: center;
+  background: #fff5f5;
+  border: 1px solid #ffcccc;
+  border-radius: 8px;
+  padding: 10px 16px;
+}
+
+/* ── Steps ── */
+.steps-list {
+  counter-reset: step;
+}
+.steps-list li {
+  list-style: none;
+  padding: 14px 0 14px 44px;
+  position: relative;
+  border-bottom: 1px solid var(--border);
+  font-size: 0.95em;
+}
+.steps-list li:last-child {
+  border-bottom: none;
+}
+.steps-list li::before {
+  counter-increment: step;
+  content: counter(step);
+  position: absolute;
+  left: 0;
+  top: 12px;
+  width: 30px;
+  height: 30px;
+  background: var(--accent);
+  color: #fff;
+  border-radius: 50%;
+  text-align: center;
+  line-height: 30px;
+  font-size: 0.85em;
+  font-weight: 600;
+}
+code {
+  background: var(--border);
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 0.88em;
+  font-family: "SF Mono", "Cascadia Code", "Consolas", monospace;
+}
+
+/* ── License info ── */
+.license-box {
+  background: #fafafa;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 16px 20px;
+  font-size: 0.9em;
+  line-height: 1.8;
+}
+
+/* ── Footer ── */
+footer {
+  text-align: center;
+  padding: 48px 0;
+  color: var(--secondary);
+  font-size: 0.8em;
+}
+
+footer a {
+  color: var(--accent);
+  text-decoration: none;
+}
+footer a:hover {
+  text-decoration: underline;
+}
+
+/* ── Responsive ── */
+@media (max-width: 640px) {
+  header h1 { font-size: 2em; }
+  .features-grid { grid-template-columns: 1fr; }
+  .price-grid { grid-template-columns: 1fr; }
+  .qr-wrapper { flex-direction: column; gap: 16px; }
+  .card { padding: 24px 20px; }
+  header { padding: 48px 0 32px; }
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+
+  <header>
+    <div class="badge">v1.0.0 · 商业授权版</div>
+    <h1>AgentTemplate</h1>
+    <p>Claude Code AI 代理的商业封装套件，即买即用</p>
+  </header>
+
+  <div class="card">
+    <h2>产品包含</h2>
+    <ul class="features-grid">
+      <li>一键安装脚本 <code>install.ps1</code></li>
+      <li>许可证密钥系统（HMAC 签名防伪）</li>
+      <li>远程版本检查 + 更新提醒</li>
+      <li>智能提示词增强引擎</li>
+      <li>GPS-路单核对审计 Skill</li>
+      <li>底稿填充自动化引擎</li>
+      <li>财务数据分析引擎</li>
+      <li>15+ 专业审计/分析 Skill</li>
+      <li>芒格/费曼/马斯克等思维框架</li>
+      <li>审计写作约束系统（去 AI 味）</li>
+      <li>安全审计合规 Skill 套件</li>
+      <li>文件完整性防护（Guardian）</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h2>定价</h2>
+    <div class="price-grid">
+      <div class="price-card">
+        <h3>个人版</h3>
+        <div class="price">¥99 <small>一次</small></div>
+        <ul>
+          <li>1 台设备激活</li>
+          <li>全部 Skill 可用</li>
+          <li>无时间限制</li>
+          <li>基础更新支持</li>
+        </ul>
+      </div>
+      <div class="price-card featured">
+        <h3>团队版</h3>
+        <div class="price">¥199 <small>一次</small></div>
+        <ul>
+          <li>3 台设备激活</li>
+          <li>全部 Skill 可用</li>
+          <li>无时间限制</li>
+          <li>优先更新支持</li>
+          <li>团队内部可共享</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>下载安装</h2>
+    <div class="download-info">
+      安装包为单文件 <code>AgentInstaller_1.0.0.exe</code>（6.3 MB），
+      下载后双击即可运行。无需安装 Python、Node.js 等依赖环境。
+      <br><br>
+      如需自行操作，也可下载脚本包手动执行 <code>install.ps1</code>。
+    </div>
+    <p style="font-size:0.9em;color:var(--secondary);">
+      安装包通过微信发送。<span style="color:var(--text);font-weight:500;">先购买许可证 KEY，再发安装包。</span>
+    </p>
+  </div>
+
+  <div class="card">
+    <h2>购买方式</h2>
+    <div class="qr-wrapper">
+      <div class="qr-code">
+        <img src="wechat-qr.jpg" alt="微信收款码">
+        <p>微信扫码付款</p>
+      </div>
+      <ol class="qr-instructions">
+        <li>选择版本：个人版 ¥99 或 团队版 ¥199</li>
+        <li>扫码输入对应金额完成付款</li>
+        <li>保存付款截图，发送到微信</li>
+        <li>收到 KEY 后，在安装时输入即可激活</li>
+      </ol>
+    </div>
+    <div class="note">
+      ⚠️ 付款后请截图发给我，24 小时内将许可证 KEY 发送给你。<br>
+      如有问题，直接微信联系。
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>安装步骤</h2>
+    <ol class="steps-list">
+      <li>收到安装包（<code>.exe</code> 单文件或脚本包）</li>
+      <li>收到许可证 KEY（格式：<code>base64.base64</code>）</li>
+      <li>双击运行 <code>AgentInstaller_1.0.0.exe</code><br>
+        <span style="font-size:0.85em;color:var(--secondary);">或命令行：<code>install.ps1 -Key "收到的KEY"</code></span></li>
+      <li>安装程序自动完成：脚本部署、Skill 安装、代理配置、防护初始化</li>
+      <li>安装完成，终端输入 <code>claude</code> 即可使用</li>
+    </ol>
+  </div>
+
+  <div class="card">
+    <h2>许可证说明</h2>
+    <div class="license-box">
+      <p>个人版绑定 1 台设备，团队版绑定 3 台设备。</p>
+      <p>许可证使用 HMAC-SHA256 签名，防伪不可篡改。</p>
+      <p style="margin-top:8px;">永不过期，一次购买永久使用。</p>
+      <p style="margin-top:8px;">超出设备数需额外购买。</p>
+    </div>
+  </div>
+
+  <footer>
+    <p>AgentTemplate © 2026</p>
+  </footer>
+
+</div>
+</body>
+</html>
