@@ -66,17 +66,40 @@ def _detect_row(ws, pattern: str, start_row=1, end_row=None) -> Optional[int]:
     return None
 
 
-def _xls_to_xlsx_com(xls_path: str, xlsx_path: str):
-    """用 Excel COM 将 xls 转换为 xlsx，完整保留格式"""
-    import win32com.client as win32
+def _xls_to_xlsx_com(xls_path: str, xlsx_path: str, timeout: int = 90):
+    """
+    用 Excel COM 将 xls 转换为 xlsx，完整保留格式
 
-    excel = win32.gencache.EnsureDispatch("Excel.Application")
-    excel.DisplayAlerts = False
-    excel.Visible = False
-    wb = excel.Workbooks.Open(os.path.abspath(xls_path))
-    wb.SaveAs(os.path.abspath(xlsx_path), FileFormat=51)
-    wb.Close(SaveChanges=False)
-    excel.Quit()
+    在独立子进程中运行，避免 Excel COM 挂死阻塞主进程。
+    超时后自动 kill 子进程 + 清理 Excel.exe 残留。
+    """
+    import subprocess
+
+    proc = subprocess.Popen(
+        [sys.executable, "-m", "tax_audit_engine.xls_convert", xls_path, xlsx_path],
+        stdout=subprocess.DEVNULL,
+        stderr=subprocess.PIPE,
+    )
+    try:
+        _, stderr = proc.communicate(timeout=timeout)
+        if proc.returncode != 0:
+            err_msg = stderr.decode("utf-8", errors="replace")
+            # 杀残留 Excel
+            _cleanup_excel()
+            raise RuntimeError(f"Excel COM 转换失败 [{proc.returncode}]: {err_msg}")
+    except subprocess.TimeoutExpired:
+        proc.kill()
+        _cleanup_excel()
+        raise RuntimeError(f"Excel COM 超时 ({timeout}s): {xls_path}")
+
+
+def _cleanup_excel():
+    """清理残留的 Excel 进程"""
+    import subprocess as _sp
+
+    _sp.run(
+        ["taskkill", "/f", "/im", "excel.exe"], stdout=_sp.DEVNULL, stderr=_sp.DEVNULL
+    )
 
 
 # ============================================================
