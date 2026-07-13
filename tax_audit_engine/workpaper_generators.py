@@ -1,5 +1,5 @@
 """
-底稿生成器扩展 — 4类业务自生成底稿（RD/FullTax/Loss/HighTech）
+底稿生成器扩展 — 5类业务自生成底稿（RD/FullTax/Loss/HighTech/Land）
 不依赖模板，从计算结果直接生成结构化Excel底稿
 """
 
@@ -28,7 +28,16 @@ from tax_audit_engine.excel_styles import (
     page_setup,
     auto_width,
     highlight_cells,
+    auto_row_height,
 )
+
+
+def _r2(val):
+    """统一round到2位小数（仅float），消除浮点噪声"""
+    if isinstance(val, float):
+        return round(val, 2)
+    return val
+
 
 # ============================================================
 # RDGenerator — 研发费用加计扣除工作底稿
@@ -87,7 +96,7 @@ class RDGenerator:
             ("加计扣除额", self.result.deduction_amount),
         ]:
             ws.cell(row=r, column=2, value=label).font = F.BOLD
-            c = ws.cell(row=r, column=3, value=val)
+            c = ws.cell(row=r, column=3, value=_r2(val))
             c.font = F.NORMAL
             c.number_format = NF.AMOUNT
             c.border = B.THIN
@@ -95,7 +104,7 @@ class RDGenerator:
             r += 1
         if self.result.has_other_limit_issue:
             ws.cell(row=r, column=2, value="其中：其他费用超限金额").font = F.BOLD
-            c = ws.cell(row=r, column=3, value=self.result.other_limit_excess)
+            c = ws.cell(row=r, column=3, value=_r2(self.result.other_limit_excess))
             c.font = F.WARN
             c.number_format = NF.AMOUNT
             c.border = B.THIN
@@ -213,7 +222,9 @@ class RDGenerator:
         ]:
             ws.cell(row=r, column=2, value=label).font = F.BOLD
             ws.cell(row=r, column=2).border = B.THIN
-            c = ws.cell(row=r, column=3, value=val)
+            c = ws.cell(
+                row=r, column=3, value=_r2(val) if isinstance(val, float) else val
+            )
             if isinstance(val, (int, float)):
                 c.number_format = NF.AMOUNT
             c.font = F.RESULT
@@ -430,7 +441,7 @@ class FullTaxGenerator:
             # 高风险行字体红色
             if is_high:
                 data_cell(ws, r, 2, item.get("tax_type", ""), bold=True)
-            ws.row_dimensions[r].height = 36
+            auto_row_height(ws, r, [diff, rate, reason], min_height=36)
             r += 1
         freeze_header(ws, 4)
 
@@ -491,7 +502,9 @@ class LossGenerator:
         ]:
             ws.cell(row=r, column=2, value=label).font = F.BOLD
             ws.cell(row=r, column=2).border = B.THIN
-            c = ws.cell(row=r, column=3, value=val)
+            c = ws.cell(
+                row=r, column=3, value=_r2(val) if isinstance(val, float) else val
+            )
             c.border = B.THIN
             if isinstance(val, (int, float)):
                 c.number_format = NF.AMOUNT_INT
@@ -885,6 +898,7 @@ class HighTechGenerator:
             passed = score >= line
             highlight_cells(ws, r, 6, Fill.PASS if passed else Fill.FAIL)
             ws.cell(row=r, column=2).font = F.BOLD
+            auto_row_height(ws, r, [note], min_height=28)
             r += 1
         r += 1
         section_row(ws, r, "二、综合评价", 5)
@@ -906,4 +920,337 @@ class HighTechGenerator:
         c = ws.cell(row=r, column=3, value=conclusion)
         c.font = F.PASS if self.result.passed else F.WARN
         c.border = B.THIN
+        freeze_header(ws, 4)
+
+
+# ============================================================
+# LandGenerator — 土地增值税清算审核底稿
+# ============================================================
+
+
+class LandGenerator:
+    """
+    土地增值税清算审核底稿生成器
+    sheet: 封面 → 收入明细表 → 扣除项目明细表 → 逐类计算表 → 税款计算汇总
+    """
+
+    def __init__(self, result):
+        self.result = result
+        self.wb = Workbook()
+        self.land_input = result.input
+
+    def generate(self, output_path: str):
+        self._cover()
+        self._income_detail()
+        self._deduction_detail()
+        self._property_calc()
+        self._tax_summary()
+        Path(output_path).parent.mkdir(parents=True, exist_ok=True)
+        self.wb.save(output_path)
+
+    def _cover(self):
+        ws = self.wb.active
+        ws.title = "封面"
+        set_cols(ws, [3, 22, 40, 3])
+        page_setup(ws, landscape=False, fit_w=1)
+        merge_title(ws, 2, "土地增值税清算审核工作底稿", 3)
+        inp = self.land_input
+        ent = inp.enterprise
+        cover_info(
+            ws,
+            4,
+            [
+                ("被审核单位名称", ent.name if ent else ""),
+                ("统一社会信用代码", ent.uscc if ent else ""),
+                ("项目名称", inp.project_name),
+                ("项目所在地", inp.project_location),
+                (
+                    "审核年度",
+                    f"{getattr(ent, 'tax_year', '')}年度"
+                    if hasattr(ent, "tax_year") and ent.tax_year
+                    else "",
+                ),
+                ("占地面积", f"{inp.land_area:,.2f} m²"),
+                ("总建筑面积", f"{inp.total_floor_area:,.2f} m²"),
+            ],
+        )
+        r = 13
+        section_row(ws, r, "一、审核汇总", 3)
+        r += 1
+        for label, val in [
+            ("收入总额", self.result.total_income),
+            ("扣除项目合计", self.result.total_deductions),
+            ("应缴税款", self.result.total_tax),
+            ("已预缴税款", inp.pre_collected_tax),
+            ("应补(退)税款", self.result.tax_difference),
+            ("审核结论", "通过" if self.result.passed else "发现差异"),
+        ]:
+            ws.cell(row=r, column=2, value=label).font = F.BOLD
+            ws.cell(row=r, column=2).border = B.THIN
+            c = ws.cell(
+                row=r, column=3, value=_r2(val) if isinstance(val, float) else val
+            )
+            c.border = B.THIN
+            if isinstance(val, (int, float)):
+                c.number_format = NF.AMOUNT
+            if label == "审核结论":
+                c.font = F.PASS if self.result.passed else F.WARN
+            elif label == "应补(退)税款":
+                c.font = F.RESULT if abs(self.result.tax_difference) > 0 else F.NORMAL
+            else:
+                c.font = F.NORMAL
+            r += 1
+
+    def _income_detail(self):
+        ws = self.wb.create_sheet("收入明细表")
+        set_cols(ws, [5, 6, 22, 18, 18, 18, 12])
+        page_setup(ws, landscape=True, fit_w=1)
+        merge_title(ws, 1, "房地产收入明细表", 6)
+        header_row(
+            ws,
+            3,
+            [
+                "序号",
+                "房产类型",
+                "含税收入",
+                "免税收入",
+                "应税收入",
+                "占比",
+                "备注",
+            ],
+        )
+        r = 4
+        total_inc = sum(r.total_income for r in self.land_input.revenues)
+        for i, rev in enumerate(self.land_input.revenues, 1):
+            taxable = rev.total_income - rev.exempt_income
+            ratio = taxable / total_inc if total_inc > 0 else 0
+            fill = Fill.ROW_EVEN if i % 2 == 0 else Fill.ROW_ODD
+            write_row(
+                ws,
+                r,
+                [
+                    i,
+                    rev.property_type,
+                    rev.total_income,
+                    rev.exempt_income,
+                    taxable,
+                    ratio,
+                    "",
+                ],
+                fmt=NF.AMOUNT,
+                fill_=fill,
+            )
+            ws.cell(row=r, column=6).number_format = NF.PCT
+            r += 1
+        write_row(
+            ws,
+            r,
+            [
+                "",
+                "合  计",
+                total_inc,
+                sum(rev.exempt_income for rev in self.land_input.revenues),
+                self.result.total_income,
+                1.0,
+                "",
+            ],
+            fmt=NF.AMOUNT,
+            bold=True,
+            fill_=Fill.BLUE_LIGHT,
+        )
+        ws.cell(row=r, column=6).number_format = NF.PCT
+        highlight_cells(ws, r, 7, Fill.BLUE_LIGHT, F.BOLD)
+        freeze_header(ws, 4)
+
+    def _deduction_detail(self):
+        ws = self.wb.create_sheet("扣除项目明细表")
+        set_cols(ws, [5, 8, 28, 18, 15, 18])
+        page_setup(ws, landscape=True, fit_w=1)
+        merge_title(ws, 1, "扣除项目明细表", 5)
+        header_row(
+            ws,
+            3,
+            [
+                "序号",
+                "费用类别",
+                "项目名称",
+                "总额",
+                "分摊方法",
+                "备注",
+            ],
+        )
+        r = 4
+        cost_total = sum(c.total_amount for c in self.land_input.costs)
+        for i, cost in enumerate(self.land_input.costs, 1):
+            fill = Fill.ROW_EVEN if i % 2 == 0 else Fill.ROW_ODD
+            write_row(
+                ws,
+                r,
+                [
+                    i,
+                    cost.category,
+                    cost.category,
+                    cost.total_amount,
+                    cost.apportion_method or "建筑面积法",
+                    cost.notes,
+                ],
+                fmt=NF.AMOUNT,
+                fill_=fill,
+            )
+            r += 1
+        write_row(
+            ws,
+            r,
+            ["", "", "合  计", cost_total, "", ""],
+            fmt=NF.AMOUNT,
+            bold=True,
+            fill_=Fill.BLUE_LIGHT,
+        )
+        highlight_cells(ws, r, 6, Fill.BLUE_LIGHT, F.BOLD)
+        freeze_header(ws, 4)
+        auto_filter(ws, 3, 6)
+
+    def _property_calc(self):
+        ws = self.wb.create_sheet("逐类计算表")
+        set_cols(ws, [5, 6, 16, 18, 18, 18, 16, 14, 12, 12])
+        page_setup(ws, landscape=True, fit_w=1)
+        merge_title(ws, 1, "各类房地产土地增值税逐项计算表", 9)
+        header_row(
+            ws,
+            3,
+            [
+                "序号",
+                "房产类型",
+                "应税收入",
+                "扣除合计",
+                "增值额",
+                "增值率",
+                "适用税率",
+                "速算扣除率",
+                "应缴税款",
+                "免税",
+            ],
+        )
+        r = 4
+        for i, pr in enumerate(self.result.property_results, 1):
+            fill = Fill.ROW_EVEN if i % 2 == 0 else Fill.ROW_ODD
+            write_row(
+                ws,
+                r,
+                [
+                    i,
+                    pr.property_type,
+                    pr.total_income,
+                    pr.deductions.total_deductions,
+                    pr.added_value,
+                    pr.ratio,
+                    pr.tax_rate,
+                    pr.quick_deduction,
+                    pr.tax_due,
+                    "是" if pr.exempt else "否",
+                ],
+                fmt=NF.AMOUNT,
+                fill_=fill,
+            )
+            ws.cell(row=r, column=6).number_format = NF.PCT
+            ws.cell(row=r, column=7).number_format = NF.PCT
+            ws.cell(row=r, column=8).number_format = NF.PCT
+            if pr.exempt:
+                highlight_cells(ws, r, 10, Fill.PASS, F.PASS)
+            r += 1
+        write_row(
+            ws,
+            r,
+            [
+                "",
+                "合  计",
+                self.result.total_income,
+                self.result.total_deductions,
+                sum(pr.added_value for pr in self.result.property_results),
+                "",
+                "",
+                "",
+                self.result.total_tax,
+                "",
+            ],
+            fmt=NF.AMOUNT,
+            bold=True,
+            fill_=Fill.BLUE_LIGHT,
+        )
+        highlight_cells(ws, r, 10, Fill.BLUE_LIGHT, F.BOLD)
+        freeze_header(ws, 4)
+
+    def _tax_summary(self):
+        ws = self.wb.create_sheet("税款计算汇总")
+        set_cols(ws, [5, 30, 20, 20, 20])
+        page_setup(ws, landscape=False, fit_w=1)
+        merge_title(ws, 1, "土地增值税税款计算汇总表", 4)
+        header_row(ws, 3, ["行次", "项  目", "金  额", "备  注"])
+        rows_data = [
+            ("一、收入项目", "", ""),
+            ("  1. 应税收入合计", self.result.total_income, ""),
+        ]
+        for pr in self.result.property_results:
+            rows_data.append((f"    - {pr.property_type}", pr.total_income, ""))
+        rows_data += [
+            ("二、扣除项目", "", ""),
+            ("  1. 扣除项目合计", self.result.total_deductions, ""),
+        ]
+        for pr in self.result.property_results:
+            rows_data.append(
+                (f"    - {pr.property_type}", pr.deductions.total_deductions, "")
+            )
+        rows_data += [
+            ("三、增值额与税率", "", ""),
+        ]
+        for pr in self.result.property_results:
+            rows_data.append((f"  {pr.property_type}增值额", pr.added_value, ""))
+            rows_data.append(
+                (f"  {pr.property_type}增值率", pr.ratio, str(pr.bracket_desc))
+            )
+        rows_data += [
+            ("四、税款计算", "", ""),
+        ]
+        for pr in self.result.property_results:
+            tag = " [免税]" if pr.exempt else ""
+            rows_data.append((f"  {pr.property_type}应缴税款{tag}", pr.tax_due, ""))
+        rows_data += [
+            ("  应缴税款合计", self.result.total_tax, ""),
+            ("  已预缴税款", self.land_input.pre_collected_tax, ""),
+            ("  应补(退)税款", self.result.tax_difference, ""),
+        ]
+
+        r = 4
+        for i, (label, val, note) in enumerate(rows_data, 1):
+            is_section = label.startswith(("一、", "二、", "三、", "四、"))
+            is_sub = label.startswith("  ") and not label.startswith("    -")
+            is_detail = label.startswith("    -")
+            write_row(ws, r, [i, label, val, note], fmt=NF.AMOUNT)
+            if is_section:
+                highlight_cells(ws, r, 4, Fill.SECTION_BG, F.SECTION)
+            elif is_sub:
+                ws.cell(row=r, column=2).font = F.BOLD
+            if label == "  应补(退)税款":
+                c = ws.cell(row=r, column=3)
+                c.font = F.RESULT if abs(self.result.tax_difference) > 0 else F.NORMAL
+                if self.result.tax_difference > 0:
+                    ws.cell(row=r, column=4, value="应补缴").font = F.WARN
+                elif self.result.tax_difference < 0:
+                    ws.cell(row=r, column=4, value="应退税").font = F.PASS
+                else:
+                    ws.cell(row=r, column=4, value="无差异").font = F.PASS
+            r += 1
+
+        r += 1
+        section_row(ws, r, "五、审核意见", 4)
+        r += 1
+        if self.result.issues:
+            for iss in self.result.issues:
+                ws.cell(row=r, column=2, value=f"  [!] {iss}").font = F.WARN
+                ws.cell(row=r, column=2).border = B.THIN
+                r += 1
+        else:
+            ws.cell(row=r, column=2, value="经审核，未发现重大差异").font = F.PASS
+            ws.cell(row=r, column=2).border = B.THIN
+
         freeze_header(ws, 4)

@@ -163,7 +163,9 @@ def header_row(ws, row, headers):
 
 
 def data_cell(ws, row, col, value, fmt=None, bold=False, fill=None, align=None):
-    """写入数据单元格，按类型自动设置对齐"""
+    """写入数据单元格，按类型自动设置对齐；float自动round消除浮点噪声"""
+    if isinstance(value, float):
+        value = round(value, 10)
     c = ws.cell(row=row, column=col, value=value)
     c.font = F.BOLD if bold else F.NORMAL
     c.border = B.THIN
@@ -306,6 +308,18 @@ def row_banding(ws, start_row, end_row, col_count):
             cell = ws.cell(row=r, column=ci)
             if cell.fill == PatternFill():  # 仅空填充覆盖
                 cell.fill = fill
+
+
+def auto_row_height(ws, row, values, min_height=30):
+    """根据多行内容自动调整行高（按换行符数量），覆盖所有单元格"""
+    max_lines = 1
+    for v in values:
+        if v and isinstance(v, str) and "\n" in v:
+            lines = len(v.split("\n"))
+            if lines > max_lines:
+                max_lines = lines
+    if max_lines > 1:
+        ws.row_dimensions[row].height = max(min_height, max_lines * 15)
 
 
 def highlight_cells(ws, row, col_span, fill, font=None):

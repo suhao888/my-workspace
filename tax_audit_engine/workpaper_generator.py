@@ -1,12 +1,13 @@
 """
 底稿生成器 — 将计算结果输出为结构化Excel工作底稿
 不复制原模板格式，按审计底稿逻辑生成清晰表格
+
+样式统一引用 excel_styles.py，消除内联样式重复
 """
 
 from pathlib import Path
 from typing import List, Optional
 from openpyxl import Workbook
-from openpyxl.styles import Font, PatternFill, Alignment, Border, Side, numbers
 from openpyxl.utils import get_column_letter
 
 from .models import (
@@ -17,68 +18,53 @@ from .models import (
     EnterpriseInfo,
     TrialBalance,
 )
+from .excel_styles import (
+    F,
+    Fill,
+    B,
+    A,
+    NF,
+    set_cols,
+    header_row,
+    data_cell,
+    write_row,
+    write_row_ex,
+    cover_info,
+    merge_title,
+    section_row,
+    set_vcenter,
+    freeze_header,
+    auto_filter,
+    page_setup,
+    auto_width,
+    highlight_cells,
+)
 
 
-# ============================================================
-# 样式定义
-# ============================================================
+def _r2(val) -> float:
+    """统一round到2位小数，保证数值精度"""
+    if val is None:
+        return 0.0
+    return round(float(val), 2)
 
 
-class Styles:
-    """Excel样式常量"""
-
-    # 颜色
-    HEADER_FILL = PatternFill(
-        start_color="4472C4", end_color="4472C4", fill_type="solid"
-    )
-    HEADER_FONT = Font(name="微软雅黑", size=10, bold=True, color="FFFFFF")
-    TITLE_FONT = Font(name="微软雅黑", size=14, bold=True)
-    SUBTITLE_FONT = Font(name="微软雅黑", size=10, bold=True)
-    NORMAL_FONT = Font(name="微软雅黑", size=10)
-    BOLD_FONT = Font(name="微软雅黑", size=10, bold=True)
-    SMALL_FONT = Font(name="微软雅黑", size=9, color="666666")
-
-    # 填充
-    LIGHT_BLUE_FILL = PatternFill(
-        start_color="D6E4F0", end_color="D6E4F0", fill_type="solid"
-    )
-    LIGHT_GRAY_FILL = PatternFill(
-        start_color="F2F2F2", end_color="F2F2F2", fill_type="solid"
-    )
-    LIGHT_YELLOW_FILL = PatternFill(
-        start_color="FFF2CC", end_color="FFF2CC", fill_type="solid"
-    )
-    WHITE_FILL = PatternFill(
-        start_color="FFFFFF", end_color="FFFFFF", fill_type="solid"
-    )
-
-    # 边框
-    THIN_BORDER = Border(
-        left=Side(style="thin"),
-        right=Side(style="thin"),
-        top=Side(style="thin"),
-        bottom=Side(style="thin"),
-    )
-    BOTTOM_BORDER = Border(
-        bottom=Side(style="medium"),
-    )
-
-    # 对齐
-    CENTER = Alignment(horizontal="center", vertical="center")
-    LEFT = Alignment(horizontal="left", vertical="center")
-    RIGHT = Alignment(horizontal="right", vertical="center")
-    WRAP = Alignment(wrap_text=True, vertical="top")
-
-    # 数字格式
-    AMOUNT_FORMAT = "#,##0.00"
-    INT_FORMAT = "#,##0"
-    PCT_FORMAT = "0.00%"
+def _set_row_height_for_multiline(ws, row, values, min_height=30):
+    """根据多行内容自动调整行高（按换行符数量）"""
+    max_lines = 1
+    for v in values:
+        if v and isinstance(v, str) and "\n" in v:
+            lines = len(v.split("\n"))
+            if lines > max_lines:
+                max_lines = lines
+    if max_lines > 1:
+        ws.row_dimensions[row].height = max(min_height, max_lines * 15)
 
 
 class WorkpaperGenerator:
     """
     税审工作底稿生成器
     基于计算结果，生成结构化Excel底稿
+    所有数值写入党使用 _r2() 确保精度
     """
 
     def __init__(self, result: CalculationResult):
@@ -94,57 +80,32 @@ class WorkpaperGenerator:
         # 2. 利润表审定表
         self._create_pl_audit_sheet()
 
-        # 3. 纳税调整明细表（收入类）
-        if self._has_adjustments(AdjustmentCategory.INCOME):
-            self._create_adjustment_sheet(
-                "3-01 收入类纳税调整明细表",
+        # 3-6. 纳税调整明细表（分类别）
+        for cat, title, subtitle in [
+            (
                 AdjustmentCategory.INCOME,
+                "3-01 收入类纳税调整明细表",
                 "收入类纳税调整项目",
-            )
-
-        # 4. 纳税调整明细表（扣除类）
-        if self._has_adjustments(AdjustmentCategory.DEDUCTION):
-            self._create_adjustment_sheet(
-                "3-02 扣除类纳税调整明细表",
+            ),
+            (
                 AdjustmentCategory.DEDUCTION,
+                "3-02 扣除类纳税调整明细表",
                 "扣除类纳税调整项目",
-            )
-
-        # 5. 纳税调整明细表（资产类）
-        if self._has_adjustments(AdjustmentCategory.ASSET):
-            self._create_adjustment_sheet(
-                "3-03 资产类纳税调整明细表",
+            ),
+            (
                 AdjustmentCategory.ASSET,
+                "3-03 资产类纳税调整明细表",
                 "资产类纳税调整项目",
-            )
+            ),
+            (AdjustmentCategory.SPECIAL, "3-04 特殊事项调整明细表", "特殊事项调整项目"),
+            (AdjustmentCategory.OVERSEAS, "4 境外税收调整明细表", "境外税收调整项目"),
+            (AdjustmentCategory.TAX_INCENTIVE, "5 税收优惠明细表", "税收优惠明细项目"),
+            (AdjustmentCategory.PAYMENT, "6 缴纳情况明细表", "缴纳情况调整项目"),
+        ]:
+            if self._has_adjustments(cat):
+                self._create_adjustment_sheet(title, cat, subtitle)
 
-        # 6. 特殊事项明细表
-        if self._has_adjustments(AdjustmentCategory.SPECIAL):
-            self._create_adjustment_sheet(
-                "3-04 特殊事项调整明细表",
-                AdjustmentCategory.SPECIAL,
-                "特殊事项调整项目",
-            )
-
-        # 7. 境外税收明细表
-        if self._has_adjustments(AdjustmentCategory.OVERSEAS):
-            self._create_adjustment_sheet(
-                "4 境外税收调整明细表", AdjustmentCategory.OVERSEAS, "境外税收调整项目"
-            )
-
-        # 8. 税收优惠明细表
-        if self._has_adjustments(AdjustmentCategory.TAX_INCENTIVE):
-            self._create_adjustment_sheet(
-                "5 税收优惠明细表", AdjustmentCategory.TAX_INCENTIVE, "税收优惠明细项目"
-            )
-
-        # 9. 缴纳情况明细表
-        if self._has_adjustments(AdjustmentCategory.PAYMENT):
-            self._create_adjustment_sheet(
-                "6 缴纳情况明细表", AdjustmentCategory.PAYMENT, "缴纳情况调整项目"
-            )
-
-        # 10. 资产折旧测算表（如有资产数据）
+        # 7. 资产折旧测算表（如有资产数据）
         if (
             self.result.enterprise
             and hasattr(self.result, "_assets")
@@ -167,52 +128,38 @@ class WorkpaperGenerator:
     # ============================================================
 
     def _create_cover_sheet(self):
-        """生成封面sheet"""
         ws = self.wb.active
         ws.title = "封面"
-        self._set_column_widths(ws, [3, 20, 30, 20, 3])
+        set_cols(ws, [3, 20, 30, 20, 3])
         ent = self.result.enterprise
 
         row = 2
-        ws.merge_cells("B2:D2")
-        ws["B2"] = "企业所得税汇算清缴纳税申报审核工作底稿"
-        ws["B2"].font = Styles.TITLE_FONT
-        ws["B2"].alignment = Styles.CENTER
-
+        merge_title(ws, row, "企业所得税汇算清缴纳税申报审核工作底稿", 4)
         row = 4
         info_items = [
             ("被审核单位名称", ent.name),
             ("统一社会信用代码", ent.uscc),
             ("所属行业", ent.industry),
-            ("纳税年度", f"{ent.tax_year}年度"),
+            ("纳税年度", f"{ent.tax_year}年度" if ent.tax_year else ""),
             ("法定代表人", ent.legal_rep),
             ("注册地址", ent.address),
             ("从业人数", f"{ent.employee_count}人"),
-            ("资产总额", f"{ent.total_assets:,.2f}元"),
+            ("资产总额", f"{_r2(ent.total_assets):,.2f}元" if ent.total_assets else ""),
             ("申报类型", "独立纳税企业"),
             ("编制日期", ""),
         ]
-        for label, value in info_items:
-            ws[f"B{row}"] = label
-            ws[f"B{row}"].font = Styles.BOLD_FONT
-            ws[f"C{row}"] = value
-            ws[f"C{row}"].font = Styles.NORMAL_FONT
-            ws[f"B{row}"].alignment = Styles.LEFT
-            row += 1
+        row = cover_info(ws, row, info_items)
 
         row += 2
-        ws[f"B{row}"] = "计算结果摘要"
-        ws[f"B{row}"].font = Styles.SUBTITLE_FONT
-
+        section_row(ws, row, "计算结果摘要", 4)
         row += 1
         summary = self.result.summary()
         for label, value in summary.items():
-            ws[f"B{row}"] = label
-            ws[f"B{row}"].font = Styles.BOLD_FONT
-            ws[f"C{row}"] = value
-            ws[f"C{row}"].font = Styles.NORMAL_FONT
+            data_cell(ws, row, 2, label, bold=True)
             if isinstance(value, float):
-                ws[f"C{row}"].number_format = Styles.AMOUNT_FORMAT
+                data_cell(ws, row, 3, _r2(value), fmt=NF.AMOUNT)
+            else:
+                data_cell(ws, row, 3, value)
             row += 1
 
     # ============================================================
@@ -220,101 +167,76 @@ class WorkpaperGenerator:
     # ============================================================
 
     def _create_pl_audit_sheet(self):
-        """生成利润表审定表"""
         ws = self.wb.create_sheet("2-00 利润表审定表")
-        self._set_column_widths(ws, [5, 25, 15, 15, 15, 15])
+        set_cols(ws, [5, 25, 15, 15, 15, 15])
 
         tb = self.result.tb
         ent = self.result.enterprise
 
         # 标题
-        ws.merge_cells("A1:E1")
-        ws["A1"] = "利润表及纳税申报审核表"
-        ws["A1"].font = Styles.TITLE_FONT
-        ws["A1"].alignment = Styles.CENTER
-
-        # 表头信息
-        ws["A2"] = f"被审核单位: {ent.name}" if ent.name else ""
-        ws["A2"].font = Styles.SMALL_FONT
-        ws["D2"] = f"所属年度: {ent.tax_year}年度" if ent.tax_year else ""
-        ws["D2"].font = Styles.SMALL_FONT
+        merge_title(ws, 1, "利润表及纳税申报审核表", 6)
+        if ent.name:
+            ws.cell(row=2, column=1, value=f"被审核单位: {ent.name}").font = F.SMALL
+        if ent.tax_year:
+            ws.cell(
+                row=2, column=4, value=f"所属年度: {ent.tax_year}年度"
+            ).font = F.SMALL
 
         # 列头
         headers = ["行次", "项目", "账载金额", "税收金额", "调增金额", "调减金额"]
         row = 4
-        for col, header in enumerate(headers, 1):
-            cell = ws.cell(row=row, column=col, value=header)
-            cell.font = Styles.HEADER_FONT
-            cell.fill = Styles.HEADER_FILL
-            cell.alignment = Styles.CENTER
-            cell.border = Styles.THIN_BORDER
+        header_row(ws, row, headers)
 
-        # 利润表项目（按申报表格式）
+        # 利润表项目
         pl_items = [
-            ("一、营业收入", tb.revenue_total, None),
-            ("  主营业务收入", tb.revenue_main, None),
-            ("  其他业务收入", tb.revenue_other, None),
-            ("减：营业成本", tb.cost_main + tb.cost_other, None),
-            ("  主营业务成本", tb.cost_main, None),
-            ("  其他业务成本", tb.cost_other, None),
-            ("  税金及附加", tb.tax_surcharge, None),
-            ("  销售费用", tb.selling_expense, None),
-            ("  管理费用", tb.admin_expense, None),
-            ("  财务费用", tb.finance_expense, None),
-            ("  资产减值损失", tb.asset_impairment, None),
-            ("加：公允价值变动收益", tb.fair_value_change, None),
-            ("  投资收益", tb.investment_income, None),
-            ("  资产处置收益", tb.asset_disposal_income, None),
-            ("  其他收益", tb.get("其他收益", 0), None),
-            ("  营业外收入", tb.non_operating_income, None),
-            ("减：营业外支出", tb.get("营业外支出", 0), None),
-            ("二、利润总额", tb.accounting_profit, None),
+            ("一、营业收入", tb.revenue_total),
+            ("  主营业务收入", tb.revenue_main),
+            ("  其他业务收入", tb.revenue_other),
+            ("减：营业成本", _r2(tb.cost_main) + _r2(tb.cost_other)),
+            ("  主营业务成本", tb.cost_main),
+            ("  其他业务成本", tb.cost_other),
+            ("  税金及附加", tb.tax_surcharge),
+            ("  销售费用", tb.selling_expense),
+            ("  管理费用", tb.admin_expense),
+            ("  财务费用", tb.finance_expense),
+            ("  资产减值损失", tb.asset_impairment),
+            ("加：公允价值变动收益", tb.fair_value_change),
+            ("  投资收益", tb.investment_income),
+            ("  资产处置收益", tb.asset_disposal_income),
+            ("  其他收益", tb.get("其他收益", 0)),
+            ("  营业外收入", tb.non_operating_income),
+            ("减：营业外支出", tb.get("营业外支出", 0)),
+            ("二、利润总额", tb.accounting_profit),
         ]
 
         row = 5
-        for i, (name, amount, _) in enumerate(pl_items, 1):
+        for i, (name, amount) in enumerate(pl_items, 1):
             is_total = name.startswith("一") or name.startswith("二")
-            ws.cell(row=row, column=1, value=i).font = Styles.NORMAL_FONT
-            ws.cell(row=row, column=2, value=name).font = (
-                Styles.BOLD_FONT if is_total else Styles.NORMAL_FONT
-            )
-            ws.cell(row=row, column=3, value=amount).font = Styles.NORMAL_FONT
-            ws.cell(row=row, column=4).font = Styles.NORMAL_FONT
-            ws.cell(row=row, column=5).font = Styles.NORMAL_FONT
-            ws.cell(row=row, column=6).font = Styles.NORMAL_FONT
-            for col in range(1, 7):
-                ws.cell(row=row, column=col).border = Styles.THIN_BORDER
-                if col >= 3:
-                    ws.cell(row=row, column=col).number_format = Styles.AMOUNT_FORMAT
-                    ws.cell(row=row, column=col).alignment = Styles.RIGHT
+            data_cell(ws, row, 1, i)
+            data_cell(ws, row, 2, name, bold=is_total)
+            data_cell(ws, row, 3, _r2(amount), fmt=NF.AMOUNT)
+            for c in range(4, 7):
+                data_cell(ws, row, c, None, fmt=NF.AMOUNT)
             if is_total:
-                for col in range(1, 7):
-                    ws.cell(row=row, column=col).fill = Styles.LIGHT_BLUE_FILL
+                for c in range(1, 7):
+                    ws.cell(row=row, column=c).fill = Fill.SECTION_BG
             row += 1
 
     # ============================================================
     # 纳税调整明细表（通用模板）
     # ============================================================
 
-    def _create_adjustment_sheet(
-        self, title: str, category: AdjustmentCategory, subtitle: str
-    ):
-        """生成某个类别的纳税调整明细表"""
-        ws = self.wb.create_sheet(title[:31])  # sheet名最多31字符
-        self._set_column_widths(ws, [5, 6, 28, 18, 18, 18, 18, 40])
+    def _create_adjustment_sheet(self, title, category, subtitle):
+        ws = self.wb.create_sheet(title[:31])
+        set_cols(ws, [5, 6, 28, 18, 18, 18, 18, 40])
 
         adjustments = self._get_adjustments(category)
 
-        # 标题
-        ws.merge_cells("A1:G1")
-        ws["A1"] = title
-        ws["A1"].font = Styles.TITLE_FONT
-        ws["A1"].alignment = Styles.CENTER
+        merge_title(ws, 1, title, 8)
+        ws.cell(
+            row=2, column=1, value=f"{subtitle} — 税法依据及计算过程"
+        ).font = F.SMALL
 
-        ws["A2"] = f"{subtitle} — 税法依据及计算过程"
-        ws["A2"].font = Styles.SMALL_FONT
-
-        # 列头
         headers = [
             "行次",
             "类别",
@@ -326,88 +248,68 @@ class WorkpaperGenerator:
             "税法依据/计算说明",
         ]
         row = 4
-        for col, header in enumerate(headers, 1):
-            cell = ws.cell(row=row, column=col, value=header)
-            cell.font = Styles.HEADER_FONT
-            cell.fill = Styles.HEADER_FILL
-            cell.alignment = Styles.CENTER
-            cell.border = Styles.THIN_BORDER
+        header_row(ws, row, headers)
 
-        # 数据行
         row = 5
         for i, adj in enumerate(adjustments, 1):
-            ws.cell(row=row, column=1, value=i).font = Styles.NORMAL_FONT
-            ws.cell(
-                row=row, column=2, value=adj.category.value
-            ).font = Styles.NORMAL_FONT
-            ws.cell(row=row, column=3, value=adj.item_name).font = Styles.NORMAL_FONT
+            data_cell(ws, row, 1, i)
+            data_cell(ws, row, 2, adj.category.value if adj.category else "")
+            data_cell(ws, row, 3, adj.item_name, bold=True)
 
-            # 数值列
-            amt_cols = [4, 5, 6, 7]
-            vals = [adj.book_amount, adj.tax_base, adj.increase, adj.decrease]
-            for c, v in zip(amt_cols, vals):
-                cell = ws.cell(row=row, column=c, value=v)
-                cell.font = Styles.NORMAL_FONT
-                cell.number_format = Styles.AMOUNT_FORMAT
-                cell.alignment = Styles.RIGHT
+            vals = [
+                _r2(adj.book_amount),
+                _r2(adj.tax_base),
+                _r2(adj.increase),
+                _r2(adj.decrease),
+            ]
+            for c, v in zip([4, 5, 6, 7], vals):
+                data_cell(ws, row, c, v, fmt=NF.AMOUNT)
 
-            # 税法依据
-            ref = adj.tax_law_ref
-            calc = adj.calculation
-            remark = adj.remark
-            note_parts = [ref]
-            if calc:
-                note_parts.append(calc)
-            if remark:
-                note_parts.append(remark)
+            ref = adj.tax_law_ref or ""
+            calc = adj.calculation or ""
+            remark = adj.remark or ""
+            note_parts = [p for p in [ref, calc, remark] if p]
+            note_text = "\n".join(note_parts)
+            data_cell(ws, row, 8, note_text, fmt=None)
+            ws.cell(row=row, column=8).font = F.SMALL
+            ws.cell(row=row, column=8).alignment = A.WRAP
 
-            ws.cell(row=row, column=8, value="\n".join(note_parts))
-            ws.cell(row=row, column=8).font = Styles.SMALL_FONT
-            ws.cell(row=row, column=8).alignment = Styles.WRAP
+            # 斑马纹
+            fill = Fill.ROW_EVEN if i % 2 == 0 else Fill.ROW_ODD
+            for c in range(1, 9):
+                if ws.cell(row=row, column=c).fill == fill:
+                    pass
+                cell = ws.cell(row=row, column=c)
+                if not cell.fill or cell.fill.start_color.index == "00000000":
+                    cell.fill = fill
+                cell.border = B.THIN
 
-            # 边框 + 斑马纹
-            fill = Styles.WHITE_FILL if i % 2 == 1 else Styles.LIGHT_GRAY_FILL
-            for col in range(1, 9):
-                ws.cell(row=row, column=col).border = Styles.THIN_BORDER
-                ws.cell(row=row, column=col).fill = fill
-
+            # 自动行高（多行内容）
+            _set_row_height_for_multiline(ws, row, [note_text])
             row += 1
 
         # 合计行
-        ws.cell(row=row, column=1).font = Styles.BOLD_FONT
-        ws.cell(row=row, column=3, value="合计").font = Styles.BOLD_FONT
-        total_book = sum(a.book_amount for a in adjustments)
-        total_increase = sum(a.increase for a in adjustments)
-        total_decrease = sum(a.decrease for a in adjustments)
-        ws.cell(row=row, column=4, value=total_book).font = Styles.BOLD_FONT
-        ws.cell(row=row, column=4).number_format = Styles.AMOUNT_FORMAT
-        ws.cell(row=row, column=5).font = Styles.BOLD_FONT
-        ws.cell(row=row, column=5).number_format = Styles.AMOUNT_FORMAT
-        ws.cell(row=row, column=6, value=total_increase).font = Styles.BOLD_FONT
-        ws.cell(row=row, column=6).number_format = Styles.AMOUNT_FORMAT
-        ws.cell(row=row, column=6).fill = Styles.LIGHT_YELLOW_FILL
-        ws.cell(row=row, column=7, value=total_decrease).font = Styles.BOLD_FONT
-        ws.cell(row=row, column=7).number_format = Styles.AMOUNT_FORMAT
-        ws.cell(row=row, column=7).fill = Styles.LIGHT_YELLOW_FILL
+        total_book = _r2(sum(a.book_amount for a in adjustments))
+        total_increase = _r2(sum(a.increase for a in adjustments))
+        total_decrease = _r2(sum(a.decrease for a in adjustments))
+        row_data = ["", "", "合计", total_book, 0, total_increase, total_decrease]
+        for ci, val in enumerate(row_data, 1):
+            data_cell(ws, row, ci, val, bold=True, fmt=NF.AMOUNT)
+            ws.cell(row=row, column=ci).fill = Fill.SUMMARY
+        row += 1
 
-        for col in range(1, 9):
-            ws.cell(row=row, column=col).border = Styles.THIN_BORDER
+        freeze_header(ws, 4)
 
     # ============================================================
     # 资产折旧测算表
     # ============================================================
 
     def _create_depreciation_sheet(self):
-        """生成资产折旧测算表"""
         ws = self.wb.create_sheet("3-03-01 固定资产折旧测算")
-        self._set_column_widths(ws, [5, 15, 12, 12, 12, 12, 12, 12, 12])
+        set_cols(ws, [5, 15, 12, 12, 12, 12, 12, 12, 12])
 
-        assets = self.result._assets  # 从计算器传入
-
-        ws.merge_cells("A1:H1")
-        ws["A1"] = "固定资产折旧及纳税调整审核表"
-        ws["A1"].font = Styles.TITLE_FONT
-        ws["A1"].alignment = Styles.CENTER
+        assets = self.result._assets
+        merge_title(ws, 1, "固定资产折旧及纳税调整审核表", 9)
 
         headers = [
             "行次",
@@ -419,81 +321,74 @@ class WorkpaperGenerator:
             "税法年限",
             "加速折旧",
         ]
-        row = 3
-        for col, header in enumerate(headers, 1):
-            cell = ws.cell(row=row, column=col, value=header)
-            cell.font = Styles.HEADER_FONT
-            cell.fill = Styles.HEADER_FILL
-            cell.alignment = Styles.CENTER
-            cell.border = Styles.THIN_BORDER
+        header_row(ws, 3, headers)
 
         row = 4
-        total_orig = total_acct = total_tax = total_diff = 0
+        total_orig = total_acct = total_tax = total_diff = 0.0
         for i, asset in enumerate(assets, 1):
-            diff = asset.current_tax_depr - asset.current_accounting_depr
-            total_orig += asset.original_value
-            total_acct += asset.current_accounting_depr
-            total_tax += asset.current_tax_depr
+            diff = _r2(asset.current_tax_depr) - _r2(asset.current_accounting_depr)
+            orig = _r2(asset.original_value)
+            acct = _r2(asset.current_accounting_depr)
+            tax = _r2(asset.current_tax_depr)
+            total_orig += orig
+            total_acct += acct
+            total_tax += tax
             total_diff += diff
 
-            ws.cell(row=row, column=1, value=i)
-            ws.cell(row=row, column=2, value=f"{asset.category}—{asset.name}")
-            ws.cell(row=row, column=3, value=asset.original_value)
-            ws.cell(row=row, column=4, value=asset.current_accounting_depr)
-            ws.cell(row=row, column=5, value=asset.current_tax_depr)
-            ws.cell(row=row, column=6, value=diff)
-            ws.cell(
-                row=row,
-                column=7,
-                value=f"会计{asset.accounting_life_years}年/税法{asset.tax_life_years}年",
+            data_cell(ws, row, 1, i)
+            data_cell(ws, row, 2, f"{asset.category}—{asset.name}")
+            data_cell(ws, row, 3, orig, fmt=NF.AMOUNT)
+            data_cell(ws, row, 4, acct, fmt=NF.AMOUNT)
+            data_cell(ws, row, 5, tax, fmt=NF.AMOUNT)
+            data_cell(ws, row, 6, diff, fmt=NF.AMOUNT)
+            data_cell(
+                ws,
+                row,
+                7,
+                f"会计{asset.accounting_life_years}年/税法{asset.tax_life_years}年",
             )
-            ws.cell(row=row, column=8, value="是" if asset.is_accelerated else "否")
+            data_cell(ws, row, 8, "是" if asset.is_accelerated else "否")
 
-            for col in range(1, 9):
-                ws.cell(row=row, column=col).font = Styles.NORMAL_FONT
-                ws.cell(row=row, column=col).border = Styles.THIN_BORDER
-                if col in (3, 4, 5, 6):
-                    ws.cell(row=row, column=col).number_format = Styles.AMOUNT_FORMAT
-                    ws.cell(row=row, column=col).alignment = Styles.RIGHT
+            fill = Fill.ROW_EVEN if i % 2 == 0 else Fill.ROW_ODD
+            for c in range(1, 9):
+                if (
+                    not ws.cell(row=row, column=c).fill
+                    or ws.cell(row=row, column=c).fill.start_color.index == "00000000"
+                ):
+                    ws.cell(row=row, column=c).fill = fill
+                ws.cell(row=row, column=c).border = B.THIN
             row += 1
 
         # 合计
-        ws.cell(row=row, column=1).font = Styles.BOLD_FONT
-        ws.cell(row=row, column=2, value="合计").font = Styles.BOLD_FONT
-        ws.cell(row=row, column=3, value=total_orig).font = Styles.BOLD_FONT
-        ws.cell(row=row, column=3).number_format = Styles.AMOUNT_FORMAT
-        ws.cell(row=row, column=4, value=total_acct).font = Styles.BOLD_FONT
-        ws.cell(row=row, column=4).number_format = Styles.AMOUNT_FORMAT
-        ws.cell(row=row, column=5, value=total_tax).font = Styles.BOLD_FONT
-        ws.cell(row=row, column=5).number_format = Styles.AMOUNT_FORMAT
-        ws.cell(row=row, column=6, value=total_diff).font = Styles.BOLD_FONT
-        ws.cell(row=row, column=6).number_format = Styles.AMOUNT_FORMAT
-        for col in range(1, 9):
-            ws.cell(row=row, column=col).border = Styles.THIN_BORDER
-            ws.cell(row=row, column=col).fill = Styles.LIGHT_BLUE_FILL
+        total_vals = [
+            None,
+            "合计",
+            total_orig,
+            total_acct,
+            total_tax,
+            total_diff,
+            None,
+            None,
+        ]
+        for ci, v in enumerate(total_vals, 1):
+            data_cell(ws, row, ci, v, bold=True, fmt=NF.AMOUNT)
+            ws.cell(row=row, column=ci).fill = Fill.SUMMARY
+        row += 1
+
+        freeze_header(ws, 3)
 
     # ============================================================
     # 纳税调整汇总表
     # ============================================================
 
     def _create_summary_sheet(self):
-        """生成纳税调整汇总表"""
         ws = self.wb.create_sheet("纳税调整汇总表")
-        self._set_column_widths(ws, [5, 30, 18, 18, 18])
+        set_cols(ws, [5, 30, 18, 18, 18])
 
-        ws.merge_cells("A1:D1")
-        ws["A1"] = "企业所得税纳税调整项目汇总表"
-        ws["A1"].font = Styles.TITLE_FONT
-        ws["A1"].alignment = Styles.CENTER
+        merge_title(ws, 1, "企业所得税纳税调整项目汇总表", 5)
 
         headers = ["行次", "调整类别", "纳税调增金额", "纳税调减金额", "调整项数"]
-        row = 3
-        for col, header in enumerate(headers, 1):
-            cell = ws.cell(row=row, column=col, value=header)
-            cell.font = Styles.HEADER_FONT
-            cell.fill = Styles.HEADER_FILL
-            cell.alignment = Styles.CENTER
-            cell.border = Styles.THIN_BORDER
+        header_row(ws, 3, headers)
 
         categories = [
             (AdjustmentCategory.INCOME, "一、收入类调整项目"),
@@ -506,56 +401,47 @@ class WorkpaperGenerator:
         ]
 
         row = 4
-        grand_inc = grand_dec = grand_count = 0
+        grand_inc = grand_dec = grand_count = 0.0
         for cat, label in categories:
             adjustments = self._get_adjustments(cat)
-            inc = sum(a.increase for a in adjustments)
-            dec = sum(a.decrease for a in adjustments)
+            inc = _r2(sum(a.increase for a in adjustments))
+            dec = _r2(sum(a.decrease for a in adjustments))
             cnt = len(adjustments)
             grand_inc += inc
             grand_dec += dec
             grand_count += cnt
 
-            ws.cell(row=row, column=1).font = Styles.NORMAL_FONT
-            ws.cell(row=row, column=2, value=label).font = Styles.BOLD_FONT
-            ws.cell(row=row, column=3, value=inc).font = Styles.NORMAL_FONT
-            ws.cell(row=row, column=3).number_format = Styles.AMOUNT_FORMAT
-            ws.cell(row=row, column=4, value=dec).font = Styles.NORMAL_FONT
-            ws.cell(row=row, column=4).number_format = Styles.AMOUNT_FORMAT
-            ws.cell(row=row, column=5, value=cnt).font = Styles.NORMAL_FONT
-            ws.cell(row=row, column=5).alignment = Styles.CENTER
-            for col in range(1, 6):
-                ws.cell(row=row, column=col).border = Styles.THIN_BORDER
+            data_cell(ws, row, 1, row - 3)
+            data_cell(ws, row, 2, label, bold=True)
+            data_cell(ws, row, 3, inc, fmt=NF.AMOUNT)
+            data_cell(ws, row, 4, dec, fmt=NF.AMOUNT)
+            data_cell(ws, row, 5, cnt)
+            ws.cell(row=row, column=5).alignment = A.CENTER
+            for c in range(1, 6):
+                ws.cell(row=row, column=c).border = B.THIN
             row += 1
 
         # 合计行
-        ws.cell(row=row, column=2, value="合  计").font = Styles.BOLD_FONT
-        ws.cell(row=row, column=3, value=grand_inc).font = Styles.BOLD_FONT
-        ws.cell(row=row, column=3).number_format = Styles.AMOUNT_FORMAT
-        ws.cell(row=row, column=3).fill = Styles.LIGHT_YELLOW_FILL
-        ws.cell(row=row, column=4, value=grand_dec).font = Styles.BOLD_FONT
-        ws.cell(row=row, column=4).number_format = Styles.AMOUNT_FORMAT
-        ws.cell(row=row, column=4).fill = Styles.LIGHT_YELLOW_FILL
-        ws.cell(row=row, column=5, value=grand_count).font = Styles.BOLD_FONT
-        ws.cell(row=row, column=5).alignment = Styles.CENTER
-        for col in range(1, 6):
-            ws.cell(row=row, column=col).border = Styles.THIN_BORDER
-            ws.cell(row=row, column=col).fill = Styles.LIGHT_BLUE_FILL
+        data_cell(ws, row, 2, "合  计", bold=True)
+        data_cell(ws, row, 3, grand_inc, bold=True, fmt=NF.AMOUNT)
+        data_cell(ws, row, 4, grand_dec, bold=True, fmt=NF.AMOUNT)
+        data_cell(ws, row, 5, int(grand_count), bold=True)
+        ws.cell(row=row, column=5).alignment = A.CENTER
+        for c in range(1, 6):
+            ws.cell(row=row, column=c).border = B.THIN
+            ws.cell(row=row, column=c).fill = Fill.SUMMARY
+
+        freeze_header(ws, 3)
 
     # ============================================================
     # 应纳税所得额计算表
     # ============================================================
 
     def _create_tax_calculation_sheet(self):
-        """生成应纳税所得额及税额计算表"""
         ws = self.wb.create_sheet("应纳税所得额计算")
-        self._set_column_widths(ws, [5, 35, 20, 20])
+        set_cols(ws, [5, 35, 20, 20])
 
-        ws.merge_cells("A1:C1")
-        ws["A1"] = "应纳税所得额及应纳所得税额计算表"
-        ws["A1"].font = Styles.TITLE_FONT
-        ws["A1"].alignment = Styles.CENTER
-
+        merge_title(ws, 1, "应纳税所得额及应纳所得税额计算表", 4)
         r = self.result
 
         items = [
@@ -570,35 +456,27 @@ class WorkpaperGenerator:
         ]
 
         headers = ["行次", "项目", "金额", "说明"]
-        row = 3
-        for col, header in enumerate(headers, 1):
-            cell = ws.cell(row=row, column=col, value=header)
-            cell.font = Styles.HEADER_FONT
-            cell.fill = Styles.HEADER_FILL
-            cell.alignment = Styles.CENTER
-            cell.border = Styles.THIN_BORDER
+        header_row(ws, 3, headers)
 
         row = 4
         for i, (label, amount, note) in enumerate(items, 1):
             is_result = label.startswith("二") or label.startswith("五")
-            ws.cell(row=row, column=1, value=i).font = Styles.NORMAL_FONT
-            ws.cell(row=row, column=2, value=label).font = (
-                Styles.BOLD_FONT if is_result else Styles.NORMAL_FONT
-            )
+            data_cell(ws, row, 1, i)
+            data_cell(ws, row, 2, label, bold=is_result)
             if isinstance(amount, float):
-                ws.cell(row=row, column=3, value=amount).font = (
-                    Styles.BOLD_FONT if is_result else Styles.NORMAL_FONT
-                )
-                ws.cell(row=row, column=3).number_format = Styles.AMOUNT_FORMAT
-                ws.cell(row=row, column=3).alignment = Styles.RIGHT
+                data_cell(ws, row, 3, _r2(amount), bold=is_result, fmt=NF.AMOUNT)
+                ws.cell(row=row, column=3).alignment = A.RIGHT
             else:
-                ws.cell(row=row, column=3, value=amount).font = Styles.NORMAL_FONT
-            ws.cell(row=row, column=4, value=note or "").font = Styles.SMALL_FONT
-            for col in range(1, 5):
-                ws.cell(row=row, column=col).border = Styles.THIN_BORDER
+                data_cell(ws, row, 3, amount)
+                if isinstance(amount, float):
+                    ws.cell(row=row, column=3).number_format = NF.PCT
+            data_cell(ws, row, 4, note or "")
+            ws.cell(row=row, column=4).font = F.SMALL
             if is_result:
-                for col in range(1, 5):
-                    ws.cell(row=row, column=col).fill = Styles.LIGHT_YELLOW_FILL
+                for c in range(1, 5):
+                    ws.cell(row=row, column=c).fill = Fill.SUMMARY
+            for c in range(1, 5):
+                ws.cell(row=row, column=c).border = B.THIN
             row += 1
 
     # ============================================================
@@ -606,19 +484,10 @@ class WorkpaperGenerator:
     # ============================================================
 
     def _has_adjustments(self, category: AdjustmentCategory) -> bool:
-        """检查某类别是否有调整项"""
         return len(self._get_adjustments(category)) > 0
 
     def _get_adjustments(self, category: AdjustmentCategory) -> List[TaxAdjustment]:
-        """获取某类别的调整项（含0值但非None的）"""
         return [a for a in self.result.adjustments if a.category == category]
 
-    @staticmethod
-    def _set_column_widths(ws, widths: List[int]):
-        """设置列宽"""
-        for i, w in enumerate(widths, 1):
-            ws.column_dimensions[get_column_letter(i)].width = w
-
     def set_assets(self, assets: List[AssetItem]):
-        """设置资产数据（用于折旧测算表）"""
         self.result._assets = assets

@@ -130,14 +130,14 @@ class TaxCalculator:
             + 纳税调增（收入类+扣除类+资产类+特殊事项）
             - 纳税调减（收入类+扣除类+资产类+税收优惠）
         """
-        total_increase = sum(a.increase for a in self.result.adjustments)
-        total_decrease = sum(a.decrease for a in self.result.adjustments)
+        total_increase = round(sum(a.increase for a in self.result.adjustments), 2)
+        total_decrease = round(sum(a.decrease for a in self.result.adjustments), 2)
 
-        self.result.taxable_income = (
-            self.result.accounting_profit + total_increase - total_decrease
+        self.result.taxable_income = round(
+            self.result.accounting_profit + total_increase - total_decrease, 2
         )
         # 防止负值（亏损）
-        self.result.taxable_income = max(0, self.result.taxable_income)
+        self.result.taxable_income = max(0.0, self.result.taxable_income)
 
     def _compute_tax_payable(self, enterprise: Optional[EnterpriseInfo] = None):
         """计算应纳所得税额"""
@@ -148,34 +148,34 @@ class TaxCalculator:
         if enterprise and self._is_small_micro(enterprise, taxable):
             if taxable <= 1000000:
                 # 年应纳税所得额≤100万：减按25%计入，20%税率，实际税负5%
-                tax = taxable * 0.25 * 0.20
+                tax = round(taxable * 0.25 * 0.20, 2)
                 self.result.tax_rate = 0.05
-                self.result.deducted_tax = taxable * 0.25 - tax
+                self.result.deducted_tax = round(taxable * 0.25 - tax, 2)
             elif taxable <= 3000000:
                 # 100万<应纳税所得额≤300万：100万按5%，超出按10%
-                part1 = min(taxable, 1000000) * 0.05
-                part2 = max(taxable - 1000000, 0) * 0.10
-                tax = part1 + part2
+                part1 = round(min(taxable, 1000000) * 0.05, 2)
+                part2 = round(max(taxable - 1000000, 0) * 0.10, 2)
+                tax = round(part1 + part2, 2)
                 self.result.tax_rate = 0.10  # 实际综合税负
-                self.result.deducted_tax = taxable * 0.25 - tax
+                self.result.deducted_tax = round(taxable * 0.25 - tax, 2)
             else:
                 # 超过300万：按25%
-                tax = taxable * 0.25
+                tax = round(taxable * 0.25, 2)
                 self.result.tax_rate = 0.25
-                self.result.deducted_tax = 0
+                self.result.deducted_tax = 0.0
         else:
             # 一般企业：25%
-            tax = taxable * 0.25
+            tax = round(taxable * 0.25, 2)
             self.result.tax_rate = 0.25
-            self.result.deducted_tax = 0
+            self.result.deducted_tax = 0.0
             # 高新技术企业：15%
             if enterprise and enterprise.is_high_tech:
-                tax = taxable * 0.15
+                tax = round(taxable * 0.15, 2)
                 self.result.tax_rate = 0.15
-                self.result.deducted_tax = taxable * 0.10
+                self.result.deducted_tax = round(taxable * 0.10, 2)
 
-        self.result.tax_payable = tax
-        self.result.final_tax = tax
+        self.result.tax_payable = round(tax, 2)
+        self.result.final_tax = round(tax, 2)
 
     @staticmethod
     def _is_small_micro(enterprise: EnterpriseInfo, taxable_income: float) -> bool:

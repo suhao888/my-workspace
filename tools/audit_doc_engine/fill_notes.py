@@ -807,21 +807,28 @@ NAME_SYNONYMS = {
 
 
 def fmt_val(v, as_pct=False):
-    """格式化数值 — v9: 财务数字始终保留两位小数"""
+    """格式化数值 — v10: 财务数字始终保留两位小数, 消除浮点噪声"""
     if isinstance(v, (int, float)):
         if pd.isna(v):
             return ""
+        # 消除浮点噪声: 极小值归零
+        if abs(v) < 1e-10:
+            v = 0.0
         if as_pct and abs(v) <= 1.0 and v != 0:
             v = v * 100
-        return f"{v:,.2f}"  # v9修复: 始终保留两位小数
+        return f"{round(v, 2):,.2f}"  # v10: 先round再format, 消除浮点噪声
     s = str(v).strip()
-    if s in ("nan", "－", "-", "—", ""):
+    if s in ("nan", "－", "-", "—", "", "N/A"):
         return ""
     try:
         n = float(s.replace(",", ""))
+        if pd.isna(n):
+            return ""
+        if abs(n) < 1e-10:
+            n = 0.0
         if as_pct and abs(n) <= 1.0 and n != 0:
             n = n * 100
-        return f"{n:,.2f}"  # v9修复: 始终保留两位小数
+        return f"{round(n, 2):,.2f}"  # v10: 先round再format
     except ValueError:
         return s
 
@@ -1223,8 +1230,25 @@ def fill_cell(cell, value, col_fmt=None):
 
 def fill_table(table, tz_data, col_map, aggregations=None, section_headers=None):
     """用精确列映射填充表格 — 每个TZ行只用一次,合计行优先匹配合计行
-    v12: 支持section_headers分区匹配 — 同名行按section隔离
+    v13: 启用表格自动自适应行高+列宽
     """
+    # 启用表格自动自适应: 解决多行内容行高不足问题
+    from docx.oxml.ns import qn
+
+    tbl_pr = table._tbl.tblPr
+    autofit_elem = tbl_pr.find(qn("w:tblLayout"))
+    if autofit_elem is None:
+        autofit_elem = table._tbl.makeelement(qn("w:tblLayout"), {})
+        tbl_pr.append(autofit_elem)
+    autofit_elem.set(qn("w:type"), "autofit")
+    # 也尝试设置自动调整
+    settings = table._tbl.find(qn("w:tblPr"))
+    if settings is not None:
+        autofit = settings.find(qn("w:tblW"))
+        if autofit is not None:
+            autofit.set(qn("w:w"), "5000")
+            autofit.set(qn("w:type"), "pct")
+
     matched = 0
     col_fmts = {ci: get_column_format(table, ci) for ci in range(len(table.columns))}
     used_tz_names = set()
