@@ -4,7 +4,7 @@
 演示：用示例数据执行完整的企业所得税汇缴计算，生成工作底稿Excel
 """
 
-import sys, json, io
+import sys, json, io, os
 from pathlib import Path
 
 sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding="utf-8", errors="replace")
@@ -12,6 +12,7 @@ sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding="utf-8", errors="repla
 from .models import TrialBalance, EnterpriseInfo, AssetItem, AssetCategory
 from .calculator import TaxCalculator
 from .workpaper_generator import WorkpaperGenerator
+from .template_filler import fill_all_templates
 
 
 def build_sample_data() -> dict:
@@ -50,6 +51,24 @@ def build_sample_data() -> dict:
             "财务费用": 600000,
             # 利润
             "利润总额": 7200000,
+            # ===== 资产负债表科目（SH审定表填报用） =====
+            "货币资金": 12500000,
+            "应收账款": 8500000,
+            "预付款项": 1200000,
+            "其他应收款": 500000,
+            "存货": 18500000,
+            "在建工程": 3000000,
+            "预收款项": 2400000,
+            "应付账款": 6800000,
+            "其他应付款": 900000,
+            "应付股利": 500000,
+            "短期借款": 5000000,
+            "长期借款": 3000000,
+            "长期应付款": 1000000,
+            "实收资本": 10000000,
+            "资本公积": 2000000,
+            "盈余公积": 1800000,
+            "未分配利润": 4200000,
             # ===== 明细科目（纳税调整用） =====
             "工资薪金": 8500000,
             "职工福利费": 1300000,  # 限额=850万*14%=119万 → 调增11万
@@ -245,5 +264,109 @@ def run_with_custom_data(
     return result
 
 
+# ============================================================
+# 模板填充演示（中税网底稿模板）
+# ============================================================
+
+TEMPLATE_BASE = (
+    "D:/Users/12844/Desktop/业务工作底稿模版/"
+    "2026_07_04_1-1、中税网-2026年企业所得税纳税申报审核报告及底稿模板-适用于独立纳税企业V1/"
+    "1-1、中税网-2026年企业所得税纳税申报审核报告及底稿模板-适用于独立纳税企业V1/"
+    "1、中税网企业所得税汇缴鉴证报告、申报表及工作底稿模板-适用独立纳税企业-必做底稿2026"
+)
+
+
+def run_demo_with_templates(output_dir: str = None):
+    """
+    演示流程：计算 → 填充中税网模板
+    """
+    print("=" * 60)
+    print("税审底稿填充引擎 — 模板填充模式")
+    print("=" * 60)
+
+    # 1. 构建数据
+    print("\n>> 构建示例数据...")
+    data = build_sample_data()
+
+    # 2. 执行计算
+    print(">> 执行纳税调整计算...")
+    calculator = TaxCalculator()
+    result = calculator.calculate(
+        tb=data["tb"],
+        enterprise=data["enterprise"],
+        assets=data["assets"],
+    )
+
+    # 3. 打印摘要
+    print("\n" + "─" * 60)
+    print("计算摘要")
+    print("─" * 60)
+    summary = result.summary()
+    for key, value in summary.items():
+        if isinstance(value, float):
+            print(f"  {key}: {value:>14,.2f}")
+        else:
+            print(f"  {key}: {value}")
+
+    # 4. 填充模板
+    base = output_dir or "D:/Users/12844/Desktop"
+    print(f"\n>> 检查模板目录: {TEMPLATE_BASE}")
+    if not os.path.exists(TEMPLATE_BASE):
+        print(f"  ❌ 模板目录不存在: {TEMPLATE_BASE}")
+        print("  >> 回退到自生成模式...")
+        # fallback: 用 WorkpaperGenerator
+        gen = WorkpaperGenerator(result)
+        gen.set_assets(data["assets"])
+        gen.generate(os.path.join(base, "税审底稿_示例.xlsx"))
+        print(f"  ✅ 自生成底稿 → {os.path.join(base, '税审底稿_示例.xlsx')}")
+        return
+
+    print("\n>> 填充模板...")
+    results = fill_all_templates(
+        result=result,
+        template_dir=TEMPLATE_BASE,
+        output_dir=base,
+        assets=data["assets"],
+    )
+
+    print(f"\n{'=' * 60}")
+    print(f"生成 {len(results)} 份底稿文件:")
+    for name, path in results.items():
+        print(f"  ✅ {name}: {path}")
+    print(f"共 {len(result.adjustments)} 条纳税调整项")
+    print(f"{'=' * 60}")
+
+
+# ============================================================
+# 带命令行参数的主入口
+# ============================================================
+
+
+def main():
+    """带命令行参数的主入口"""
+    import argparse
+
+    parser = argparse.ArgumentParser(description="税审底稿填充引擎")
+    parser.add_argument(
+        "--mode",
+        choices=["demo", "template"],
+        default="template",
+        help="运行模式: demo=WorkpaperGenerator自生成, template=填充中税网模板(默认)",
+    )
+    parser.add_argument(
+        "--output",
+        "-o",
+        default=None,
+        help="输出目录（默认桌面）",
+    )
+    args = parser.parse_args()
+
+    if args.mode == "demo":
+        out_path = args.output or "D:/Users/12844/Desktop/税审底稿_示例.xlsx"
+        run_demo(out_path)
+    else:
+        run_demo_with_templates(args.output)
+
+
 if __name__ == "__main__":
-    run_demo()
+    main()
