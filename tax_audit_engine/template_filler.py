@@ -4,13 +4,29 @@ template_filler.py — 完整版
 按税法口径填充税审底稿模板
 """
 
-import shutil, os, sys
+import shutil, os, sys, tempfile
 from pathlib import Path
 from typing import Dict, List, Optional, Tuple
 
 from .models import CalculationResult, TaxAdjustment, AdjustmentCategory
 
 sys.stdout.reconfigure(encoding="utf-8")
+
+
+def _xls_to_xlsx_com(xls_path: str, xlsx_path: str):
+    """
+    用 Excel COM 将 xls 转换为 xlsx，完整保留格式
+    FileFormat=51 → xlOpenXMLWorkbook
+    """
+    import win32com.client as win32
+
+    excel = win32.gencache.EnsureDispatch("Excel.Application")
+    excel.Visible = False
+    excel.DisplayAlerts = False
+    wb = excel.Workbooks.Open(os.path.abspath(xls_path))
+    wb.SaveAs(os.path.abspath(xlsx_path), FileFormat=51)
+    wb.Close()
+    excel.Quit()
 
 
 def _r2(val):
@@ -568,30 +584,11 @@ def fill_all_templates(result, template_dir, output_dir=None, assets=None):
         outputs["SH审定表"] = out0
         print(f"  ✅ SH审定表 → {out0}")
 
-    # 2. 2-00会计账簿（xls转xlsx）
+    # 2. 2-00会计账簿（Excel COM 转换，保留全部格式）
     if os.path.exists(fp1):
-        import xlrd
-        from openpyxl import Workbook
-
         temp_xlsx = os.path.join(base, "_temp_2-00.xlsx")
-        old_wb = xlrd.open_workbook(fp1)
-        new_wb = Workbook()
-        new_wb.remove(new_wb.active)
-        for sn in old_wb.sheet_names():
-            old_ws = old_wb.sheet_by_name(sn)
-            new_ws = new_wb.create_sheet(title=sn[:31])
-            for r in range(old_ws.nrows):
-                for c in range(old_ws.ncols):
-                    cell = old_ws.cell(r, c)
-                    if cell.ctype == 2:
-                        new_ws.cell(row=r + 1, column=c + 1, value=cell.value)
-                    elif cell.ctype == 3:
-                        new_ws.cell(row=r + 1, column=c + 1, value=cell.value)
-                    else:
-                        v = cell.value
-                        if v:
-                            new_ws.cell(row=r + 1, column=c + 1, value=str(v).strip())
-        new_wb.save(temp_xlsx)
+        print(f"  >> 转换 2-00: {fp1}")
+        _xls_to_xlsx_com(fp1, temp_xlsx)
         out1 = os.path.join(base, "税审底稿_2-00会计账簿.xlsx")
         filler.fill_trial_balance(temp_xlsx, out1)
         outputs["2-00会计账簿"] = out1
@@ -599,30 +596,11 @@ def fill_all_templates(result, template_dir, output_dir=None, assets=None):
         if os.path.exists(temp_xlsx):
             os.remove(temp_xlsx)
 
-    # 3. 折旧审核表（xls转xlsx）
+    # 3. 折旧审核表（Excel COM 转换，保留全部格式）
     if os.path.exists(fp2):
-        import xlrd
-        from openpyxl import Workbook
-
         temp_xlsx2 = os.path.join(base, "_temp_3-03-01.xlsx")
-        old_wb2 = xlrd.open_workbook(fp2)
-        new_wb2 = Workbook()
-        new_wb2.remove(new_wb2.active)
-        for sn in old_wb2.sheet_names():
-            old_ws = old_wb2.sheet_by_name(sn)
-            new_ws = new_wb2.create_sheet(title=sn[:31])
-            for r in range(old_ws.nrows):
-                for c in range(old_ws.ncols):
-                    cell = old_ws.cell(r, c)
-                    if cell.ctype == 2:
-                        new_ws.cell(row=r + 1, column=c + 1, value=cell.value)
-                    elif cell.ctype == 3:
-                        new_ws.cell(row=r + 1, column=c + 1, value=cell.value)
-                    else:
-                        v = cell.value
-                        if v:
-                            new_ws.cell(row=r + 1, column=c + 1, value=str(v).strip())
-        new_wb2.save(temp_xlsx2)
+        print(f"  >> 转换 3-03-01: {fp2}")
+        _xls_to_xlsx_com(fp2, temp_xlsx2)
         out2 = os.path.join(base, "税审底稿_折旧审核表.xlsx")
         filler.fill_depreciation(temp_xlsx2, out2)
         outputs["折旧审核表"] = out2
