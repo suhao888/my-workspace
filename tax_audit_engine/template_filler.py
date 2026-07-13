@@ -542,6 +542,375 @@ class TemplateFiller:
         return filled
 
     # ============================================================
+    # 辅助底稿 — 汇总调整表填充
+    # ============================================================
+
+    def fill_fuzhu_digao(self, template_path: str, output_path: str) -> List[str]:
+        """填充辅助底稿（汇总调整表37项调整条目）"""
+        src = Path(template_path)
+        dst = Path(output_path)
+        if str(src) != str(dst):
+            dst.parent.mkdir(parents=True, exist_ok=True)
+            shutil.copy2(str(src), str(dst))
+
+        import openpyxl
+
+        wb = openpyxl.load_workbook(str(dst))
+        filled = []
+        tb = self.result.tb
+        adj_by_name = {a.item_name: a for a in self.result.adjustments}
+
+        # === 汇总调整表 ===
+        if "汇总调整表" in wb.sheetnames:
+            ws = wb["汇总调整表"]
+            # R3-R8: 收入类调整 (行1-5)
+            # R9-R29: 扣除类调整 (行6-25)
+            # R30-R35: 资产类调整 (行26-30)
+            # R36-R38: 特殊事项 (行31-32)
+            # R39-R43: 免税减计 (行33-36)
+            # R44-R45: 其他 (行37)
+            # R46: 合计, R47: 利润总额, R48: 纳税调整金额, R49: 调整后所得
+
+            # 行->调整项映射
+            row_map = {
+                11: "工资薪金",
+                12: "职工福利费",
+                13: "职工教育经费",
+                14: "工会经费",
+                15: "基本社会保险",
+                16: "住房公积金",
+                17: "补充养老保险",
+                18: "补充医疗保险",
+                20: "业务招待费",
+                21: "广告费和业务宣传费",
+                22: "捐赠支出",
+                23: "税收滞纳金",
+                24: "罚金、罚款",
+                25: "跨期费用",
+                31: "资产折旧",
+                32: "无形资产摊销",
+                33: "资产减值损失",
+                40: "研发费用",
+                41: "残疾人工资",
+            }
+            for row, item_name in row_map.items():
+                adj = adj_by_name.get(item_name)
+                if not adj:
+                    # 模糊匹配
+                    for a in self.result.adjustments:
+                        if item_name in a.item_name or a.item_name in item_name:
+                            adj = a
+                            break
+                if adj:
+                    _safe_write(ws, row, 5, _r2(adj.book_amount))  # 账载金额
+                    _safe_write(ws, row, 7, _r2(adj.tax_base))  # 税收金额
+                    if adj.increase > 0:
+                        _safe_write(ws, row, 8, _r2(adj.increase))  # 调整金额
+                    elif adj.decrease > 0:
+                        _safe_write(ws, row, 8, _r2(-adj.decrease))
+                    filled.append(f"R{row} {item_name}={adj.increase:.0f}")
+
+            # R47: 利润总额
+            profit = _r2(tb.accounting_profit)
+            if profit:
+                _safe_write(ws, 47, 7, profit)
+                filled.append(f"R47 利润总额={profit}")
+            # R48: 纳税调整金额
+            net_adj = _r2(self.result.total_increase - self.result.total_decrease)
+            _safe_write(ws, 48, 8, net_adj)
+            # R49: 调整后所得
+            tax_income = _r2(self.result.taxable_income)
+            _safe_write(ws, 49, 8, tax_income)
+            filled.append(f"R49 调整后所得={tax_income}")
+
+        # === 交换意见表 ===
+        if "交换意见表" in wb.sheetnames:
+            ws = wb["交换意见表"]
+            e = self._enterprise
+            # R3: 被审核单位名称
+            if e.name:
+                _safe_write(ws, 3, 1, f"被审核单位名称（公章）：{e.name}")
+
+        wb.save(str(dst))
+        return filled
+
+    # ============================================================
+    # A类申报表 — 综合填充
+    # ============================================================
+
+    def fill_A_declaration(self, template_path: str, output_path: str) -> List[str]:
+        """填充A类申报表（核心表A100000/A105000/A105050 + 利润表/资产负债表）"""
+        src = Path(template_path)
+        dst = Path(output_path)
+        if str(src) != str(dst):
+            dst.parent.mkdir(parents=True, exist_ok=True)
+            shutil.copy2(str(src), str(dst))
+
+        import openpyxl
+
+        wb = openpyxl.load_workbook(str(dst))
+        filled = []
+        tb = self.result.tb
+        e = self._enterprise
+        adj_by_name = {a.item_name: a for a in self.result.adjustments}
+        assets = self._assets or []
+
+        def _find(sheet_name):
+            for sn in wb.sheetnames:
+                if sn.strip() == sheet_name.strip():
+                    return wb[sn]
+            for sn in wb.sheetnames:
+                if sheet_name.replace(" ", "") in sn.replace(" ", ""):
+                    return wb[sn]
+            return None
+
+        # ===== 封面 =====
+        ws = _find("封面")
+        if ws:
+            if e.name:
+                _safe_write(ws, 3, 3, e.name)
+            if e.tax_year:
+                _safe_write(ws, 4, 3, f"{e.tax_year}年度")
+            filled.append("封面")
+
+        # ===== A000000 基础信息表 =====
+        ws = _find("A000000")
+        if ws:
+            if e.name:
+                _safe_write(ws, 4, 3, e.name)
+            if e.uscc:
+                _safe_write(ws, 5, 3, e.uscc)
+            if e.industry:
+                _safe_write(ws, 7, 3, e.industry)
+            if e.employee_count:
+                _safe_write(ws, 13, 3, e.employee_count)
+            if e.total_assets:
+                _safe_write(ws, 14, 3, e.total_assets)
+            filled.append("A000000")
+
+        # ===== 利润表 =====
+        ws = _find("利润表")
+        if ws and tb:
+            pl_map = {
+                4: tb.revenue_total,  # 营业总收入
+                5: tb.revenue_total,  # 营业收入
+                11: tb.cost_main + tb.cost_other,  # 营业成本
+                24: tb.tax_surcharge,  # 税金及附加
+                25: tb.selling_expense,  # 销售费用
+                26: tb.admin_expense,  # 管理费用
+                27: tb.r_and_d_expense,  # 研发费用
+                28: tb.finance_expense,  # 财务费用
+                33: tb["其他收益"],  # 其他收益
+                34: tb.investment_income,  # 投资收益
+                39: tb.fair_value_change,  # 公允价值变动
+                41: tb.asset_impairment,  # 资产减值损失
+                42: tb.asset_disposal_income,  # 资产处置收益
+                44: tb.non_operating_income,  # 营业外收入
+                46: tb["营业外支出"],  # 营业外支出
+                47: tb.accounting_profit,  # 利润总额
+            }
+            for row, val in pl_map.items():
+                if val and abs(val) > 0.01:
+                    _safe_write(ws, row, 2, _r2(val))
+            filled.append("利润表")
+
+        # ===== 资产负债表 =====
+        for bs_name in ["资产负债表", "资产负债表（续）"]:
+            ws = _find(bs_name)
+            if not ws:
+                continue
+            bs_map = {
+                4: "货币资金",
+                5: "应收账款",
+                6: "预付款项",
+                7: "其他应收款",
+                8: "存货",
+                15: "固定资产",
+                16: "在建工程",
+                17: "无形资产",
+                27: "短期借款",
+                29: "应付账款",
+                30: "预收款项",
+                31: "应付职工薪酬",
+                32: "应交税费",
+                33: "应付股利",
+                34: "其他应付款",
+                38: "长期借款",
+                39: "长期应付款",
+                42: "实收资本",
+                43: "资本公积",
+                44: "盈余公积",
+                45: "未分配利润",
+            }
+            for row, key in bs_map.items():
+                val = tb.get(key)
+                if val:
+                    _safe_write(ws, row, 2, _r2(val))
+            filled.append(bs_name)
+
+        # ===== A100000 纳税申报主表 =====
+        ws = _find("A100000")
+        if ws:
+            a100_map = {
+                6: tb.revenue_total,  # 营业收入
+                7: tb.cost_main + tb.cost_other,  # 营业成本
+                8: tb.tax_surcharge,  # 税金及附加
+                9: tb.selling_expense,  # 销售费用
+                10: tb.admin_expense,  # 管理费用
+                11: tb.r_and_d_expense,  # 研发费用
+                12: tb.finance_expense,  # 财务费用
+                13: tb["其他收益"],  # 其他收益
+                14: tb.investment_income,  # 投资收益
+                16: tb.fair_value_change,  # 公允价值变动
+                18: tb.asset_impairment,  # 资产减值损失
+                19: tb.asset_disposal_income,  # 资产处置收益
+                21: tb.non_operating_income,  # 营业外收入
+                22: tb["营业外支出"],  # 营业外支出
+                23: tb.accounting_profit,  # 利润总额
+                25: self.result.total_increase,  # 纳税调增
+                26: self.result.total_decrease,  # 纳税调减
+                37: self.result.taxable_income,  # 应纳税所得额
+                38: 0.25,  # 税率
+                39: self.result.tax_payable,  # 应纳所得税额
+                46: self.result.final_tax,  # 实际应纳
+            }
+            for row, val in a100_map.items():
+                if (
+                    val is not None
+                    and abs(val if isinstance(val, (int, float)) else 0) > 0.01
+                ):
+                    _safe_write(ws, row, 4, _r2(val))
+            filled.append("A100000")
+
+        # ===== A105000 纳税调整项目明细表 =====
+        ws = _find("A105000")
+        if ws:
+            # 调整项行映射: R20(职工薪酬), R21(业务招待费), R22(广告费),
+            # R23(捐赠), R24(利息), R25(罚金), R26(滞纳金),
+            # R27(赞助), R33(资产减值), R38(资产折旧)
+            a105_row_map = {
+                20: "职工薪酬",
+                21: "业务招待费",
+                22: "广告费和业务宣传费",
+                23: "捐赠支出",
+                24: "利息支出",
+                25: "罚金、罚款",
+                26: "税收滞纳金",
+                27: "赞助支出",
+                33: "资产减值损失",
+                38: "资产折旧",
+            }
+            for row, name in a105_row_map.items():
+                adj = adj_by_name.get(name)
+                if not adj:
+                    for a in self.result.adjustments:
+                        if name in a.item_name or a.item_name in name:
+                            adj = a
+                            break
+                if adj:
+                    _safe_write(ws, row, 3, _r2(adj.book_amount))  # 账载金额
+                    _safe_write(ws, row, 4, _r2(adj.tax_base))  # 税收金额
+                    # C5=调增金额, C6=调减金额
+                    if adj.increase > 0:
+                        _safe_write(ws, row, 5, _r2(adj.increase))
+                    elif adj.decrease > 0:
+                        _safe_write(ws, row, 6, _r2(adj.decrease))
+                    filled.append(f"A105000 R{row} {name}")
+
+            # 合计行 R59
+            _safe_write(ws, 59, 5, _r2(self.result.total_increase))
+            _safe_write(ws, 59, 6, _r2(self.result.total_decrease))
+
+        # ===== A105050 职工薪酬表 =====
+        ws = _find("A105050")
+        if ws:
+            # R7: 工资薪金, R9: 福利费, R10: 教育经费,
+            # R13: 工会经费, R14: 社保, R15: 公积金,
+            # R16: 补充养老, R17: 补充医疗
+            pay_map = {
+                7: ("工资薪金", 8500000),
+                9: ("职工福利费", 1300000),
+                10: ("职工教育经费", 750000),
+                13: ("工会经费", 180000),
+                14: ("基本社会保险", 1785000),
+                15: ("住房公积金", 680000),
+                16: ("补充养老保险", 300000),
+                17: ("补充医疗保险", 200000),
+            }
+            total_book = total_tax = total_adj = 0
+            for row, (name, book_val) in pay_map.items():
+                adj = adj_by_name.get(name)
+                _safe_write(ws, row, 3, _r2(book_val))  # 账载金额
+                _safe_write(ws, row, 4, _r2(book_val))  # 实际发生额
+                if adj:
+                    _safe_write(ws, row, 7, _r2(adj.tax_base))  # 税收金额
+                    _safe_write(ws, row, 8, _r2(adj.increase))  # 纳税调整
+                    total_book += book_val
+                    total_tax += adj.tax_base
+                    total_adj += adj.increase
+                else:
+                    _safe_write(ws, row, 7, _r2(book_val))
+                    _safe_write(ws, row, 8, 0)
+                    total_book += book_val
+                    total_tax += book_val
+                filled.append(f"A105050 R{row} {name}")
+
+            # R19 合计
+            _safe_write(ws, 19, 3, _r2(total_book))
+            _safe_write(ws, 19, 4, _r2(total_book))
+            _safe_write(ws, 19, 7, _r2(total_tax))
+            _safe_write(ws, 19, 8, _r2(total_adj))
+
+        # ===== A105080 资产折旧摊销表 =====
+        ws = _find("A105080")
+        if ws and assets:
+            cat_data = {}
+            for a in assets:
+                cat = a.category
+                if cat not in cat_data:
+                    cat_data[cat] = {"orig": 0, "acct_depr": 0, "tax_depr": 0}
+                cat_data[cat]["orig"] += _r2(a.original_value)
+                cat_data[cat]["acct_depr"] += _r2(a.current_accounting_depr)
+                cat_data[cat]["tax_depr"] += _r2(a.current_tax_depr)
+
+            # R9-R14: 固定资产类别
+            cat_rows = {
+                "房屋、建筑物": 9,
+                "机器设备": 10,
+                "生产器具、工具": 11,
+                "运输工具": 12,
+                "电子设备": 13,
+                "其他设备": 14,
+            }
+            total_orig = total_acct = total_tax = 0
+            for cat, row in cat_rows.items():
+                data = cat_data.get(cat)
+                if not data:
+                    continue
+                _safe_write(ws, row, 5, data["orig"])
+                _safe_write(ws, row, 6, data["acct_depr"])
+                _safe_write(ws, row, 8, data["orig"])  # 计税基础=原值
+                _safe_write(ws, row, 9, data["tax_depr"])
+                total_orig += data["orig"]
+                total_acct += data["acct_depr"]
+                total_tax += data["tax_depr"]
+
+            # R8: 固定资产合计
+            if total_orig:
+                _safe_write(ws, 8, 5, total_orig)
+                _safe_write(ws, 8, 6, total_acct)
+                _safe_write(ws, 8, 8, total_orig)
+                _safe_write(ws, 8, 9, total_tax)
+
+            # R41: 总计
+            _safe_write(ws, 41, 5, total_orig)
+            _safe_write(ws, 41, 8, total_orig)
+            filled.append("A105080")
+
+        wb.save(str(dst))
+        return filled
+
+    # ============================================================
     # 一键填充入口
     # ============================================================
 
@@ -576,6 +945,10 @@ def fill_all_templates(result, template_dir, output_dir=None, assets=None):
     fp0 = os.path.join(template_dir, "税审工作底稿-0.xlsx")
     fp1 = os.path.join(template_dir, "税审工作底稿-1.xls")
     fp2 = os.path.join(template_dir, "税审工作底稿-2.xls")
+    fp_fuzhu = os.path.join(
+        template_dir, "2026年企业所得税汇算清缴纳税调整汇总表-辅助底稿-选做.xlsx"
+    )
+    fp_a100 = os.path.join(template_dir, "企业所得税年度纳税申报表A类2017版.xlsx")
 
     # 1. SH审定表
     if os.path.exists(fp0):
@@ -607,5 +980,19 @@ def fill_all_templates(result, template_dir, output_dir=None, assets=None):
         print(f"  ✅ 折旧审核表 → {out2}")
         if os.path.exists(temp_xlsx2):
             os.remove(temp_xlsx2)
+
+    # 4. 辅助底稿（选做）
+    if os.path.exists(fp_fuzhu):
+        out4 = os.path.join(base, "税审底稿_辅助底稿.xlsx")
+        filler.fill_fuzhu_digao(fp_fuzhu, out4)
+        outputs["辅助底稿"] = out4
+        print(f"  ✅ 辅助底稿 → {out4}")
+
+    # 5. A类申报表
+    if os.path.exists(fp_a100):
+        out5 = os.path.join(base, "税审底稿_A类申报表.xlsx")
+        filler.fill_A_declaration(fp_a100, out5)
+        outputs["A类申报表"] = out5
+        print(f"  ✅ A类申报表 → {out5}")
 
     return outputs
