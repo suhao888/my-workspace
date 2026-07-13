@@ -1,0 +1,262 @@
+# ============================================================
+# A类申报表 模板配置（42张sheet综合填充）
+# ============================================================
+
+instructions:
+  # ===== 封面 =====
+  - instruction: cell
+    sheet: 封面
+    row: 3
+    col: 3
+    value_from: enterprise.name
+
+  - instruction: cell
+    sheet: 封面
+    row: 4
+    col: 3
+    value_template: "{enterprise.tax_year}年度"
+
+  # ===== A000000 基础信息表 =====
+  - instruction: cell
+    sheet: A000000
+    row: 4
+    col: 3
+    value_from: enterprise.name
+
+  - instruction: cell
+    sheet: A000000
+    row: 5
+    col: 3
+    value_from: enterprise.uscc
+
+  - instruction: cell
+    sheet: A000000
+    row: 7
+    col: 3
+    value_from: enterprise.industry
+
+  - instruction: cell
+    sheet: A000000
+    row: 13
+    col: 3
+    value_from: enterprise.employee_count
+
+  - instruction: cell
+    sheet: A000000
+    row: 14
+    col: 3
+    value_from: enterprise.total_assets
+
+  # ===== 利润表 =====
+  - instruction: row_map
+    sheet: 利润表
+    col: 2
+    entries:
+      - row: 4
+        value_from: calc:sum_tb(主营业务收入,其他业务收入)
+      - row: 5
+        value_from: calc:sum_tb(主营业务收入,其他业务收入)
+      - row: 11
+        value_from: calc:sum_tb(主营业务成本,其他业务成本)
+      - row: 24
+        value_from: tb.税金及附加
+      - row: 25
+        value_from: tb.销售费用
+      - row: 26
+        value_from: tb.管理费用
+      - row: 27
+        value_from: tb.研发费用
+      - row: 28
+        value_from: tb.财务费用
+      - row: 33
+        value_from: tb.其他收益
+      - row: 34
+        value_from: tb.投资收益
+      - row: 39
+        value_from: tb.公允价值变动收益
+      - row: 41
+        value_from: tb.资产减值损失
+      - row: 42
+        value_from: tb.资产处置收益
+      - row: 44
+        value_from: tb.营业外收入
+      - row: 46
+        value_from: tb.营业外支出
+      - row: 47
+        value_from: calc:profit
+
+  # ===== 资产负债表 =====
+  - instruction: row_map
+    sheet: 资产负债表
+    col: 2
+    entries:
+      - row: 4
+        value_from: tb.货币资金
+      - row: 5
+        value_from: tb.应收账款
+      - row: 6
+        value_from: tb.预付款项
+      - row: 7
+        value_from: tb.其他应收款
+      - row: 8
+        value_from: tb.存货
+      - row: 15
+        value_from: tb.固定资产
+      - row: 16
+        value_from: tb.在建工程
+      - row: 17
+        value_from: tb.无形资产
+
+  - instruction: row_map
+    sheet: 资产负债表（续）
+    col: 2
+    entries:
+      - row: 27
+        value_from: tb.短期借款
+      - row: 29
+        value_from: tb.应付账款
+      - row: 30
+        value_from: tb.预收款项
+      - row: 31
+        value_from: tb.应付职工薪酬
+      - row: 32
+        value_from: tb.应交税费
+      - row: 33
+        value_from: tb.应付股利
+      - row: 34
+        value_from: tb.其他应付款
+      - row: 38
+        value_from: tb.长期借款
+      - row: 39
+        value_from: tb.长期应付款
+      - row: 42
+        value_from: tb.实收资本
+      - row: 43
+        value_from: tb.资本公积
+      - row: 44
+        value_from: tb.盈余公积
+      - row: 45
+        value_from: tb.未分配利润
+
+  # ===== A100000 纳税申报主表 =====
+  - instruction: row_map
+    sheet: A100000
+    col: 4
+    entries:
+      - row: 6
+        value_from: calc:sum_tb(主营业务收入,其他业务收入)
+      - row: 7
+        value_from: calc:sum_tb(主营业务成本,其他业务成本)
+      - row: 8
+        value_from: tb.税金及附加
+      - row: 9
+        value_from: tb.销售费用
+      - row: 10
+        value_from: tb.管理费用
+      - row: 11
+        value_from: tb.研发费用
+      - row: 12
+        value_from: tb.财务费用
+      - row: 13
+        value_from: tb.其他收益
+      - row: 14
+        value_from: tb.投资收益
+      - row: 16
+        value_from: tb.公允价值变动收益
+      - row: 18
+        value_from: tb.资产减值损失
+      - row: 19
+        value_from: tb.资产处置收益
+      - row: 21
+        value_from: tb.营业外收入
+      - row: 22
+        value_from: tb.营业外支出
+      - row: 23
+        value_from: calc:profit
+      - row: 25
+        value_from: calc:total_increase
+      - row: 26
+        value_from: calc:total_decrease
+      - row: 37
+        value_from: calc:taxable
+      - row: 38
+        value_from: literal:0.25
+      - row: 39
+        value_from: calc:tax_payable
+
+  # ===== A105000 纳税调整项目明细表 =====
+  - instruction: adj_row_map
+    sheet: A105000
+    col_book: 3
+    col_tax: 4
+    col_inc: 5
+    col_dec: 6
+    sum_row: 59
+    entries:
+      - row: 20
+        name: 职工薪酬
+      - row: 21
+        name: 业务招待费
+      - row: 22
+        name: 广告费和业务宣传费
+      - row: 23
+        name: 捐赠支出
+      - row: 24
+        name: 利息支出
+      - row: 25
+        name: 罚金、罚款
+      - row: 26
+        name: 税收滞纳金
+      - row: 27
+        name: 赞助支出
+      - row: 33
+        name: 资产减值损失
+      - row: 38
+        name: 资产折旧
+
+  # ===== A105050 职工薪酬表 =====
+  - instruction: payroll_rows
+    sheet: A105050
+    sum_row: 19
+    entries:
+      - row: 7
+        name: 工资薪金
+        book_value: 8500000
+      - row: 9
+        name: 职工福利费
+        book_value: 1300000
+      - row: 10
+        name: 职工教育经费
+        book_value: 750000
+      - row: 13
+        name: 工会经费
+        book_value: 180000
+      - row: 14
+        name: 基本社会保险
+        book_value: 1785000
+      - row: 15
+        name: 住房公积金
+        book_value: 680000
+      - row: 16
+        name: 补充养老保险
+        book_value: 300000
+      - row: 17
+        name: 补充医疗保险
+        book_value: 200000
+
+  # ===== A105080 资产折旧摊销表 =====
+  - instruction: asset_category_rows
+    sheet: A105080
+    col_orig: 5
+    col_acct_depr: 6
+    col_tax_base: 8
+    col_tax_depr: 9
+    cat_rows:
+      房屋、建筑物: 9
+      机器设备: 10
+      生产器具、工具: 11
+      运输工具: 12
+      电子设备: 13
+      其他设备: 14
+    sum_row: 8
+    total_sum_rows: [41]

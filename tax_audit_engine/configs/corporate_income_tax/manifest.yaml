@@ -1,0 +1,87 @@
+# ============================================================
+# 业务类型：企业所得税汇算清缴
+# manifest.yaml — 业务注册与模板清单
+# ============================================================
+
+business:
+  id: corporate_income_tax
+  name: 企业所得税汇算清缴
+  description: 企业所得税年度纳税申报审核——按税法口径对企业财务数据进行纳税调整，生成税审工作底稿
+
+  # 自动检测规则
+  detect:
+    template_dir_pattern:
+      - "企业所得税.*汇算清缴"
+      - "汇算清缴.*底稿"
+      - "税审.*底稿.*模板"
+      - "中税网.*企业所得税"
+    has_tb_keys:
+      - 主营业务收入
+      - 利润总额
+      - 所得税费用
+      - 工资薪金
+    has_adj_items:
+      - 业务招待费
+      - 广告费和业务宣传费
+      - 捐赠支出
+
+# ============================================================
+# 模板清单（按填充顺序）
+# ============================================================
+
+templates:
+  - id: sh_sheets
+    file: 税审工作底稿-0.xlsx
+    config: templates/sh_sheets.yaml
+    output: 税审底稿_SH审定表.xlsx
+    convert: false
+
+  - id: tb_books
+    file: 税审工作底稿-1.xls
+    config: templates/tb_sheets.yaml
+    output: 税审底稿_2-00会计账簿.xlsx
+    convert: true  # xls → xlsx
+
+  - id: depreciation
+    file: 税审工作底稿-2.xls
+    config: templates/dep_sheet.yaml
+    output: 税审底稿_折旧审核表.xlsx
+    convert: true
+
+  - id: fuzhu_digao
+    file: "2026年企业所得税汇算清缴纳税调整汇总表-辅助底稿-选做.xlsx"
+    config: templates/fuzhu_sheet.yaml
+    output: 税审底稿_辅助底稿.xlsx
+    convert: false
+
+  - id: a_declaration
+    file: 企业所得税年度纳税申报表A类2017版.xlsx
+    config: templates/a_declaration.yaml
+    output: 税审底稿_A类申报表.xlsx
+    convert: false
+
+# ============================================================
+# 勾稽校验规则
+# ============================================================
+
+checks:
+  - type: cell_equals
+    sheet: A100000
+    row: 23
+    col: 4
+    expected_from: result.tb.accounting_profit
+    desc: "A100000 R23 利润总额 = TB 会计利润"
+
+  - type: cell_equals
+    sheet: 利润表
+    row: 47
+    col: 2
+    expected_from: result.tb.accounting_profit
+    desc: "利润表 利润总额 = TB 会计利润"
+
+  - type: cell_equals
+    sheet: A105000
+    row: 59
+    col: 5
+    expected_from: result.total_increase
+    desc: "A105000 合计调增"

@@ -1,0 +1,86 @@
+# ============================================================
+# 辅助底稿 — 汇总调整表 模板配置
+# 37项调整条目 + 利润/调整/所得计算链
+# ============================================================
+
+instructions:
+  # ---- 调整项行列映射 ----
+  - instruction: adj_row_map
+    sheet: 汇总调整表
+    col_book: 5
+    col_tax: 7
+    col_inc: 8
+    col_dec: 8
+    entries:
+      - row: 11
+        name: 工资薪金
+      - row: 12
+        name: 职工福利费
+      - row: 13
+        name: 职工教育经费
+      - row: 14
+        name: 工会经费
+      - row: 15
+        name: 基本社会保险
+      - row: 16
+        name: 住房公积金
+      - row: 17
+        name: 补充养老保险
+      - row: 18
+        name: 补充医疗保险
+      - row: 20
+        name: 业务招待费
+      - row: 21
+        name: 广告费和业务宣传费
+      - row: 22
+        name: 捐赠支出
+      - row: 23
+        name: 税收滞纳金
+      - row: 24
+        name: 罚金、罚款
+      - row: 25
+        name: 跨期费用
+      - row: 31
+        name: 资产折旧
+      - row: 32
+        name: 无形资产摊销
+      - row: 33
+        name: 资产减值损失
+      - row: 40
+        name: 研发费用
+      - row: 41
+        name: 残疾人工资
+
+  # ---- 利润总额（R47） ----
+  - instruction: sum_row
+    sheet: 汇总调整表
+    entries:
+      - row: 47
+        col: 7
+        value_from: calc:profit
+        label: 利润总额
+
+  # ---- 纳税调整金额（R48） ----
+  - instruction: sum_row
+    sheet: 汇总调整表
+    entries:
+      - row: 48
+        col: 8
+        value_from: calc:total_increase
+        label: 纳税调增
+
+  # ---- 调整后所得（R49） ----
+  - instruction: sum_row
+    sheet: 汇总调整表
+    entries:
+      - row: 49
+        col: 8
+        value_from: calc:taxable
+        label: 调整后所得
+
+  # ---- 交换意见表 ----
+  - instruction: cell
+    sheet: 交换意见表
+    row: 3
+    col: 1
+    value_template: "被审核单位名称（公章）：{enterprise.name}"

@@ -1,0 +1,175 @@
+# ============================================================
+# SH审定表 模板配置
+# 17张审定表, 每张表一个数据块区域
+# ============================================================
+
+instructions:
+  # ---- SH-01 货币资金 ----
+  - instruction: data_block
+    sheet: SH-01货币资金审核表
+    tb_keys: ["货币资金"]
+    data_start: 8
+    col_book: 3
+    col_label: 2
+    col_seq: 1
+    tax_note: "经核对银行对账单及余额调节表，期末余额与试算平衡表一致，计税基础与账面金额无差异"
+
+  # ---- SH-02 存货 ----
+  - instruction: data_block
+    sheet: SH-02存货审核表
+    tb_keys: ["存货"]
+    data_start: 8
+    col_book: 3
+    col_label: 2
+    col_seq: 1
+    tax_note: "期末余额经盘点核对，已计提的存货跌价准备通过资产减值损失科目纳税调增，计税基础与账面原值一致"
+
+  # ---- SH-03 应收账款 ----
+  - instruction: data_block
+    sheet: SH-03应收账款审核表
+    tb_keys: ["应收账款"]
+    data_start: 8
+    col_book: 2
+    col_label: 1
+    col_seq: 0
+    tax_note: "坏账准备已通过资产减值损失科目全额纳税调增（企业所得税法第十条），应收账款计税基础为账面余额（含坏账准备）"
+
+  # ---- SH-04 预付帐款 ----
+  - instruction: data_block
+    sheet: SH-04预付帐款审核表
+    tb_keys: ["预付款项"]
+    data_start: 8
+    col_book: 2
+    col_label: 1
+    col_seq: 0
+    tax_note: "经核查，预付款项均系正常经营所需，不存在已无对应商品/服务的预付账款，计税基础与账面金额一致"
+
+  # ---- SH-05 其他应收款 ----
+  - instruction: data_block
+    sheet: SH-05其他应收款审核表
+    tb_keys: ["其他应收款"]
+    data_start: 8
+    col_book: 2
+    col_label: 1
+    col_seq: 0
+    tax_note: "其他应收款余额经核对，不存在应确认为费用的挂账款项，计税基础与账面金额一致"
+
+  # ---- SH-06 在建工程 ----
+  - instruction: data_block
+    sheet: SH-06在建工程审核表
+    tb_keys: ["在建工程"]
+    data_start: 8
+    col_book: 2
+    col_label: 1
+    col_seq: 0
+    tax_note: "在建工程计税基础与账面金额一致，关注是否涉及已完工转固未及时处理的情况"
+
+  # ---- SH-07 预收账款 ----
+  - instruction: data_block
+    sheet: SH-07预收账款审核表
+    tb_keys: ["预收款项"]
+    data_start: 8
+    col_book: 2
+    col_label: 1
+    col_seq: 0
+    tax_note: "预收款项系正常经营预收，其中已符合税法收入确认条件的已结转主营业务收入，计税基础与账面金额一致"
+
+  # ---- SH-08 应付账款 ----
+  - instruction: data_block
+    sheet: SH-08应付账款审核表
+    tb_keys: ["应付账款"]
+    data_start: 8
+    col_book: 2
+    col_label: 1
+    col_seq: 0
+    tax_note: "应付账款余额经核对无异常，不存在无需支付的应付款项（若存在需调增应税所得），计税基础与账面金额一致"
+
+  # ---- SH-09 其他应付款 ----
+  - instruction: data_block
+    sheet: SH-09其他应付款审核表
+    tb_keys: ["其他应付款"]
+    data_start: 8
+    col_book: 2
+    col_label: 1
+    col_seq: 0
+    tax_note: "其他应付款余额经核对，不存在应确认为收入的款项，计税基础与账面金额一致"
+
+  # ---- SH-10 应付股利 ----
+  - instruction: data_block
+    sheet: SH-10应付股利审核表
+    tb_keys: ["应付股利"]
+    data_start: 8
+    col_book: 2
+    col_label: 1
+    col_seq: 0
+    tax_note: "应付股利为企业已宣告尚未发放的股息，居民企业股东收到的股息适用免税政策（企业所得税法第二十六条），计税基础与账面金额一致"
+
+  # ---- SH-11 短期借款 ----
+  - instruction: data_block
+    sheet: SH-11短期借款审核表
+    tb_keys: ["短期借款"]
+    data_start: 8
+    col_book: 2
+    col_label: 1
+    col_seq: 0
+    tax_note: "短期借款利息支出已通过利息支出科目核算，超出金融企业同期同类利率部分已纳税调增（国税函[2009]777号），计税基础与账面金额一致"
+
+  # ---- SH-12 长期借款 ----
+  - instruction: data_block
+    sheet: SH-12长期借款审核表
+    tb_keys: ["长期借款"]
+    data_start: 8
+    col_book: 2
+    col_label: 1
+    col_seq: 0
+    tax_note: "长期借款利息支出经审核，资本化与费用化划分正确，超出同期同类利率部分已纳税调增，计税基础与账面金额一致"
+
+  # ---- SH-13 长期应付款 ----
+  - instruction: data_block
+    sheet: SH-13长期应付款审核表
+    tb_keys: ["长期应付款"]
+    data_start: 8
+    col_book: 2
+    col_label: 1
+    col_seq: 0
+    tax_note: "长期应付款余额经核对，计税基础与账面金额一致"
+
+  # ---- SH-14 实收资本 ----
+  - instruction: data_block
+    sheet: SH-14实收资本审核表
+    tb_keys: ["实收资本"]
+    data_start: 8
+    col_book: 2
+    col_label: 1
+    col_seq: 0
+    tax_note: "实收资本经核查与工商登记信息一致，计税基础与账面金额无差异"
+
+  # ---- SH-15 资本公积 ----
+  - instruction: data_block
+    sheet: SH-15资本公积审核表
+    tb_keys: ["资本公积"]
+    data_start: 8
+    col_book: 2
+    col_label: 1
+    col_seq: 0
+    tax_note: "资本公积增减变动经核查，不存在应确认为应税收入的情况，计税基础与账面金额一致"
+
+  # ---- SH-16 盈余公积 ----
+  - instruction: data_block
+    sheet: SH-16盈余公积审核表
+    tb_keys: ["盈余公积"]
+    data_start: 8
+    col_book: 2
+    col_label: 1
+    col_seq: 0
+    tax_note: "盈余公积系按净利润10%提取，与公司法规定一致，计税基础与账面金额无差异"
+
+  # ---- SH-17 未分配利润 ----
+  - instruction: data_block
+    sheet: SH-17未分配利润审核表
+    tb_keys: ["未分配利润"]
+    data_start: 8
+    col_book: 2
+    col_label: 1
+    col_seq: 0
+    tax_note: "未分配利润经审核与利润分配表勾稽一致，已分配股息已在应付股利科目反映，计税基础与账面金额无差异"

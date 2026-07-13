@@ -1,25 +1,45 @@
 #!/usr/bin/env python3
 """
-税审底稿自动填充引擎 — 入口
-演示：用示例数据执行完整的企业所得税汇缴计算，生成工作底稿Excel
+税审底稿自动填充引擎 v3 — 配置驱动 + 业务注册
+
+业务类型识别流程：
+  1. 用户显式指定 --business-type
+  2. 自动检测（根据模板目录名/TB科目/调整项特征）
+  3. 模糊时列出候选
+
+填充流程：
+  BusinessRegistry.scan() → 加载所有业务配置
+  → detect_business_type() 或 用户指定 → 选中业务
+  → TaxAuditEngine.fill_all() → 按 manifest 依次填充所有模板
 """
 
-import sys, json, io, os
-from pathlib import Path
+import sys, io, os
 
 sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding="utf-8", errors="replace")
 
+from pathlib import Path
+
 from .models import TrialBalance, EnterpriseInfo, AssetItem, AssetCategory
 from .calculator import TaxCalculator
-from .workpaper_generator import WorkpaperGenerator
-from .template_filler import fill_all_templates
+from .core.engine import TaxAuditEngine
+from .business.registry import BusinessRegistry
+from .business.detector import detect_business_type, list_matching_types
 
 
-def build_sample_data() -> dict:
-    """
-    构建示例数据（典型制造业企业）
-    """
-    # === 企业信息 ===
+# ============================================================
+# 示例数据
+# ============================================================
+
+TEMPLATE_DIR = (
+    "D:/Users/12844/Desktop/业务工作底稿模版/"
+    "2026_07_04_1-1、中税网-2026年企业所得税纳税申报审核报告及底稿模板-适用于独立纳税企业V1/"
+    "1-1、中税网-2026年企业所得税纳税申报审核报告及底稿模板-适用于独立纳税企业V1/"
+    "1、中税网企业所得税汇缴鉴证报告、申报表及工作底稿模板-适用独立纳税企业-必做底稿2026"
+)
+
+
+def build_sample_data():
+    """构建示例数据（典型制造业企业）"""
     enterprise = EnterpriseInfo(
         name="XX制造有限公司",
         uscc="91440101MA5XXXXXX",
@@ -31,27 +51,21 @@ def build_sample_data() -> dict:
         is_high_tech=True,
     )
 
-    # === 试算平衡表（关键科目） ===
     tb = TrialBalance(
         items={
-            # 收入
             "主营业务收入": 50000000,
             "其他业务收入": 2000000,
             "营业外收入": 300000,
             "投资收益": 500000,
             "公允价值变动收益": 200000,
             "资产处置收益": 100000,
-            # 成本
             "主营业务成本": 32000000,
             "其他业务成本": 1200000,
             "税金及附加": 800000,
-            # 费用
             "销售费用": 3500000,
             "管理费用": 4200000,
             "财务费用": 600000,
-            # 利润
             "利润总额": 7200000,
-            # ===== 资产负债表科目（SH审定表填报用） =====
             "货币资金": 12500000,
             "应收账款": 8500000,
             "预付款项": 1200000,
@@ -69,38 +83,33 @@ def build_sample_data() -> dict:
             "资本公积": 2000000,
             "盈余公积": 1800000,
             "未分配利润": 4200000,
-            # ===== 明细科目（纳税调整用） =====
             "工资薪金": 8500000,
-            "职工福利费": 1300000,  # 限额=850万*14%=119万 → 调增11万
-            "职工教育经费": 750000,  # 限额=850万*8%=68万 → 调增7万
-            "工会经费": 180000,  # 限额=850万*2%=17万 → 调增1万
-            "业务招待费": 600000,  # 60%=36万, 营收5200万*5‰=26万, 取26万 → 调增34万
-            "广告费和业务宣传费": 9000000,  # 限额=5200万*15%=780万 → 调增120万
-            "公益性捐赠支出": 1200000,  # 利润720万*12%=86.4万 → 调增33.6万
-            "利息支出": 400000,  # 假定全部可扣除
-            "罚金、罚款和被没收财物": 50000,  # 全额调增
-            "税收滞纳金、加收利息": 20000,  # 全额调增
-            "赞助支出": 300000,  # 非广告性
-            "研发费用": 3800000,  # 加计扣除100%
-            "资产减值损失": 450000,  # 全额调增
+            "职工福利费": 1300000,
+            "职工教育经费": 750000,
+            "工会经费": 180000,
+            "业务招待费": 600000,
+            "广告费和业务宣传费": 9000000,
+            "公益性捐赠支出": 1200000,
+            "利息支出": 400000,
+            "罚金、罚款和被没收财物": 50000,
+            "税收滞纳金、加收利息": 20000,
+            "赞助支出": 300000,
+            "研发费用": 3800000,
+            "资产减值损失": 450000,
             "基本社会保险": 1785000,
             "住房公积金": 680000,
-            "补充养老保险": 300000,  # 限额=850万*5%=42.5万 → 不超
-            "补充医疗保险": 200000,  # 限额=850万*5%=42.5万 → 不超
-            # 投资类
+            "补充养老保险": 300000,
+            "补充医疗保险": 200000,
             "居民企业间股息红利-免税收入": 300000,
             "权益法核算的投资收益": 200000,
             "实际收到的股息红利": 300000,
             "国债利息收入": 100000,
-            # 其他
-            "不征税收入": 0,
         }
     )
 
-    # === 固定资产卡片 ===
     assets = [
         AssetItem(
-            category=AssetCategory.BUILDING.value,
+            category="房屋、建筑物",
             name="办公楼",
             original_value=12000000,
             accounting_life_years=20,
@@ -109,7 +118,7 @@ def build_sample_data() -> dict:
             current_tax_depr=570000,
         ),
         AssetItem(
-            category=AssetCategory.MACHINERY.value,
+            category="机器设备",
             name="生产线A",
             original_value=8000000,
             accounting_life_years=10,
@@ -118,16 +127,16 @@ def build_sample_data() -> dict:
             current_tax_depr=760000,
         ),
         AssetItem(
-            category=AssetCategory.ELECTRONIC.value,
+            category="电子设备",
             name="服务器集群",
             original_value=1500000,
             accounting_life_years=5,
-            tax_life_years=3,  # 税法3年，差异
+            tax_life_years=3,
             current_accounting_depr=285000,
-            current_tax_depr=475000,  # 税收折旧更多 → 调减
+            current_tax_depr=475000,
         ),
         AssetItem(
-            category=AssetCategory.TRANSPORT.value,
+            category="运输工具",
             name="运输车辆",
             original_value=800000,
             accounting_life_years=5,
@@ -136,7 +145,7 @@ def build_sample_data() -> dict:
             current_tax_depr=190000,
         ),
         AssetItem(
-            category=AssetCategory.PRODUCTION_TOOLS.value,
+            category="生产器具、工具",
             name="模具及夹具",
             original_value=600000,
             accounting_life_years=5,
@@ -146,226 +155,186 @@ def build_sample_data() -> dict:
         ),
     ]
 
-    return {
-        "enterprise": enterprise,
-        "tb": tb,
-        "assets": assets,
-    }
-
-
-def run_demo(output_path: str = None):
-    """
-    执行完整演示流程：
-    1. 构建示例数据
-    2. 执行税审计算
-    3. 打印摘要
-    4. 生成底稿Excel
-    """
-    print("=" * 60)
-    print("税审底稿自动填充引擎 — 演示")
-    print("企业所得税汇算清缴 — 制造业企业")
-    print("=" * 60)
-
-    # 1. 构建数据
-    print("\n>> 构建示例数据...")
-    data = build_sample_data()
-
-    # 2. 执行计算
-    print(">> 执行纳税调整计算...")
-    calculator = TaxCalculator()
-    result = calculator.calculate(
-        tb=data["tb"],
-        enterprise=data["enterprise"],
-        assets=data["assets"],
-    )
-
-    # 3. 打印摘要
-    print("\n" + "─" * 60)
-    print("计算摘要")
-    print("─" * 60)
-    summary = result.summary()
-    for key, value in summary.items():
-        if isinstance(value, float):
-            print(f"  {key}: {value:>14,.2f}")
-        else:
-            print(f"  {key}: {value}")
-
-    print("\n>> 调整明细（调增>0或调减>0的项目）:")
-    print("─" * 60)
-    print(f"  {'项目':<24} {'调增':>12} {'调减':>12}")
-    print("─" * 60)
-    for adj in result.adjustments:
-        if adj.increase > 0 or adj.decrease > 0:
-            inc_str = f"{adj.increase:>12,.2f}" if adj.increase > 0 else f"{'':>12}"
-            dec_str = f"{adj.decrease:>12,.2f}" if adj.decrease > 0 else f"{'':>12}"
-            print(f"  [{adj.category.value}] {adj.item_name:<18} {inc_str} {dec_str}")
-
-    # 4. 生成底稿
-    if not output_path:
-        output_path = str(Path("D:/Users/12844/Desktop/税审底稿_示例.xlsx"))
-    print(f"\n>> 生成工作底稿 → {output_path}")
-
-    gen = WorkpaperGenerator(result)
-    gen.set_assets(data["assets"])
-    gen.generate(output_path)
-
-    print(f"\n{'=' * 60}")
-    print(f"完成！底稿已保存至: {output_path}")
-    print(f"共 {len(result.adjustments)} 条纳税调整项")
-    print(f"生成 {len(gen.wb.sheetnames)} 张工作表: {', '.join(gen.wb.sheetnames)}")
-    print(f"{'=' * 60}")
-
-
-def run_with_custom_data(
-    tb_data: dict,
-    enterprise_info: dict = None,
-    asset_list: list = None,
-    output_path: str = None,
-):
-    """
-    用自定义数据运行税审计算
-
-    Parameters
-    ----------
-    tb_data : dict
-        试算平衡表，{科目名称: 金额}
-    enterprise_info : dict, optional
-        企业信息
-    asset_list : list[dict], optional
-        固定资产列表
-    output_path : str, optional
-        输出路径，默认桌面
-    """
-    tb = TrialBalance(items=tb_data)
-    enterprise = None
-    if enterprise_info:
-        enterprise = EnterpriseInfo(**enterprise_info)
-
-    assets = []
-    if asset_list:
-        for a in asset_list:
-            assets.append(AssetItem(**a))
-
-    calculator = TaxCalculator()
-    result = calculator.calculate(
-        tb=tb,
-        enterprise=enterprise,
-        assets=assets,
-    )
-
-    if not output_path:
-        output_path = "D:/Users/12844/Desktop/税审底稿_自定义.xlsx"
-
-    gen = WorkpaperGenerator(result)
-    if assets:
-        gen.set_assets(assets)
-    gen.generate(output_path)
-
-    return result
+    return {"enterprise": enterprise, "tb": tb, "assets": assets}
 
 
 # ============================================================
-# 模板填充演示（中税网底稿模板）
+# 主流程
 # ============================================================
 
-TEMPLATE_BASE = (
-    "D:/Users/12844/Desktop/业务工作底稿模版/"
-    "2026_07_04_1-1、中税网-2026年企业所得税纳税申报审核报告及底稿模板-适用于独立纳税企业V1/"
-    "1-1、中税网-2026年企业所得税纳税申报审核报告及底稿模板-适用于独立纳税企业V1/"
-    "1、中税网企业所得税汇缴鉴证报告、申报表及工作底稿模板-适用独立纳税企业-必做底稿2026"
-)
 
-
-def run_demo_with_templates(output_dir: str = None):
+def run(output_dir: str = None, business_type: str = None, template_dir: str = None):
     """
-    演示流程：计算 → 填充中税网模板
+    完整执行流程：
+    1. 构建/加载数据
+    2. 计算纳税调整
+    3. 检测业务类型
+    4. 填充模板
+    5. 校验
     """
     print("=" * 60)
-    print("税审底稿填充引擎 — 模板填充模式")
+    print("税审底稿填充引擎 v3 — 配置驱动 + 业务注册")
     print("=" * 60)
 
-    # 1. 构建数据
-    print("\n>> 构建示例数据...")
+    # 1. 数据
+    print("\n>> 构建数据...")
     data = build_sample_data()
+    tb = data["tb"]
+    enterprise = data["enterprise"]
+    assets = data["assets"]
 
-    # 2. 执行计算
+    # 2. 计算
     print(">> 执行纳税调整计算...")
     calculator = TaxCalculator()
-    result = calculator.calculate(
-        tb=data["tb"],
-        enterprise=data["enterprise"],
-        assets=data["assets"],
-    )
+    result = calculator.calculate(tb=tb, enterprise=enterprise, assets=assets)
 
-    # 3. 打印摘要
-    print("\n" + "─" * 60)
-    print("计算摘要")
-    print("─" * 60)
-    summary = result.summary()
-    for key, value in summary.items():
-        if isinstance(value, float):
-            print(f"  {key}: {value:>14,.2f}")
+    print(f"  会计利润: {tb.accounting_profit:>12,.2f}")
+    print(f"  纳税调增: {result.total_increase:>12,.2f}")
+    print(f"  纳税调减: {result.total_decrease:>12,.2f}")
+    print(f"  应纳税所得额: {result.taxable_income:>12,.2f}")
+
+    # 3. 检测业务类型
+    tmpl_dir = template_dir or TEMPLATE_DIR
+    biz_id = business_type
+
+    if not biz_id:
+        print(f"\n>> 检测业务类型...")
+        # 用 registry 检测
+        registry = BusinessRegistry()
+        registry.scan()
+
+        # 快速检测
+        biz_id = detect_business_type(
+            template_dir=tmpl_dir,
+            tb=tb,
+            enterprise=enterprise,
+            adjustments=result.adjustments,
+        )
+
+        if biz_id:
+            print(f"  自动识别: {biz_id}")
         else:
-            print(f"  {key}: {value}")
+            # 模糊时列出候选
+            candidates = list_matching_types(
+                template_dir=tmpl_dir,
+                tb=tb,
+                enterprise=enterprise,
+                adjustments=result.adjustments,
+            )
+            if candidates:
+                print("  无法唯一确定业务类型，候选:")
+                for bid, name, score in candidates:
+                    print(f"    • {name} ({bid}) 匹配度={score}")
+                # 取最高分
+                biz_id = candidates[0][0]
+                print(f"  自动取最高分: {biz_id}")
+            else:
+                print("  ⚠ 未匹配到业务类型，使用默认: corporate_income_tax")
+                biz_id = "corporate_income_tax"
 
-    # 4. 填充模板
-    base = output_dir or "D:/Users/12844/Desktop"
-    print(f"\n>> 检查模板目录: {TEMPLATE_BASE}")
-    if not os.path.exists(TEMPLATE_BASE):
-        print(f"  ❌ 模板目录不存在: {TEMPLATE_BASE}")
-        print("  >> 回退到自生成模式...")
-        # fallback: 用 WorkpaperGenerator
-        gen = WorkpaperGenerator(result)
-        gen.set_assets(data["assets"])
-        gen.generate(os.path.join(base, "税审底稿_示例.xlsx"))
-        print(f"  ✅ 自生成底稿 → {os.path.join(base, '税审底稿_示例.xlsx')}")
+    biz = registry.get(biz_id) if registry._businesses else None
+    if not biz:
+        # 直接从注册表获取
+        registry.scan()
+        biz = registry.get(biz_id)
+
+    if not biz:
+        print(f"  ❌ 业务类型 '{biz_id}' 未注册")
         return
 
-    print("\n>> 填充模板...")
-    results = fill_all_templates(
-        result=result,
-        template_dir=TEMPLATE_BASE,
-        output_dir=base,
-        assets=data["assets"],
+    print(f"  业务: {biz.name}")
+
+    # 4. 预加载模板配置
+    print(f"\n>> 加载模板配置 ({len(biz.templates)} 个)...")
+    import yaml
+
+    configs_root = (
+        Path(registry._configs_root or Path(__file__).parent / "configs") / biz_id
+    )
+    manifest_processed = {
+        "templates": [],
+        "checks": biz.raw_manifest.get("checks", []),
+    }
+    for tmpl in biz.templates:
+        tmpl_entry = dict(tmpl)
+        config_path = tmpl.get("config", "")
+        if config_path:
+            full_path = configs_root / config_path
+            if full_path.exists():
+                with open(full_path, "r", encoding="utf-8") as f:
+                    cfg = yaml.safe_load(f) or {}
+                # 将 manifest 条目属性（convert/output）合并到配置
+                cfg["convert"] = tmpl.get("convert", False)
+                cfg["output"] = tmpl.get("output", "")
+                tmpl_entry["config"] = cfg
+                print(f"  ✅ {tmpl['id']}: {config_path}")
+            else:
+                print(f"  ⚠ {tmpl['id']}: 配置 {config_path} 未找到")
+                tmpl_entry["config"] = {}
+        else:
+            tmpl_entry["config"] = {}
+        manifest_processed["templates"].append(tmpl_entry)
+
+    # 5. 填充模板
+    print(f"\n>> 填充模板...")
+    engine = TaxAuditEngine(result, assets=assets)
+
+    if not os.path.exists(tmpl_dir):
+        print(f"  ❌ 模板目录不存在: {tmpl_dir}")
+        return
+
+    results = engine.fill_all(
+        manifest=manifest_processed,
+        template_dir=tmpl_dir,
+        output_dir=output_dir or "D:/Users/12844/Desktop",
     )
 
+    # 5. 结果
     print(f"\n{'=' * 60}")
-    print(f"生成 {len(results)} 份底稿文件:")
-    for name, path in results.items():
-        print(f"  ✅ {name}: {path}")
+    print(f"完成！生成 {len(results)} 份底稿文件:")
+    for tmpl_id, info in results.items():
+        issues = info.get("issues", [])
+        status = "✅" if not issues else "⚠"
+        print(f"  {status} {info['path']}")
+        if issues:
+            for iss in issues:
+                print(f"    {iss}")
     print(f"共 {len(result.adjustments)} 条纳税调整项")
     print(f"{'=' * 60}")
-
-
-# ============================================================
-# 带命令行参数的主入口
-# ============================================================
 
 
 def main():
-    """带命令行参数的主入口"""
+    """命令行入口"""
     import argparse
 
-    parser = argparse.ArgumentParser(description="税审底稿填充引擎")
+    parser = argparse.ArgumentParser(description="税审底稿填充引擎 v3")
+    parser.add_argument("--output", "-o", default=None, help="输出目录")
     parser.add_argument(
-        "--mode",
-        choices=["demo", "template"],
-        default="template",
-        help="运行模式: demo=WorkpaperGenerator自生成, template=填充中税网模板(默认)",
-    )
-    parser.add_argument(
-        "--output",
-        "-o",
+        "--business-type",
+        "-b",
         default=None,
-        help="输出目录（默认桌面）",
+        help="业务类型（corporate_income_tax / high_tech / rd_expense / loss）",
+    )
+    parser.add_argument("--template-dir", "-t", default=None, help="模板目录路径")
+    parser.add_argument(
+        "--list-businesses", action="store_true", help="列出已注册业务类型"
     )
     args = parser.parse_args()
 
-    if args.mode == "demo":
-        out_path = args.output or "D:/Users/12844/Desktop/税审底稿_示例.xlsx"
-        run_demo(out_path)
-    else:
-        run_demo_with_templates(args.output)
+    if args.list_businesses:
+        registry = BusinessRegistry()
+        registry.scan()
+        print("已注册业务类型:")
+        for b in registry.list_all():
+            print(f"  • {b.name} ({b.id})")
+            print(f"    {b.description}")
+        return
+
+    run(
+        output_dir=args.output,
+        business_type=args.business_type,
+        template_dir=args.template_dir,
+    )
 
 
 if __name__ == "__main__":
